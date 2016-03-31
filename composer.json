@@ -1,6 +1,6 @@
 {
   "name": "psx/model",
-  "description": "PSX model classes based on data specifications",
+  "description": "Model classes based on open data specifications",
   "keywords": ["activitystream", "atom", "rss", "swagger"],
   "homepage": "http://phpsx.org",
   "license": "Apache-2.0",
