@@ -20,7 +20,7 @@
 
 namespace PSX\Model\Tests\ActivityStream\ObjectType;
 
-use PSX\Data\Tests\SerializeTestAbstract;
+use PSX\Data\Test\SerializeTestCase;
 use PSX\Model\ActivityStream\Address;
 use PSX\Model\ActivityStream\ObjectType;
 use PSX\Model\ActivityStream\Position;
@@ -32,7 +32,7 @@ use PSX\Model\ActivityStream\Position;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-class PlaceTest extends SerializeTestAbstract
+class PlaceTest extends SerializeTestCase
 {
     public function testPlacePosition()
     {

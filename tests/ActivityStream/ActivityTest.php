@@ -21,7 +21,7 @@
 namespace PSX\Model\Tests\ActivityStream;
 
 use DateTime;
-use PSX\Data\Tests\SerializeTestAbstract;
+use PSX\Data\Test\SerializeTestCase;
 use PSX\Model\ActivityStream\Activity;
 use PSX\Model\ActivityStream\Collection;
 use PSX\Model\ActivityStream\ObjectType;
@@ -33,7 +33,7 @@ use PSX\Model\ActivityStream\ObjectType;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-class ActivityTest extends SerializeTestAbstract
+class ActivityTest extends SerializeTestCase
 {
     public function testActivity()
     {

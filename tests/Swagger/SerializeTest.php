@@ -20,7 +20,7 @@
 
 namespace PSX\Model\Tests\Swagger;
 
-use PSX\Data\Tests\SerializeTestAbstract;
+use PSX\Data\Test\SerializeTestCase;
 use PSX\Model\Swagger\Api;
 use PSX\Model\Swagger\Declaration;
 use PSX\Model\Swagger\InfoObject;
@@ -39,7 +39,7 @@ use PSX\Model\Swagger\ResponseMessage;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-class SerializeTest extends SerializeTestAbstract
+class SerializeTest extends SerializeTestCase
 {
     public function testSerialize()
     {

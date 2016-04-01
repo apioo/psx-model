@@ -21,7 +21,7 @@
 namespace PSX\Model\Tests\ActivityStream\ObjectType;
 
 use DateTime;
-use PSX\Data\Tests\SerializeTestAbstract;
+use PSX\Data\Test\SerializeTestCase;
 use PSX\Model\ActivityStream\ObjectType;
 
 /**
@@ -31,7 +31,7 @@ use PSX\Model\ActivityStream\ObjectType;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-class TaskTest extends SerializeTestAbstract
+class TaskTest extends SerializeTestCase
 {
     public function testTask()
     {

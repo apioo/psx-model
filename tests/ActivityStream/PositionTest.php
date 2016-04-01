@@ -20,7 +20,7 @@
 
 namespace PSX\Model\Tests\ActivityStream;
 
-use PSX\Data\Tests\SerializeTestAbstract;
+use PSX\Data\Test\SerializeTestCase;
 use PSX\Model\ActivityStream\Position;
 
 /**
@@ -30,7 +30,7 @@ use PSX\Model\ActivityStream\Position;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-class PositionTest extends SerializeTestAbstract
+class PositionTest extends SerializeTestCase
 {
     public function testPosition()
     {

@@ -21,7 +21,7 @@
 namespace PSX\Model\Tests\Atom;
 
 use DateTime;
-use PSX\Data\Tests\SerializeTestAbstract;
+use PSX\Data\Test\SerializeTestCase;
 use PSX\Model\Atom\Atom;
 use PSX\Model\Atom\Category;
 use PSX\Model\Atom\Entry;
@@ -37,7 +37,7 @@ use PSX\Model\Atom\Text;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-class SerializeTest extends SerializeTestAbstract
+class SerializeTest extends SerializeTestCase
 {
     public function testSerialize()
     {

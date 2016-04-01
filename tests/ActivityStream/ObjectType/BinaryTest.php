@@ -20,7 +20,7 @@
 
 namespace PSX\Model\Tests\ActivityStream\ObjectType;
 
-use PSX\Data\Tests\SerializeTestAbstract;
+use PSX\Data\Test\SerializeTestCase;
 use PSX\Model\ActivityStream\ObjectType;
 use PSX\Model\ActivityStream\ObjectType\Binary;
 
@@ -31,7 +31,7 @@ use PSX\Model\ActivityStream\ObjectType\Binary;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-class BinaryTest extends SerializeTestAbstract
+class BinaryTest extends SerializeTestCase
 {
     public function testBinary()
     {

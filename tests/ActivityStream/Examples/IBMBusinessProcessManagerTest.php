@@ -21,7 +21,7 @@
 namespace PSX\Model\Tests\ActivityStream\Examples;
 
 use DateTime;
-use PSX\Data\Tests\SerializeTestAbstract;
+use PSX\Data\Test\SerializeTestCase;
 use PSX\Model\ActivityStream\ObjectType;
 use PSX\Model\ActivityStream\Activity;
 use PSX\Model\ActivityStream\Collection;
@@ -34,7 +34,7 @@ use PSX\Model\ActivityStream\Collection;
  * @link    http://phpsx.org
  * @see     http://www.w3.org/wiki/Activity_Streams
  */
-class IBMBusinessProcessManagerTest extends SerializeTestAbstract
+class IBMBusinessProcessManagerTest extends SerializeTestCase
 {
     public function testStream()
     {

@@ -21,7 +21,7 @@
 namespace PSX\Model\Tests\Rss;
 
 use DateTime;
-use PSX\Data\Tests\SerializeTestAbstract;
+use PSX\Data\Test\SerializeTestCase;
 use PSX\Model\Rss\Category;
 use PSX\Model\Rss\Cloud;
 use PSX\Model\Rss\Enclosure;
@@ -36,7 +36,7 @@ use PSX\Model\Rss\Source;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-class SerializeTest extends SerializeTestAbstract
+class SerializeTest extends SerializeTestCase
 {
     public function testSerialize()
     {

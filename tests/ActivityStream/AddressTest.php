@@ -20,7 +20,7 @@
 
 namespace PSX\Model\Tests\ActivityStream;
 
-use PSX\Data\Tests\SerializeTestAbstract;
+use PSX\Data\Test\SerializeTestCase;
 use PSX\Model\ActivityStream\Address;
 
 /**
@@ -30,7 +30,7 @@ use PSX\Model\ActivityStream\Address;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-class AddressTest extends SerializeTestAbstract
+class AddressTest extends SerializeTestCase
 {
     public function testAddress()
     {
