@@ -19,6 +19,7 @@
  */
 
 namespace PSX\Model\Common;
+
 use PSX\Data\RecordObject;
 
 /**
