@@ -20,7 +20,7 @@
 
 namespace PSX\Model\Common;
 
-use PSX\Data\RecordObject;
+use PSX\Record\RecordObject;
 
 /**
  * Error
