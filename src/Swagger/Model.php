@@ -20,7 +20,7 @@
 
 namespace PSX\Model\Swagger;
 
-use PSX\Data\Record;
+use PSX\Record\Record;
 
 /**
  * Model
