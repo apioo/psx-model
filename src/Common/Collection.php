@@ -20,9 +20,9 @@
 
 namespace PSX\Model\Common;
 
-use IteratorAggregate;
-use Countable;
 use ArrayIterator;
+use Countable;
+use IteratorAggregate;
 
 /**
  * Collection

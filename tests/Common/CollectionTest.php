@@ -20,8 +20,8 @@
 
 namespace PSX\Model\Tests\Common;
 
-use PSX\Record\Record;
 use PSX\Model\Common\Collection;
+use PSX\Record\Record;
 
 /**
  * CollectionTest

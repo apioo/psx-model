@@ -20,8 +20,6 @@
 
 namespace PSX\Model\Swagger;
 
-use PSX\Data\RecordAbstract;
-
 /**
  * InfoObject
  *

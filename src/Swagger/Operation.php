@@ -20,9 +20,6 @@
 
 namespace PSX\Model\Swagger;
 
-use InvalidArgumentException;
-use PSX\Data\RecordAbstract;
-
 /**
  * Operation
  *

@@ -20,7 +20,6 @@
 
 namespace PSX\Model\ActivityStream;
 
-use DateTime;
 use PSX\Data\CollectionInterface;
 use PSX\Model\ActivityStream\ObjectType;
 

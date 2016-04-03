@@ -19,7 +19,6 @@
  */
 
 namespace PSX\Model\Swagger;
-use PSX\Data\Record;
 
 /**
  * Declaration
