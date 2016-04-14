@@ -58,7 +58,7 @@ class Activity extends ObjectType
     protected $id;
 
     /**
-     * @Type("choice<\PSX\Model\ActivityStream\ObjectTypeRevealer>")
+     * @Type("\PSX\Model\ActivityStream\ObjectType")
      */
     protected $object;
 
