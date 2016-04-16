@@ -62,7 +62,7 @@ class Entry
     protected $link;
 
     /**
-     * @Type("\DateTime")
+     * @Type("datetime")
      */
     protected $published;
 
@@ -87,7 +87,7 @@ class Entry
     protected $title;
 
     /**
-     * @Type("\DateTime")
+     * @Type("datetime")
      */
     protected $updated;
 

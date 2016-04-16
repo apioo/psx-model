@@ -88,7 +88,7 @@ class Atom
     protected $title;
 
     /**
-     * @Type("\DateTime")
+     * @Type("datetime")
      */
     protected $updated;
 
