@@ -38,7 +38,7 @@ class Collection extends ObjectType
     protected $totalItems;
 
     /**
-     * @Type("array<\PSX\Model\ActivityStream\ObjectType>")
+     * @Type("array<choice<\PSX\Model\ActivityStream\Activity,\PSX\Model\ActivityStream\ObjectType>>")
      */
     protected $items;
 
