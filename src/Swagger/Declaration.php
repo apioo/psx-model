@@ -54,13 +54,13 @@ class Declaration
     protected $resourcePath;
 
     /**
-     * @Type("array<\PSX\Model\Swagger\Api>")
+     * @Type("array<PSX\Model\Swagger\Api>")
      * @Required
      */
     protected $apis;
 
     /**
-     * @Type("map<\PSX\Model\Swagger\Model>")
+     * @Type("PSX\Model\Swagger\Models")
      */
     protected $models;
 
@@ -80,7 +80,7 @@ class Declaration
         $this->apiVersion     = $apiVersion;
         $this->basePath       = $basePath;
         $this->apis           = array();
-        $this->models         = new Record();
+        $this->models         = new Models();
 
         if ($resourcePath !== null) {
             $this->setResourcePath($resourcePath);
@@ -152,7 +152,7 @@ class Declaration
         $this->apis[] = $api;
     }
 
-    public function setModels(Record $models)
+    public function setModels(Models $models)
     {
         $this->models = $models;
     }
@@ -164,11 +164,11 @@ class Declaration
 
     public function getModel($name)
     {
-        return $this->models->getProperty($name);
+        return isset($this->models[$name]) ? $this->models[$name] : null;
     }
 
     public function addModel(Model $model)
     {
-        $this->models->setProperty($model->getId(), $model);
+        $this->models[$model->getId()] = $model;
     }
 }

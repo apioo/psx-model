@@ -43,7 +43,7 @@ class Api
     protected $description;
 
     /**
-     * @Type("array<\PSX\Model\Swagger\Operation>")
+     * @Type("array<PSX\Model\Swagger\Operation>")
      * @Required
      */
     protected $operations = array();

@@ -48,7 +48,7 @@ class Model
     protected $required;
 
     /**
-     * @Type("map<\PSX\Model\Swagger\Property>")
+     * @Type("PSX\Model\Swagger\Properties")
      * @Required
      */
     protected $properties;
@@ -68,7 +68,7 @@ class Model
         $this->id          = $id;
         $this->description = $description;
         $this->required    = $required;
-        $this->properties  = new Record();
+        $this->properties  = new Properties();
     }
 
     public function setId($id)
@@ -111,7 +111,7 @@ class Model
         return $this->discriminator;
     }
 
-    public function setProperties($properties)
+    public function setProperties(Properties $properties)
     {
         $this->properties = $properties;
     }
@@ -123,12 +123,12 @@ class Model
 
     public function addProperty($name, Property $property)
     {
-        $this->properties->setProperty($name, $property);
+        $this->properties[$name] = $property;
     }
 
     public function getProperty($name)
     {
-        return $this->properties->getProperty($name);
+        return isset($this->properties[$name]) ? $this->properties[$name] : null;
     }
 
     public function setSubTypes($subTypes)
