@@ -21,13 +21,13 @@
 namespace PSX\Model\Swagger;
 
 /**
- * DataTypeTrait
+ * Items
  *
  * @author  Christoph Kappestein <k42b3.x@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-trait DataTypeTrait
+class Items
 {
     /**
      * @Type("string")
@@ -35,35 +35,15 @@ trait DataTypeTrait
     protected $type;
 
     /**
-     * @Key("$ref")
-     * @Type("string")
-     */
-    protected $ref;
-
-    /**
      * @Type("string")
      */
     protected $format;
 
     /**
-     * @Type("array<string>")
+     * @Key("$ref")
+     * @Type("string")
      */
-    protected $enum;
-
-    /**
-     * @Type("integer")
-     */
-    protected $minimum;
-
-    /**
-     * @Type("integer")
-     */
-    protected $maximum;
-
-    /**
-     * @Type("PSX\Model\Swagger\Items")
-     */
-    protected $items;
+    protected $ref;
 
     public function getType()
     {
@@ -73,16 +53,6 @@ trait DataTypeTrait
     public function setType($type)
     {
         $this->type = $type;
-    }
-
-    public function getRef()
-    {
-        return $this->ref;
-    }
-
-    public function setRef($ref)
-    {
-        $this->ref = $ref;
     }
 
     public function getFormat()
@@ -95,43 +65,13 @@ trait DataTypeTrait
         $this->format = $format;
     }
 
-    public function getEnum()
+    public function getRef()
     {
-        return $this->enum;
+        return $this->ref;
     }
 
-    public function setEnum($enum)
+    public function setRef($ref)
     {
-        $this->enum = $enum;
-    }
-
-    public function getMinimum()
-    {
-        return $this->minimum;
-    }
-
-    public function setMinimum($minimum)
-    {
-        $this->minimum = $minimum;
-    }
-
-    public function getMaximum()
-    {
-        return $this->maximum;
-    }
-
-    public function setMaximum($maximum)
-    {
-        $this->maximum = $maximum;
-    }
-
-    public function getItems()
-    {
-        return $this->items;
-    }
-
-    public function setItems(Items $items)
-    {
-        $this->items = $items;
+        $this->ref = $ref;
     }
 }
