@@ -113,7 +113,7 @@ class AtomTest extends \PHPUnit_Framework_TestCase
         "content": "foobar"
     },
     "title": "bar",
-    "updated": "2016-12-15T21:54:00+00:00",
+    "updated": "2016-12-15T21:54:00Z",
     "entry": [
         {
             "author": [
@@ -145,13 +145,13 @@ class AtomTest extends \PHPUnit_Framework_TestCase
                     "href": "http:\/\/foo.com\/entry\/1"
                 }
             ],
-            "published": "2016-12-15T21:54:00+00:00",
+            "published": "2016-12-15T21:54:00Z",
             "rights": "rights",
             "summary": {
                 "content": "summary"
             },
             "title": "title",
-            "updated": "2016-12-15T21:54:00+00:00"
+            "updated": "2016-12-15T21:54:00Z"
         }
     ]
 }

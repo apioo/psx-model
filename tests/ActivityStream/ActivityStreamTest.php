@@ -75,7 +75,7 @@ class ActivityStreamTest extends \PHPUnit_Framework_TestCase
         "id": "tag:example.org,2011:abc123\/xyz",
         "url": "http:\/\/example.org\/blog\/2011\/02\/entry"
     },
-    "published": "2016-12-15T21:54:00+00:00",
+    "published": "2016-12-15T21:54:00Z",
     "target": {
         "displayName": "Martin's Blog",
         "id": "tag:example.org,2011:abc123",

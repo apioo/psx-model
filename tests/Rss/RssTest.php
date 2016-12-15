@@ -92,8 +92,8 @@ class RssTest extends \PHPUnit_Framework_TestCase
             "text": "foo"
         }
     ],
-    "pubDate": "2016-12-15T21:54:00+00:00",
-    "lastBuildDate": "2016-12-15T21:54:00+00:00",
+    "pubDate": "2016-12-15T21:54:00Z",
+    "lastBuildDate": "2016-12-15T21:54:00Z",
     "item": [
         {
             "title": "title",
@@ -110,7 +110,7 @@ class RssTest extends \PHPUnit_Framework_TestCase
                 "url": "http:\/\/foo.com"
             },
             "guid": "guid",
-            "pubDate": "2016-12-15T21:54:00+00:00"
+            "pubDate": "2016-12-15T21:54:00Z"
         }
     ]
 }
