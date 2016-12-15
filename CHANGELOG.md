@@ -1,4 +1,9 @@
 
+### 2.0.0 (2016-12-15)
+
+* Update swagger model to 2.0
+* Added test cases
+
 ### 1.0.2 (2016-07-10)
 
 * Swagger model add items type
