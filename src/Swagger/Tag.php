@@ -21,63 +21,61 @@
 namespace PSX\Model\Swagger;
 
 /**
- * ResponseMessage
+ * Tag
  *
  * @author  Christoph Kappestein <k42b3.x@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
+ * @AdditionalProperties(false)
+ * @Required({"name"})
  */
-class ResponseMessage
+class Tag
 {
     /**
-     * @Type("integer")
-     */
-    protected $code;
-
-    /**
+     * @Key("name")
      * @Type("string")
      */
-    protected $message;
-
+    protected $name;
+    
     /**
+     * @Key("description")
      * @Type("string")
      */
-    protected $responseModel;
-
-    public function __construct($code = null, $message = null, $responseModel = null)
+    protected $description;
+    
+    /**
+     * @Key("externalDocs")
+     * @Ref("PSX\Model\Swagger\ExternalDocs")
+     */
+    protected $externalDocs;
+    
+    public function setName($name)
     {
-        $this->code          = $code;
-        $this->message       = $message;
-        $this->responseModel = $responseModel;
-    }
-
-    public function setCode($code)
-    {
-        $this->code = $code;
+        $this->name = $name;
     }
     
-    public function getCode()
+    public function getName()
     {
-        return $this->code;
-    }
-
-    public function setMessage($message)
-    {
-        $this->message = $message;
+        return $this->name;
     }
     
-    public function getMessage()
+    public function setDescription($description)
     {
-        return $this->message;
-    }
-
-    public function setResponseModel($responseModel)
-    {
-        $this->responseModel = $responseModel;
+        $this->description = $description;
     }
     
-    public function getResponseModel()
+    public function getDescription()
     {
-        return $this->responseModel;
+        return $this->description;
+    }
+    
+    public function setExternalDocs(ExternalDocs $externalDocs)
+    {
+        $this->externalDocs = $externalDocs;
+    }
+    
+    public function getExternalDocs()
+    {
+        return $this->externalDocs;
     }
 }

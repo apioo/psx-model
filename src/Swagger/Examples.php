@@ -21,47 +21,13 @@
 namespace PSX\Model\Swagger;
 
 /**
- * ResourceObject
+ * Examples
  *
  * @author  Christoph Kappestein <k42b3.x@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
+ * @AdditionalProperties(true)
  */
-class ResourceObject
+class Examples extends \ArrayObject
 {
-    /**
-     * @Type("string")
-     */
-    protected $path;
-
-    /**
-     * @Type("string")
-     */
-    protected $description;
-
-    public function __construct($path = null, $description = null)
-    {
-        $this->path        = $path;
-        $this->description = $description;
-    }
-
-    public function setPath($path)
-    {
-        $this->path = $path;
-    }
-
-    public function getPath()
-    {
-        return $this->path;
-    }
-
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    }
-
-    public function getDescription()
-    {
-        return $this->description;
-    }
 }

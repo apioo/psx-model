@@ -21,13 +21,15 @@
 namespace PSX\Model\Swagger;
 
 /**
- * Properties
+ * Paths
  *
  * @author  Christoph Kappestein <k42b3.x@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
- * @AdditionalProperties("PSX\Model\Swagger\Property")
+ * @Description("Relative paths to the individual endpoints. They must be relative to the 'basePath'.")
+ * @PatternProperties(pattern="^/", property=@Ref("PSX\Model\Swagger\Path"))
+ * @AdditionalProperties(false)
  */
-class Properties extends \ArrayObject
+class Paths extends \ArrayObject
 {
 }

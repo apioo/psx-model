@@ -21,82 +21,92 @@
 namespace PSX\Model\Swagger;
 
 /**
- * ResourceListing
+ * Xml
  *
  * @author  Christoph Kappestein <k42b3.x@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
+ * @AdditionalProperties(false)
  */
-class ResourceListing
+class Xml
 {
     /**
+     * @Key("name")
      * @Type("string")
      */
-    protected $swaggerVersion;
-
+    protected $name;
+    
     /**
+     * @Key("namespace")
      * @Type("string")
      */
-    protected $apiVersion;
-
+    protected $namespace;
+    
     /**
-     * @Type("\PSX\Model\Swagger\InfoObject")
+     * @Key("prefix")
+     * @Type("string")
      */
-    protected $info;
-
+    protected $prefix;
+    
     /**
-     * @Type("array<\PSX\Model\Swagger\ResourceObject>")
+     * @Key("attribute")
+     * @Type("boolean")
      */
-    protected $apis = array();
-
-    public function __construct($apiVersion = null)
+    protected $attribute;
+    
+    /**
+     * @Key("wrapped")
+     * @Type("boolean")
+     */
+    protected $wrapped;
+    
+    public function setName($name)
     {
-        $this->swaggerVersion = Swagger::VERSION;
-        $this->apiVersion     = $apiVersion;
-    }
-
-    public function getSwaggerVersion()
-    {
-        return $this->swaggerVersion;
-    }
-
-    public function setSwaggerVersion($swaggerVersion)
-    {
-        $this->swaggerVersion = $swaggerVersion;
-    }
-
-    public function setApiVersion($apiVersion)
-    {
-        $this->apiVersion = $apiVersion;
+        $this->name = $name;
     }
     
-    public function getApiVersion()
+    public function getName()
     {
-        return $this->apiVersion;
-    }
-
-    public function setInfo(InfoObject $info)
-    {
-        $this->info = $info;
-    }
-
-    public function getInfo()
-    {
-        return $this->info;
-    }
-
-    public function setApis(array $apis)
-    {
-        $this->apis = $apis;
+        return $this->name;
     }
     
-    public function getApis()
+    public function setNamespace($namespace)
     {
-        return $this->apis;
+        $this->namespace = $namespace;
     }
-
-    public function addResource(ResourceObject $resourceObject)
+    
+    public function getNamespace()
     {
-        $this->apis[] = $resourceObject;
+        return $this->namespace;
+    }
+    
+    public function setPrefix($prefix)
+    {
+        $this->prefix = $prefix;
+    }
+    
+    public function getPrefix()
+    {
+        return $this->prefix;
+    }
+    
+    public function setAttribute($attribute)
+    {
+        $this->attribute = $attribute;
+    }
+    
+    public function getAttribute()
+    {
+        return $this->attribute;
+    }
+    
+    public function setWrapped($wrapped)
+    {
+        $this->wrapped = $wrapped;
+    }
+    
+    public function getWrapped()
+    {
+        return $this->wrapped;
     }
 }

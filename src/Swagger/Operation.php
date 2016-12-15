@@ -26,86 +26,109 @@ namespace PSX\Model\Swagger;
  * @author  Christoph Kappestein <k42b3.x@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
+ * @AdditionalProperties(false)
+ * @Required({"responses"})
  */
 class Operation
 {
     /**
-     * @Type("string")
-     * @Enum({"GET", "HEAD", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"})
+     * @Key("tags")
+     * @Type("array")
+     * @Items(@Schema(type="string"))
+     * @UniqueItems(true)
      */
-    protected $method;
-
+    protected $tags;
+    
     /**
+     * @Key("summary")
+     * @Description("A brief summary of the operation.")
      * @Type("string")
      */
     protected $summary;
-
+    
     /**
+     * @Key("description")
+     * @Description("A longer description of the operation, GitHub Flavored Markdown is allowed.")
      * @Type("string")
      */
-    protected $notes;
-
+    protected $description;
+    
     /**
+     * @Key("externalDocs")
+     * @Ref("PSX\Model\Swagger\ExternalDocs")
+     */
+    protected $externalDocs;
+    
+    /**
+     * @Key("operationId")
+     * @Description("A unique identifier of the operation.")
      * @Type("string")
      */
-    protected $nickname;
-
+    protected $operationId;
+    
     /**
-     * @Type("array<\PSX\Model\Swagger\Parameter>")
-     */
-    protected $parameters = array();
-
-    /**
-     * @Type("array<\PSX\Model\Swagger\ResponseMessage>")
-     */
-    protected $responseMessages = array();
-
-    /**
-     * @Type("array<string>")
+     * @Key("produces")
+     * @Description("A list of MIME types the API can produce.")
+     * @Items(@Schema(type="string", description="The MIME type of the HTTP message."))
      */
     protected $produces;
-
+    
     /**
-     * @Type("array<string>")
+     * @Key("consumes")
+     * @Description("A list of MIME types accepted by the API.")
+     * @Items(@Schema(type="string", description="The MIME type of the HTTP message."))
      */
     protected $consumes;
-
+    
     /**
-     * @Type("string")
-     * @Enum({"true", "false"})
+     * @Key("parameters")
+     * @Description("The parameters needed to send a valid API call.")
+     * @Type("array")
+     * @Items(@Ref("PSX\Model\Swagger\Parameter"))
+     * @AdditionalItems(false)
+     * @UniqueItems(true)
+     */
+    protected $parameters;
+    
+    /**
+     * @Key("responses")
+     * @Ref("PSX\Model\Swagger\Responses")
+     */
+    protected $responses;
+    
+    /**
+     * @Key("schemes")
+     * @Description("The transfer protocol of the API.")
+     * @Type("array")
+     * @Items(@Schema(type="string", enum={"http", "https", "ws", "wss"}))
+     * @UniqueItems(true)
+     */
+    protected $schemes;
+    
+    /**
+     * @Key("deprecated")
+     * @Type("boolean")
      */
     protected $deprecated;
-
-    public function __construct($method = null, $nickname = null, $summary = null)
+    
+    /**
+     * @Key("security")
+     * @Type("array")
+     * @Items(@Ref("PSX\Model\Swagger\Security"))
+     * @UniqueItems(true)
+     */
+    protected $security;
+    
+    public function setTags(array $tags)
     {
-        $this->nickname = $nickname;
-        $this->summary  = $summary;
-
-        if ($method !== null) {
-            $this->setMethod($method);
-        }
-    }
-
-    public function setMethod($method)
-    {
-        $this->method = $method;
+        $this->tags = $tags;
     }
     
-    public function getMethod()
+    public function getTags()
     {
-        return $this->method;
-    }
-
-    public function setNickname($nickname)
-    {
-        $this->nickname = $nickname;
+        return $this->tags;
     }
     
-    public function getNickname()
-    {
-        return $this->nickname;
-    }
-
     public function setSummary($summary)
     {
         $this->summary = $summary;
@@ -115,33 +138,58 @@ class Operation
     {
         return $this->summary;
     }
-
-    public function setNotes($notes)
+    
+    public function setDescription($description)
     {
-        $this->notes = $notes;
+        $this->description = $description;
     }
     
-    public function getNotes()
+    public function getDescription()
     {
-        return $this->notes;
-    }
-
-    public function setResponseMessages($responseMessages)
-    {
-        $this->responseMessages = $responseMessages;
+        return $this->description;
     }
     
-    public function getResponseMessages()
+    public function setExternalDocs(ExternalDocs $externalDocs)
     {
-        return $this->responseMessages;
+        $this->externalDocs = $externalDocs;
     }
-
-    public function addResponseMessage(ResponseMessage $responseMessage)
+    
+    public function getExternalDocs()
     {
-        $this->responseMessages[] = $responseMessage;
+        return $this->externalDocs;
     }
-
-    public function setParameters($parameters)
+    
+    public function setOperationId($operationId)
+    {
+        $this->operationId = $operationId;
+    }
+    
+    public function getOperationId()
+    {
+        return $this->operationId;
+    }
+    
+    public function setProduces(array $produces)
+    {
+        $this->produces = $produces;
+    }
+    
+    public function getProduces()
+    {
+        return $this->produces;
+    }
+    
+    public function setConsumes(array $consumes)
+    {
+        $this->consumes = $consumes;
+    }
+    
+    public function getConsumes()
+    {
+        return $this->consumes;
+    }
+    
+    public function setParameters(array $parameters)
     {
         $this->parameters = $parameters;
     }
@@ -150,9 +198,44 @@ class Operation
     {
         return $this->parameters;
     }
-
-    public function addParameter(Parameter $parameter)
+    
+    public function setResponses($responses)
     {
-        $this->parameters[] = $parameter;
+        $this->responses = $responses;
+    }
+    
+    public function getResponses()
+    {
+        return $this->responses;
+    }
+    
+    public function setSchemes(array $schemes)
+    {
+        $this->schemes = $schemes;
+    }
+    
+    public function getSchemes()
+    {
+        return $this->schemes;
+    }
+    
+    public function setDeprecated($deprecated)
+    {
+        $this->deprecated = $deprecated;
+    }
+    
+    public function getDeprecated()
+    {
+        return $this->deprecated;
+    }
+    
+    public function setSecurity($security)
+    {
+        $this->security = $security;
+    }
+    
+    public function getSecurity()
+    {
+        return $this->security;
     }
 }

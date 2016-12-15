@@ -20,8 +20,6 @@
 
 namespace PSX\Model\Swagger;
 
-use InvalidArgumentException;
-
 /**
  * Parameter
  *
@@ -31,65 +29,56 @@ use InvalidArgumentException;
  */
 class Parameter
 {
-    const TYPE_PATH   = 'path';
-    const TYPE_QUERY  = 'query';
-    const TYPE_BODY   = 'body';
-    const TYPE_HEADER = 'header';
-    const TYPE_FORM   = 'form';
-
+    use ItemTrait;
+    
     /**
-     * @Type("string")
-     * @Enum({"path", "query", "body", "header", "form"})
-     * @Required
-     */
-    protected $paramType;
-
-    /**
-     * @Type("string")
-     * @Required
-     */
-    protected $name;
-
-    /**
+     * @Key("description")
+     * @Description("A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed.")
      * @Type("string")
      */
     protected $description;
 
     /**
+     * @Key("name")
+     * @Description("The name of the parameter.")
+     * @Type("string")
+     */
+    protected $name;
+
+    /**
+     * @Key("in")
+     * @Description("Determines the location of the parameter.")
+     * @Enum({"body"})
+     * @Type("string")
+     */
+    protected $in;
+
+    /**
+     * @Key("required")
+     * @Description("Determines whether or not this parameter is required or optional.")
      * @Type("boolean")
      */
     protected $required;
 
     /**
+     * @Key("schema")
+     */
+    protected $schema;
+
+    /**
+     * @Key("allowEmptyValue")
      * @Type("boolean")
      */
-    protected $allowMultiple;
+    protected $allowEmptyValue;
 
-    use DataTypeTrait;
-
-    public function __construct($paramType = null, $name = null, $description = null, $required = null)
+    public function setDescription($description)
     {
-        if ($paramType !== null) {
-            $this->setParamType($paramType);
-        }
-
-        $this->name        = $name;
         $this->description = $description;
-        $this->required    = $required;
     }
 
-    public function setParamType($paramType)
+    public function getDescription()
     {
-        if (!in_array($paramType, array(self::TYPE_PATH, self::TYPE_QUERY, self::TYPE_BODY, self::TYPE_HEADER, self::TYPE_FORM))) {
-            throw new InvalidArgumentException('Invalid param type must be one of path, query, body, header, form');
-        }
-
-        $this->paramType = $paramType;
-    }
-
-    public function getParamType()
-    {
-        return $this->paramType;
+        return $this->description;
     }
 
     public function setName($name)
@@ -102,14 +91,14 @@ class Parameter
         return $this->name;
     }
 
-    public function setDescription($description)
+    public function setIn($in)
     {
-        $this->description = $description;
+        $this->in = $in;
     }
 
-    public function getDescription()
+    public function getIn()
     {
-        return $this->description;
+        return $this->in;
     }
 
     public function setRequired($required)
@@ -122,13 +111,23 @@ class Parameter
         return $this->required;
     }
 
-    public function setAllowMultiple($allowMultiple)
+    public function getSchema()
     {
-        $this->allowMultiple = $allowMultiple;
+        return $this->schema;
     }
 
-    public function getAllowMultiple()
+    public function setSchema(\stdClass $schema)
     {
-        return $this->allowMultiple;
+        $this->schema = $schema;
+    }
+    
+    public function getAllowEmptyValue()
+    {
+        return $this->allowEmptyValue;
+    }
+
+    public function setAllowEmptyValue($allowEmptyValue)
+    {
+        $this->allowEmptyValue = $allowEmptyValue;
     }
 }

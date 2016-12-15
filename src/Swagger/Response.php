@@ -21,60 +21,39 @@
 namespace PSX\Model\Swagger;
 
 /**
- * InfoObject
+ * Response
  *
  * @author  Christoph Kappestein <k42b3.x@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
+ * @AdditionalProperties(false)
+ * @Required({"description"})
  */
-class InfoObject
+class Response extends \ArrayObject
 {
     /**
-     * @Type("string")
-     */
-    protected $title;
-
-    /**
+     * @Key("description")
      * @Type("string")
      */
     protected $description;
-
-    /**
-     * @Type("string")
-     */
-    protected $termsOfServiceUrl;
-
-    /**
-     * @Type("string")
-     */
-    protected $contact;
-
-    /**
-     * @Type("string")
-     */
-    protected $license;
-
-    /**
-     * @Type("string")
-     */
-    protected $licenseUrl;
-
-    public function __construct($title = null, $description = null)
-    {
-        $this->title       = $title;
-        $this->description = $description;
-    }
-
-    public function setTitle($title)
-    {
-        $this->title = $title;
-    }
     
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
+    /**
+     * @Key("schema")
+     */
+    protected $schema;
+    
+    /**
+     * @Key("headers")
+     * @Ref("PSX\Model\Swagger\Headers")
+     */
+    protected $headers;
+    
+    /**
+     * @Key("examples")
+     * @Ref("PSX\Model\Swagger\Examples")
+     */
+    protected $examples;
+    
     public function setDescription($description)
     {
         $this->description = $description;
@@ -84,44 +63,34 @@ class InfoObject
     {
         return $this->description;
     }
-
-    public function setTermsOfServiceUrl($termsOfServiceUrl)
+    
+    public function setSchema(\stdClass $schema)
     {
-        $this->termsOfServiceUrl = $termsOfServiceUrl;
+        $this->schema = $schema;
     }
     
-    public function getTermsOfServiceUrl()
+    public function getSchema()
     {
-        return $this->termsOfServiceUrl;
-    }
-
-    public function setContact($contact)
-    {
-        $this->contact = $contact;
+        return $this->schema;
     }
     
-    public function getContact()
+    public function setHeaders(Headers $headers)
     {
-        return $this->contact;
-    }
-
-    public function setLicense($license)
-    {
-        $this->license = $license;
+        $this->headers = $headers;
     }
     
-    public function getLicense()
+    public function getHeaders()
     {
-        return $this->license;
-    }
-
-    public function setLicenseUrl($licenseUrl)
-    {
-        $this->licenseUrl = $licenseUrl;
+        return $this->headers;
     }
     
-    public function getLicenseUrl()
+    public function setExamples(Examples $examples)
     {
-        return $this->licenseUrl;
+        $this->examples = $examples;
+    }
+    
+    public function getExamples()
+    {
+        return $this->examples;
     }
 }

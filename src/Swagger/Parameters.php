@@ -21,57 +21,14 @@
 namespace PSX\Model\Swagger;
 
 /**
- * Items
+ * Parameters
  *
  * @author  Christoph Kappestein <k42b3.x@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
+ * @Description("One or more JSON representations for parameters")
+ * @AdditionalProperties(@schema()@Ref("PSX\Model\Swagger\Parameter"))
  */
-class Items
+class Parameters extends \ArrayObject
 {
-    /**
-     * @Type("string")
-     */
-    protected $type;
-
-    /**
-     * @Type("string")
-     */
-    protected $format;
-
-    /**
-     * @Key("$ref")
-     * @Type("string")
-     */
-    protected $ref;
-
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    public function setType($type)
-    {
-        $this->type = $type;
-    }
-
-    public function getFormat()
-    {
-        return $this->format;
-    }
-
-    public function setFormat($format)
-    {
-        $this->format = $format;
-    }
-
-    public function getRef()
-    {
-        return $this->ref;
-    }
-
-    public function setRef($ref)
-    {
-        $this->ref = $ref;
-    }
 }

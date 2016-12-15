@@ -21,13 +21,13 @@
 namespace PSX\Model\Swagger;
 
 /**
- * Models
+ * Headers
  *
  * @author  Christoph Kappestein <k42b3.x@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
- * @AdditionalProperties("PSX\Model\Swagger\Model")
+ * @AdditionalProperties(@Ref("PSX\Model\Swagger\Header"))
  */
-class Models extends \ArrayObject
+class Headers extends \ArrayObject
 {
 }

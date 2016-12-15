@@ -21,50 +21,48 @@
 namespace PSX\Model\Swagger;
 
 /**
- * Property
+ * License
  *
  * @author  Christoph Kappestein <k42b3.x@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
+ * @AdditionalProperties(false)
+ * @Required({"name"})
  */
-class Property
+class License
 {
-    const TYPE_INTEGER    = 'integer';
-    const TYPE_NUMBER     = 'number';
-    const TYPE_BOOLEAN    = 'boolean';
-    const TYPE_STRING     = 'string';
-
-    const FORMAT_INT32    = 'int32';
-    const FORMAT_INT64    = 'int64';
-    const FORMAT_FLOAT    = 'float';
-    const FORMAT_DOUBLE   = 'double';
-    const FORMAT_BYTE     = 'byte';
-    const FORMAT_DATE     = 'date';
-    const FORMAT_DATETIME = 'date-time';
-
     /**
+     * @Key("name")
+     * @Description("The name of the license type. It's encouraged to use an OSI compatible license.")
      * @Type("string")
      */
-    protected $description;
-
-    use DataTypeTrait;
-
-    public function __construct($type = null, $description = null)
+    protected $name;
+    
+    /**
+     * @Key("url")
+     * @Description("The URL pointing to the license.")
+     * @Type("string")
+     * @Format("uri")
+     */
+    protected $url;
+    
+    public function setName($name)
     {
-        $this->description = $description;
-
-        if ($type !== null) {
-            $this->setType($type);
-        }
-    }
-
-    public function setDescription($description)
-    {
-        $this->description = $description;
+        $this->name = $name;
     }
     
-    public function getDescription()
+    public function getName()
     {
-        return $this->description;
+        return $this->name;
+    }
+    
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    }
+    
+    public function getUrl()
+    {
+        return $this->url;
     }
 }

@@ -20,72 +20,67 @@
 
 namespace PSX\Model\Swagger;
 
-use PSX\Record\Record;
-
 /**
- * Api
+ * Contact
  *
  * @author  Christoph Kappestein <k42b3.x@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
+ * @Description("Contact information for the owners of the API.")
+ * @AdditionalProperties(false)
  */
-class Api
+class Contact
 {
     /**
-     * @Type("string")
-     * @Required
-     */
-    protected $path;
-
-    /**
+     * @Key("name")
+     * @Description("The identifying name of the contact person/organization.")
      * @Type("string")
      */
-    protected $description;
-
+    protected $name;
+    
     /**
-     * @Type("array<PSX\Model\Swagger\Operation>")
-     * @Required
+     * @Key("url")
+     * @Description("The URL pointing to the contact information.")
+     * @Type("string")
+     * @Format("uri")
      */
-    protected $operations = array();
-
-    public function __construct($path = null, $description = null)
+    protected $url;
+    
+    /**
+     * @Key("email")
+     * @Description("The email address of the contact person/organization.")
+     * @Type("string")
+     * @Format("email")
+     */
+    protected $email;
+    
+    public function setName($name)
     {
-        $this->path        = $path;
-        $this->description = $description;
+        $this->name = $name;
     }
-
-    public function setPath($path)
+    
+    public function getName()
     {
-        $this->path = $path;
+        return $this->name;
     }
-
-    public function getPath()
+    
+    public function setUrl($url)
     {
-        return $this->path;
+        $this->url = $url;
     }
-
-    public function setDescription($description)
+    
+    public function getUrl()
     {
-        $this->description = $description;
+        return $this->url;
     }
-
-    public function getDescription()
+    
+    public function setEmail($email)
     {
-        return $this->description;
+        $this->email = $email;
     }
-
-    public function setOperations(array $operations)
+    
+    public function getEmail()
     {
-        $this->operations = $operations;
-    }
-
-    public function getOperations()
-    {
-        return $this->operations;
-    }
-
-    public function addOperation(Operation $operation)
-    {
-        $this->operations[] = $operation;
+        return $this->email;
     }
 }
