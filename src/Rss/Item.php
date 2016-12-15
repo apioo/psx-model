@@ -26,6 +26,7 @@ namespace PSX\Model\Rss;
  * @author  Christoph Kappestein <k42b3.x@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
+ * @AdditionalProperties(false)
  */
 class Item
 {
@@ -50,7 +51,8 @@ class Item
     protected $author;
 
     /**
-     * @Type("array<\PSX\Model\Rss\Category>")
+     * @Type("array")
+     * @Items(@Ref("PSX\Model\Rss\Category"))
      */
     protected $category;
 
@@ -60,7 +62,7 @@ class Item
     protected $comments;
 
     /**
-     * @Type("\PSX\Model\Rss\Enclosure")
+     * @Ref("PSX\Model\Rss\Enclosure")
      */
     protected $enclosure;
 
@@ -70,12 +72,13 @@ class Item
     protected $guid;
 
     /**
-     * @Type("\DateTime<RSS>")
+     * @Type("string")
+     * @Format("date-time")
      */
     protected $pubDate;
 
     /**
-     * @Type("\PSX\Model\Rss\Source")
+     * @Ref("PSX\Model\Rss\Source")
      */
     protected $source;
 

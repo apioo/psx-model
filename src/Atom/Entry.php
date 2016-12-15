@@ -28,26 +28,30 @@ use DateTime;
  * @author  Christoph Kappestein <k42b3.x@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
+ * @AdditionalProperties(false)
  */
 class Entry
 {
     /**
-     * @Type("array<\PSX\Model\Atom\Person>")
+     * @Type("array")
+     * @Items(@Ref("PSX\Model\Atom\Person"))
      */
     protected $author;
 
     /**
-     * @Type("array<\PSX\Model\Atom\Category>")
+     * @Type("array")
+     * @Items(@Ref("PSX\Model\Atom\Category"))
      */
     protected $category;
 
     /**
-     * @Type("\PSX\Model\Atom\Text")
+     * @Ref("PSX\Model\Atom\Text")
      */
     protected $content;
 
     /**
-     * @Type("array<\PSX\Model\Atom\Person>")
+     * @Type("array")
+     * @Items(@Ref("PSX\Model\Atom\Person"))
      */
     protected $contributor;
 
@@ -57,12 +61,14 @@ class Entry
     protected $id;
 
     /**
-     * @Type("array<\PSX\Model\Atom\Link>")
+     * @Type("array")
+     * @Items(@Ref("PSX\Model\Atom\Link"))
      */
     protected $link;
 
     /**
-     * @Type("datetime")
+     * @Type("string")
+     * @Format("date-time")
      */
     protected $published;
 
@@ -72,12 +78,12 @@ class Entry
     protected $rights;
 
     /**
-     * @Type("\PSX\Model\Atom\Atom")
+     * @Ref("PSX\Model\Atom\Atom")
      */
     protected $source;
 
     /**
-     * @Type("\PSX\Model\Atom\Text")
+     * @Ref("PSX\Model\Atom\Text")
      */
     protected $summary;
 
@@ -87,7 +93,8 @@ class Entry
     protected $title;
 
     /**
-     * @Type("datetime")
+     * @Type("string")
+     * @Format("date-time")
      */
     protected $updated;
 

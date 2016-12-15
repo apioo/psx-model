@@ -26,6 +26,7 @@ namespace PSX\Model\ActivityStream;
  * @author  Christoph Kappestein <k42b3.x@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
+ * @AdditionalProperties(false)
  */
 class MediaLink
 {
@@ -35,7 +36,7 @@ class MediaLink
     protected $duration;
 
     /**
-     * @Type("string")
+     * @Type("integer")
      */
     protected $height;
 
@@ -45,7 +46,7 @@ class MediaLink
     protected $url;
 
     /**
-     * @Type("string")
+     * @Type("integer")
      */
     protected $width;
 

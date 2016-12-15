@@ -27,6 +27,7 @@ namespace PSX\Model\Rss;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  * @see     http://cyber.law.harvard.edu/rss/rss.html
+ * @AdditionalProperties(false)
  */
 class Rss
 {
@@ -101,27 +102,31 @@ class Rss
     protected $skipDays;
 
     /**
-     * @Type("array<\PSX\Model\Rss\Category>")
+     * @Type("array")
+     * @Items(@Ref("PSX\Model\Rss\Category"))
      */
     protected $category;
 
     /**
-     * @Type("\DateTime<RSS>")
+     * @Type("string")
+     * @Format("date-time")
      */
     protected $pubDate;
 
     /**
-     * @Type("\DateTime<RSS>")
+     * @Type("string")
+     * @Format("date-time")
      */
     protected $lastBuildDate;
 
     /**
-     * @Type("\PSX\Model\Rss\Cloud")
+     * @Ref("PSX\Model\Rss\Cloud")
      */
     protected $cloud;
 
     /**
-     * @Type("array<\PSX\Model\Rss\Item>")
+     * @Type("array")
+     * @Items(@Ref("PSX\Model\Rss\Item"))
      */
     protected $item;
 

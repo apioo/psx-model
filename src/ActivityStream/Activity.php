@@ -28,11 +28,12 @@ use DateTime;
  * @author  Christoph Kappestein <k42b3.x@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
+ * @AdditionalProperties(false)
  */
 class Activity extends ObjectType
 {
     /**
-     * @Type("\PSX\Model\ActivityStream\ObjectType")
+     * @Ref("PSX\Model\ActivityStream\ObjectType")
      * @Required
      */
     protected $actor;
@@ -43,12 +44,12 @@ class Activity extends ObjectType
     protected $content;
 
     /**
-     * @Type("\PSX\Model\ActivityStream\ObjectType")
+     * @Ref("PSX\Model\ActivityStream\ObjectType")
      */
     protected $generator;
 
     /**
-     * @Type("\PSX\Model\ActivityStream\MediaLink")
+     * @Ref("PSX\Model\ActivityStream\MediaLink")
      */
     protected $icon;
 
@@ -58,22 +59,23 @@ class Activity extends ObjectType
     protected $id;
 
     /**
-     * @Type("\PSX\Model\ActivityStream\ObjectType")
+     * @Ref("PSX\Model\ActivityStream\ObjectType")
      */
     protected $object;
 
     /**
-     * @Type("datetime")
+     * @Type("string")
+     * @Format("date-time")
      */
     protected $published;
 
     /**
-     * @Type("\PSX\Model\ActivityStream\ObjectType")
+     * @Ref("PSX\Model\ActivityStream\ObjectType")
      */
     protected $provider;
 
     /**
-     * @Type("\PSX\Model\ActivityStream\ObjectType")
+     * @Ref("PSX\Model\ActivityStream\ObjectType")
      */
     protected $target;
 
@@ -83,7 +85,8 @@ class Activity extends ObjectType
     protected $title;
 
     /**
-     * @Type("datetime")
+     * @Type("string")
+     * @Format("date-time")
      */
     protected $updated;
 

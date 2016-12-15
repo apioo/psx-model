@@ -28,16 +28,18 @@ use DateTime;
  * @author  Christoph Kappestein <k42b3.x@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
+ * @AdditionalProperties(false)
  */
 class ObjectType
 {
     /**
-     * @Type("array<\PSX\Model\ActivityStream\ObjectType>")
+     * @Type("array")
+     * @Items(@Ref("PSX\Model\ActivityStream\ObjectType"))
      */
     protected $attachments;
 
     /**
-     * @Type("\PSX\Model\ActivityStream\ObjectType")
+     * @Ref("PSX\Model\ActivityStream\ObjectType")
      */
     protected $author;
 
@@ -52,7 +54,8 @@ class ObjectType
     protected $displayName;
 
     /**
-     * @Type("array<string>")
+     * @Type("array")
+     * @Items(@Schema(type="string"))
      */
     protected $downstreamDuplicates;
 
@@ -72,7 +75,8 @@ class ObjectType
     protected $objectType;
 
     /**
-     * @Type("datetime")
+     * @Type("string")
+     * @Format("date-time")
      */
     protected $published;
 
@@ -82,12 +86,14 @@ class ObjectType
     protected $summary;
 
     /**
-     * @Type("datetime")
+     * @Type("string")
+     * @Format("date-time")
      */
     protected $updated;
 
     /**
-     * @Type("array<string>")
+     * @Type("array")
+     * @Items(@Schema(type="string"))
      */
     protected $upstreamDuplicates;
 

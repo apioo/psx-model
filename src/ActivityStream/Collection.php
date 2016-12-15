@@ -29,6 +29,7 @@ use PSX\Model\ActivityStream\ObjectType;
  * @author  Christoph Kappestein <k42b3.x@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
+ * @AdditionalProperties(false)
  */
 class Collection extends ObjectType
 {
@@ -38,7 +39,8 @@ class Collection extends ObjectType
     protected $totalItems;
 
     /**
-     * @Type("array<choice<\PSX\Model\ActivityStream\Activity,\PSX\Model\ActivityStream\ObjectType>>")
+     * @Type("array")
+     * @Items(@Ref("PSX\Model\ActivityStream\Activity"))
      */
     protected $items;
 
