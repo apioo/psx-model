@@ -18,7 +18,7 @@
  * limitations under the License.
  */
 
-namespace PSX\Model\Tests\ActivityStream;
+namespace PSX\Model\Tests\ActivityStream\Examples;
 
 use PSX\Model\ActivityStream\Activity;
 use PSX\Model\ActivityStream\Collection;
