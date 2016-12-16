@@ -18,7 +18,7 @@
  * limitations under the License.
  */
 
-namespace PSX\Model\Tests\Atom;
+namespace PSX\Model\Tests\ActivityStream;
 
 use PSX\Model\ActivityStream\Activity;
 use PSX\Model\ActivityStream\ObjectType;

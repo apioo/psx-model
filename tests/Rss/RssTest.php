@@ -21,9 +21,11 @@
 namespace PSX\Model\Tests\Atom;
 
 use PSX\Model\Rss\Category;
+use PSX\Model\Rss\Cloud;
 use PSX\Model\Rss\Enclosure;
 use PSX\Model\Rss\Item;
 use PSX\Model\Rss\Rss;
+use PSX\Model\Rss\Source;
 use PSX\Schema\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 
@@ -38,81 +40,90 @@ class RssTest extends \PHPUnit_Framework_TestCase
 {
     public function testModel()
     {
-        $items = [];
-
         $item = new Item();
-        $item->setTitle('title');
-        $item->setLink('http://foo.bar');
-        $item->setDescription('foobar');
-        $item->setAuthor('author');
-        $item->addCategory(new Category('foo'));
-        $item->setComments('comments');
-        $item->setEnclosure(new Enclosure('http://foo.com'));
-        $item->setGuid('guid');
-        $item->setPubDate(new \DateTime('2016-12-15T21:54:00'));
-
-        $items[] = $item;
+        $item->setTitle('Star City');
+        $item->setLink('http://liftoff.msfc.nasa.gov/news/2003/news-starcity.asp');
+        $item->setDescription('How do Americans get ready to work with Russians aboard the International Space Station? They take a crash course in culture, language and protocol at Russia\'s <a href="http://howe.iki.rssi.ru/GCTC/gctc_e.htm">Star City</a>.');
+        $item->setAuthor('foobar');
+        $item->addCategory(new Category('Newspapers'));
+        $item->setComments('http://localhost.com#comments');
+        $item->setEnclosure(new Enclosure('http://www.scripting.com/mp3s/weatherReportSuite.mp3', 12216320, 'audio/mpeg'));
+        $item->setGuid('http://liftoff.msfc.nasa.gov/2003/06/03.html#item573');
+        $item->setPubDate(new \DateTime('Tue, 03 Jun 2003 09:39:21 GMT'));
+        $item->setSource(new Source('Tomalak\'s Realm', 'http://www.tomalak.org/links2.xml'));
 
         $rss = new Rss();
-        $rss->setTitle('foobar');
-        $rss->setLink('http://foo.bar');
-        $rss->setDescription('foobar');
-        $rss->setLanguage('en');
-        $rss->setCopyright('copyright');
-        $rss->setManagingEditor('managingEditor');
-        $rss->setWebMaster('webMaster');
-        $rss->setGenerator('generator');
-        $rss->setDocs('docs');
-        $rss->setTtl(8600);
-        $rss->setImage('image');
-        $rss->setRating('rating');
-        $rss->addCategory(new Category('foo'));
-        $rss->setPubDate(new \DateTime('2016-12-15T21:54:00'));
-        $rss->setLastBuildDate(new \DateTime('2016-12-15T21:54:00'));
-        $rss->setItem($items);
+        $rss->setTitle('Liftoff News');
+        $rss->setLink('http://liftoff.msfc.nasa.gov/');
+        $rss->setDescription('Liftoff to Space Exploration.');
+        $rss->setLanguage('en-us');
+        $rss->setCopyright('2014 foobar');
+        $rss->setManagingEditor('editor@example.com');
+        $rss->setWebMaster('webmaster@example.com');
+        $rss->setGenerator('Weblog Editor 2.0');
+        $rss->setDocs('http://blogs.law.harvard.edu/tech/rss');
+        $rss->setTtl(60);
+        $rss->setImage('http://localhost.com/image.png');
+        $rss->setRating('en');
+        $rss->setSkipHours(20);
+        $rss->setSkipDays('Tuesday');
+        $rss->addCategory(new Category('Newspapers'));
+        $rss->setPubDate(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT'));
+        $rss->setLastBuildDate(new \DateTime('Tue, 10 Jun 2003 09:41:01 GMT'));
+        $rss->setCloud(new Cloud('rpc.sys.com', 80, '/RPC2', 'pingMe', 'soap'));
+        $rss->addItem($item);
 
         $dumper = new Dumper();
         $actual = json_encode($dumper->dump($rss), JSON_PRETTY_PRINT);
         $expect = <<<'JSON'
 {
-    "title": "foobar",
-    "link": "http:\/\/foo.bar",
-    "description": "foobar",
-    "language": "en",
-    "copyright": "copyright",
-    "managingEditor": "managingEditor",
-    "webMaster": "webMaster",
-    "generator": "generator",
-    "docs": "docs",
-    "ttl": 8600,
-    "image": "image",
-    "rating": "rating",
-    "category": [
-        {
-            "text": "foo"
-        }
-    ],
-    "pubDate": "2016-12-15T21:54:00Z",
-    "lastBuildDate": "2016-12-15T21:54:00Z",
-    "item": [
-        {
-            "title": "title",
-            "link": "http:\/\/foo.bar",
-            "description": "foobar",
-            "author": "author",
-            "category": [
-                {
-                    "text": "foo"
-                }
-            ],
-            "comments": "comments",
-            "enclosure": {
-                "url": "http:\/\/foo.com"
-            },
-            "guid": "guid",
-            "pubDate": "2016-12-15T21:54:00Z"
-        }
-    ]
+  "title": "Liftoff News",
+  "link": "http://liftoff.msfc.nasa.gov/",
+  "description": "Liftoff to Space Exploration.",
+  "language": "en-us",
+  "copyright": "2014 foobar",
+  "managingEditor": "editor@example.com",
+  "webMaster": "webmaster@example.com",
+  "generator": "Weblog Editor 2.0",
+  "docs": "http://blogs.law.harvard.edu/tech/rss",
+  "ttl": 60,
+  "image": "http://localhost.com/image.png",
+  "rating": "en",
+  "skipHours": 20,
+  "skipDays": "Tuesday",
+  "category": [{
+  	"text": "Newspapers"
+  }],
+  "pubDate": "2003-06-10T04:00:00Z",
+  "lastBuildDate": "2003-06-10T09:41:01Z",
+  "cloud": {
+    "domain": "rpc.sys.com",
+    "port": 80,
+    "path": "/RPC2",
+    "registerProcedure": "pingMe",
+    "protocol": "soap"
+  },
+  "item": [{
+    "title": "Star City",
+    "link": "http://liftoff.msfc.nasa.gov/news/2003/news-starcity.asp",
+    "description": "How do Americans get ready to work with Russians aboard the International Space Station? They take a crash course in culture, language and protocol at Russia's <a href=\"http://howe.iki.rssi.ru/GCTC/gctc_e.htm\">Star City</a>.",
+    "author": "foobar",
+    "category": [{
+    	"text": "Newspapers"
+    }],
+    "guid": "http://liftoff.msfc.nasa.gov/2003/06/03.html#item573",
+    "pubDate": "2003-06-03T09:39:21Z",
+    "comments": "http://localhost.com#comments",
+    "enclosure": {
+      "url": "http://www.scripting.com/mp3s/weatherReportSuite.mp3",
+      "length": 12216320,
+      "type": "audio/mpeg"
+    },
+    "source": {
+      "text": "Tomalak's Realm",
+      "url": "http://www.tomalak.org/links2.xml"
+    }
+  }]
 }
 JSON;
 

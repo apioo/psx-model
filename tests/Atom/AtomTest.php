@@ -41,119 +41,111 @@ class AtomTest extends \PHPUnit_Framework_TestCase
 {
     public function testModel()
     {
-        $entries = [];
-
         $entry = new Entry();
-        $entry->addAuthor(new Person('foo', 'http://foo.com', 'foo@bar.com'));
-        $entry->addCategory(new Category('foo'));
-        $entry->setContent(new Text('foobar', 'text/plain'));
-        $entry->addContributor(new Person('foo', 'http://foo.com', 'foo@bar.com'));
-        $entry->setId('urn:entry:id:1000');
-        $entry->addLink(new Link('http://foo.com/entry/1'));
-        $entry->setPublished(new \DateTime('2016-12-15T21:54:00'));
-        $entry->setRights('rights');
-        $entry->setSummary(new Text('summary'));
-        $entry->setTitle('title');
-        $entry->setUpdated(new \DateTime('2016-12-15T21:54:00'));
+        $entry->addAuthor(new Person('foobar', 'http://foo.com', 'foo@bar.com'));
+        $entry->addCategory(new Category('foobar', 'http://foo.com', 'Foobar'));
+        $entry->setContent(new Text('foobar'));
+        $entry->addContributor(new Person('foobar', 'http://foo.com', 'foo@bar.com'));
+        $entry->setId('http://localhost.com#1');
+        $entry->setRights('foo');
+        $entry->setTitle('Star City');
+        $entry->setPublished(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT'));
+        $entry->setUpdated(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT'));
+        $entry->addLink(new Link('http://localhost.com', 'me', 'application/xml', 'en', 'Foobar', 1337));
+        $entry->setSummary(new Text('lreom ipsum'));
 
-        $entries[] = $entry;
-        
         $atom = new Atom();
-        $atom->addAuthor(new Person('foo', 'http://foo.com', 'foo@bar.com'));
-        $atom->addCategory(new Category('foo'));
-        $atom->addContributor(new Person('foo', 'http://foo.com', 'foo@bar.com'));
-        $atom->setGenerator(new Generator('test'));
-        $atom->setIcon('icon');
-        $atom->setLogo('logo');
-        $atom->setId('urn:id:1000');
-        $atom->addLink(new Link('http://foo.com'));
-        $atom->setRights('rights');
-        $atom->setSubTitle(new Text('foobar', 'text/html'));
-        $atom->setTitle('bar');
-        $atom->setUpdated(new \DateTime('2016-12-15T21:54:00'));
-        $atom->setEntry($entries);
+        $atom->addAuthor(new Person('foobar', 'http://foo.com', 'foo@bar.com'));
+        $atom->addCategory(new Category('foobar', 'http://foo.com', 'Foobar'));
+        $atom->addContributor(new Person('foobar', 'http://foo.com', 'foo@bar.com'));
+        $atom->setGenerator(new Generator('foobar', 'http://foo.com', '1.0'));
+        $atom->setIcon('http://localhost.com/icon.png');
+        $atom->setLogo('http://localhost.com/logo.png');
+        $atom->setId('http://localhost.com#1');
+        $atom->setRights('foo');
+        $atom->setTitle('Foo has bar');
+        $atom->setUpdated(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT'));
+        $atom->addLink(new Link('http://localhost.com', 'me', 'application/xml', 'en', 'Foobar', 1337));
+        $atom->setSubTitle(new Text('And some more content'));
+        $atom->addEntry($entry);
 
         $dumper = new Dumper();
         $actual = json_encode($dumper->dump($atom), JSON_PRETTY_PRINT);
         $expect = <<<'JSON'
 {
-    "author": [
-        {
-            "name": "foo",
-            "uri": "http:\/\/foo.com",
-            "email": "foo@bar.com"
-        }
-    ],
-    "category": [
-        {
-            "term": "foo"
-        }
-    ],
-    "contributor": [
-        {
-            "name": "foo",
-            "uri": "http:\/\/foo.com",
-            "email": "foo@bar.com"
-        }
-    ],
-    "generator": {
-        "text": "test"
+  "author": [{
+    "name": "foobar",
+    "uri": "http://foo.com",
+    "email": "foo@bar.com"
+  }],
+  "category": [{
+    "term": "foobar",
+    "scheme": "http://foo.com",
+    "label": "Foobar"
+  }],
+  "contributor": [{
+    "name": "foobar",
+    "uri": "http://foo.com",
+    "email": "foo@bar.com"
+  }],
+  "generator": {
+    "text": "foobar",
+    "uri": "http://foo.com",
+    "version": "1.0"
+  },
+  "icon": "http://localhost.com/icon.png",
+  "logo": "http://localhost.com/logo.png",
+  "id": "http://localhost.com#1",
+  "link": [{
+    "href": "http://localhost.com",
+    "rel": "me",
+    "type": "application/xml",
+    "hreflang": "en",
+    "title": "Foobar",
+    "length": 1337
+  }],
+  "rights": "foo",
+  "subTitle": {
+  	"content": "And some more content"
+  },
+  "title": "Foo has bar",
+  "updated": "2003-06-10T04:00:00Z",
+  "entry": [{
+    "author": [{
+      "name": "foobar",
+      "uri": "http://foo.com",
+      "email": "foo@bar.com"
+    }],
+    "category": [{
+      "term": "foobar",
+      "scheme": "http://foo.com",
+      "label": "Foobar"
+    }],
+    "content": {
+      "content": "foobar"
     },
-    "icon": "icon",
-    "logo": "logo",
-    "id": "urn:id:1000",
-    "link": [
-        {
-            "href": "http:\/\/foo.com"
-        }
-    ],
-    "rights": "rights",
-    "subTitle": {
-        "type": "text\/html",
-        "content": "foobar"
+    "contributor": [{
+      "name": "foobar",
+      "uri": "http://foo.com",
+      "email": "foo@bar.com"
+    }],
+    "id": "http://localhost.com#1",
+    "link": [{
+      "href": "http://localhost.com",
+      "rel": "me",
+      "type": "application/xml",
+      "hreflang": "en",
+      "title": "Foobar",
+      "length": 1337
+    }],
+    "published": "2003-06-10T04:00:00Z",
+    "rights": "foo",
+    "summary": {
+      "content": "lreom ipsum"
     },
-    "title": "bar",
-    "updated": "2016-12-15T21:54:00Z",
-    "entry": [
-        {
-            "author": [
-                {
-                    "name": "foo",
-                    "uri": "http:\/\/foo.com",
-                    "email": "foo@bar.com"
-                }
-            ],
-            "category": [
-                {
-                    "term": "foo"
-                }
-            ],
-            "content": {
-                "type": "text\/plain",
-                "content": "foobar"
-            },
-            "contributor": [
-                {
-                    "name": "foo",
-                    "uri": "http:\/\/foo.com",
-                    "email": "foo@bar.com"
-                }
-            ],
-            "id": "urn:entry:id:1000",
-            "link": [
-                {
-                    "href": "http:\/\/foo.com\/entry\/1"
-                }
-            ],
-            "published": "2016-12-15T21:54:00Z",
-            "rights": "rights",
-            "summary": {
-                "content": "summary"
-            },
-            "title": "title",
-            "updated": "2016-12-15T21:54:00Z"
-        }
-    ]
+    "title": "Star City",
+    "updated": "2003-06-10T04:00:00Z"
+  }]
 }
 JSON;
 
