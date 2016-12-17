@@ -27,7 +27,7 @@ namespace PSX\Model\Swagger;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  * @Description("One or more JSON representations for parameters")
- * @AdditionalProperties(@schema()@Ref("PSX\Model\Swagger\Parameter"))
+ * @AdditionalProperties(@Ref("PSX\Model\Swagger\Parameter"))
  */
 class Parameters extends \ArrayObject
 {
