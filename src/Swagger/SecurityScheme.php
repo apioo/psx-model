@@ -21,7 +21,7 @@
 namespace PSX\Model\Swagger;
 
 /**
- * Security
+ * SecurityScheme
  *
  * @author  Christoph Kappestein <k42b3.x@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
@@ -29,7 +29,7 @@ namespace PSX\Model\Swagger;
  * @AdditionalProperties(false)
  * @Required({"type", "flow", "authorizationUrl", "tokenUrl"})
  */
-class Security
+class SecurityScheme
 {
     /**
      * @Key("type")
