@@ -1,4 +1,9 @@
 
+### 2.0.1 (2017-04-08)
+
+* Fix swagger security schema class name
+* Extend tests
+
 ### 2.0.0 (2016-12-15)
 
 * Update swagger model to 2.0
