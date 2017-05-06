@@ -32,10 +32,7 @@ use PSX\Model\Swagger\Path;
 use PSX\Model\Swagger\Response;
 use PSX\Model\Swagger\Responses;
 use PSX\Model\Swagger\Swagger;
-use PSX\Model\Swagger\Tag;
-use PSX\Schema\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
-use PSX\Sql\Tests\TableManagerTest;
 
 /**
  * SwaggerTest

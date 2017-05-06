@@ -21,7 +21,6 @@
 namespace PSX\Model\ActivityStream;
 
 use PSX\Data\CollectionInterface;
-use PSX\Model\ActivityStream\ObjectType;
 
 /**
  * Collection

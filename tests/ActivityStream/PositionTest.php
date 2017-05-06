@@ -20,10 +20,7 @@
 
 namespace PSX\Model\Tests\ActivityStream;
 
-use PSX\Model\ActivityStream\Activity;
-use PSX\Model\ActivityStream\ObjectType;
 use PSX\Model\ActivityStream\Position;
-use PSX\Schema\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 
 /**

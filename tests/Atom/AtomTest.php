@@ -27,7 +27,6 @@ use PSX\Model\Atom\Generator;
 use PSX\Model\Atom\Link;
 use PSX\Model\Atom\Person;
 use PSX\Model\Atom\Text;
-use PSX\Schema\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 
 /**

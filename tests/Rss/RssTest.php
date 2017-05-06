@@ -26,7 +26,6 @@ use PSX\Model\Rss\Enclosure;
 use PSX\Model\Rss\Item;
 use PSX\Model\Rss\Rss;
 use PSX\Model\Rss\Source;
-use PSX\Schema\Parser;
 use PSX\Schema\Parser\Popo\Dumper;
 
 /**
