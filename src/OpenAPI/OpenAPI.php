@@ -36,8 +36,8 @@ class OpenAPI extends \ArrayObject
      * @Key("openapi")
      * @Type("string")
      */
-    protected $openapi;
-    
+    protected $openapi = '3.0.0';
+
     /**
      * @Key("info")
      * @Ref("PSX\Model\OpenAPI\Info")
