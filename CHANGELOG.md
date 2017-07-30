@@ -1,4 +1,8 @@
 
+### 2.0.2 (2017-07-30)
+
+* Add OpenAPI 3.0 models
+
 ### 2.0.1 (2017-04-08)
 
 * Fix swagger security schema class name
