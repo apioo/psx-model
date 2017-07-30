@@ -28,4 +28,8 @@ namespace PSX\Model\OpenAPI;
  */
 class Headers extends \ArrayObject
 {
+    public function set($name, Header $header)
+    {
+        $this->offsetSet($name, $header);
+    }
 }

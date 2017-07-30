@@ -32,4 +32,8 @@ namespace PSX\Model\OpenAPI;
  */
 class Paths extends \ArrayObject
 {
+    public function set($path, PathItem $pathItem)
+    {
+        $this->offsetSet($path, $pathItem);
+    }
 }

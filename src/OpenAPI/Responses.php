@@ -47,4 +47,9 @@ class Responses extends \ArrayObject
     {
         return $this->default;
     }
+
+    public function set($code, $response)
+    {
+        $this->offsetSet($code, $response);
+    }
 }

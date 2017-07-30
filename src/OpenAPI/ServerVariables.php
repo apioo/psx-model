@@ -28,4 +28,8 @@ namespace PSX\Model\OpenAPI;
  */
 class ServerVariables extends \ArrayObject
 {
+    public function add($name, ServerVariable $serverVariable)
+    {
+        $this->offsetSet($name, $serverVariable);
+    }
 }

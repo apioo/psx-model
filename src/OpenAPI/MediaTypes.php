@@ -28,4 +28,8 @@ namespace PSX\Model\OpenAPI;
  */
 class MediaTypes extends \ArrayObject
 {
+    public function set($mime, MediaType $mediaType)
+    {
+        $this->offsetSet($mime, $mediaType);
+    }
 }
