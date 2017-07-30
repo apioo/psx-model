@@ -73,13 +73,13 @@ class OpenAPITest extends \PHPUnit_Framework_TestCase
         $header->setSchema(Record::fromArray(['type' => 'string']));
 
         $headers = new Headers();
-        $headers['x-next'] = $header;
+        $headers->set('x-next', $header);
 
         $mediaType = new MediaType();
         $mediaType->setSchema(Record::fromArray(['$ref' => '#/components/schemas/Pets']));
 
         $content = new MediaTypes();
-        $content['application/json'] = $mediaType;
+        $content->set('application/json', $mediaType);
 
         $response = new Response();
         $response->setDescription('An paged array of pets');
@@ -87,13 +87,13 @@ class OpenAPITest extends \PHPUnit_Framework_TestCase
         $response->setContent($content);
 
         $responses = new Responses();
-        $responses[200] = $response;
+        $responses->set(200, $response);
 
         $mediaType = new MediaType();
         $mediaType->setSchema(Record::fromArray(['$ref' => '#/components/schemas/Error']));
 
         $content = new MediaTypes();
-        $content['application/json'] = $mediaType;
+        $content->set('application/json', $mediaType);
 
         $errorResponse = new Response();
         $errorResponse->setDescription('unexpected error');
@@ -115,7 +115,7 @@ class OpenAPITest extends \PHPUnit_Framework_TestCase
         $response->setDescription('Null response');
 
         $responses = new Responses();
-        $responses[201] = $response;
+        $responses->set(201, $response);
         $responses->setDefault($errorResponse);
 
         $operation = new Operation();
@@ -126,7 +126,7 @@ class OpenAPITest extends \PHPUnit_Framework_TestCase
 
         $pathItem->setPost($operation);
 
-        $paths['/pets'] = $pathItem;
+        $paths->set('/pets', $pathItem);
 
         // /pets/{petId}
         $parameter = new Parameter();
@@ -140,14 +140,14 @@ class OpenAPITest extends \PHPUnit_Framework_TestCase
         $mediaType->setSchema(Record::fromArray(['$ref' => '#/components/schemas/Pets']));
 
         $mediaTypes = new MediaTypes();
-        $mediaTypes['application/json'] = $mediaType;
+        $mediaTypes->set('application/json', $mediaType);
 
         $response = new Response();
         $response->setDescription('Expected response to a valid request');
         $response->setContent($mediaTypes);
 
         $responses = new Responses();
-        $responses[200] = $response;
+        $responses->set(200, $response);
         $responses->setDefault($errorResponse);
 
         $operation = new Operation();
@@ -160,7 +160,7 @@ class OpenAPITest extends \PHPUnit_Framework_TestCase
         $pathItem = new PathItem();
         $pathItem->setGet($operation);
 
-        $paths['/pets/{petId}'] = $pathItem;
+        $paths->set('/pets/{petId}', $pathItem);
 
         $server = new Server();
         $server->setUrl('http://petstore.swagger.io/v1');
@@ -194,7 +194,6 @@ class OpenAPITest extends \PHPUnit_Framework_TestCase
         $components->setSchemas($schemas);
 
         $openAPI = new OpenAPI();
-        $openAPI->setOpenapi('3.0.0');
         $openAPI->setInfo($info);
         $openAPI->setPaths($paths);
         $openAPI->setServers([$server]);
