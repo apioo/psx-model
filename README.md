@@ -10,6 +10,7 @@ moment we support the following data formats:
 * Atom
 * Rss
 * Swagger
+* OpenAPI
 
-These classes can be used in combination with psx/data to consume or produce
-data.
+These classes can be used standalone or in combination with the `psx/data`
+and `psx/schema` package to consume or produce the format.
