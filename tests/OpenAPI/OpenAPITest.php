@@ -27,6 +27,8 @@ use PSX\Model\OpenAPI\Info;
 use PSX\Model\OpenAPI\License;
 use PSX\Model\OpenAPI\MediaType;
 use PSX\Model\OpenAPI\MediaTypes;
+use PSX\Model\OpenAPI\OauthFlow;
+use PSX\Model\OpenAPI\OauthFlows;
 use PSX\Model\OpenAPI\OpenAPI;
 use PSX\Model\OpenAPI\Operation;
 use PSX\Model\OpenAPI\Parameter;
@@ -34,6 +36,9 @@ use PSX\Model\OpenAPI\PathItem;
 use PSX\Model\OpenAPI\Paths;
 use PSX\Model\OpenAPI\Response;
 use PSX\Model\OpenAPI\Responses;
+use PSX\Model\OpenAPI\Scopes;
+use PSX\Model\OpenAPI\SecurityRequirement;
+use PSX\Model\OpenAPI\SecurityScheme;
 use PSX\Model\OpenAPI\Server;
 use PSX\Record\Record;
 use PSX\Schema\Parser\Popo\Dumper;
@@ -201,306 +206,56 @@ class OpenAPITest extends \PHPUnit_Framework_TestCase
 
         $dumper = new Dumper();
         $actual = json_encode($dumper->dump($openAPI), JSON_PRETTY_PRINT);
-        $expect = <<<'JSON'
-{
-    "openapi": "3.0.0",
-    "info": {
-        "title": "Swagger Petstore",
-        "license": {
-            "name": "MIT"
-        },
-        "version": "1.0.0"
-    },
-    "servers": [
-        {
-            "url": "http:\/\/petstore.swagger.io\/v1"
-        }
-    ],
-    "paths": {
-        "\/pets": {
-            "get": {
-                "tags": [
-                    "pets"
-                ],
-                "summary": "List all pets",
-                "operationId": "listPets",
-                "parameters": [
-                    {
-                        "name": "limit",
-                        "in": "query",
-                        "description": "How many items to return at one time (max 100)",
-                        "required": false,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int32"
-                        }
-                    }
-                ],
-                "responses": {
-                    "default": {
-                        "description": "unexpected error",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "$ref": "#\/components\/schemas\/Error"
-                                }
-                            }
-                        }
-                    },
-                    "200": {
-                        "description": "An paged array of pets",
-                        "headers": {
-                            "x-next": {
-                                "description": "A link to the next page of responses",
-                                "schema": {
-                                    "type": "string"
-                                }
-                            }
-                        },
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "$ref": "#\/components\/schemas\/Pets"
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "pets"
-                ],
-                "summary": "Create a pet",
-                "operationId": "createPets",
-                "responses": {
-                    "default": {
-                        "description": "unexpected error",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "$ref": "#\/components\/schemas\/Error"
-                                }
-                            }
-                        }
-                    },
-                    "201": {
-                        "description": "Null response"
-                    }
-                }
-            }
-        },
-        "\/pets\/{petId}": {
-            "get": {
-                "tags": [
-                    "pets"
-                ],
-                "summary": "Info for a specific pet",
-                "operationId": "showPetById",
-                "parameters": [
-                    {
-                        "name": "petId",
-                        "in": "path",
-                        "description": "The id of the pet to retrieve",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "default": {
-                        "description": "unexpected error",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "$ref": "#\/components\/schemas\/Error"
-                                }
-                            }
-                        }
-                    },
-                    "200": {
-                        "description": "Expected response to a valid request",
-                        "content": {
-                            "application\/json": {
-                                "schema": {
-                                    "$ref": "#\/components\/schemas\/Pets"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    },
-    "components": {
-        "schemas": {
-            "Pet": {
-                "required": [
-                    "id",
-                    "name"
-                ],
-                "properties": {
-                    "id": {
-                        "type": "integer",
-                        "format": "int64"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "tag": {
-                        "type": "string"
-                    }
-                }
-            },
-            "Pets": {
-                "type": "array",
-                "items": {
-                    "$ref": "#\/components\/schemas\/Pet"
-                }
-            },
-            "Error": {
-                "required": [
-                    "code",
-                    "message"
-                ],
-                "properties": {
-                    "code": {
-                        "type": "integer",
-                        "format": "int32"
-                    },
-                    "message": {
-                        "type": "string"
-                    }
-                }
-            }
-        }
-    }
-}
-JSON;
+        $expect = file_get_contents(__DIR__ . '/resources/openapi.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);
 
         // assert with yaml
-        $expect = json_encode(Yaml::parse($this->getPetStoreOpenAPIYAML()));
+        $expect = json_encode(Yaml::parse(file_get_contents(__DIR__ . '/resources/petstore.yaml')));
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);
     }
-
-    private function getPetStoreOpenAPIYAML()
+    
+    public function testSecurity()
     {
-        return <<<'YAML'
-openapi: "3.0.0"
-info:
-  version: 1.0.0
-  title: Swagger Petstore
-  license:
-    name: MIT
-servers:
-  - url: http://petstore.swagger.io/v1
-paths:
-  /pets:
-    get:
-      summary: List all pets
-      operationId: listPets
-      tags:
-        - pets
-      parameters:
-        - name: limit
-          in: query
-          description: How many items to return at one time (max 100)
-          required: false
-          schema:
-            type: integer
-            format: int32
-      responses:
-        200:
-          description: An paged array of pets
-          headers:
-            x-next:
-              description: A link to the next page of responses
-              schema:
-                type: string
-          content:
-            application/json:    
-              schema:
-                $ref: "#/components/schemas/Pets"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-    post:
-      summary: Create a pet
-      operationId: createPets
-      tags:
-        - pets
-      responses:
-        201:
-          description: Null response
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-  /pets/{petId}:
-    get:
-      summary: Info for a specific pet
-      operationId: showPetById
-      tags:
-        - pets
-      parameters:
-        - name: petId
-          in: path
-          required: true
-          description: The id of the pet to retrieve
-          schema:
-            type: string
-      responses:
-        200:
-          description: Expected response to a valid request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Pets"
-        default:
-          description: unexpected error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-components:
-  schemas:
-    Pet:
-      required:
-        - id
-        - name
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        tag:
-          type: string
-    Pets:
-      type: array
-      items:
-        $ref: "#/components/schemas/Pet"
-    Error:
-      required:
-        - code
-        - message
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-YAML;
+        $flow = new OauthFlow();
+        $flow->setAuthorizationUrl('http://api.phpsx.org/authorization');
+        $flow->setTokenUrl('http://api.phpsx.org/token');
+        $flow->setRefreshUrl('http://api.phpsx.org/token/refresh');
+        $flow->setScopes(new Scopes(['foo' => 'Foo sope', 'bar' => 'Bar scope']));
+
+        $flows = new OauthFlows();
+        $flows->setAuthorizationCode($flow);
+
+        $scheme = new SecurityScheme();
+        $scheme->setType('oauth2');
+        $scheme->setFlows($flows);
+
+        $paths = new Paths();
+
+        $securityReq = new SecurityRequirement();
+        $securityReq['oauth'] = ['foo', 'bar'];
+
+        $operation = new Operation();
+        $operation->setSummary('Info for a specific pet');
+        $operation->setSecurity([$securityReq]);
+
+        $pathItem = new PathItem();
+        $pathItem->setGet($operation);
+
+        $paths->set('/pets/{petId}', $pathItem);
+
+        $components = new Components();
+        $components->setSecuritySchemes(['oauth' => $scheme]);
+
+        $openAPI = new OpenAPI();
+        $openAPI->setPaths($paths);
+        $openAPI->setComponents($components);
+
+        $dumper = new Dumper();
+        $actual = json_encode($dumper->dump($openAPI), JSON_PRETTY_PRINT);
+        $expect = file_get_contents(__DIR__ . '/resources/openapi_security.json');
+
+        $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);
     }
 }
-
-

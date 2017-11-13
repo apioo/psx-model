@@ -1,0 +1,36 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "\/pets\/{petId}": {
+      "get": {
+        "summary": "Info for a specific pet",
+        "security": [
+          {
+            "oauth": [
+              "foo",
+              "bar"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "oauth": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "http:\/\/api.phpsx.org\/authorization",
+            "tokenUrl": "http:\/\/api.phpsx.org\/token",
+            "refreshUrl": "http:\/\/api.phpsx.org\/token\/refresh",
+            "scopes": {
+              "foo": "Foo sope",
+              "bar": "Bar scope"
+            }
+          }
+        }
+      }
+    }
+  }
+}
