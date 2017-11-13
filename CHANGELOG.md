@@ -1,4 +1,8 @@
 
+### 2.0.3 (2017-11-13)
+
+* Add security tests and oauth flow class names
+
 ### 2.0.2 (2017-07-30)
 
 * Add OpenAPI 3.0 models
