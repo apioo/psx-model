@@ -31,6 +31,10 @@ use PSX\Model\Swagger\Parameter;
 use PSX\Model\Swagger\Path;
 use PSX\Model\Swagger\Response;
 use PSX\Model\Swagger\Responses;
+use PSX\Model\Swagger\Scopes;
+use PSX\Model\Swagger\Security;
+use PSX\Model\Swagger\SecurityDefinitions;
+use PSX\Model\Swagger\SecurityScheme;
 use PSX\Model\Swagger\Swagger;
 use PSX\Schema\Parser\Popo\Dumper;
 
@@ -188,176 +192,58 @@ class SwaggerTest extends \PHPUnit_Framework_TestCase
 
         $dumper = new Dumper();
         $actual = json_encode($dumper->dump($swagger), JSON_PRETTY_PRINT); 
-        $expect = <<<'JSON'
-{
-    "swagger": "2.0",
-    "info": {
-        "title": "Swagger Petstore",
-        "version": "1.0.0",
-        "description": "A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification",
-        "termsOfService": "http:\/\/swagger.io\/terms\/",
-        "contact": {
-            "name": "Swagger API Team",
-            "url": "http:\/\/swagger.io",
-            "email": "apiteam@swagger.io"
-        },
-        "license": {
-            "name": "MIT",
-            "url": "http:\/\/github.com\/gruntjs\/grunt\/blob\/master\/LICENSE-MIT"
-        }
-    },
-    "host": "petstore.swagger.io",
-    "basePath": "\/v1",
-    "schemes": [
-        "http"
-    ],
-    "consumes": [
-        "application\/json"
-    ],
-    "produces": [
-        "application\/json"
-    ],
-    "paths": {
-        "\/pets": {
-            "get": {
-                "tags": [
-                    "pets"
-                ],
-                "summary": "List all pets",
-                "operationId": "listPets",
-                "parameters": [
-                    {
-                        "description": "How many items to return at one time (max 100)",
-                        "name": "limit",
-                        "in": "query",
-                        "required": false,
-                        "type": "integer",
-                        "format": "int32"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "An paged array of pets",
-                        "schema": {
-                            "$ref": "#\/definitions\/Pets"
-                        },
-                        "headers": {
-                            "x-next": {
-                                "description": "A link to the next page of responses",
-                                "type": "string"
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "unexpected error",
-                        "schema": {
-                            "$ref": "#\/definitions\/Error"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "pets"
-                ],
-                "summary": "Create a pet",
-                "operationId": "createPets",
-                "responses": {
-                    "201": {
-                        "description": "Null response"
-                    },
-                    "default": {
-                        "description": "unexpected error",
-                        "schema": {
-                            "$ref": "#\/definitions\/Error"
-                        }
-                    }
-                }
-            }
-        },
-        "\/pets\/{petId}": {
-            "get": {
-                "tags": [
-                    "pets"
-                ],
-                "summary": "Info for a specific pet",
-                "operationId": "showPetById",
-                "parameters": [
-                    {
-                        "description": "The id of the pet to retrieve",
-                        "name": "petId",
-                        "in": "path",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Expected response to a valid request",
-                        "schema": {
-                            "$ref": "#\/definitions\/Pets"
-                        }
-                    },
-                    "default": {
-                        "description": "unexpected error",
-                        "schema": {
-                            "$ref": "#\/definitions\/Error"
-                        }
-                    }
-                }
-            }
-        }
-    },
-    "definitions": {
-        "Pet": {
-            "required": [
-                "id",
-                "name"
-            ],
-            "properties": {
-                "id": {
-                    "type": "integer",
-                    "format": "int64"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "tag": {
-                    "type": "string"
-                }
-            }
-        },
-        "Pets": {
-            "type": "array",
-            "items": {
-                "$ref": "#\/definitions\/Pet"
-            }
-        },
-        "Error": {
-            "required": [
-                "code",
-                "message"
-            ],
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "message": {
-                    "type": "string"
-                }
-            }
-        }
-    },
-    "externalDocs": {
-        "description": "find more info here",
-        "url": "https:\/\/swagger.io\/about"
+        $expect = file_get_contents(__DIR__ . '/resources/swagger.json');
+
+        $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);
     }
-}
-JSON;
+    
+    public function testSecurity()
+    {
+        $securityScheme = new SecurityScheme();
+        $securityScheme->setType('oauth2');
+        $securityScheme->setFlow('accessCode');
+        $securityScheme->setAuthorizationUrl('http://api.phpsx.org/authorization');
+        $securityScheme->setTokenUrl('http://api.phpsx.org/token');
+        $securityScheme->setScopes(new Scopes(['foo' => 'Foo sope', 'bar' => 'Bar scope']));
+
+        $securityDefinition = new SecurityDefinitions();
+        $securityDefinition['app'] = $securityScheme;
+
+        $swagger = new Swagger();
+        $swagger->setHost('petstore.swagger.io');
+        $swagger->setBasePath('/v1');
+        $swagger->setSchemes(['http']);
+        $swagger->setConsumes(['application/json']);
+        $swagger->setProduces(['application/json']);
+        $swagger->setSecurityDefinitions($securityDefinition);
+
+        $path = new Path();
+
+        $responses = new Responses();
+
+        $response = new Response();
+        $response->setDescription('Null response');
+
+        $responses['200'] = $response;
+
+        $security = new Security();
+        $security['app'] = ['foo', 'bar'];
+
+        $operation = new Operation();
+        $operation->setSummary('Create a pet');
+        $operation->setOperationId('createPets');
+        $operation->setTags(['pets']);
+        $operation->setResponses($responses);
+        $operation->setSecurity($security);
+
+        $path->setPost($operation);
+
+        $swagger->addPath('/pets', $path);
+
+        $dumper = new Dumper();
+        $actual = json_encode($dumper->dump($swagger), JSON_PRETTY_PRINT);
+        $expect = file_get_contents(__DIR__ . '/resources/swagger_security.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);
     }
 }
-
-

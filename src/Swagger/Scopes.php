@@ -21,13 +21,11 @@
 namespace PSX\Model\Swagger;
 
 /**
- * Security
- *
  * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
- * @AdditionalProperties(@Schema(type="array", items=@Schema(type="string")))
+ * @AdditionalProperties(@Schema(type="string"))
  */
-class Security extends \ArrayObject
+class Scopes extends \ArrayObject
 {
 }

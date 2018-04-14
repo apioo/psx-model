@@ -44,7 +44,7 @@ trait ItemTrait
 
     /**
      * @Key("items")
-     * @Ref("PSX\Generation\Objectdc2e2153")
+     * @Ref("PSX\Model\Swagger\Items")
      */
     protected $items;
 

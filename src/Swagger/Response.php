@@ -39,6 +39,7 @@ class Response extends \ArrayObject
     
     /**
      * @Key("schema")
+     * @Type("object")
      */
     protected $schema;
     

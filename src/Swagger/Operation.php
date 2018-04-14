@@ -113,9 +113,7 @@ class Operation
     
     /**
      * @Key("security")
-     * @Type("array")
-     * @Items(@Ref("PSX\Model\Swagger\Security"))
-     * @UniqueItems(true)
+     * @Ref("PSX\Model\Swagger\Security")
      */
     protected $security;
     
@@ -229,7 +227,7 @@ class Operation
         return $this->deprecated;
     }
     
-    public function setSecurity($security)
+    public function setSecurity(Security $security)
     {
         $this->security = $security;
     }

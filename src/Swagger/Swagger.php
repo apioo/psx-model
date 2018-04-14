@@ -109,9 +109,7 @@ class Swagger
     
     /**
      * @Key("security")
-     * @Type("array")
-     * @Items(@Ref("PSX\Model\Swagger\Security"))
-     * @UniqueItems(true)
+     * @Ref("PSX\Model\Swagger\Security")
      */
     protected $security;
     

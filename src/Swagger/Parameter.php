@@ -26,6 +26,7 @@ namespace PSX\Model\Swagger;
  * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
+ * @Required({"name", "in"})
  */
 class Parameter
 {
@@ -62,6 +63,7 @@ class Parameter
 
     /**
      * @Key("schema")
+     * @Type("object")
      */
     protected $schema;
 

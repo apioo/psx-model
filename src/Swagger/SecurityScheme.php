@@ -27,27 +27,27 @@ namespace PSX\Model\Swagger;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  * @AdditionalProperties(false)
- * @Required({"type", "flow", "authorizationUrl", "tokenUrl"})
+ * @Required({"type"})
  */
 class SecurityScheme
 {
     /**
      * @Key("type")
-     * @Enum({"oauth2"})
+     * @Enum({"basic", "apiKey", "oauth2"})
      * @Type("string")
      */
     protected $type;
     
     /**
      * @Key("flow")
-     * @Enum({"accessCode"})
+     * @Enum({"implicit", "password", "application", "accessCode"})
      * @Type("string")
      */
     protected $flow;
     
     /**
      * @Key("scopes")
-     * @Ref("PSX\Generation\Objectc1d44070")
+     * @Ref("PSX\Model\Swagger\Scopes")
      */
     protected $scopes;
     
@@ -91,7 +91,7 @@ class SecurityScheme
         return $this->flow;
     }
     
-    public function setScopes($scopes)
+    public function setScopes(Scopes $scopes)
     {
         $this->scopes = $scopes;
     }
