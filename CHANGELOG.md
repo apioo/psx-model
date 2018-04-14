@@ -1,4 +1,8 @@
 
+### 2.0.4 (2018-04-14)
+
+* Improve swagger 2.0 spec and add security definition
+
 ### 2.0.3 (2017-11-13)
 
 * Add security tests and oauth flow class names
