@@ -2,8 +2,14 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Swagger Petstore",
+    "contact": {
+      "name": "Foo Bar",
+      "url": "http:\/\/foo.com",
+      "email": "foo@bar.com"
+    },
     "license": {
-      "name": "MIT"
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
     },
     "version": "1.0.0"
   },

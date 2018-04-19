@@ -21,6 +21,7 @@
 namespace PSX\Model\Tests\OpenAPI;
 
 use PSX\Model\OpenAPI\Components;
+use PSX\Model\OpenAPI\Contact;
 use PSX\Model\OpenAPI\Header;
 use PSX\Model\OpenAPI\Headers;
 use PSX\Model\OpenAPI\Info;
@@ -57,10 +58,17 @@ class OpenAPITest extends \PHPUnit_Framework_TestCase
     {
         $license = new License();
         $license->setName('MIT');
+        $license->setUrl('https://opensource.org/licenses/MIT');
 
+        $contact = new Contact();
+        $contact->setName('Foo Bar');
+        $contact->setEmail('foo@bar.com');
+        $contact->setUrl('http://foo.com');
+        
         $info = new Info();
         $info->setVersion('1.0.0');
         $info->setTitle('Swagger Petstore');
+        $info->setContact($contact);
         $info->setLicense($license);
 
         $paths = new Paths();
