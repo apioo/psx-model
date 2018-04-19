@@ -113,7 +113,8 @@ class Operation
     
     /**
      * @Key("security")
-     * @Ref("PSX\Model\Swagger\Security")
+     * @Type("array")
+     * @Items(@Ref("PSX\Model\Swagger\Security"))
      */
     protected $security;
     
@@ -226,12 +227,15 @@ class Operation
     {
         return $this->deprecated;
     }
-    
-    public function setSecurity(Security $security)
+
+    /**
+     * @param \PSX\Model\Swagger\Security[] $security
+     */
+    public function setSecurity(array $security)
     {
         $this->security = $security;
     }
-    
+
     public function getSecurity()
     {
         return $this->security;

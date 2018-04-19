@@ -106,10 +106,11 @@ class Swagger
      * @Ref("PSX\Model\Swagger\Responses")
      */
     protected $responses;
-    
+
     /**
      * @Key("security")
-     * @Ref("PSX\Model\Swagger\Security")
+     * @Type("array")
+     * @Items(@Ref("PSX\Model\Swagger\Security"))
      */
     protected $security;
     
@@ -253,12 +254,15 @@ class Swagger
     {
         return $this->responses;
     }
-    
-    public function setSecurity(Security $security)
+
+    /**
+     * @param \PSX\Model\Swagger\Security[] $security
+     */
+    public function setSecurity(array $security)
     {
         $this->security = $security;
     }
-    
+
     public function getSecurity()
     {
         return $this->security;

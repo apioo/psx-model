@@ -234,7 +234,7 @@ class SwaggerTest extends \PHPUnit_Framework_TestCase
         $operation->setOperationId('createPets');
         $operation->setTags(['pets']);
         $operation->setResponses($responses);
-        $operation->setSecurity($security);
+        $operation->setSecurity([$security]);
 
         $path->setPost($operation);
 

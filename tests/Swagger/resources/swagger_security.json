@@ -24,12 +24,14 @@
             "description": "Null response"
           }
         },
-        "security": {
-          "app": [
-            "foo",
-            "bar"
-          ]
-        }
+        "security": [
+          {
+            "app": [
+              "foo",
+              "bar"
+            ]
+          }
+        ]
       }
     }
   },
