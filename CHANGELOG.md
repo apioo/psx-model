@@ -1,4 +1,9 @@
 
+### 2.0.4 (2018-04-19)
+
+* Improve OpenAPI test cases
+* Swagger 2.0 fix security notation
+
 ### 2.0.4 (2018-04-14)
 
 * Improve swagger 2.0 spec and add security definition
