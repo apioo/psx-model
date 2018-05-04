@@ -36,6 +36,7 @@ use PSX\Model\Swagger\Security;
 use PSX\Model\Swagger\SecurityDefinitions;
 use PSX\Model\Swagger\SecurityScheme;
 use PSX\Model\Swagger\Swagger;
+use PSX\Model\Swagger\Tag;
 use PSX\Schema\Parser\Popo\Dumper;
 
 /**
@@ -74,6 +75,18 @@ class SwaggerTest extends \PHPUnit_Framework_TestCase
         $externalDocs->setDescription('find more info here');
         $externalDocs->setUrl('https://swagger.io/about');
 
+        $tags = [];
+
+        $tag = new Tag();
+        $tag->setName('pets');
+        $tag->setDescription('Pets operations');
+        $tags[] = $tag;
+
+        $tag = new Tag();
+        $tag->setName('bar');
+        $tag->setDescription('Boo tag');
+        $tags[] = $tag;
+
         $swagger = new Swagger();
         $swagger->setInfo($info);
         $swagger->setExternalDocs($externalDocs);
@@ -85,6 +98,7 @@ class SwaggerTest extends \PHPUnit_Framework_TestCase
         $swagger->addDefinition('Pet', $petSchema);
         $swagger->addDefinition('Pets', $petsSchema);
         $swagger->addDefinition('Error', $errorSchema);
+        $swagger->setTags($tags);
 
         $parameters = [];
         

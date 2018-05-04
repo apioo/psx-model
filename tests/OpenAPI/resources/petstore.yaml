@@ -112,3 +112,8 @@ components:
           format: int32
         message:
           type: string
+tags:
+  - name: pets
+    description: Pets operations
+  - name: bar
+    description: Boo tag

@@ -158,6 +158,16 @@
       }
     }
   },
+  "tags": [
+    {
+      "name": "pets",
+      "description": "Pets operations"
+    },
+    {
+      "name": "bar",
+      "description": "Boo tag"
+    }
+  ],
   "externalDocs": {
     "description": "find more info here",
     "url": "https:\/\/swagger.io\/about"

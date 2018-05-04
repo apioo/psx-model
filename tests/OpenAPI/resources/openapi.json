@@ -9,7 +9,7 @@
     },
     "license": {
       "name": "MIT",
-      "url": "https://opensource.org/licenses/MIT"
+      "url": "https:\/\/opensource.org\/licenses\/MIT"
     },
     "version": "1.0.0"
   },
@@ -177,5 +177,15 @@
         }
       }
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "pets",
+      "description": "Pets operations"
+    },
+    {
+      "name": "bar",
+      "description": "Boo tag"
+    }
+  ]
 }

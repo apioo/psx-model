@@ -41,6 +41,7 @@ use PSX\Model\OpenAPI\Scopes;
 use PSX\Model\OpenAPI\SecurityRequirement;
 use PSX\Model\OpenAPI\SecurityScheme;
 use PSX\Model\OpenAPI\Server;
+use PSX\Model\OpenAPI\Tag;
 use PSX\Record\Record;
 use PSX\Schema\Parser\Popo\Dumper;
 use Symfony\Component\Yaml\Yaml;
@@ -206,11 +207,24 @@ class OpenAPITest extends \PHPUnit_Framework_TestCase
         $components = new Components();
         $components->setSchemas($schemas);
 
+        $tags = [];
+
+        $tag = new Tag();
+        $tag->setName('pets');
+        $tag->setDescription('Pets operations');
+        $tags[] = $tag;
+
+        $tag = new Tag();
+        $tag->setName('bar');
+        $tag->setDescription('Boo tag');
+        $tags[] = $tag;
+
         $openAPI = new OpenAPI();
         $openAPI->setInfo($info);
         $openAPI->setPaths($paths);
         $openAPI->setServers([$server]);
         $openAPI->setComponents($components);
+        $openAPI->setTags($tags);
 
         $dumper = new Dumper();
         $actual = json_encode($dumper->dump($openAPI), JSON_PRETTY_PRINT);
