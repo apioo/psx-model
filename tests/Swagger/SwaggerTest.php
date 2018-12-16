@@ -20,6 +20,7 @@
 
 namespace PSX\Model\Tests\Swagger;
 
+use PHPUnit\Framework\TestCase;
 use PSX\Model\Swagger\Contact;
 use PSX\Model\Swagger\ExternalDocs;
 use PSX\Model\Swagger\Header;
@@ -46,7 +47,7 @@ use PSX\Schema\Parser\Popo\Dumper;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-class SwaggerTest extends \PHPUnit_Framework_TestCase
+class SwaggerTest extends TestCase
 {
     public function testModel()
     {

@@ -20,6 +20,7 @@
 
 namespace PSX\Model\Tests\Atom;
 
+use PHPUnit\Framework\TestCase;
 use PSX\Model\Atom\Atom;
 use PSX\Model\Atom\Category;
 use PSX\Model\Atom\Entry;
@@ -36,7 +37,7 @@ use PSX\Schema\Parser\Popo\Dumper;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-class AtomTest extends \PHPUnit_Framework_TestCase
+class AtomTest extends TestCase
 {
     public function testModel()
     {

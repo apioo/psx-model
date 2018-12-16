@@ -20,6 +20,7 @@
 
 namespace PSX\Model\Tests\Atom;
 
+use PHPUnit\Framework\TestCase;
 use PSX\Model\Rss\Category;
 use PSX\Model\Rss\Cloud;
 use PSX\Model\Rss\Enclosure;
@@ -35,7 +36,7 @@ use PSX\Schema\Parser\Popo\Dumper;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-class RssTest extends \PHPUnit_Framework_TestCase
+class RssTest extends TestCase
 {
     public function testModel()
     {

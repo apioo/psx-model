@@ -20,6 +20,7 @@
 
 namespace PSX\Model\Tests\ActivityStream;
 
+use PHPUnit\Framework\TestCase;
 use PSX\Model\ActivityStream\Activity;
 use PSX\Model\ActivityStream\Collection;
 use PSX\Model\ActivityStream\ObjectType;
@@ -32,7 +33,7 @@ use PSX\Schema\Parser\Popo\Dumper;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-class ActivityTest extends \PHPUnit_Framework_TestCase
+class ActivityTest extends TestCase
 {
     public function testActivity()
     {

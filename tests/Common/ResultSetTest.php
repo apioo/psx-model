@@ -20,6 +20,7 @@
 
 namespace PSX\Model\Tests\Common;
 
+use PHPUnit\Framework\TestCase;
 use PSX\Model\Common\ResultSet;
 
 /**
@@ -29,7 +30,7 @@ use PSX\Model\Common\ResultSet;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-class ResultSetTest extends \PHPUnit_Framework_TestCase
+class ResultSetTest extends TestCase
 {
     public function testFullResultSet()
     {

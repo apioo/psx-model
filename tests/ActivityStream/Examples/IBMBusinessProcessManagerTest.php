@@ -20,6 +20,7 @@
 
 namespace PSX\Model\Tests\ActivityStream\Examples;
 
+use PHPUnit\Framework\TestCase;
 use PSX\Model\ActivityStream\Activity;
 use PSX\Model\ActivityStream\Collection;
 use PSX\Model\ActivityStream\ObjectType;
@@ -33,7 +34,7 @@ use PSX\Schema\Parser\Popo\Dumper;
  * @link    http://phpsx.org
  * @see     http://www.w3.org/wiki/Activity_Streams
  */
-class IBMBusinessProcessManagerTest extends \PHPUnit_Framework_TestCase
+class IBMBusinessProcessManagerTest extends TestCase
 {
     public function testStream()
     {

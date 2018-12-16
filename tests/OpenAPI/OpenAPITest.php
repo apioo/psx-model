@@ -20,6 +20,7 @@
 
 namespace PSX\Model\Tests\OpenAPI;
 
+use PHPUnit\Framework\TestCase;
 use PSX\Model\OpenAPI\Components;
 use PSX\Model\OpenAPI\Contact;
 use PSX\Model\OpenAPI\Header;
@@ -53,7 +54,7 @@ use Symfony\Component\Yaml\Yaml;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-class OpenAPITest extends \PHPUnit_Framework_TestCase
+class OpenAPITest extends TestCase
 {
     public function testModel()
     {

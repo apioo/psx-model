@@ -20,6 +20,7 @@
 
 namespace PSX\Model\Tests\Common;
 
+use PHPUnit\Framework\TestCase;
 use PSX\Model\Common\Message;
 
 /**
@@ -29,7 +30,7 @@ use PSX\Model\Common\Message;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  */
-class MessageTest extends \PHPUnit_Framework_TestCase
+class MessageTest extends TestCase
 {
     public function testSetGet()
     {
