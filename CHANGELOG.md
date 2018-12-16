@@ -1,4 +1,8 @@
 
+### 2.0.5 (2018-12-16)
+
+* Upgrade PHPUnit to 6.0
+
 ### 2.0.4 (2018-04-19)
 
 * Improve OpenAPI test cases
