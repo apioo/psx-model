@@ -26,87 +26,102 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("Info")
  * @Description("The object provides metadata about the API. The metadata can be used by the clients if needed, and can be presented in editing or documentation generation tools for convenience.")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  * @Required({"title", "version"})
  */
-class Info extends \ArrayObject
+class Info
 {
     /**
      * @Key("title")
-     * @Type("string")
+     * @var string
      */
     protected $title;
+
     /**
      * @Key("description")
-     * @Type("string")
+     * @var string
      */
     protected $description;
+
     /**
      * @Key("termsOfService")
-     * @Type("string")
+     * @var string
      */
     protected $termsOfService;
+
     /**
      * @Key("contact")
-     * @Ref("PSX\Model\OpenAPI\Contact")
+     * @var \PSX\Model\OpenAPI\Contact
      */
     protected $contact;
+
     /**
      * @Key("license")
-     * @Ref("PSX\Model\OpenAPI\License")
+     * @var \PSX\Model\OpenAPI\License
      */
     protected $license;
+
     /**
      * @Key("version")
-     * @Type("string")
+     * @var string
      */
     protected $version;
-    public function setTitle($title)
+
+    public function setTitle(string $title)
     {
         $this->title = $title;
     }
-    public function getTitle()
+
+    public function getTitle(): ?string
     {
         return $this->title;
     }
-    public function setDescription($description)
+
+    public function setDescription(string $description)
     {
         $this->description = $description;
     }
-    public function getDescription()
+
+    public function getDescription(): ?string
     {
         return $this->description;
     }
-    public function setTermsOfService($termsOfService)
+
+    public function setTermsOfService(string $termsOfService)
     {
         $this->termsOfService = $termsOfService;
     }
-    public function getTermsOfService()
+
+    public function getTermsOfService(): ?string
     {
         return $this->termsOfService;
     }
-    public function setContact($contact)
+
+    public function setContact(Contact $contact)
     {
         $this->contact = $contact;
     }
-    public function getContact()
+
+    public function getContact(): ?Contact
     {
         return $this->contact;
     }
-    public function setLicense($license)
+
+    public function setLicense(License $license)
     {
         $this->license = $license;
     }
-    public function getLicense()
+
+    public function getLicense(): ?License
     {
         return $this->license;
     }
-    public function setVersion($version)
+
+    public function setVersion(string $version)
     {
         $this->version = $version;
     }
-    public function getVersion()
+
+    public function getVersion(): ?string
     {
         return $this->version;
     }

@@ -26,50 +26,55 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("ServerVariable")
  * @Description("An object representing a Server Variable for server URL template substitution.")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  * @Required({"default"})
  */
-class ServerVariable extends \ArrayObject
+class ServerVariable
 {
     /**
      * @Key("enum")
-     * @Type("array")
-     * @Items(@Schema(type="string"))
      * @UniqueItems(true)
+     * @var array<string>
      */
     protected $enum;
+
     /**
      * @Key("default")
-     * @Type("string")
+     * @var string
      */
     protected $default;
+
     /**
      * @Key("description")
-     * @Type("string")
+     * @var string
      */
     protected $description;
-    public function setEnum($enum)
+
+    public function setEnum(array $enum)
     {
         $this->enum = $enum;
     }
-    public function getEnum()
+
+    public function getEnum(): ?array
     {
         return $this->enum;
     }
-    public function setDefault($default)
+
+    public function setDefault(string $default)
     {
         $this->default = $default;
     }
-    public function getDefault()
+
+    public function getDefault(): ?string
     {
         return $this->default;
     }
-    public function setDescription($description)
+
+    public function setDescription(string $description)
     {
         $this->description = $description;
     }
-    public function getDescription()
+
+    public function getDescription(): ?string
     {
         return $this->description;
     }

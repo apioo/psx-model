@@ -26,46 +26,44 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("Server")
  * @Description("An object representing a Server.")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  * @Required({"url"})
  */
-class Server extends \ArrayObject
+class Server
 {
     /**
      * @Key("url")
-     * @Type("string")
+     * @var string
      */
     protected $url;
     
     /**
      * @Key("description")
-     * @Type("string")
+     * @var string
      */
     protected $description;
     
     /**
      * @Key("variables")
-     * @Ref("PSX\Model\OpenAPI\ServerVariables")
+     * @var \PSX\Model\OpenAPI\ServerVariables
      */
     protected $variables;
 
-    public function setUrl($url)
+    public function setUrl(string $url)
     {
         $this->url = $url;
     }
 
-    public function getUrl()
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    public function setDescription($description)
+    public function setDescription(string $description)
     {
         $this->description = $description;
     }
 
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -75,7 +73,7 @@ class Server extends \ArrayObject
         $this->variables = $variables;
     }
 
-    public function getVariables()
+    public function getVariables(): ?ServerVariables
     {
         return $this->variables;
     }

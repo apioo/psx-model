@@ -26,116 +26,114 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("SecurityScheme")
  * @Description("Defines a security scheme that can be used by the operations. Supported schemes are HTTP authentication, an API key (either as a header or as a query parameter) and OAuth2's common flows (implicit, password, application and access code).")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  * @Required({"type"})
  */
-class SecurityScheme extends \ArrayObject
+class SecurityScheme
 {
     /**
      * @Key("type")
-     * @Type("string")
+     * @var string
      */
     protected $type;
     
     /**
      * @Key("description")
-     * @Type("string")
+     * @var string
      */
     protected $description;
     
     /**
      * @Key("name")
-     * @Type("string")
+     * @var string
      */
     protected $name;
     
     /**
      * @Key("in")
-     * @Type("string")
+     * @var string
      */
     protected $in;
     
     /**
      * @Key("scheme")
-     * @Type("string")
+     * @var string
      */
     protected $scheme;
     
     /**
      * @Key("bearerFormat")
-     * @Type("string")
+     * @var string
      */
     protected $bearerFormat;
     
     /**
      * @Key("flows")
-     * @Ref("PSX\Model\OpenAPI\OauthFlows")
+     * @var \PSX\Model\OpenAPI\OauthFlows
      */
     protected $flows;
     
     /**
      * @Key("openIdConnectUrl")
-     * @Type("string")
+     * @var string
      */
     protected $openIdConnectUrl;
 
-    public function setType($type)
+    public function setType(string $type)
     {
         $this->type = $type;
     }
 
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function setDescription($description)
+    public function setDescription(string $description)
     {
         $this->description = $description;
     }
 
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
     }
 
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setIn($in)
+    public function setIn(string $in)
     {
         $this->in = $in;
     }
 
-    public function getIn()
+    public function getIn(): ?string
     {
         return $this->in;
     }
 
-    public function setScheme($scheme)
+    public function setScheme(string $scheme)
     {
         $this->scheme = $scheme;
     }
 
-    public function getScheme()
+    public function getScheme(): ?string
     {
         return $this->scheme;
     }
 
-    public function setBearerFormat($bearerFormat)
+    public function setBearerFormat(string $bearerFormat)
     {
         $this->bearerFormat = $bearerFormat;
     }
 
-    public function getBearerFormat()
+    public function getBearerFormat(): ?string
     {
         return $this->bearerFormat;
     }
@@ -145,17 +143,17 @@ class SecurityScheme extends \ArrayObject
         $this->flows = $flows;
     }
 
-    public function getFlows()
+    public function getFlows(): ?OauthFlows
     {
         return $this->flows;
     }
 
-    public function setOpenIdConnectUrl($openIdConnectUrl)
+    public function setOpenIdConnectUrl(string $openIdConnectUrl)
     {
         $this->openIdConnectUrl = $openIdConnectUrl;
     }
 
-    public function getOpenIdConnectUrl()
+    public function getOpenIdConnectUrl(): ?string
     {
         return $this->openIdConnectUrl;
     }

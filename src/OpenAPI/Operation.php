@@ -26,89 +26,83 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("Operation")
  * @Description("Describes a single API operation on a path.")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  * @Required({"responses"})
  */
-class Operation extends \ArrayObject
+class Operation
 {
     /**
      * @Key("tags")
-     * @Type("array")
-     * @Items(@Schema(type="string"))
      * @UniqueItems(true)
+     * @var array<string>
      */
     protected $tags;
     
     /**
      * @Key("summary")
-     * @Type("string")
+     * @var string
      */
     protected $summary;
     
     /**
      * @Key("description")
-     * @Type("string")
+     * @var string
      */
     protected $description;
     
     /**
      * @Key("externalDocs")
-     * @Ref("PSX\Model\OpenAPI\ExternalDocs")
+     * @var \PSX\Model\OpenAPI\ExternalDocs
      */
     protected $externalDocs;
     
     /**
      * @Key("operationId")
-     * @Type("string")
+     * @var string
      */
     protected $operationId;
     
     /**
      * @Key("parameters")
-     * @Type("array")
-     * @Items(@Schema(oneOf={@Ref("PSX\Model\OpenAPI\Parameter"), @Ref("PSX\Model\OpenAPI\Reference")}))
      * @UniqueItems(true)
+     * @var array<\PSX\Model\OpenAPI\Parameter|\PSX\Model\OpenAPI\Reference>
      */
     protected $parameters;
     
     /**
      * @Key("requestBody")
-     * @OneOf(@Ref("PSX\Model\OpenAPI\RequestBody"), @Ref("PSX\Model\OpenAPI\Reference"))
+     * @var \PSX\Model\OpenAPI\RequestBody|\PSX\Model\OpenAPI\Reference
      */
     protected $requestBody;
     
     /**
      * @Key("responses")
-     * @Ref("PSX\Model\OpenAPI\Responses")
+     * @var \PSX\Model\OpenAPI\Responses
      */
     protected $responses;
     
     /**
      * @Key("callbacks")
-     * @OneOf(@Ref("PSX\Model\OpenAPI\Callback"), @Ref("PSX\Model\OpenAPI\Reference"))
+     * @var \PSX\Model\OpenAPI\Callback|\PSX\Model\OpenAPI\Reference
      */
     protected $callbacks;
     
     /**
      * @Key("deprecated")
-     * @Type("boolean")
+     * @var boolean
      */
     protected $deprecated;
     
     /**
      * @Key("security")
-     * @Type("array")
-     * @Items(@Ref("PSX\Model\OpenAPI\SecurityRequirement"))
      * @UniqueItems(true)
+     * @var array<\PSX\Model\OpenAPI\SecurityRequirement>
      */
     protected $security;
     
     /**
      * @Key("servers")
-     * @Type("array")
-     * @Items(@Ref("PSX\Model\OpenAPI\Server"))
      * @UniqueItems(true)
+     * @var array<\PSX\Model\OpenAPI\Server>
      */
     protected $servers;
 
@@ -117,27 +111,27 @@ class Operation extends \ArrayObject
         $this->tags = $tags;
     }
 
-    public function getTags()
+    public function getTags(): ?array
     {
         return $this->tags;
     }
 
-    public function setSummary($summary)
+    public function setSummary(string $summary)
     {
         $this->summary = $summary;
     }
 
-    public function getSummary()
+    public function getSummary(): ?string
     {
         return $this->summary;
     }
 
-    public function setDescription($description)
+    public function setDescription(string $description)
     {
         $this->description = $description;
     }
 
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -147,17 +141,17 @@ class Operation extends \ArrayObject
         $this->externalDocs = $externalDocs;
     }
 
-    public function getExternalDocs()
+    public function getExternalDocs(): ?ExternalDocs
     {
         return $this->externalDocs;
     }
 
-    public function setOperationId($operationId)
+    public function setOperationId(string $operationId)
     {
         $this->operationId = $operationId;
     }
 
-    public function getOperationId()
+    public function getOperationId(): ?string
     {
         return $this->operationId;
     }
@@ -167,6 +161,9 @@ class Operation extends \ArrayObject
         $this->parameters = $parameters;
     }
 
+    /**
+     * @return array
+     */
     public function getParameters()
     {
         return $this->parameters;
@@ -177,6 +174,9 @@ class Operation extends \ArrayObject
         $this->requestBody = $requestBody;
     }
 
+    /**
+     * @return Reference|RequestBody
+     */
     public function getRequestBody()
     {
         return $this->requestBody;
@@ -187,7 +187,7 @@ class Operation extends \ArrayObject
         $this->responses = $responses;
     }
 
-    public function getResponses()
+    public function getResponses(): ?Responses
     {
         return $this->responses;
     }
@@ -197,37 +197,40 @@ class Operation extends \ArrayObject
         $this->callbacks = $callbacks;
     }
 
+    /**
+     * @return Callback|Reference
+     */
     public function getCallbacks()
     {
         return $this->callbacks;
     }
 
-    public function setDeprecated($deprecated)
+    public function setDeprecated(bool $deprecated)
     {
         $this->deprecated = $deprecated;
     }
 
-    public function getDeprecated()
+    public function getDeprecated(): ?bool
     {
         return $this->deprecated;
     }
 
-    public function setSecurity($security)
+    public function setSecurity(iterable $security)
     {
         $this->security = $security;
     }
 
-    public function getSecurity()
+    public function getSecurity(): ?iterable
     {
         return $this->security;
     }
 
-    public function setServers($servers)
+    public function setServers(iterable $servers)
     {
         $this->servers = $servers;
     }
 
-    public function getServers()
+    public function getServers(): ?iterable
     {
         return $this->servers;
     }

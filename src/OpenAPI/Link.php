@@ -26,26 +26,24 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("Link")
  * @Description("The `Link object` represents a possible design-time link for a response. The presence of a link does not guarantee the caller's ability to successfully invoke it, rather it provides a known relationship and traversal mechanism between responses and other operations.  Unlike _dynamic_ links (i.e. links provided **in** the response payload), the OAS linking mechanism does not require link information in the runtime response.  For computing links, and providing instructions to execute them, a runtime expression is used for accessing values in an operation and using them as parameters while invoking the linked operation.")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  */
-class Link extends \ArrayObject
+class Link
 {
     /**
      * @Key("operationRef")
-     * @Type("string")
+     * @var string
      */
     protected $operationRef;
     
     /**
      * @Key("operationId")
-     * @Type("string")
+     * @var string
      */
     protected $operationId;
     
     /**
      * @Key("parameters")
-     * @Type("object")
+     * @var object
      */
     protected $parameters;
     
@@ -56,32 +54,32 @@ class Link extends \ArrayObject
     
     /**
      * @Key("description")
-     * @Type("string")
+     * @var string
      */
     protected $description;
     
     /**
      * @Key("server")
-     * @Ref("PSX\Model\OpenAPI\Server")
+     * @var \PSX\Model\OpenAPI\Server
      */
     protected $server;
 
-    public function setOperationRef($operationRef)
+    public function setOperationRef(string $operationRef)
     {
         $this->operationRef = $operationRef;
     }
 
-    public function getOperationRef()
+    public function getOperationRef(): ?string
     {
         return $this->operationRef;
     }
 
-    public function setOperationId($operationId)
+    public function setOperationId(string $operationId)
     {
         $this->operationId = $operationId;
     }
 
-    public function getOperationId()
+    public function getOperationId(): ?string
     {
         return $this->operationId;
     }
@@ -106,12 +104,12 @@ class Link extends \ArrayObject
         return $this->requestBody;
     }
 
-    public function setDescription($description)
+    public function setDescription(string $description)
     {
         $this->description = $description;
     }
 
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -121,7 +119,7 @@ class Link extends \ArrayObject
         $this->server = $server;
     }
 
-    public function getServer()
+    public function getServer(): ?Server
     {
         return $this->server;
     }

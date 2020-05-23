@@ -26,46 +26,44 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("Tag")
  * @Description("Adds metadata to a single tag that is used by the Operation Object. It is not mandatory to have a Tag Object per tag defined in the Operation Object instances.")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  * @Required({"name"})
  */
-class Tag extends \ArrayObject
+class Tag
 {
     /**
      * @Key("name")
-     * @Type("string")
+     * @var string
      */
     protected $name;
     
     /**
      * @Key("description")
-     * @Type("string")
+     * @var string
      */
     protected $description;
     
     /**
      * @Key("externalDocs")
-     * @Ref("PSX\Model\OpenAPI\ExternalDocs")
+     * @var \PSX\Model\OpenAPI\ExternalDocs
      */
     protected $externalDocs;
 
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
     }
 
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setDescription($description)
+    public function setDescription(string $description)
     {
         $this->description = $description;
     }
 
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -75,7 +73,7 @@ class Tag extends \ArrayObject
         $this->externalDocs = $externalDocs;
     }
 
-    public function getExternalDocs()
+    public function getExternalDocs(): ?ExternalDocs
     {
         return $this->externalDocs;
     }

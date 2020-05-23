@@ -26,56 +26,54 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("Header")
  * @Description("The Header Object follows the structure of the Parameter Object with the following changes:  1. `name` MUST NOT be specified, it is given in the corresponding `headers` map. 1. `in` MUST NOT be specified, it is implicitly in `header`. 1. All traits that are affected by the location MUST be applicable to a location of `header` (for example, `style`).")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  */
-class Header extends \ArrayObject
+class Header
 {
     /**
      * @Key("description")
-     * @Type("string")
+     * @var string
      */
     protected $description;
     
     /**
      * @Key("required")
-     * @Type("boolean")
+     * @var boolean
      */
     protected $required;
     
     /**
      * @Key("deprecated")
-     * @Type("boolean")
+     * @var boolean
      */
     protected $deprecated;
     
     /**
      * @Key("allowEmptyValue")
-     * @Type("boolean")
+     * @var boolean
      */
     protected $allowEmptyValue;
     
     /**
      * @Key("style")
-     * @Type("string")
+     * @var string
      */
     protected $style;
     
     /**
      * @Key("explode")
-     * @Type("boolean")
+     * @var boolean
      */
     protected $explode;
     
     /**
      * @Key("allowReserved")
-     * @Type("boolean")
+     * @var boolean
      */
     protected $allowReserved;
     
     /**
      * @Key("schema")
-     * @Type("object")
+     * @var object
      */
     protected $schema;
     
@@ -86,82 +84,82 @@ class Header extends \ArrayObject
     
     /**
      * @Key("examples")
-     * @OneOf(@Ref("PSX\Model\OpenAPI\Example"), @Ref("PSX\Model\OpenAPI\Reference"))
+     * @var \PSX\Model\OpenAPI\Example|\PSX\Model\OpenAPI\Reference
      */
     protected $examples;
     
     /**
      * @Key("content")
-     * @Ref("PSX\Model\OpenAPI\MediaTypes")
+     * @var \PSX\Model\OpenAPI\MediaTypes
      */
     protected $content;
 
-    public function setDescription($description)
+    public function setDescription(string $description)
     {
         $this->description = $description;
     }
 
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setRequired($required)
+    public function setRequired(bool $required)
     {
         $this->required = $required;
     }
 
-    public function getRequired()
+    public function getRequired(): ?bool
     {
         return $this->required;
     }
 
-    public function setDeprecated($deprecated)
+    public function setDeprecated(bool $deprecated)
     {
         $this->deprecated = $deprecated;
     }
 
-    public function getDeprecated()
+    public function getDeprecated(): ?bool
     {
         return $this->deprecated;
     }
 
-    public function setAllowEmptyValue($allowEmptyValue)
+    public function setAllowEmptyValue(bool $allowEmptyValue)
     {
         $this->allowEmptyValue = $allowEmptyValue;
     }
 
-    public function getAllowEmptyValue()
+    public function getAllowEmptyValue(): ?bool
     {
         return $this->allowEmptyValue;
     }
 
-    public function setStyle($style)
+    public function setStyle(string $style)
     {
         $this->style = $style;
     }
 
-    public function getStyle()
+    public function getStyle(): ?string
     {
         return $this->style;
     }
 
-    public function setExplode($explode)
+    public function setExplode(bool $explode)
     {
         $this->explode = $explode;
     }
 
-    public function getExplode()
+    public function getExplode(): ?bool
     {
         return $this->explode;
     }
 
-    public function setAllowReserved($allowReserved)
+    public function setAllowReserved(bool $allowReserved)
     {
         $this->allowReserved = $allowReserved;
     }
 
-    public function getAllowReserved()
+    public function getAllowReserved(): ?bool
     {
         return $this->allowReserved;
     }
@@ -201,7 +199,7 @@ class Header extends \ArrayObject
         $this->content = $content;
     }
 
-    public function getContent()
+    public function getContent(): ?MediaTypes
     {
         return $this->content;
     }

@@ -24,11 +24,11 @@ namespace PSX\Model\OpenAPI;
  * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
- * @AdditionalProperties(@Ref("PSX\Model\OpenAPI\MediaType"))
+ * @extends ArrayAccess<string, \PSX\Model\OpenAPI\MediaType>
  */
 class MediaTypes extends \ArrayObject
 {
-    public function set($mime, MediaType $mediaType)
+    public function set(string $mime, MediaType $mediaType)
     {
         $this->offsetSet($mime, $mediaType);
     }

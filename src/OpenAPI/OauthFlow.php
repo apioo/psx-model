@@ -26,61 +26,59 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("OauthFlow")
  * @Description("Configuration details for a supported OAuth Flow")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  */
-class OauthFlow extends \ArrayObject
+class OauthFlow
 {
     /**
      * @Key("authorizationUrl")
-     * @Type("string")
+     * @var string
      */
     protected $authorizationUrl;
     
     /**
      * @Key("tokenUrl")
-     * @Type("string")
+     * @var string
      */
     protected $tokenUrl;
     
     /**
      * @Key("refreshUrl")
-     * @Type("string")
+     * @var string
      */
     protected $refreshUrl;
     
     /**
      * @Key("scopes")
-     * @Ref("PSX\Model\OpenAPI\Scopes")
+     * @var \PSX\Model\OpenAPI\Scopes
      */
     protected $scopes;
 
-    public function setAuthorizationUrl($authorizationUrl)
+    public function setAuthorizationUrl(string $authorizationUrl)
     {
         $this->authorizationUrl = $authorizationUrl;
     }
 
-    public function getAuthorizationUrl()
+    public function getAuthorizationUrl(): ?string
     {
         return $this->authorizationUrl;
     }
 
-    public function setTokenUrl($tokenUrl)
+    public function setTokenUrl(string $tokenUrl)
     {
         $this->tokenUrl = $tokenUrl;
     }
 
-    public function getTokenUrl()
+    public function getTokenUrl(): ?string
     {
         return $this->tokenUrl;
     }
 
-    public function setRefreshUrl($refreshUrl)
+    public function setRefreshUrl(string $refreshUrl)
     {
         $this->refreshUrl = $refreshUrl;
     }
 
-    public function getRefreshUrl()
+    public function getRefreshUrl(): ?string
     {
         return $this->refreshUrl;
     }
@@ -90,7 +88,7 @@ class OauthFlow extends \ArrayObject
         $this->scopes = $scopes;
     }
 
-    public function getScopes()
+    public function getScopes(): ?Scopes
     {
         return $this->scopes;
     }

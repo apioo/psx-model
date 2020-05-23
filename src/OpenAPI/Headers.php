@@ -24,11 +24,11 @@ namespace PSX\Model\OpenAPI;
  * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
- * @AdditionalProperties(@Ref("PSX\Model\OpenAPI\Header"))
+ * @extends ArrayAccess<string, \PSX\Model\OpenAPI\Header>
  */
 class Headers extends \ArrayObject
 {
-    public function set($name, Header $header)
+    public function set(string $name, Header $header)
     {
         $this->offsetSet($name, $header);
     }

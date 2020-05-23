@@ -24,7 +24,7 @@ namespace PSX\Model\OpenAPI;
  * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
- * @AdditionalProperties(@Schema(type="string"))
+ * @extends ArrayAccess<string, string>
  */
 class Scopes extends \ArrayObject
 {

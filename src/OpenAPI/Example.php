@@ -25,20 +25,18 @@ namespace PSX\Model\OpenAPI;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  * @Title("Example")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  */
 class Example extends \ArrayObject
 {
     /**
      * @Key("summary")
-     * @Type("string")
+     * @var string
      */
     protected $summary;
     
     /**
      * @Key("description")
-     * @Type("string")
+     * @var string
      */
     protected $description;
     
@@ -49,26 +47,26 @@ class Example extends \ArrayObject
     
     /**
      * @Key("externalValue")
-     * @Type("string")
+     * @var string
      */
     protected $externalValue;
 
-    public function setSummary($summary)
+    public function setSummary(string $summary)
     {
         $this->summary = $summary;
     }
 
-    public function getSummary()
+    public function getSummary(): ?string
     {
         return $this->summary;
     }
 
-    public function setDescription($description)
+    public function setDescription(string $description)
     {
         $this->description = $description;
     }
 
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -83,12 +81,12 @@ class Example extends \ArrayObject
         return $this->value;
     }
 
-    public function setExternalValue($externalValue)
+    public function setExternalValue(string $externalValue)
     {
         $this->externalValue = $externalValue;
     }
 
-    public function getExternalValue()
+    public function getExternalValue(): ?string
     {
         return $this->externalValue;
     }

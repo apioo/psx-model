@@ -26,42 +26,40 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("Response")
  * @Description("Describes a single response from an API Operation, including design-time, static  `links` to operations based on the response.")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  * @Required({"description"})
  */
-class Response extends \ArrayObject
+class Response
 {
     /**
      * @Key("description")
-     * @Type("string")
+     * @var string
      */
     protected $description;
     
     /**
      * @Key("headers")
-     * @OneOf(@Ref("PSX\Model\OpenAPI\Header"), @Ref("PSX\Model\OpenAPI\Reference"))
+     * @var \PSX\Model\OpenAPI\Header|\PSX\Model\OpenAPI\Reference
      */
     protected $headers;
     
     /**
      * @Key("content")
-     * @Ref("PSX\Model\OpenAPI\MediaTypes")
+     * @var \PSX\Model\OpenAPI\MediaTypes
      */
     protected $content;
     
     /**
      * @Key("links")
-     * @OneOf(@Ref("PSX\Model\OpenAPI\Link"), @Ref("PSX\Model\OpenAPI\Reference"))
+     * @var \PSX\Model\OpenAPI\Link|\PSX\Model\OpenAPI\Reference
      */
     protected $links;
 
-    public function setDescription($description)
+    public function setDescription(string $description)
     {
         $this->description = $description;
     }
 
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -71,6 +69,9 @@ class Response extends \ArrayObject
         $this->headers = $headers;
     }
 
+    /**
+     * @return Header|Reference
+     */
     public function getHeaders()
     {
         return $this->headers;
@@ -81,7 +82,7 @@ class Response extends \ArrayObject
         $this->content = $content;
     }
 
-    public function getContent()
+    public function getContent(): ?MediaTypes
     {
         return $this->content;
     }
@@ -91,6 +92,9 @@ class Response extends \ArrayObject
         $this->links = $links;
     }
 
+    /**
+     * @return Link|Reference
+     */
     public function getLinks()
     {
         return $this->links;

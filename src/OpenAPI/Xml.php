@@ -26,87 +26,85 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("Xml")
  * @Description("A metadata object that allows for more fine-tuned XML model definitions.  When using arrays, XML element names are *not* inferred (for singular/plural forms) and the `name` property SHOULD be used to add that information. See examples for expected behavior.")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  */
-class Xml extends \ArrayObject
+class Xml
 {
     /**
      * @Key("name")
-     * @Type("string")
+     * @var string
      */
     protected $name;
     
     /**
      * @Key("namespace")
-     * @Type("string")
+     * @var string
      */
     protected $namespace;
     
     /**
      * @Key("prefix")
-     * @Type("string")
+     * @var string
      */
     protected $prefix;
     
     /**
      * @Key("attribute")
-     * @Type("boolean")
+     * @var boolean
      */
     protected $attribute;
     
     /**
      * @Key("wrapped")
-     * @Type("boolean")
+     * @var boolean
      */
     protected $wrapped;
 
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
     }
 
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setNamespace($namespace)
+    public function setNamespace(string $namespace)
     {
         $this->namespace = $namespace;
     }
 
-    public function getNamespace()
+    public function getNamespace(): ?string
     {
         return $this->namespace;
     }
 
-    public function setPrefix($prefix)
+    public function setPrefix(string $prefix)
     {
         $this->prefix = $prefix;
     }
 
-    public function getPrefix()
+    public function getPrefix(): ?string
     {
         return $this->prefix;
     }
 
-    public function setAttribute($attribute)
+    public function setAttribute(bool $attribute)
     {
         $this->attribute = $attribute;
     }
 
-    public function getAttribute()
+    public function getAttribute(): ?bool
     {
         return $this->attribute;
     }
 
-    public function setWrapped($wrapped)
+    public function setWrapped(bool $wrapped)
     {
         $this->wrapped = $wrapped;
     }
 
-    public function getWrapped()
+    public function getWrapped(): ?bool
     {
         return $this->wrapped;
     }

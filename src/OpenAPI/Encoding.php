@@ -26,47 +26,45 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("Encoding")
  * @Description("A single encoding definition applied to a single schema property.")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  */
-class Encoding extends \ArrayObject
+class Encoding
 {
     /**
      * @Key("contentType")
-     * @Type("string")
+     * @var string
      */
     protected $contentType;
     
     /**
      * @Key("headers")
-     * @Ref("PSX\Model\OpenAPI\Headers")
+     * @var \PSX\Model\OpenAPI\Headers
      */
     protected $headers;
     
     /**
      * @Key("style")
-     * @Type("string")
+     * @var string
      */
     protected $style;
     
     /**
      * @Key("explode")
-     * @Type("boolean")
+     * @var boolean
      */
     protected $explode;
     
     /**
      * @Key("allowReserved")
-     * @Type("boolean")
+     * @var boolean
      */
     protected $allowReserved;
 
-    public function setContentType($contentType)
+    public function setContentType(string $contentType)
     {
         $this->contentType = $contentType;
     }
 
-    public function getContentType()
+    public function getContentType(): ?string
     {
         return $this->contentType;
     }
@@ -76,37 +74,37 @@ class Encoding extends \ArrayObject
         $this->headers = $headers;
     }
 
-    public function getHeaders()
+    public function getHeaders(): ?Headers
     {
         return $this->headers;
     }
 
-    public function setStyle($style)
+    public function setStyle(string $style)
     {
         $this->style = $style;
     }
 
-    public function getStyle()
+    public function getStyle(): ?string
     {
         return $this->style;
     }
 
-    public function setExplode($explode)
+    public function setExplode(bool $explode)
     {
         $this->explode = $explode;
     }
 
-    public function getExplode()
+    public function getExplode(): ?bool
     {
         return $this->explode;
     }
 
-    public function setAllowReserved($allowReserved)
+    public function setAllowReserved(bool $allowReserved)
     {
         $this->allowReserved = $allowReserved;
     }
 
-    public function getAllowReserved()
+    public function getAllowReserved(): ?bool
     {
         return $this->allowReserved;
     }

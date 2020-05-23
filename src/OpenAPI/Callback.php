@@ -26,10 +26,12 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("Callback")
  * @Description("A map of possible out-of band callbacks related to the parent operation. Each value in the map is a Path Item Object that describes a set of requests that may be initiated by the API provider and the expected responses. The key value used to identify the callback object is an expression, evaluated at runtime, that identifies a URL to use for the callback operation.")
- * @PatternProperties(pattern="^", property=@Ref("PSX\Model\OpenAPI\PathItem"))
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
+ * @extends ArrayAccess<string, \PSX\Model\OpenAPI\PathItem>
  */
 class Callback extends \ArrayObject
 {
+    public function add($name, PathItem $pathItem)
+    {
+        $this->offsetSet($name, $pathItem);
+    }
 }

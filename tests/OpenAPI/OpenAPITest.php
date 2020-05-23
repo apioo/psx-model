@@ -41,6 +41,7 @@ use PSX\Model\OpenAPI\Responses;
 use PSX\Model\OpenAPI\Scopes;
 use PSX\Model\OpenAPI\SecurityRequirement;
 use PSX\Model\OpenAPI\SecurityScheme;
+use PSX\Model\OpenAPI\SecuritySchemes;
 use PSX\Model\OpenAPI\Server;
 use PSX\Model\OpenAPI\Tag;
 use PSX\Record\Record;
@@ -102,7 +103,7 @@ class OpenAPITest extends TestCase
         $response->setContent($content);
 
         $responses = new Responses();
-        $responses->set(200, $response);
+        $responses->set('200', $response);
 
         $mediaType = new MediaType();
         $mediaType->setSchema(Record::fromArray(['$ref' => '#/components/schemas/Error']));
@@ -114,7 +115,7 @@ class OpenAPITest extends TestCase
         $errorResponse->setDescription('unexpected error');
         $errorResponse->setContent($content);
 
-        $responses->setDefault($errorResponse);
+        $responses->set('default', $errorResponse);
 
         $operation = new Operation();
         $operation->setSummary('List all pets');
@@ -130,8 +131,8 @@ class OpenAPITest extends TestCase
         $response->setDescription('Null response');
 
         $responses = new Responses();
-        $responses->set(201, $response);
-        $responses->setDefault($errorResponse);
+        $responses->set('201', $response);
+        $responses->set('default', $errorResponse);
 
         $operation = new Operation();
         $operation->setSummary('Create a pet');
@@ -162,8 +163,8 @@ class OpenAPITest extends TestCase
         $response->setContent($mediaTypes);
 
         $responses = new Responses();
-        $responses->set(200, $response);
-        $responses->setDefault($errorResponse);
+        $responses->set('200', $response);
+        $responses->set('default', $errorResponse);
 
         $operation = new Operation();
         $operation->setSummary('Info for a specific pet');
@@ -268,8 +269,11 @@ class OpenAPITest extends TestCase
 
         $paths->set('/pets/{petId}', $pathItem);
 
+        $schemes = new SecuritySchemes();
+        $schemes['oauth'] = $scheme;
+
         $components = new Components();
-        $components->setSecuritySchemes(['oauth' => $scheme]);
+        $components->setSecuritySchemes($schemes);
 
         $openAPI = new OpenAPI();
         $openAPI->setPaths($paths);

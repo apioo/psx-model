@@ -26,62 +26,60 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("Components")
  * @Description("Holds a set of reusable objects for different aspects of the OAS. All objects defined within the components object will have no effect on the API unless they are explicitly referenced from properties outside the components object.")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  */
-class Components extends \ArrayObject
+class Components
 {
     /**
      * @Key("schemas")
-     * @Type("object")
+     * @var object
      */
     protected $schemas;
-    
+
     /**
      * @Key("responses")
-     * @OneOf(@Ref("PSX\Model\OpenAPI\Response"), @Ref("PSX\Model\OpenAPI\Reference"))
+     * @var \PSX\Model\OpenAPI\Response|\PSX\Model\OpenAPI\Reference
      */
     protected $responses;
     
     /**
      * @Key("parameters")
-     * @OneOf(@Ref("PSX\Model\OpenAPI\Parameter"), @Ref("PSX\Model\OpenAPI\Reference"))
+     * @var \PSX\Model\OpenAPI\Parameter|\PSX\Model\OpenAPI\Reference
      */
     protected $parameters;
-    
+
     /**
      * @Key("examples")
-     * @OneOf(@Ref("PSX\Model\OpenAPI\Example"), @Ref("PSX\Model\OpenAPI\Reference"))
+     * @var \PSX\Model\OpenAPI\Example|\PSX\Model\OpenAPI\Reference
      */
     protected $examples;
     
     /**
      * @Key("requestBodies")
-     * @OneOf(@Ref("PSX\Model\OpenAPI\RequestBody"), @Ref("PSX\Model\OpenAPI\Reference"))
+     * @var \PSX\Model\OpenAPI\RequestBody|\PSX\Model\OpenAPI\Reference
      */
     protected $requestBodies;
     
     /**
      * @Key("headers")
-     * @OneOf(@Ref("PSX\Model\OpenAPI\Header"), @Ref("PSX\Model\OpenAPI\Reference"))
+     * @var \PSX\Model\OpenAPI\Header|\PSX\Model\OpenAPI\Reference
      */
     protected $headers;
     
     /**
      * @Key("securitySchemes")
-     * @OneOf(@Ref("PSX\Model\OpenAPI\SecurityScheme"), @Ref("PSX\Model\OpenAPI\Reference"))
+     * @var \PSX\Model\OpenAPI\SecuritySchemes
      */
     protected $securitySchemes;
     
     /**
      * @Key("links")
-     * @OneOf(@Ref("PSX\Model\OpenAPI\Link"), @Ref("PSX\Model\OpenAPI\Reference"))
+     * @var \PSX\Model\OpenAPI\Link|\PSX\Model\OpenAPI\Reference
      */
     protected $links;
     
     /**
      * @Key("callbacks")
-     * @OneOf(@Ref("PSX\Model\OpenAPI\Callback"), @Ref("PSX\Model\OpenAPI\Reference"))
+     * @var \PSX\Model\OpenAPI\Callback|\PSX\Model\OpenAPI\Reference
      */
     protected $callbacks;
 
@@ -90,6 +88,9 @@ class Components extends \ArrayObject
         $this->schemas = $schemas;
     }
 
+    /**
+     * @return object
+     */
     public function getSchemas()
     {
         return $this->schemas;
@@ -100,6 +101,9 @@ class Components extends \ArrayObject
         $this->responses = $responses;
     }
 
+    /**
+     * @return Reference|Response
+     */
     public function getResponses()
     {
         return $this->responses;
@@ -110,6 +114,9 @@ class Components extends \ArrayObject
         $this->parameters = $parameters;
     }
 
+    /**
+     * @return Parameter|Reference
+     */
     public function getParameters()
     {
         return $this->parameters;
@@ -120,6 +127,9 @@ class Components extends \ArrayObject
         $this->examples = $examples;
     }
 
+    /**
+     * @return Example|Reference
+     */
     public function getExamples()
     {
         return $this->examples;
@@ -130,6 +140,9 @@ class Components extends \ArrayObject
         $this->requestBodies = $requestBodies;
     }
 
+    /**
+     * @return Reference|RequestBody
+     */
     public function getRequestBodies()
     {
         return $this->requestBodies;
@@ -140,17 +153,20 @@ class Components extends \ArrayObject
         $this->headers = $headers;
     }
 
+    /**
+     * @return Header|Reference
+     */
     public function getHeaders()
     {
         return $this->headers;
     }
 
-    public function setSecuritySchemes($securitySchemes)
+    public function setSecuritySchemes(SecuritySchemes $securitySchemes)
     {
         $this->securitySchemes = $securitySchemes;
     }
 
-    public function getSecuritySchemes()
+    public function getSecuritySchemes(): ?SecuritySchemes
     {
         return $this->securitySchemes;
     }
@@ -160,6 +176,9 @@ class Components extends \ArrayObject
         $this->links = $links;
     }
 
+    /**
+     * @return Link|Reference
+     */
     public function getLinks()
     {
         return $this->links;
@@ -170,6 +189,9 @@ class Components extends \ArrayObject
         $this->callbacks = $callbacks;
     }
 
+    /**
+     * @return Callback|Reference
+     */
     public function getCallbacks()
     {
         return $this->callbacks;

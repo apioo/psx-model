@@ -26,119 +26,115 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("PathItem")
  * @Description("Describes the operations available on a single path. A Path Item MAY be empty, due to ACL constraints. The path itself is still exposed to the documentation viewer but they will not know which operations and parameters are available.")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  */
-class PathItem extends \ArrayObject
+class PathItem
 {
     /**
      * @Key("$ref")
-     * @Type("string")
+     * @var string
      */
     protected $ref;
-    
+
     /**
      * @Key("summary")
-     * @Type("string")
+     * @var string
      */
     protected $summary;
-    
+
     /**
      * @Key("description")
-     * @Type("string")
+     * @var string
      */
     protected $description;
-    
+
     /**
      * @Key("get")
-     * @Ref("PSX\Model\OpenAPI\Operation")
+     * @var \PSX\Model\OpenAPI\Operation
      */
     protected $get;
-    
+
     /**
      * @Key("put")
-     * @Ref("PSX\Model\OpenAPI\Operation")
+     * @var \PSX\Model\OpenAPI\Operation
      */
     protected $put;
-    
+
     /**
      * @Key("post")
-     * @Ref("PSX\Model\OpenAPI\Operation")
+     * @var \PSX\Model\OpenAPI\Operation
      */
     protected $post;
-    
+
     /**
      * @Key("delete")
-     * @Ref("PSX\Model\OpenAPI\Operation")
+     * @var \PSX\Model\OpenAPI\Operation
      */
     protected $delete;
-    
+
     /**
      * @Key("options")
-     * @Ref("PSX\Model\OpenAPI\Operation")
+     * @var \PSX\Model\OpenAPI\Operation
      */
     protected $options;
-    
+
     /**
      * @Key("head")
-     * @Ref("PSX\Model\OpenAPI\Operation")
+     * @var \PSX\Model\OpenAPI\Operation
      */
     protected $head;
-    
+
     /**
      * @Key("patch")
-     * @Ref("PSX\Model\OpenAPI\Operation")
+     * @var \PSX\Model\OpenAPI\Operation
      */
     protected $patch;
-    
+
     /**
      * @Key("trace")
-     * @Ref("PSX\Model\OpenAPI\Operation")
+     * @var \PSX\Model\OpenAPI\Operation
      */
     protected $trace;
-    
+
     /**
      * @Key("servers")
-     * @Type("array")
-     * @Items(@Ref("PSX\Model\OpenAPI\Server"))
      * @UniqueItems(true)
+     * @var array<\PSX\Model\OpenAPI\Server>
      */
     protected $servers;
-    
+
     /**
      * @Key("parameters")
-     * @Type("array")
-     * @Items(@Schema(oneOf={@Ref("PSX\Model\OpenAPI\Parameter"), @Ref("PSX\Model\OpenAPI\Reference")}))
      * @UniqueItems(true)
+     * @var array<\PSX\Model\OpenAPI\Parameter|\PSX\Model\OpenAPI\Reference>
      */
     protected $parameters;
 
-    public function setRef($ref)
+    public function setRef(string $ref)
     {
         $this->ref = $ref;
     }
 
-    public function getRef()
+    public function getRef(): ?string
     {
         return $this->ref;
     }
 
-    public function setSummary($summary)
+    public function setSummary(string $summary)
     {
         $this->summary = $summary;
     }
 
-    public function getSummary()
+    public function getSummary(): ?string
     {
         return $this->summary;
     }
 
-    public function setDescription($description)
+    public function setDescription(string $description)
     {
         $this->description = $description;
     }
 
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -148,7 +144,7 @@ class PathItem extends \ArrayObject
         $this->get = $get;
     }
 
-    public function getGet()
+    public function getGet(): ?Operation
     {
         return $this->get;
     }
@@ -158,7 +154,7 @@ class PathItem extends \ArrayObject
         $this->put = $put;
     }
 
-    public function getPut()
+    public function getPut(): ?Operation
     {
         return $this->put;
     }
@@ -168,7 +164,7 @@ class PathItem extends \ArrayObject
         $this->post = $post;
     }
 
-    public function getPost()
+    public function getPost(): ?Operation
     {
         return $this->post;
     }
@@ -178,7 +174,7 @@ class PathItem extends \ArrayObject
         $this->delete = $delete;
     }
 
-    public function getDelete()
+    public function getDelete(): ?Operation
     {
         return $this->delete;
     }
@@ -188,7 +184,7 @@ class PathItem extends \ArrayObject
         $this->options = $options;
     }
 
-    public function getOptions()
+    public function getOptions(): ?Operation
     {
         return $this->options;
     }
@@ -198,7 +194,7 @@ class PathItem extends \ArrayObject
         $this->head = $head;
     }
 
-    public function getHead()
+    public function getHead(): ?Operation
     {
         return $this->head;
     }
@@ -208,7 +204,7 @@ class PathItem extends \ArrayObject
         $this->patch = $patch;
     }
 
-    public function getPatch()
+    public function getPatch(): ?Operation
     {
         return $this->patch;
     }
@@ -218,7 +214,7 @@ class PathItem extends \ArrayObject
         $this->trace = $trace;
     }
 
-    public function getTrace()
+    public function getTrace(): ?Operation
     {
         return $this->trace;
     }
@@ -228,6 +224,9 @@ class PathItem extends \ArrayObject
         $this->servers = $servers;
     }
 
+    /**
+     * @return array
+     */
     public function getServers()
     {
         return $this->servers;
@@ -238,6 +237,9 @@ class PathItem extends \ArrayObject
         $this->parameters = $parameters;
     }
 
+    /**
+     * @return array
+     */
     public function getParameters()
     {
         return $this->parameters;

@@ -26,35 +26,38 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("License")
  * @Description("License information for the exposed API.")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  * @Required({"name"})
  */
-class License extends \ArrayObject
+class License
 {
     /**
      * @Key("name")
-     * @Type("string")
+     * @var string
      */
     protected $name;
+
     /**
      * @Key("url")
-     * @Type("string")
+     * @var string
      */
     protected $url;
-    public function setName($name)
+
+    public function setName(string $name)
     {
         $this->name = $name;
     }
-    public function getName()
+
+    public function getName(): ?string
     {
         return $this->name;
     }
-    public function setUrl($url)
+
+    public function setUrl(string $url)
     {
         $this->url = $url;
     }
-    public function getUrl()
+
+    public function getUrl(): ?string
     {
         return $this->url;
     }

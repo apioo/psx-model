@@ -26,36 +26,34 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("RequestBody")
  * @Description("Describes a single request body.")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  * @Required({"content"})
  */
-class RequestBody extends \ArrayObject
+class RequestBody
 {
     /**
      * @Key("description")
-     * @Type("string")
+     * @var string
      */
     protected $description;
     
     /**
      * @Key("content")
-     * @Ref("PSX\Model\OpenAPI\MediaTypes")
+     * @var \PSX\Model\OpenAPI\MediaTypes
      */
     protected $content;
     
     /**
      * @Key("required")
-     * @Type("boolean")
+     * @var boolean
      */
     protected $required;
 
-    public function setDescription($description)
+    public function setDescription(string $description)
     {
         $this->description = $description;
     }
 
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -65,17 +63,17 @@ class RequestBody extends \ArrayObject
         $this->content = $content;
     }
 
-    public function getContent()
+    public function getContent(): ?MediaTypes
     {
         return $this->content;
     }
 
-    public function setRequired($required)
+    public function setRequired(bool $required)
     {
         $this->required = $required;
     }
 
-    public function getRequired()
+    public function getRequired(): ?bool
     {
         return $this->required;
     }

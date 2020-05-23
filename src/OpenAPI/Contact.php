@@ -26,55 +26,53 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("Contact")
  * @Description("Contact information for the exposed API.")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  */
-class Contact extends \ArrayObject
+class Contact
 {
     /**
      * @Key("name")
-     * @Type("string")
+     * @var string
      */
     protected $name;
     
     /**
      * @Key("url")
-     * @Type("string")
+     * @var string
      */
     protected $url;
     
     /**
      * @Key("email")
-     * @Type("string")
+     * @var string
      */
     protected $email;
 
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
     }
 
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setUrl($url)
+    public function setUrl(string $url)
     {
         $this->url = $url;
     }
 
-    public function getUrl()
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    public function setEmail($email)
+    public function setEmail(string $email)
     {
         $this->email = $email;
     }
 
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }

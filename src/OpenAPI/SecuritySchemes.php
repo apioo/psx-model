@@ -24,41 +24,9 @@ namespace PSX\Model\OpenAPI;
  * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
- * @Title("ExternalDocs")
- * @Description("Allows referencing an external resource for extended documentation.")
- * @Required({"url"})
+ * @Title("SecuritySchemes")
+ * @extends ArrayAccess<string, \PSX\Model\OpenAPI\SecurityScheme|\PSX\Model\OpenAPI\Reference>
  */
-class ExternalDocs
+class SecuritySchemes extends \ArrayObject
 {
-    /**
-     * @Key("description")
-     * @var string
-     */
-    protected $description;
-    
-    /**
-     * @Key("url")
-     * @var string
-     */
-    protected $url;
-
-    public function setDescription(string $description)
-    {
-        $this->description = $description;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setUrl(string $url)
-    {
-        $this->url = $url;
-    }
-
-    public function getUrl(): ?string
-    {
-        return $this->url;
-    }
 }

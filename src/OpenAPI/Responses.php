@@ -26,29 +26,11 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("Responses")
  * @Description("A container for the expected responses of an operation. The container maps a HTTP response code to the expected response.  The documentation is not necessarily expected to cover all possible HTTP response codes because they may not be known in advance. However, documentation is expected to cover a successful operation response and any known errors.  The `default` MAY be used as a default response object for all HTTP codes  that are not covered individually by the specification.  The `Responses Object` MUST contain at least one response code, and it  SHOULD be the response for a successful operation call.")
- * @PatternProperties(pattern="^([0-9X]{3})$", property=@Schema(oneOf={@Ref("PSX\Model\OpenAPI\Response"), @Ref("PSX\Model\OpenAPI\Reference")}))
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
+ * @extends ArrayAccess<string, \PSX\Model\OpenAPI\Response|\PSX\Model\OpenAPI\Reference>
  */
 class Responses extends \ArrayObject
 {
-    /**
-     * @Key("default")
-     * @OneOf(@Ref("PSX\Model\OpenAPI\Response"), @Ref("PSX\Model\OpenAPI\Reference"))
-     */
-    protected $default;
-
-    public function setDefault($default)
-    {
-        $this->default = $default;
-    }
-
-    public function getDefault()
-    {
-        return $this->default;
-    }
-
-    public function set($code, $response)
+    public function set(string $code, $response)
     {
         $this->offsetSet($code, $response);
     }

@@ -24,7 +24,7 @@ namespace PSX\Model\OpenAPI;
  * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
- * @AdditionalProperties(@Ref("PSX\Model\OpenAPI\ServerVariable"))
+ * @extends ArrayAccess<string, \PSX\Model\OpenAPI\ServerVariable>
  */
 class ServerVariables extends \ArrayObject
 {

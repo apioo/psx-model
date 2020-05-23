@@ -26,14 +26,12 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("MediaType")
  * @Description("Each Media Type Object provides schema and examples for the media type identified by its key.")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  */
-class MediaType extends \ArrayObject
+class MediaType
 {
     /**
      * @Key("schema")
-     * @Type("object")
+     * @var object
      */
     protected $schema;
     
@@ -44,13 +42,13 @@ class MediaType extends \ArrayObject
     
     /**
      * @Key("examples")
-     * @OneOf(@Ref("PSX\Model\OpenAPI\Example"), @Ref("PSX\Model\OpenAPI\Reference"))
+     * @var \PSX\Model\OpenAPI\Example|\PSX\Model\OpenAPI\Reference
      */
     protected $examples;
-    
+
     /**
      * @Key("encoding")
-     * @Ref("PSX\Model\OpenAPI\Encodings")
+     * @var \PSX\Model\OpenAPI\Encodings
      */
     protected $encoding;
 
@@ -89,7 +87,7 @@ class MediaType extends \ArrayObject
         $this->encoding = $encoding;
     }
 
-    public function getEncoding()
+    public function getEncoding(): ?Encodings
     {
         return $this->encoding;
     }

@@ -26,13 +26,11 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("Paths")
  * @Description("Holds the relative paths to the individual endpoints and their operations. The path is appended to the URL from the `Server Object` in order to construct the full URL.  The Paths MAY be empty, due to ACL constraints.")
- * @PatternProperties(pattern="^/", property=@Ref("PSX\Model\OpenAPI\PathItem"))
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
+ * @extends ArrayAccess<string, \PSX\Model\OpenAPI\PathItem>
  */
 class Paths extends \ArrayObject
 {
-    public function set($path, PathItem $pathItem)
+    public function set(string $path, PathItem $pathItem)
     {
         $this->offsetSet($path, $pathItem);
     }

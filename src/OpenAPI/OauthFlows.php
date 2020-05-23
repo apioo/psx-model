@@ -26,32 +26,30 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("OauthFlows")
  * @Description("Allows configuration of the supported OAuth Flows.")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  */
-class OauthFlows extends \ArrayObject
+class OauthFlows
 {
     /**
      * @Key("implicit")
-     * @Ref("PSX\Model\OpenAPI\OauthFlow")
+     * @var \PSX\Model\OpenAPI\OauthFlow
      */
     protected $implicit;
     
     /**
      * @Key("password")
-     * @Ref("PSX\Model\OpenAPI\OauthFlow")
+     * @var \PSX\Model\OpenAPI\OauthFlow
      */
     protected $password;
     
     /**
      * @Key("clientCredentials")
-     * @Ref("PSX\Model\OpenAPI\OauthFlow")
+     * @var \PSX\Model\OpenAPI\OauthFlow
      */
     protected $clientCredentials;
     
     /**
      * @Key("authorizationCode")
-     * @Ref("PSX\Model\OpenAPI\OauthFlow")
+     * @var \PSX\Model\OpenAPI\OauthFlow
      */
     protected $authorizationCode;
 
@@ -60,7 +58,7 @@ class OauthFlows extends \ArrayObject
         $this->implicit = $implicit;
     }
 
-    public function getImplicit()
+    public function getImplicit(): ?OauthFlow
     {
         return $this->implicit;
     }
@@ -70,7 +68,7 @@ class OauthFlows extends \ArrayObject
         $this->password = $password;
     }
 
-    public function getPassword()
+    public function getPassword(): ?OauthFlow
     {
         return $this->password;
     }
@@ -80,7 +78,7 @@ class OauthFlows extends \ArrayObject
         $this->clientCredentials = $clientCredentials;
     }
 
-    public function getClientCredentials()
+    public function getClientCredentials(): ?OauthFlow
     {
         return $this->clientCredentials;
     }
@@ -90,7 +88,7 @@ class OauthFlows extends \ArrayObject
         $this->authorizationCode = $authorizationCode;
     }
 
-    public function getAuthorizationCode()
+    public function getAuthorizationCode(): ?OauthFlow
     {
         return $this->authorizationCode;
     }

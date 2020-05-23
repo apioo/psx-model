@@ -26,67 +26,62 @@ namespace PSX\Model\OpenAPI;
  * @link    http://phpsx.org
  * @Title("OpenAPI")
  * @Description("This is the root document object of the OpenAPI definition file.")
- * @PatternProperties(pattern="^x-", property=@Schema(description="Any property starting with x- is valid."))
- * @AdditionalProperties(false)
  * @Required({"openapi", "info", "paths"})
  */
-class OpenAPI extends \ArrayObject
+class OpenAPI
 {
     /**
      * @Key("openapi")
-     * @Type("string")
+     * @var string
      */
     protected $openapi = '3.0.0';
 
     /**
      * @Key("info")
-     * @Ref("PSX\Model\OpenAPI\Info")
+     * @var \PSX\Model\OpenAPI\Info
      */
     protected $info;
     
     /**
      * @Key("servers")
-     * @Type("array")
-     * @Items(@Ref("PSX\Model\OpenAPI\Server"))
      * @UniqueItems(true)
+     * @var array<\PSX\Model\OpenAPI\Server>
      */
     protected $servers;
     
     /**
      * @Key("paths")
-     * @Ref("PSX\Model\OpenAPI\Paths")
+     * @var \PSX\Model\OpenAPI\Paths
      */
     protected $paths;
     
     /**
      * @Key("components")
-     * @Ref("PSX\Model\OpenAPI\Components")
+     * @var \PSX\Model\OpenAPI\Components
      */
     protected $components;
     
     /**
      * @Key("security")
-     * @Type("array")
-     * @Items(@Ref("PSX\Model\OpenAPI\SecurityRequirement"))
      * @UniqueItems(true)
+     * @var array<\PSX\Model\OpenAPI\SecurityRequirement>
      */
     protected $security;
     
     /**
      * @Key("tags")
-     * @Type("array")
-     * @Items(@Ref("PSX\Model\OpenAPI\Tag"))
      * @UniqueItems(true)
+     * @var array<\PSX\Model\OpenAPI\Tag>
      */
     protected $tags;
     
     /**
      * @Key("externalDocs")
-     * @Ref("PSX\Model\OpenAPI\ExternalDocs")
+     * @var \PSX\Model\OpenAPI\ExternalDocs
      */
     protected $externalDocs;
 
-    public function setOpenapi($openapi)
+    public function setOpenapi(string $openapi)
     {
         $this->openapi = $openapi;
     }
