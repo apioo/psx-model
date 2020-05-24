@@ -1,0 +1,196 @@
+{
+  "definitions": {
+    "Atom": {
+      "type": "object",
+      "properties": {
+        "author": {
+          "type": "array",
+          "items": {
+            "$ref": "Person"
+          }
+        },
+        "category": {
+          "type": "array",
+          "items": {
+            "$ref": "Category"
+          }
+        },
+        "contributor": {
+          "type": "array",
+          "items": {
+            "$ref": "Person"
+          }
+        },
+        "generator": {
+          "$ref": "Generator"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "link": {
+          "type": "array",
+          "items": {
+            "$ref": "Link"
+          }
+        },
+        "rights": {
+          "type": "string"
+        },
+        "subTitle": {
+          "$ref": "Text"
+        },
+        "title": {
+          "type": "string"
+        },
+        "updated": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "entry": {
+          "type": "array",
+          "items": {
+            "$ref": "Entry"
+          }
+        }
+      }
+    },
+    "Category": {
+      "type": "object",
+      "properties": {
+        "term": {
+          "type": "string"
+        },
+        "scheme": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        }
+      }
+    },
+    "Entry": {
+      "type": "object",
+      "properties": {
+        "author": {
+          "type": "array",
+          "items": {
+            "$ref": "Person"
+          }
+        },
+        "category": {
+          "type": "array",
+          "items": {
+            "$ref": "Category"
+          }
+        },
+        "content": {
+          "$ref": "Text"
+        },
+        "contributor": {
+          "type": "array",
+          "items": {
+            "$ref": "Person"
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "link": {
+          "type": "array",
+          "items": {
+            "$ref": "Link"
+          }
+        },
+        "published": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "rights": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "Atom"
+        },
+        "summary": {
+          "$ref": "Text"
+        },
+        "title": {
+          "type": "string"
+        },
+        "updated": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "Generator": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "Link": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "rel": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "hreflang": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "length": {
+          "type": "integer"
+        }
+      }
+    },
+    "Person": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "Text": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$ref": "Atom"
+}
