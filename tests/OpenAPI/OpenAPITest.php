@@ -29,8 +29,8 @@ use PSX\Model\OpenAPI\Info;
 use PSX\Model\OpenAPI\License;
 use PSX\Model\OpenAPI\MediaType;
 use PSX\Model\OpenAPI\MediaTypes;
-use PSX\Model\OpenAPI\OauthFlow;
-use PSX\Model\OpenAPI\OauthFlows;
+use PSX\Model\OpenAPI\OAuthFlow;
+use PSX\Model\OpenAPI\OAuthFlows;
 use PSX\Model\OpenAPI\OpenAPI;
 use PSX\Model\OpenAPI\Operation;
 use PSX\Model\OpenAPI\Parameter;
@@ -240,20 +240,20 @@ class OpenAPITest extends TestCase
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);
     }
-    
+
     public function testSecurity()
     {
         $scopes = new Scopes();
         $scopes['foo'] = 'Foo scope';
         $scopes['bar'] = 'Bar scope';
 
-        $flow = new OauthFlow();
+        $flow = new OAuthFlow();
         $flow->setAuthorizationUrl('http://api.phpsx.org/authorization');
         $flow->setTokenUrl('http://api.phpsx.org/token');
         $flow->setRefreshUrl('http://api.phpsx.org/token/refresh');
         $flow->setScopes($scopes);
 
-        $flows = new OauthFlows();
+        $flows = new OAuthFlows();
         $flows->setAuthorizationCode($flow);
 
         $scheme = new SecurityScheme();
