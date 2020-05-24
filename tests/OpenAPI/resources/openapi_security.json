@@ -25,7 +25,7 @@
             "tokenUrl": "http:\/\/api.phpsx.org\/token",
             "refreshUrl": "http:\/\/api.phpsx.org\/token\/refresh",
             "scopes": {
-              "foo": "Foo sope",
+              "foo": "Foo scope",
               "bar": "Bar scope"
             }
           }

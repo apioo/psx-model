@@ -38,6 +38,7 @@ use PSX\Model\OpenAPI\PathItem;
 use PSX\Model\OpenAPI\Paths;
 use PSX\Model\OpenAPI\Response;
 use PSX\Model\OpenAPI\Responses;
+use PSX\Model\OpenAPI\Schemas;
 use PSX\Model\OpenAPI\Scopes;
 use PSX\Model\OpenAPI\SecurityRequirement;
 use PSX\Model\OpenAPI\SecurityScheme;
@@ -89,13 +90,13 @@ class OpenAPITest extends TestCase
         $header->setSchema(Record::fromArray(['type' => 'string']));
 
         $headers = new Headers();
-        $headers->set('x-next', $header);
+        $headers['x-next'] = $header;
 
         $mediaType = new MediaType();
         $mediaType->setSchema(Record::fromArray(['$ref' => '#/components/schemas/Pets']));
 
         $content = new MediaTypes();
-        $content->set('application/json', $mediaType);
+        $content['application/json'] = $mediaType;
 
         $response = new Response();
         $response->setDescription('An paged array of pets');
@@ -103,19 +104,19 @@ class OpenAPITest extends TestCase
         $response->setContent($content);
 
         $responses = new Responses();
-        $responses->set('200', $response);
+        $responses['200'] = $response;
 
         $mediaType = new MediaType();
         $mediaType->setSchema(Record::fromArray(['$ref' => '#/components/schemas/Error']));
 
         $content = new MediaTypes();
-        $content->set('application/json', $mediaType);
+        $content['application/json'] = $mediaType;
 
         $errorResponse = new Response();
         $errorResponse->setDescription('unexpected error');
         $errorResponse->setContent($content);
 
-        $responses->set('default', $errorResponse);
+        $responses['default'] = $errorResponse;
 
         $operation = new Operation();
         $operation->setSummary('List all pets');
@@ -131,8 +132,8 @@ class OpenAPITest extends TestCase
         $response->setDescription('Null response');
 
         $responses = new Responses();
-        $responses->set('201', $response);
-        $responses->set('default', $errorResponse);
+        $responses['201'] = $response;
+        $responses['default'] = $errorResponse;
 
         $operation = new Operation();
         $operation->setSummary('Create a pet');
@@ -142,7 +143,7 @@ class OpenAPITest extends TestCase
 
         $pathItem->setPost($operation);
 
-        $paths->set('/pets', $pathItem);
+        $paths['/pets'] = $pathItem;
 
         // /pets/{petId}
         $parameter = new Parameter();
@@ -156,15 +157,15 @@ class OpenAPITest extends TestCase
         $mediaType->setSchema(Record::fromArray(['$ref' => '#/components/schemas/Pets']));
 
         $mediaTypes = new MediaTypes();
-        $mediaTypes->set('application/json', $mediaType);
+        $mediaTypes['application/json'] = $mediaType;
 
         $response = new Response();
         $response->setDescription('Expected response to a valid request');
         $response->setContent($mediaTypes);
 
         $responses = new Responses();
-        $responses->set('200', $response);
-        $responses->set('default', $errorResponse);
+        $responses['200'] = $response;
+        $responses['default'] = $errorResponse;
 
         $operation = new Operation();
         $operation->setSummary('Info for a specific pet');
@@ -176,13 +177,13 @@ class OpenAPITest extends TestCase
         $pathItem = new PathItem();
         $pathItem->setGet($operation);
 
-        $paths->set('/pets/{petId}', $pathItem);
+        $paths['/pets/{petId}'] = $pathItem;
 
         $server = new Server();
         $server->setUrl('http://petstore.swagger.io/v1');
 
         // schema
-        $schemas = [];
+        $schemas = new Schemas();
 
         $schemas['Pet'] = [
             'required' => ['id', 'name'],
@@ -242,11 +243,15 @@ class OpenAPITest extends TestCase
     
     public function testSecurity()
     {
+        $scopes = new Scopes();
+        $scopes['foo'] = 'Foo scope';
+        $scopes['bar'] = 'Bar scope';
+
         $flow = new OauthFlow();
         $flow->setAuthorizationUrl('http://api.phpsx.org/authorization');
         $flow->setTokenUrl('http://api.phpsx.org/token');
         $flow->setRefreshUrl('http://api.phpsx.org/token/refresh');
-        $flow->setScopes(new Scopes(['foo' => 'Foo sope', 'bar' => 'Bar scope']));
+        $flow->setScopes($scopes);
 
         $flows = new OauthFlows();
         $flows->setAuthorizationCode($flow);
@@ -267,7 +272,7 @@ class OpenAPITest extends TestCase
         $pathItem = new PathItem();
         $pathItem->setGet($operation);
 
-        $paths->set('/pets/{petId}', $pathItem);
+        $paths['/pets/{petId}'] = $pathItem;
 
         $schemes = new SecuritySchemes();
         $schemes['oauth'] = $scheme;
