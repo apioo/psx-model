@@ -7,82 +7,49 @@
         "$ref": "PathItem"
       }
     },
+    "Callbacks": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "$ref": "Callback"
+          },
+          {
+            "$ref": "Reference"
+          }
+        ]
+      }
+    },
     "Components": {
       "description": "Holds a set of reusable objects for different aspects of the OAS. All objects defined within the components object will have no effect on the API unless they are explicitly referenced from properties outside the components object.",
       "type": "object",
       "properties": {
+        "schemas": {
+          "$ref": "Schemas"
+        },
         "responses": {
-          "oneOf": [
-            {
-              "$ref": "Response"
-            },
-            {
-              "$ref": "Reference"
-            }
-          ]
+          "$ref": "Responses"
         },
         "parameters": {
-          "oneOf": [
-            {
-              "$ref": "Parameter"
-            },
-            {
-              "$ref": "Reference"
-            }
-          ]
+          "$ref": "Parameters"
         },
         "examples": {
-          "oneOf": [
-            {
-              "$ref": "Example"
-            },
-            {
-              "$ref": "Reference"
-            }
-          ]
+          "$ref": "Examples"
         },
         "requestBodies": {
-          "oneOf": [
-            {
-              "$ref": "RequestBody"
-            },
-            {
-              "$ref": "Reference"
-            }
-          ]
+          "$ref": "RequestBodies"
         },
         "headers": {
-          "oneOf": [
-            {
-              "$ref": "Header"
-            },
-            {
-              "$ref": "Reference"
-            }
-          ]
+          "$ref": "Headers"
         },
         "securitySchemes": {
           "$ref": "SecuritySchemes"
         },
         "links": {
-          "oneOf": [
-            {
-              "$ref": "Link"
-            },
-            {
-              "$ref": "Reference"
-            }
-          ]
+          "$ref": "Links"
         },
         "callbacks": {
-          "oneOf": [
-            {
-              "$ref": "Callback"
-            },
-            {
-              "$ref": "Reference"
-            }
-          ]
+          "$ref": "Callbacks"
         }
       }
     },
@@ -199,7 +166,14 @@
     "Headers": {
       "type": "object",
       "additionalProperties": {
-        "$ref": "Header"
+        "oneOf": [
+          {
+            "$ref": "Header"
+          },
+          {
+            "$ref": "Reference"
+          }
+        ]
       }
     },
     "Info": {
@@ -263,19 +237,31 @@
         }
       }
     },
+    "Links": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "$ref": "Link"
+          },
+          {
+            "$ref": "Reference"
+          }
+        ]
+      }
+    },
     "MediaType": {
       "description": "Each Media Type Object provides schema and examples for the media type identified by its key.",
       "type": "object",
       "properties": {
+        "schema": {
+          "type": "any"
+        },
+        "example": {
+          "type": "any"
+        },
         "examples": {
-          "oneOf": [
-            {
-              "$ref": "Example"
-            },
-            {
-              "$ref": "Reference"
-            }
-          ]
+          "$ref": "Examples"
         },
         "encoding": {
           "$ref": "Encodings"
@@ -286,6 +272,40 @@
       "type": "object",
       "additionalProperties": {
         "$ref": "MediaType"
+      }
+    },
+    "OAuthFlow": {
+      "type": "object",
+      "properties": {
+        "authorizationUrl": {
+          "type": "string"
+        },
+        "tokenUrl": {
+          "type": "string"
+        },
+        "refreshUrl": {
+          "type": "string"
+        },
+        "scopes": {
+          "$ref": "Scopes"
+        }
+      }
+    },
+    "OAuthFlows": {
+      "type": "object",
+      "properties": {
+        "implicit": {
+          "$ref": "OAuthFlow"
+        },
+        "password": {
+          "$ref": "OAuthFlow"
+        },
+        "clientCredentials": {
+          "$ref": "OAuthFlow"
+        },
+        "authorizationCode": {
+          "$ref": "OAuthFlow"
+        }
       }
     },
     "OpenAPI": {
@@ -417,6 +437,19 @@
       "required": [
         "responses"
       ]
+    },
+    "Parameters": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "$ref": "Parameter"
+          },
+          {
+            "$ref": "Reference"
+          }
+        ]
+      }
     },
     "Parameter": {
       "description": "Describes a single operation parameter.  A unique parameter is defined by a combination of a name and location.",
@@ -577,6 +610,19 @@
         "content"
       ]
     },
+    "RequestBodies": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "$ref": "RequestBody"
+          },
+          {
+            "$ref": "Reference"
+          }
+        ]
+      }
+    },
     "Response": {
       "description": "Describes a single response from an API Operation, including design-time, static  `links` to operations based on the response.",
       "type": "object",
@@ -693,6 +739,47 @@
       "type": "object",
       "additionalProperties": {
         "$ref": "ServerVariable"
+      }
+    },
+    "Schemas": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "any"
+      }
+    },
+    "Scopes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "SecurityScheme": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "in": {
+          "type": "string"
+        },
+        "scheme": {
+          "type": "string"
+        },
+        "bearerFormat": {
+          "type": "string"
+        },
+        "flows": {
+          "$ref": "OAuthFlows"
+        },
+        "openIdConnectUrl": {
+          "type": "string"
+        }
       }
     },
     "Tag": {
