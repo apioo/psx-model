@@ -31,17 +31,17 @@ namespace PSX\Model\Atom;
 class Generator
 {
     /**
-     * @Type("string")
+     * @var string
      */
     protected $text;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $uri;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $version;
 

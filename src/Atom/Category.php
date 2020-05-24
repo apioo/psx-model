@@ -31,17 +31,17 @@ namespace PSX\Model\Atom;
 class Category
 {
     /**
-     * @Type("string")
+     * @var string
      */
     protected $term;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $scheme;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $label;
 

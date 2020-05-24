@@ -31,32 +31,32 @@ namespace PSX\Model\Atom;
 class Link
 {
     /**
-     * @Type("string")
+     * @var string
      */
     protected $href;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $rel;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $type;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $hreflang;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $title;
 
     /**
-     * @Type("integer")
+     * @var integer
      */
     protected $length;
 

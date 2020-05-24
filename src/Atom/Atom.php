@@ -27,80 +27,73 @@ namespace PSX\Model\Atom;
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
  * @see     http://www.ietf.org/rfc/rfc4287.txt
- * @AdditionalProperties(false)
  */
 class Atom
 {
     public static $xmlns = 'http://www.w3.org/2005/Atom';
 
     /**
-     * @Type("array")
-     * @Items(@Ref("PSX\Model\Atom\Person"))
+     * @var array<\PSX\Model\Atom\Person>
      */
     protected $author;
 
     /**
-     * @Type("array")
-     * @Items(@Ref("PSX\Model\Atom\Category"))
+     * @var array<\PSX\Model\Atom\Category>
      */
     protected $category;
 
     /**
-     * @Type("array")
-     * @Items(@Ref("PSX\Model\Atom\Person"))
+     * @var array<\PSX\Model\Atom\Person>
      */
     protected $contributor;
 
     /**
-     * @Ref("PSX\Model\Atom\Generator")
+     * @var \PSX\Model\Atom\Generator
      */
     protected $generator;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $icon;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $logo;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $id;
 
     /**
-     * @Type("array")
-     * @Items(@Ref("PSX\Model\Atom\Link"))
+     * @var array<\PSX\Model\Atom\Link>
      */
     protected $link;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $rights;
 
     /**
-     * @Ref("PSX\Model\Atom\Text")
+     * @var \PSX\Model\Atom\Text
      */
     protected $subTitle;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $title;
 
     /**
-     * @Type("string")
-     * @Format("date-time")
+     * @var \DateTime
      */
     protected $updated;
 
     /**
-     * @Type("array")
-     * @Items(@Ref("PSX\Model\Atom\Entry"))
+     * @var array<\PSX\Model\Atom\Entry>
      */
     protected $entry;
 

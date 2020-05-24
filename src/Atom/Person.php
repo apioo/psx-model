@@ -31,17 +31,17 @@ namespace PSX\Model\Atom;
 class Person
 {
     /**
-     * @Type("string")
+     * @var string
      */
     protected $name;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $uri;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $email;
 
