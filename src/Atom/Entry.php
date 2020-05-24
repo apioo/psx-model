@@ -1,250 +1,226 @@
 <?php
-/*
- * PSX is a open source PHP framework to develop RESTful APIs.
- * For the current version and informations visit <http://phpsx.org>
- *
- * Copyright 2010-2018 Christoph Kappestein <christoph.kappestein@gmail.com>
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
+declare(strict_types = 1);
 
 namespace PSX\Model\Atom;
 
-use DateTime;
 
-/**
- * Entry
- *
- * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
- * @license http://www.apache.org/licenses/LICENSE-2.0
- * @link    http://phpsx.org
- * @AdditionalProperties(false)
- */
 class Entry
 {
     /**
-     * @var array<\PSX\Model\Atom\Person>
+     * @var array<Person>
      */
     protected $author;
-
     /**
-     * @var array<\PSX\Model\Atom\Category>
+     * @var array<Category>
      */
     protected $category;
-
     /**
-     * @var \PSX\Model\Atom\Text
+     * @var Text
      */
     protected $content;
-
     /**
-     * @var array<\PSX\Model\Atom\Person>
+     * @var array<Person>
      */
     protected $contributor;
-
     /**
      * @var string
      */
     protected $id;
-
     /**
-     * @var array<\PSX\Model\Atom\Link>
+     * @var array<Link>
      */
     protected $link;
-
     /**
      * @var \DateTime
      */
     protected $published;
-
     /**
      * @var string
      */
     protected $rights;
-
     /**
-     * @var \PSX\Model\Atom\Atom
+     * @var Atom
      */
     protected $source;
-
     /**
-     * @var \PSX\Model\Atom\Text
+     * @var Text
      */
     protected $summary;
-
     /**
      * @var string
      */
     protected $title;
-
     /**
      * @var \DateTime
      */
     protected $updated;
-
-    public function addAuthor(Person $author)
-    {
-        if ($this->author === null) {
-            $this->author = array();
-        }
-
-        $this->author[] = $author;
-    }
-
-    public function setAuthor(array $author)
+    /**
+     * @param array<Person> $author
+     */
+    public function setAuthor(?array $author)
     {
         $this->author = $author;
     }
-
-    public function getAuthor()
+    /**
+     * @return array<Person>
+     */
+    public function getAuthor() : ?array
     {
         return $this->author;
     }
-
-    public function addCategory(Category $category)
-    {
-        if ($this->category === null) {
-            $this->category = array();
-        }
-
-        $this->category[] = $category;
-    }
-
-    public function setCategory(array $category)
+    /**
+     * @param array<Category> $category
+     */
+    public function setCategory(?array $category)
     {
         $this->category = $category;
     }
-
-    public function getCategory()
+    /**
+     * @return array<Category>
+     */
+    public function getCategory() : ?array
     {
         return $this->category;
     }
-
-    public function setContent(Text $content)
+    /**
+     * @param Text $content
+     */
+    public function setContent(?Text $content)
     {
         $this->content = $content;
     }
-    
-    public function getContent()
+    /**
+     * @return Text
+     */
+    public function getContent() : ?Text
     {
         return $this->content;
     }
-
-    public function addContributor(Person $contributor)
-    {
-        if ($this->contributor === null) {
-            $this->contributor = array();
-        }
-
-        $this->contributor[] = $contributor;
-    }
-
-    public function setContributor($contributor)
+    /**
+     * @param array<Person> $contributor
+     */
+    public function setContributor(?array $contributor)
     {
         $this->contributor = $contributor;
     }
-
-    public function getContributor()
+    /**
+     * @return array<Person>
+     */
+    public function getContributor() : ?array
     {
         return $this->contributor;
     }
-
-    public function setId($id)
+    /**
+     * @param string $id
+     */
+    public function setId(?string $id)
     {
         $this->id = $id;
     }
-    
-    public function getId()
+    /**
+     * @return string
+     */
+    public function getId() : ?string
     {
         return $this->id;
     }
-
-    public function setRights($rights)
-    {
-        $this->rights = $rights;
-    }
-    
-    public function getRights()
-    {
-        return $this->rights;
-    }
-
-    public function setTitle($title)
-    {
-        $this->title = $title;
-    }
-    
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    public function setPublished(DateTime $published)
-    {
-        $this->published = $published;
-    }
-    
-    public function getPublished()
-    {
-        return $this->published;
-    }
-
-    public function setUpdated(DateTime $updated)
-    {
-        $this->updated = $updated;
-    }
-    
-    public function getUpdated()
-    {
-        return $this->updated;
-    }
-
-    public function addLink(Link $link)
-    {
-        if ($this->link === null) {
-            $this->link = array();
-        }
-
-        $this->link[] = $link;
-    }
-
-    public function setLink(array $link)
+    /**
+     * @param array<Link> $link
+     */
+    public function setLink(?array $link)
     {
         $this->link = $link;
     }
-
-    public function getLink()
+    /**
+     * @return array<Link>
+     */
+    public function getLink() : ?array
     {
         return $this->link;
     }
-
-    public function setSource(Atom $source)
+    /**
+     * @param \DateTime $published
+     */
+    public function setPublished(?\DateTime $published)
+    {
+        $this->published = $published;
+    }
+    /**
+     * @return \DateTime
+     */
+    public function getPublished() : ?\DateTime
+    {
+        return $this->published;
+    }
+    /**
+     * @param string $rights
+     */
+    public function setRights(?string $rights)
+    {
+        $this->rights = $rights;
+    }
+    /**
+     * @return string
+     */
+    public function getRights() : ?string
+    {
+        return $this->rights;
+    }
+    /**
+     * @param Atom $source
+     */
+    public function setSource(?Atom $source)
     {
         $this->source = $source;
     }
-
-    public function getSource()
+    /**
+     * @return Atom
+     */
+    public function getSource() : ?Atom
     {
         return $this->source;
     }
-
-    public function setSummary(Text $summary)
+    /**
+     * @param Text $summary
+     */
+    public function setSummary(?Text $summary)
     {
         $this->summary = $summary;
     }
-    
-    public function getSummary()
+    /**
+     * @return Text
+     */
+    public function getSummary() : ?Text
     {
         return $this->summary;
+    }
+    /**
+     * @param string $title
+     */
+    public function setTitle(?string $title)
+    {
+        $this->title = $title;
+    }
+    /**
+     * @return string
+     */
+    public function getTitle() : ?string
+    {
+        return $this->title;
+    }
+    /**
+     * @param \DateTime $updated
+     */
+    public function setUpdated(?\DateTime $updated)
+    {
+        $this->updated = $updated;
+    }
+    /**
+     * @return \DateTime
+     */
+    public function getUpdated() : ?\DateTime
+    {
+        return $this->updated;
     }
 }

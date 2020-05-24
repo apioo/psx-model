@@ -1,75 +1,63 @@
 <?php
-/*
- * PSX is a open source PHP framework to develop RESTful APIs.
- * For the current version and informations visit <http://phpsx.org>
- *
- * Copyright 2010-2018 Christoph Kappestein <christoph.kappestein@gmail.com>
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
+declare(strict_types = 1);
 
 namespace PSX\Model\ActivityStream;
 
-/**
- * Position
- *
- * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
- * @license http://www.apache.org/licenses/LICENSE-2.0
- * @link    http://phpsx.org
- */
+
 class Position
 {
     /**
      * @var float
      */
     protected $altitude;
-
     /**
      * @var float
      */
     protected $latitude;
-
     /**
      * @var float
      */
     protected $longitude;
-
-    public function setAltitude($altitude)
+    /**
+     * @param float $altitude
+     */
+    public function setAltitude(?float $altitude)
     {
         $this->altitude = $altitude;
     }
-
-    public function getAltitude()
+    /**
+     * @return float
+     */
+    public function getAltitude() : ?float
     {
         return $this->altitude;
     }
-
-    public function setLatitude($latitude)
+    /**
+     * @param float $latitude
+     */
+    public function setLatitude(?float $latitude)
     {
         $this->latitude = $latitude;
     }
-
-    public function getLatitude()
+    /**
+     * @return float
+     */
+    public function getLatitude() : ?float
     {
         return $this->latitude;
     }
-
-    public function setLongitude($longitude)
+    /**
+     * @param float $longitude
+     */
+    public function setLongitude(?float $longitude)
     {
         $this->longitude = $longitude;
     }
-
-    public function getLongitude()
+    /**
+     * @return float
+     */
+    public function getLongitude() : ?float
     {
         return $this->longitude;
     }

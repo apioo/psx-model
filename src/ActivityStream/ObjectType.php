@@ -1,228 +1,244 @@
 <?php
-/*
- * PSX is a open source PHP framework to develop RESTful APIs.
- * For the current version and informations visit <http://phpsx.org>
- *
- * Copyright 2010-2018 Christoph Kappestein <christoph.kappestein@gmail.com>
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
+declare(strict_types = 1);
 
 namespace PSX\Model\ActivityStream;
 
-use DateTime;
 
-/**
- * ObjectType
- *
- * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
- * @license http://www.apache.org/licenses/LICENSE-2.0
- * @link    http://phpsx.org
- */
 class ObjectType
 {
     /**
-     * @var array<\PSX\Model\ActivityStream\ObjectType>
+     * @var array<ObjectType>
      */
     protected $attachments;
-
     /**
-     * @var \PSX\Model\ActivityStream\ObjectType
+     * @var ObjectType
      */
     protected $author;
-
     /**
      * @var string
      */
     protected $content;
-
     /**
      * @var string
      */
     protected $displayName;
-
     /**
      * @var array<string>
      */
     protected $downstreamDuplicates;
-
     /**
      * @var string
      */
     protected $id;
-
     /**
      * @var string
      */
     protected $image;
-
     /**
      * @var string
      */
     protected $objectType;
-
     /**
      * @var \DateTime
      */
     protected $published;
-
     /**
      * @var string
      */
     protected $summary;
-
     /**
      * @var \DateTime
      */
     protected $updated;
-
     /**
      * @var array<string>
      */
     protected $upstreamDuplicates;
-
     /**
      * @var string
      */
     protected $url;
-
-    public function getAttachments(): ?iterable
-    {
-        return $this->attachments;
-    }
-
-    public function setAttachments(iterable $attachments)
+    /**
+     * @param array<ObjectType> $attachments
+     */
+    public function setAttachments(?array $attachments)
     {
         $this->attachments = $attachments;
     }
-
-    public function getAuthor(): ?ObjectType
+    /**
+     * @return array<ObjectType>
+     */
+    public function getAttachments() : ?array
     {
-        return $this->author;
+        return $this->attachments;
     }
-
-    public function setAuthor(ObjectType $author)
+    /**
+     * @param ObjectType $author
+     */
+    public function setAuthor(?ObjectType $author)
     {
         $this->author = $author;
     }
-
-    public function getContent(): ?string
+    /**
+     * @return ObjectType
+     */
+    public function getAuthor() : ?ObjectType
     {
-        return $this->content;
+        return $this->author;
     }
-
-    public function setContent(string $content)
+    /**
+     * @param string $content
+     */
+    public function setContent(?string $content)
     {
         $this->content = $content;
     }
-
-    public function getDisplayName(): ?string
+    /**
+     * @return string
+     */
+    public function getContent() : ?string
     {
-        return $this->displayName;
+        return $this->content;
     }
-
-    public function setDisplayName(string $displayName)
+    /**
+     * @param string $displayName
+     */
+    public function setDisplayName(?string $displayName)
     {
         $this->displayName = $displayName;
     }
-
-    public function getDownstreamDuplicates(): ?iterable
+    /**
+     * @return string
+     */
+    public function getDisplayName() : ?string
     {
-        return $this->downstreamDuplicates;
+        return $this->displayName;
     }
-
-    public function setDownstreamDuplicates(iterable $downstreamDuplicates)
+    /**
+     * @param array<string> $downstreamDuplicates
+     */
+    public function setDownstreamDuplicates(?array $downstreamDuplicates)
     {
         $this->downstreamDuplicates = $downstreamDuplicates;
     }
-
-    public function getId(): ?string
+    /**
+     * @return array<string>
+     */
+    public function getDownstreamDuplicates() : ?array
     {
-        return $this->id;
+        return $this->downstreamDuplicates;
     }
-
-    public function setId(string $id)
+    /**
+     * @param string $id
+     */
+    public function setId(?string $id)
     {
         $this->id = $id;
     }
-
-    public function getImage(): ?string
+    /**
+     * @return string
+     */
+    public function getId() : ?string
     {
-        return $this->image;
+        return $this->id;
     }
-
-    public function setImage(string $image)
+    /**
+     * @param string $image
+     */
+    public function setImage(?string $image)
     {
         $this->image = $image;
     }
-
-    public function getObjectType(): ?string
+    /**
+     * @return string
+     */
+    public function getImage() : ?string
     {
-        return $this->objectType;
+        return $this->image;
     }
-
-    public function setObjectType(string $objectType)
+    /**
+     * @param string $objectType
+     */
+    public function setObjectType(?string $objectType)
     {
         $this->objectType = $objectType;
     }
-
-    public function getPublished(): ?DateTime
+    /**
+     * @return string
+     */
+    public function getObjectType() : ?string
     {
-        return $this->published;
+        return $this->objectType;
     }
-
-    public function setPublished(DateTime $published)
+    /**
+     * @param \DateTime $published
+     */
+    public function setPublished(?\DateTime $published)
     {
         $this->published = $published;
     }
-
-    public function getSummary(): ?string
+    /**
+     * @return \DateTime
+     */
+    public function getPublished() : ?\DateTime
     {
-        return $this->summary;
+        return $this->published;
     }
-
-    public function setSummary(string $summary)
+    /**
+     * @param string $summary
+     */
+    public function setSummary(?string $summary)
     {
         $this->summary = $summary;
     }
-
-    public function getUpdated(): ?DateTime
+    /**
+     * @return string
+     */
+    public function getSummary() : ?string
     {
-        return $this->updated;
+        return $this->summary;
     }
-
-    public function setUpdated(DateTime $updated)
+    /**
+     * @param \DateTime $updated
+     */
+    public function setUpdated(?\DateTime $updated)
     {
         $this->updated = $updated;
     }
-
-    public function getUpstreamDuplicates(): ?iterable
+    /**
+     * @return \DateTime
+     */
+    public function getUpdated() : ?\DateTime
     {
-        return $this->upstreamDuplicates;
+        return $this->updated;
     }
-
-    public function setUpstreamDuplicates(iterable $upstreamDuplicates)
+    /**
+     * @param array<string> $upstreamDuplicates
+     */
+    public function setUpstreamDuplicates(?array $upstreamDuplicates)
     {
         $this->upstreamDuplicates = $upstreamDuplicates;
     }
-
-    public function getUrl(): ?string
+    /**
+     * @return array<string>
+     */
+    public function getUpstreamDuplicates() : ?array
     {
-        return $this->url;
+        return $this->upstreamDuplicates;
     }
-
-    public function setUrl(string $url)
+    /**
+     * @param string $url
+     */
+    public function setUrl(?string $url)
     {
         $this->url = $url;
+    }
+    /**
+     * @return string
+     */
+    public function getUrl() : ?string
+    {
+        return $this->url;
     }
 }

@@ -1,340 +1,352 @@
 <?php
-/*
- * PSX is a open source PHP framework to develop RESTful APIs.
- * For the current version and informations visit <http://phpsx.org>
- *
- * Copyright 2010-2018 Christoph Kappestein <christoph.kappestein@gmail.com>
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
+declare(strict_types = 1);
 
 namespace PSX\Model\Rss;
 
-/**
- * Rss
- *
- * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
- * @license http://www.apache.org/licenses/LICENSE-2.0
- * @link    http://phpsx.org
- * @see     http://cyber.law.harvard.edu/rss/rss.html
- * @AdditionalProperties(false)
- */
+
 class Rss
 {
     /**
-     * @Type("string")
+     * @var string
      */
     protected $title;
-
     /**
-     * @Type("string")
+     * @var string
      */
     protected $link;
-
     /**
-     * @Type("string")
+     * @var string
      */
     protected $description;
-
     /**
-     * @Type("string")
+     * @var string
      */
     protected $language;
-
     /**
-     * @Type("string")
+     * @var string
      */
     protected $copyright;
-
     /**
-     * @Type("string")
+     * @var string
      */
     protected $managingEditor;
-
     /**
-     * @Type("string")
+     * @var string
      */
     protected $webMaster;
-
     /**
-     * @Type("string")
+     * @var string
      */
     protected $generator;
-
     /**
-     * @Type("string")
+     * @var string
      */
     protected $docs;
-
     /**
-     * @Type("integer")
+     * @var int
      */
     protected $ttl;
-
     /**
-     * @Type("string")
+     * @var string
      */
     protected $image;
-
     /**
-     * @Type("string")
+     * @var string
      */
     protected $rating;
-
     /**
-     * @Type("integer")
+     * @var int
      */
     protected $skipHours;
-
     /**
-     * @Type("string")
+     * @var string
      */
     protected $skipDays;
-
     /**
-     * @Type("array")
-     * @Items(@Ref("PSX\Model\Rss\Category"))
+     * @var array<Category>
      */
     protected $category;
-
     /**
-     * @Type("string")
-     * @Format("date-time")
+     * @var \DateTime
      */
     protected $pubDate;
-
     /**
-     * @Type("string")
-     * @Format("date-time")
+     * @var \DateTime
      */
     protected $lastBuildDate;
-
     /**
-     * @Ref("PSX\Model\Rss\Cloud")
+     * @var Cloud
      */
     protected $cloud;
-
     /**
-     * @Type("array")
-     * @Items(@Ref("PSX\Model\Rss\Item"))
+     * @var array<Item>
      */
     protected $item;
-
-    public function setTitle($title)
+    /**
+     * @param string $title
+     */
+    public function setTitle(?string $title)
     {
         $this->title = $title;
     }
-    
-    public function getTitle()
+    /**
+     * @return string
+     */
+    public function getTitle() : ?string
     {
         return $this->title;
     }
-
-    public function setLink($link)
+    /**
+     * @param string $link
+     */
+    public function setLink(?string $link)
     {
         $this->link = $link;
     }
-    
-    public function getLink()
+    /**
+     * @return string
+     */
+    public function getLink() : ?string
     {
         return $this->link;
     }
-
-    public function setDescription($description)
+    /**
+     * @param string $description
+     */
+    public function setDescription(?string $description)
     {
         $this->description = $description;
     }
-    
-    public function getDescription()
+    /**
+     * @return string
+     */
+    public function getDescription() : ?string
     {
         return $this->description;
     }
-
-    public function setLanguage($language)
+    /**
+     * @param string $language
+     */
+    public function setLanguage(?string $language)
     {
         $this->language = $language;
     }
-    
-    public function getLanguage()
+    /**
+     * @return string
+     */
+    public function getLanguage() : ?string
     {
         return $this->language;
     }
-
-    public function setCopyright($copyright)
+    /**
+     * @param string $copyright
+     */
+    public function setCopyright(?string $copyright)
     {
         $this->copyright = $copyright;
     }
-    
-    public function getCopyright()
+    /**
+     * @return string
+     */
+    public function getCopyright() : ?string
     {
         return $this->copyright;
     }
-
-    public function setManagingEditor($managingEditor)
+    /**
+     * @param string $managingEditor
+     */
+    public function setManagingEditor(?string $managingEditor)
     {
         $this->managingEditor = $managingEditor;
     }
-    
-    public function getManagingEditor()
+    /**
+     * @return string
+     */
+    public function getManagingEditor() : ?string
     {
         return $this->managingEditor;
     }
-
-    public function setWebMaster($webMaster)
+    /**
+     * @param string $webMaster
+     */
+    public function setWebMaster(?string $webMaster)
     {
         $this->webMaster = $webMaster;
     }
-    
-    public function getWebMaster()
+    /**
+     * @return string
+     */
+    public function getWebMaster() : ?string
     {
         return $this->webMaster;
     }
-
-    public function setGenerator($generator)
+    /**
+     * @param string $generator
+     */
+    public function setGenerator(?string $generator)
     {
         $this->generator = $generator;
     }
-    
-    public function getGenerator()
+    /**
+     * @return string
+     */
+    public function getGenerator() : ?string
     {
         return $this->generator;
     }
-
-    public function setDocs($docs)
+    /**
+     * @param string $docs
+     */
+    public function setDocs(?string $docs)
     {
         $this->docs = $docs;
     }
-    
-    public function getDocs()
+    /**
+     * @return string
+     */
+    public function getDocs() : ?string
     {
         return $this->docs;
     }
-
-    public function setTtl($ttl)
+    /**
+     * @param int $ttl
+     */
+    public function setTtl(?int $ttl)
     {
         $this->ttl = $ttl;
     }
-
-    public function getTtl()
+    /**
+     * @return int
+     */
+    public function getTtl() : ?int
     {
         return $this->ttl;
     }
-
-    public function setImage($image)
+    /**
+     * @param string $image
+     */
+    public function setImage(?string $image)
     {
         $this->image = $image;
     }
-    
-    public function getImage()
+    /**
+     * @return string
+     */
+    public function getImage() : ?string
     {
         return $this->image;
     }
-
-    public function setRating($rating)
+    /**
+     * @param string $rating
+     */
+    public function setRating(?string $rating)
     {
         $this->rating = $rating;
     }
-    
-    public function getRating()
+    /**
+     * @return string
+     */
+    public function getRating() : ?string
     {
         return $this->rating;
     }
-
-    public function setSkipHours($skipHours)
+    /**
+     * @param int $skipHours
+     */
+    public function setSkipHours(?int $skipHours)
     {
         $this->skipHours = $skipHours;
     }
-
-    public function getSkipHours()
+    /**
+     * @return int
+     */
+    public function getSkipHours() : ?int
     {
         return $this->skipHours;
     }
-
-    public function setSkipDays($skipDays)
+    /**
+     * @param string $skipDays
+     */
+    public function setSkipDays(?string $skipDays)
     {
         $this->skipDays = $skipDays;
     }
-    
-    public function getSkipDays()
+    /**
+     * @return string
+     */
+    public function getSkipDays() : ?string
     {
         return $this->skipDays;
     }
-
-    public function addCategory(Category $category)
-    {
-        if ($this->category === null) {
-            $this->category = array();
-        }
-
-        $this->category[] = $category;
-    }
-
-    public function setCategory(array $category)
+    /**
+     * @param array<Category> $category
+     */
+    public function setCategory(?array $category)
     {
         $this->category = $category;
     }
-    
-    public function getCategory()
+    /**
+     * @return array<Category>
+     */
+    public function getCategory() : ?array
     {
         return $this->category;
     }
-
-    public function setPubDate(\DateTime $pubDate)
+    /**
+     * @param \DateTime $pubDate
+     */
+    public function setPubDate(?\DateTime $pubDate)
     {
         $this->pubDate = $pubDate;
     }
-    
-    public function getPubDate()
+    /**
+     * @return \DateTime
+     */
+    public function getPubDate() : ?\DateTime
     {
         return $this->pubDate;
     }
-
-    public function setLastBuildDate(\DateTime $lastBuildDate)
+    /**
+     * @param \DateTime $lastBuildDate
+     */
+    public function setLastBuildDate(?\DateTime $lastBuildDate)
     {
         $this->lastBuildDate = $lastBuildDate;
     }
-    
-    public function getLastBuildDate()
+    /**
+     * @return \DateTime
+     */
+    public function getLastBuildDate() : ?\DateTime
     {
         return $this->lastBuildDate;
     }
-
-    public function setCloud(Cloud $cloud)
+    /**
+     * @param Cloud $cloud
+     */
+    public function setCloud(?Cloud $cloud)
     {
         $this->cloud = $cloud;
     }
-    
-    public function getCloud()
+    /**
+     * @return Cloud
+     */
+    public function getCloud() : ?Cloud
     {
         return $this->cloud;
     }
-
-    public function setItem($item)
+    /**
+     * @param array<Item> $item
+     */
+    public function setItem(?array $item)
     {
         $this->item = $item;
     }
-    
-    public function getItem()
+    /**
+     * @return array<Item>
+     */
+    public function getItem() : ?array
     {
         return $this->item;
-    }
-
-    public function addItem(Item $item)
-    {
-        if ($this->item === null) {
-            $this->item = array();
-        }
-
-        $this->item[] = $item;
     }
 }

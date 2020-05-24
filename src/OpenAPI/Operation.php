@@ -1,202 +1,186 @@
 <?php
-/*
- * PSX is a open source PHP framework to develop RESTful APIs.
- * For the current version and informations visit <http://phpsx.org>
- *
- * Copyright 2010-2018 Christoph Kappestein <christoph.kappestein@gmail.com>
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
+declare(strict_types = 1);
 
 namespace PSX\Model\OpenAPI;
 
 /**
- * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
- * @license http://www.apache.org/licenses/LICENSE-2.0
- * @link    http://phpsx.org
- * @Title("Operation")
  * @Description("Describes a single API operation on a path.")
  * @Required({"responses"})
  */
 class Operation
 {
     /**
-     * @Key("tags")
-     * @UniqueItems(true)
      * @var array<string>
+     * @UniqueItems(true)
      */
     protected $tags;
-    
     /**
-     * @Key("summary")
      * @var string
      */
     protected $summary;
-    
     /**
-     * @Key("description")
      * @var string
      */
     protected $description;
-    
     /**
-     * @Key("externalDocs")
-     * @var \PSX\Model\OpenAPI\ExternalDocs
+     * @var ExternalDocs
      */
     protected $externalDocs;
-    
     /**
-     * @Key("operationId")
      * @var string
      */
     protected $operationId;
-    
     /**
-     * @Key("parameters")
+     * @var array<Parameter|Reference>
      * @UniqueItems(true)
-     * @var array<\PSX\Model\OpenAPI\Parameter|\PSX\Model\OpenAPI\Reference>
      */
     protected $parameters;
-    
     /**
-     * @Key("requestBody")
-     * @var \PSX\Model\OpenAPI\RequestBody|\PSX\Model\OpenAPI\Reference
+     * @var RequestBody|Reference
      */
     protected $requestBody;
-    
     /**
-     * @Key("responses")
-     * @var \PSX\Model\OpenAPI\Responses
+     * @var Responses
      */
     protected $responses;
-    
     /**
-     * @Key("callbacks")
-     * @var \PSX\Model\OpenAPI\Callback|\PSX\Model\OpenAPI\Reference
+     * @var Callback|Reference
      */
     protected $callbacks;
-    
     /**
-     * @Key("deprecated")
-     * @var boolean
+     * @var bool
      */
     protected $deprecated;
-    
     /**
-     * @Key("security")
+     * @var array<SecurityRequirement>
      * @UniqueItems(true)
-     * @var array<\PSX\Model\OpenAPI\SecurityRequirement>
      */
     protected $security;
-    
     /**
-     * @Key("servers")
+     * @var array<Server>
      * @UniqueItems(true)
-     * @var array<\PSX\Model\OpenAPI\Server>
      */
     protected $servers;
-
-    public function setTags(array $tags)
+    /**
+     * @param array<string> $tags
+     */
+    public function setTags(?array $tags)
     {
         $this->tags = $tags;
     }
-
-    public function getTags(): ?array
+    /**
+     * @return array<string>
+     */
+    public function getTags() : ?array
     {
         return $this->tags;
     }
-
-    public function setSummary(string $summary)
+    /**
+     * @param string $summary
+     */
+    public function setSummary(?string $summary)
     {
         $this->summary = $summary;
     }
-
-    public function getSummary(): ?string
+    /**
+     * @return string
+     */
+    public function getSummary() : ?string
     {
         return $this->summary;
     }
-
-    public function setDescription(string $description)
+    /**
+     * @param string $description
+     */
+    public function setDescription(?string $description)
     {
         $this->description = $description;
     }
-
-    public function getDescription(): ?string
+    /**
+     * @return string
+     */
+    public function getDescription() : ?string
     {
         return $this->description;
     }
-
-    public function setExternalDocs(ExternalDocs $externalDocs)
+    /**
+     * @param ExternalDocs $externalDocs
+     */
+    public function setExternalDocs(?ExternalDocs $externalDocs)
     {
         $this->externalDocs = $externalDocs;
     }
-
-    public function getExternalDocs(): ?ExternalDocs
+    /**
+     * @return ExternalDocs
+     */
+    public function getExternalDocs() : ?ExternalDocs
     {
         return $this->externalDocs;
     }
-
-    public function setOperationId(string $operationId)
+    /**
+     * @param string $operationId
+     */
+    public function setOperationId(?string $operationId)
     {
         $this->operationId = $operationId;
     }
-
-    public function getOperationId(): ?string
+    /**
+     * @return string
+     */
+    public function getOperationId() : ?string
     {
         return $this->operationId;
     }
-
-    public function setParameters($parameters)
+    /**
+     * @param array<Parameter|Reference> $parameters
+     */
+    public function setParameters(?array $parameters)
     {
         $this->parameters = $parameters;
     }
-
     /**
-     * @return array
+     * @return array<Parameter|Reference>
      */
-    public function getParameters()
+    public function getParameters() : ?array
     {
         return $this->parameters;
     }
-
+    /**
+     * @param RequestBody|Reference $requestBody
+     */
     public function setRequestBody($requestBody)
     {
         $this->requestBody = $requestBody;
     }
-
     /**
-     * @return Reference|RequestBody
+     * @return RequestBody|Reference
      */
     public function getRequestBody()
     {
         return $this->requestBody;
     }
-
-    public function setResponses(Responses $responses)
+    /**
+     * @param Responses $responses
+     */
+    public function setResponses(?Responses $responses)
     {
         $this->responses = $responses;
     }
-
-    public function getResponses(): ?Responses
+    /**
+     * @return Responses
+     */
+    public function getResponses() : ?Responses
     {
         return $this->responses;
     }
-
+    /**
+     * @param Callback|Reference $callbacks
+     */
     public function setCallbacks($callbacks)
     {
         $this->callbacks = $callbacks;
     }
-
     /**
      * @return Callback|Reference
      */
@@ -204,33 +188,45 @@ class Operation
     {
         return $this->callbacks;
     }
-
-    public function setDeprecated(bool $deprecated)
+    /**
+     * @param bool $deprecated
+     */
+    public function setDeprecated(?bool $deprecated)
     {
         $this->deprecated = $deprecated;
     }
-
-    public function getDeprecated(): ?bool
+    /**
+     * @return bool
+     */
+    public function getDeprecated() : ?bool
     {
         return $this->deprecated;
     }
-
-    public function setSecurity(iterable $security)
+    /**
+     * @param array<SecurityRequirement> $security
+     */
+    public function setSecurity(?array $security)
     {
         $this->security = $security;
     }
-
-    public function getSecurity(): ?iterable
+    /**
+     * @return array<SecurityRequirement>
+     */
+    public function getSecurity() : ?array
     {
         return $this->security;
     }
-
-    public function setServers(iterable $servers)
+    /**
+     * @param array<Server> $servers
+     */
+    public function setServers(?array $servers)
     {
         $this->servers = $servers;
     }
-
-    public function getServers(): ?iterable
+    /**
+     * @return array<Server>
+     */
+    public function getServers() : ?array
     {
         return $this->servers;
     }

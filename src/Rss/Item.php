@@ -1,192 +1,189 @@
 <?php
-/*
- * PSX is a open source PHP framework to develop RESTful APIs.
- * For the current version and informations visit <http://phpsx.org>
- *
- * Copyright 2010-2018 Christoph Kappestein <christoph.kappestein@gmail.com>
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
+declare(strict_types = 1);
 
 namespace PSX\Model\Rss;
 
-/**
- * Item
- *
- * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
- * @license http://www.apache.org/licenses/LICENSE-2.0
- * @link    http://phpsx.org
- * @AdditionalProperties(false)
- */
+
 class Item
 {
     /**
-     * @Type("string")
+     * @var string
      */
     protected $title;
-
     /**
-     * @Type("string")
+     * @var string
      */
     protected $link;
-
     /**
-     * @Type("string")
+     * @var string
      */
     protected $description;
-
     /**
-     * @Type("string")
+     * @var string
      */
     protected $author;
-
     /**
-     * @Type("array")
-     * @Items(@Ref("PSX\Model\Rss\Category"))
+     * @var array<Category>
      */
     protected $category;
-
     /**
-     * @Type("string")
+     * @var string
      */
     protected $comments;
-
     /**
-     * @Ref("PSX\Model\Rss\Enclosure")
+     * @var Enclosure
      */
     protected $enclosure;
-
     /**
-     * @Type("string")
+     * @var string
      */
     protected $guid;
-
     /**
-     * @Type("string")
-     * @Format("date-time")
+     * @var \DateTime
      */
     protected $pubDate;
-
     /**
-     * @Ref("PSX\Model\Rss\Source")
+     * @var Source
      */
     protected $source;
-
-    public function setTitle($title)
+    /**
+     * @param string $title
+     */
+    public function setTitle(?string $title)
     {
         $this->title = $title;
     }
-    
-    public function getTitle()
+    /**
+     * @return string
+     */
+    public function getTitle() : ?string
     {
         return $this->title;
     }
-
-    public function setLink($link)
+    /**
+     * @param string $link
+     */
+    public function setLink(?string $link)
     {
         $this->link = $link;
     }
-    
-    public function getLink()
+    /**
+     * @return string
+     */
+    public function getLink() : ?string
     {
         return $this->link;
     }
-
-    public function setDescription($description)
+    /**
+     * @param string $description
+     */
+    public function setDescription(?string $description)
     {
         $this->description = $description;
     }
-    
-    public function getDescription()
+    /**
+     * @return string
+     */
+    public function getDescription() : ?string
     {
         return $this->description;
     }
-
-    public function setAuthor($author)
+    /**
+     * @param string $author
+     */
+    public function setAuthor(?string $author)
     {
         $this->author = $author;
     }
-    
-    public function getAuthor()
+    /**
+     * @return string
+     */
+    public function getAuthor() : ?string
     {
         return $this->author;
     }
-
-    public function addCategory(Category $category)
-    {
-        if ($this->category === null) {
-            $this->category = array();
-        }
-
-        $this->category[] = $category;
-    }
-
-    public function setCategory(array $category)
+    /**
+     * @param array<Category> $category
+     */
+    public function setCategory(?array $category)
     {
         $this->category = $category;
     }
-    
-    public function getCategory()
+    /**
+     * @return array<Category>
+     */
+    public function getCategory() : ?array
     {
         return $this->category;
     }
-
-    public function setComments($comments)
+    /**
+     * @param string $comments
+     */
+    public function setComments(?string $comments)
     {
         $this->comments = $comments;
     }
-    
-    public function getComments()
+    /**
+     * @return string
+     */
+    public function getComments() : ?string
     {
         return $this->comments;
     }
-
-    public function setEnclosure(Enclosure $enclosure)
+    /**
+     * @param Enclosure $enclosure
+     */
+    public function setEnclosure(?Enclosure $enclosure)
     {
         $this->enclosure = $enclosure;
     }
-    
-    public function getEnclosure()
+    /**
+     * @return Enclosure
+     */
+    public function getEnclosure() : ?Enclosure
     {
         return $this->enclosure;
     }
-
-    public function setGuid($guid)
+    /**
+     * @param string $guid
+     */
+    public function setGuid(?string $guid)
     {
         $this->guid = $guid;
     }
-    
-    public function getGuid()
+    /**
+     * @return string
+     */
+    public function getGuid() : ?string
     {
         return $this->guid;
     }
-
-    public function setPubDate(\DateTime $pubDate)
+    /**
+     * @param \DateTime $pubDate
+     */
+    public function setPubDate(?\DateTime $pubDate)
     {
         $this->pubDate = $pubDate;
     }
-    
-    public function getPubDate()
+    /**
+     * @return \DateTime
+     */
+    public function getPubDate() : ?\DateTime
     {
         return $this->pubDate;
     }
-
-    public function setSource(Source $source)
+    /**
+     * @param Source $source
+     */
+    public function setSource(?Source $source)
     {
         $this->source = $source;
     }
-    
-    public function getSource()
+    /**
+     * @return Source
+     */
+    public function getSource() : ?Source
     {
         return $this->source;
     }

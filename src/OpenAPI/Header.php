@@ -1,205 +1,209 @@
 <?php
-/*
- * PSX is a open source PHP framework to develop RESTful APIs.
- * For the current version and informations visit <http://phpsx.org>
- *
- * Copyright 2010-2018 Christoph Kappestein <christoph.kappestein@gmail.com>
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
+declare(strict_types = 1);
 
 namespace PSX\Model\OpenAPI;
 
 /**
- * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
- * @license http://www.apache.org/licenses/LICENSE-2.0
- * @link    http://phpsx.org
- * @Title("Header")
  * @Description("The Header Object follows the structure of the Parameter Object with the following changes:  1. `name` MUST NOT be specified, it is given in the corresponding `headers` map. 1. `in` MUST NOT be specified, it is implicitly in `header`. 1. All traits that are affected by the location MUST be applicable to a location of `header` (for example, `style`).")
  */
 class Header
 {
     /**
-     * @Key("description")
      * @var string
      */
     protected $description;
-    
     /**
-     * @Key("required")
-     * @var boolean
+     * @var bool
      */
     protected $required;
-    
     /**
-     * @Key("deprecated")
-     * @var boolean
+     * @var bool
      */
     protected $deprecated;
-    
     /**
-     * @Key("allowEmptyValue")
-     * @var boolean
+     * @var bool
      */
     protected $allowEmptyValue;
-    
     /**
-     * @Key("style")
      * @var string
      */
     protected $style;
-    
     /**
-     * @Key("explode")
-     * @var boolean
+     * @var bool
      */
     protected $explode;
-    
     /**
-     * @Key("allowReserved")
-     * @var boolean
+     * @var bool
      */
     protected $allowReserved;
-    
     /**
-     * @Key("schema")
-     * @var object
+     * @var mixed
      */
     protected $schema;
-    
     /**
-     * @Key("example")
+     * @var mixed
      */
     protected $example;
-    
     /**
-     * @Key("examples")
-     * @var \PSX\Model\OpenAPI\Example|\PSX\Model\OpenAPI\Reference
+     * @var Examples
      */
     protected $examples;
-    
     /**
-     * @Key("content")
-     * @var \PSX\Model\OpenAPI\MediaTypes
+     * @var MediaTypes
      */
     protected $content;
-
-    public function setDescription(string $description)
+    /**
+     * @param string $description
+     */
+    public function setDescription(?string $description)
     {
         $this->description = $description;
     }
-
-    public function getDescription(): ?string
+    /**
+     * @return string
+     */
+    public function getDescription() : ?string
     {
         return $this->description;
     }
-
-    public function setRequired(bool $required)
+    /**
+     * @param bool $required
+     */
+    public function setRequired(?bool $required)
     {
         $this->required = $required;
     }
-
-    public function getRequired(): ?bool
+    /**
+     * @return bool
+     */
+    public function getRequired() : ?bool
     {
         return $this->required;
     }
-
-    public function setDeprecated(bool $deprecated)
+    /**
+     * @param bool $deprecated
+     */
+    public function setDeprecated(?bool $deprecated)
     {
         $this->deprecated = $deprecated;
     }
-
-    public function getDeprecated(): ?bool
+    /**
+     * @return bool
+     */
+    public function getDeprecated() : ?bool
     {
         return $this->deprecated;
     }
-
-    public function setAllowEmptyValue(bool $allowEmptyValue)
+    /**
+     * @param bool $allowEmptyValue
+     */
+    public function setAllowEmptyValue(?bool $allowEmptyValue)
     {
         $this->allowEmptyValue = $allowEmptyValue;
     }
-
-    public function getAllowEmptyValue(): ?bool
+    /**
+     * @return bool
+     */
+    public function getAllowEmptyValue() : ?bool
     {
         return $this->allowEmptyValue;
     }
-
-    public function setStyle(string $style)
+    /**
+     * @param string $style
+     */
+    public function setStyle(?string $style)
     {
         $this->style = $style;
     }
-
-    public function getStyle(): ?string
+    /**
+     * @return string
+     */
+    public function getStyle() : ?string
     {
         return $this->style;
     }
-
-    public function setExplode(bool $explode)
+    /**
+     * @param bool $explode
+     */
+    public function setExplode(?bool $explode)
     {
         $this->explode = $explode;
     }
-
-    public function getExplode(): ?bool
+    /**
+     * @return bool
+     */
+    public function getExplode() : ?bool
     {
         return $this->explode;
     }
-
-    public function setAllowReserved(bool $allowReserved)
+    /**
+     * @param bool $allowReserved
+     */
+    public function setAllowReserved(?bool $allowReserved)
     {
         $this->allowReserved = $allowReserved;
     }
-
-    public function getAllowReserved(): ?bool
+    /**
+     * @return bool
+     */
+    public function getAllowReserved() : ?bool
     {
         return $this->allowReserved;
     }
-
+    /**
+     * @param mixed $schema
+     */
     public function setSchema($schema)
     {
         $this->schema = $schema;
     }
-
+    /**
+     * @return mixed
+     */
     public function getSchema()
     {
         return $this->schema;
     }
-
+    /**
+     * @param mixed $example
+     */
     public function setExample($example)
     {
         $this->example = $example;
     }
-
+    /**
+     * @return mixed
+     */
     public function getExample()
     {
         return $this->example;
     }
-
-    public function setExamples($examples)
+    /**
+     * @param Examples $examples
+     */
+    public function setExamples(?Examples $examples)
     {
         $this->examples = $examples;
     }
-
-    public function getExamples()
+    /**
+     * @return Examples
+     */
+    public function getExamples() : ?Examples
     {
         return $this->examples;
     }
-
-    public function setContent(MediaTypes $content)
+    /**
+     * @param MediaTypes $content
+     */
+    public function setContent(?MediaTypes $content)
     {
         $this->content = $content;
     }
-
-    public function getContent(): ?MediaTypes
+    /**
+     * @return MediaTypes
+     */
+    public function getContent() : ?MediaTypes
     {
         return $this->content;
     }

@@ -1,91 +1,63 @@
 <?php
-/*
- * PSX is a open source PHP framework to develop RESTful APIs.
- * For the current version and informations visit <http://phpsx.org>
- *
- * Copyright 2010-2018 Christoph Kappestein <christoph.kappestein@gmail.com>
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
+declare(strict_types = 1);
 
 namespace PSX\Model\Atom;
 
-/**
- * Category
- *
- * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
- * @license http://www.apache.org/licenses/LICENSE-2.0
- * @link    http://phpsx.org
- * @AdditionalProperties(false)
- */
+
 class Category
 {
     /**
      * @var string
      */
     protected $term;
-
     /**
      * @var string
      */
     protected $scheme;
-
     /**
      * @var string
      */
     protected $label;
-
-    public function __construct($term = null, $scheme = null, $label = null)
-    {
-        if ($term !== null) {
-            $this->setTerm($term);
-        }
-
-        if ($scheme !== null) {
-            $this->setScheme($scheme);
-        }
-
-        if ($label !== null) {
-            $this->setLabel($label);
-        }
-    }
-
-    public function setTerm($term)
+    /**
+     * @param string $term
+     */
+    public function setTerm(?string $term)
     {
         $this->term = $term;
     }
-    
-    public function getTerm()
+    /**
+     * @return string
+     */
+    public function getTerm() : ?string
     {
         return $this->term;
     }
-
-    public function setScheme($scheme)
+    /**
+     * @param string $scheme
+     */
+    public function setScheme(?string $scheme)
     {
         $this->scheme = $scheme;
     }
-    
-    public function getScheme()
+    /**
+     * @return string
+     */
+    public function getScheme() : ?string
     {
         return $this->scheme;
     }
-
-    public function setLabel($label)
+    /**
+     * @param string $label
+     */
+    public function setLabel(?string $label)
     {
         $this->label = $label;
     }
-    
-    public function getLabel()
+    /**
+     * @return string
+     */
+    public function getLabel() : ?string
     {
         return $this->label;
     }

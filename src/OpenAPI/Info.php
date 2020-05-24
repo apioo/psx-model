@@ -1,127 +1,120 @@
 <?php
-/*
- * PSX is a open source PHP framework to develop RESTful APIs.
- * For the current version and informations visit <http://phpsx.org>
- *
- * Copyright 2010-2018 Christoph Kappestein <christoph.kappestein@gmail.com>
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
+declare(strict_types = 1);
 
 namespace PSX\Model\OpenAPI;
 
 /**
- * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
- * @license http://www.apache.org/licenses/LICENSE-2.0
- * @link    http://phpsx.org
- * @Title("Info")
  * @Description("The object provides metadata about the API. The metadata can be used by the clients if needed, and can be presented in editing or documentation generation tools for convenience.")
  * @Required({"title", "version"})
  */
 class Info
 {
     /**
-     * @Key("title")
      * @var string
      */
     protected $title;
-
     /**
-     * @Key("description")
      * @var string
      */
     protected $description;
-
     /**
-     * @Key("termsOfService")
      * @var string
      */
     protected $termsOfService;
-
     /**
-     * @Key("contact")
-     * @var \PSX\Model\OpenAPI\Contact
+     * @var Contact
      */
     protected $contact;
-
     /**
-     * @Key("license")
-     * @var \PSX\Model\OpenAPI\License
+     * @var License
      */
     protected $license;
-
     /**
-     * @Key("version")
      * @var string
      */
     protected $version;
-
-    public function setTitle(string $title)
+    /**
+     * @param string $title
+     */
+    public function setTitle(?string $title)
     {
         $this->title = $title;
     }
-
-    public function getTitle(): ?string
+    /**
+     * @return string
+     */
+    public function getTitle() : ?string
     {
         return $this->title;
     }
-
-    public function setDescription(string $description)
+    /**
+     * @param string $description
+     */
+    public function setDescription(?string $description)
     {
         $this->description = $description;
     }
-
-    public function getDescription(): ?string
+    /**
+     * @return string
+     */
+    public function getDescription() : ?string
     {
         return $this->description;
     }
-
-    public function setTermsOfService(string $termsOfService)
+    /**
+     * @param string $termsOfService
+     */
+    public function setTermsOfService(?string $termsOfService)
     {
         $this->termsOfService = $termsOfService;
     }
-
-    public function getTermsOfService(): ?string
+    /**
+     * @return string
+     */
+    public function getTermsOfService() : ?string
     {
         return $this->termsOfService;
     }
-
-    public function setContact(Contact $contact)
+    /**
+     * @param Contact $contact
+     */
+    public function setContact(?Contact $contact)
     {
         $this->contact = $contact;
     }
-
-    public function getContact(): ?Contact
+    /**
+     * @return Contact
+     */
+    public function getContact() : ?Contact
     {
         return $this->contact;
     }
-
-    public function setLicense(License $license)
+    /**
+     * @param License $license
+     */
+    public function setLicense(?License $license)
     {
         $this->license = $license;
     }
-
-    public function getLicense(): ?License
+    /**
+     * @return License
+     */
+    public function getLicense() : ?License
     {
         return $this->license;
     }
-
-    public function setVersion(string $version)
+    /**
+     * @param string $version
+     */
+    public function setVersion(?string $version)
     {
         $this->version = $version;
     }
-
-    public function getVersion(): ?string
+    /**
+     * @return string
+     */
+    public function getVersion() : ?string
     {
         return $this->version;
     }

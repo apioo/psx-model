@@ -1,148 +1,117 @@
 <?php
-/*
- * PSX is a open source PHP framework to develop RESTful APIs.
- * For the current version and informations visit <http://phpsx.org>
- *
- * Copyright 2010-2018 Christoph Kappestein <christoph.kappestein@gmail.com>
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
+declare(strict_types = 1);
 
 namespace PSX\Model\Atom;
 
-/**
- * Link
- *
- * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
- * @license http://www.apache.org/licenses/LICENSE-2.0
- * @link    http://phpsx.org
- * @AdditionalProperties(false)
- */
+
 class Link
 {
     /**
      * @var string
      */
     protected $href;
-
     /**
      * @var string
      */
     protected $rel;
-
     /**
      * @var string
      */
     protected $type;
-
     /**
      * @var string
      */
     protected $hreflang;
-
     /**
      * @var string
      */
     protected $title;
-
     /**
-     * @var integer
+     * @var int
      */
     protected $length;
-
-    public function __construct($href = null, $rel = null, $type = null, $hreflang = null, $title = null, $length = null)
-    {
-        if ($href !== null) {
-            $this->setHref($href);
-        }
-
-        if ($rel !== null) {
-            $this->setRel($rel);
-        }
-
-        if ($type !== null) {
-            $this->setType($type);
-        }
-
-        if ($hreflang !== null) {
-            $this->setHrefLang($hreflang);
-        }
-
-        if ($title !== null) {
-            $this->setTitle($title);
-        }
-
-        if ($length !== null) {
-            $this->setLength($length);
-        }
-    }
-
-    public function setHref($href)
+    /**
+     * @param string $href
+     */
+    public function setHref(?string $href)
     {
         $this->href = $href;
     }
-    
-    public function getHref()
+    /**
+     * @return string
+     */
+    public function getHref() : ?string
     {
         return $this->href;
     }
-
-    public function setRel($rel)
+    /**
+     * @param string $rel
+     */
+    public function setRel(?string $rel)
     {
         $this->rel = $rel;
     }
-    
-    public function getRel()
+    /**
+     * @return string
+     */
+    public function getRel() : ?string
     {
         return $this->rel;
     }
-
-    public function setType($type)
+    /**
+     * @param string $type
+     */
+    public function setType(?string $type)
     {
         $this->type = $type;
     }
-    
-    public function getType()
+    /**
+     * @return string
+     */
+    public function getType() : ?string
     {
         return $this->type;
     }
-
-    public function setHreflang($hreflang)
+    /**
+     * @param string $hreflang
+     */
+    public function setHreflang(?string $hreflang)
     {
         $this->hreflang = $hreflang;
     }
-    
-    public function getHreflang()
+    /**
+     * @return string
+     */
+    public function getHreflang() : ?string
     {
         return $this->hreflang;
     }
-
-    public function setTitle($title)
+    /**
+     * @param string $title
+     */
+    public function setTitle(?string $title)
     {
         $this->title = $title;
     }
-    
-    public function getTitle()
+    /**
+     * @return string
+     */
+    public function getTitle() : ?string
     {
         return $this->title;
     }
-
-    public function setLength($length)
+    /**
+     * @param int $length
+     */
+    public function setLength(?int $length)
     {
         $this->length = $length;
     }
-    
-    public function getLength()
+    /**
+     * @return int
+     */
+    public function getLength() : ?int
     {
         return $this->length;
     }
