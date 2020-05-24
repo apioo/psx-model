@@ -53,23 +53,7 @@ class ObjectTest extends TestCase
 
         $dumper = new Dumper();
         $actual = json_encode($dumper->dump($object), JSON_PRETTY_PRINT);
-        $expect = <<<JSON
-{
-  "id": "1",
-  "objectType": "person",
-  "displayName": "foo",
-  "url": "http://localhost.com",
-  "author": {
-    "objectType": "person",
-    "displayName": "Laura"
-  },
-  "content": "foobar",
-  "image": "http://localhost.com/image.png",
-  "published": "2012-12-12T12:00:00Z",
-  "summary": "foobar",
-  "updated": "2012-12-12T12:00:00Z"
-}
-JSON;
+        $expect = file_get_contents(__DIR__ . '/resource/object.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);
     }

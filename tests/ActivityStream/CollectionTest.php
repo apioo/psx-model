@@ -58,22 +58,7 @@ class CollectionTest extends TestCase
 
         $dumper = new Dumper();
         $actual = json_encode($dumper->dump($collection), JSON_PRETTY_PRINT);
-        $expect = <<<JSON
-{
-  "totalItems": 4,
-  "items": [{
-    "id": "f8f0e93f-e462-4ede-92cc-f6e8a1b7eb36",
-    "content": "This was my first comment",
-    "objectType": "activity",
-    "updated": "2011-11-21T15:13:59Z"
-  },{
-    "id": "5369ea82-d791-46cb-a87a-3696ff90d8f3",
-    "content": "This was another comment",
-    "objectType": "activity",
-    "updated": "2011-11-21T15:14:06Z"
-  }]
-}
-JSON;
+        $expect = file_get_contents(__DIR__ . '/resource/collection.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);
     }

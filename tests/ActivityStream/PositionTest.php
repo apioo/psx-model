@@ -42,13 +42,7 @@ class PositionTest extends TestCase
 
         $dumper = new Dumper();
         $actual = json_encode($dumper->dump($position), JSON_PRETTY_PRINT);
-        $expect = <<<JSON
-{
-  "latitude": 34.34,
-  "longitude": -127.23,
-  "altitude": 100.05
-}
-JSON;
+        $expect = file_get_contents(__DIR__ . '/resource/position.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);
     }

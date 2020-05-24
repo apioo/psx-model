@@ -45,16 +45,7 @@ class AddressTest extends TestCase
 
         $dumper = new Dumper();
         $actual = json_encode($dumper->dump($address), JSON_PRETTY_PRINT);
-        $expect = <<<JSON
-{
-  "formatted": "111 North First Street, New York, NY 11111",
-  "streetAddress": "111 North First Street",
-  "locality": "New York",
-  "region": "NY",
-  "postalCode": "11111",
-  "country": "US"
-}
-JSON;
+        $expect = file_get_contents(__DIR__ . '/resource/address.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);
     }

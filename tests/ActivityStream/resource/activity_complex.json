@@ -1,0 +1,35 @@
+{
+  "totalItems": 1,
+  "items": [{
+    "objectType": "activity",
+    "verb": "post",
+    "published": "2011-02-10T15:04:55Z",
+    "displayName": "Martin posted a new video to his album.",
+    "generator": {
+      "url": "http://example.org/activities-app"
+    },
+    "provider": {
+      "url": "http://example.org/activity-stream"
+    },
+    "actor": {
+      "objectType": "person",
+      "id": "urn:example:person:martin",
+      "displayName": "Martin Smith",
+      "url": "http://example.org/martin",
+      "image": "http://example.org/martin/image"
+    },
+    "object": {
+      "objectType": "photo",
+      "id": "urn:example:album:abc123/my_fluffy_cat",
+      "url": "http://example.org/album/my_fluffy_cat.jpg",
+      "image": "http://example.org/album/my_fluffy_cat_thumb.jpg"
+    },
+    "target": {
+      "objectType": "photo-album",
+      "id": "urn:example.org:album:abc123",
+      "url": "http://example.org/album/",
+      "displayName": "Grianghraif Mairtin",
+      "image": "http://example.org/album/thumbnail.jpg"
+    }
+  }]
+}

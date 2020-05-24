@@ -62,30 +62,7 @@ class ActivityStreamTest extends TestCase
 
         $dumper = new Dumper();
         $actual = json_encode($dumper->dump($activity), JSON_PRETTY_PRINT);
-        $expect = <<<'JSON'
-{
-    "actor": {
-        "displayName": "Martin Smith",
-        "id": "tag:example.org,2011:martin",
-        "image": "http:\/\/example.org\/martin\/image",
-        "objectType": "person",
-        "url": "http:\/\/example.org\/martin"
-    },
-    "object": {
-        "id": "tag:example.org,2011:abc123\/xyz",
-        "url": "http:\/\/example.org\/blog\/2011\/02\/entry"
-    },
-    "published": "2016-12-15T21:54:00Z",
-    "target": {
-        "displayName": "Martin's Blog",
-        "id": "tag:example.org,2011:abc123",
-        "objectType": "blog",
-        "url": "http:\/\/example.org\/blog\/"
-    },
-    "verb": "post",
-    "objectType": "activity"
-}
-JSON;
+        $expect = file_get_contents(__DIR__ . '/resource/activity_stream.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);
     }

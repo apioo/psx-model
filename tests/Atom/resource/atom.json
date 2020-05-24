@@ -1,0 +1,93 @@
+{
+  "author": [
+    {
+      "name": "foobar",
+      "uri": "http:\/\/foo.com",
+      "email": "foo@bar.com"
+    }
+  ],
+  "category": [
+    {
+      "term": "foobar",
+      "scheme": "http:\/\/foo.com",
+      "label": "Foobar"
+    }
+  ],
+  "contributor": [
+    {
+      "name": "foobar",
+      "uri": "http:\/\/foo.com",
+      "email": "foo@bar.com"
+    }
+  ],
+  "generator": {
+    "text": "foobar",
+    "uri": "http:\/\/foo.com",
+    "version": "1.0"
+  },
+  "icon": "http:\/\/localhost.com\/icon.png",
+  "logo": "http:\/\/localhost.com\/logo.png",
+  "id": "http:\/\/localhost.com#1",
+  "link": [
+    {
+      "href": "http:\/\/localhost.com",
+      "rel": "me",
+      "type": "application\/xml",
+      "hreflang": "en",
+      "title": "Foobar",
+      "length": 1337
+    }
+  ],
+  "rights": "foo",
+  "subTitle": {
+    "content": "foobar"
+  },
+  "title": "Foo has bar",
+  "updated": "2003-06-10T04:00:00Z",
+  "entry": [
+    {
+      "author": [
+        {
+          "name": "foobar",
+          "uri": "http:\/\/foo.com",
+          "email": "foo@bar.com"
+        }
+      ],
+      "category": [
+        {
+          "term": "foobar",
+          "scheme": "http:\/\/foo.com",
+          "label": "Foobar"
+        }
+      ],
+      "content": {
+        "content": "foobar"
+      },
+      "contributor": [
+        {
+          "name": "foobar",
+          "uri": "http:\/\/foo.com",
+          "email": "foo@bar.com"
+        }
+      ],
+      "id": "http:\/\/localhost.com#1",
+      "link": [
+        {
+          "href": "http:\/\/localhost.com",
+          "rel": "me",
+          "type": "application\/xml",
+          "hreflang": "en",
+          "title": "Foobar",
+          "length": 1337
+        }
+      ],
+      "published": "2003-06-10T04:00:00Z",
+      "rights": "foo",
+      "summary": {
+        "content": "foobar"
+      },
+      "title": "Star City",
+      "updated": "2003-06-10T04:00:00Z"
+    }
+  ]
+}

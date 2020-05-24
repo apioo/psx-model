@@ -76,29 +76,7 @@ class IBMBusinessProcessManagerTest extends TestCase
 
         $dumper = new Dumper();
         $actual = json_encode($dumper->dump($collection), JSON_PRETTY_PRINT);
-        $expect = <<<'JSON'
-{
-    "totalItems":1,
-    "items":[
-        {
-            "objectType": "activity",
-            "actor":{
-                "displayName":"Internal TW Admin user",
-                "id":"tw_admin",
-                "objectType":"PERSON"
-            },
-            "content":"Internal TW Admin user completed the task titled Task: Submit requisition and associated with the Submit job requisition activity.",
-            "object":{
-                "displayName":"Task: Submit requisition",
-                "id":"2078.3",
-                "objectType":"ibm.bpm.task"
-            },
-            "published":"2012-01-09T09:58:00Z",
-            "verb":"POST"
-        }
-    ]
-}
-JSON;
+        $expect = file_get_contents(__DIR__ . '/../resource/ibm_process.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);
     }

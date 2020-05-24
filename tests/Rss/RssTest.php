@@ -40,17 +40,36 @@ class RssTest extends TestCase
 {
     public function testModel()
     {
+        $category = new Category();
+        $category->setText('Newspapers');
+        
+        $enclosure = new Enclosure();
+        $enclosure->setUrl('http://www.scripting.com/mp3s/weatherReportSuite.mp3');
+        $enclosure->setLength(12216320);
+        $enclosure->setType('audio/mpeg');
+
+        $source = new Source();
+        $source->setText('Tomalak\'s Realm');
+        $source->setUrl('http://www.tomalak.org/links2.xml');
+
         $item = new Item();
         $item->setTitle('Star City');
         $item->setLink('http://liftoff.msfc.nasa.gov/news/2003/news-starcity.asp');
         $item->setDescription('How do Americans get ready to work with Russians aboard the International Space Station? They take a crash course in culture, language and protocol at Russia\'s <a href="http://howe.iki.rssi.ru/GCTC/gctc_e.htm">Star City</a>.');
         $item->setAuthor('foobar');
-        $item->addCategory(new Category('Newspapers'));
+        $item->setCategory([$category]);
         $item->setComments('http://localhost.com#comments');
-        $item->setEnclosure(new Enclosure('http://www.scripting.com/mp3s/weatherReportSuite.mp3', 12216320, 'audio/mpeg'));
+        $item->setEnclosure($enclosure);
         $item->setGuid('http://liftoff.msfc.nasa.gov/2003/06/03.html#item573');
         $item->setPubDate(new \DateTime('Tue, 03 Jun 2003 09:39:21 GMT'));
-        $item->setSource(new Source('Tomalak\'s Realm', 'http://www.tomalak.org/links2.xml'));
+        $item->setSource($source);
+
+        $cloud = new Cloud();
+        $cloud->setDomain('rpc.sys.com');
+        $cloud->setPort(80);
+        $cloud->setPath('/RPC2');
+        $cloud->setRegisterProcedure('pingMe');
+        $cloud->setProtocol('soap');
 
         $rss = new Rss();
         $rss->setTitle('Liftoff News');
@@ -67,65 +86,15 @@ class RssTest extends TestCase
         $rss->setRating('en');
         $rss->setSkipHours(20);
         $rss->setSkipDays('Tuesday');
-        $rss->addCategory(new Category('Newspapers'));
+        $rss->setCategory([$category]);
         $rss->setPubDate(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT'));
         $rss->setLastBuildDate(new \DateTime('Tue, 10 Jun 2003 09:41:01 GMT'));
-        $rss->setCloud(new Cloud('rpc.sys.com', 80, '/RPC2', 'pingMe', 'soap'));
-        $rss->addItem($item);
+        $rss->setCloud($cloud);
+        $rss->setItem([$item]);
 
         $dumper = new Dumper();
         $actual = json_encode($dumper->dump($rss), JSON_PRETTY_PRINT);
-        $expect = <<<'JSON'
-{
-  "title": "Liftoff News",
-  "link": "http://liftoff.msfc.nasa.gov/",
-  "description": "Liftoff to Space Exploration.",
-  "language": "en-us",
-  "copyright": "2014 foobar",
-  "managingEditor": "editor@example.com",
-  "webMaster": "webmaster@example.com",
-  "generator": "Weblog Editor 2.0",
-  "docs": "http://blogs.law.harvard.edu/tech/rss",
-  "ttl": 60,
-  "image": "http://localhost.com/image.png",
-  "rating": "en",
-  "skipHours": 20,
-  "skipDays": "Tuesday",
-  "category": [{
-  	"text": "Newspapers"
-  }],
-  "pubDate": "2003-06-10T04:00:00Z",
-  "lastBuildDate": "2003-06-10T09:41:01Z",
-  "cloud": {
-    "domain": "rpc.sys.com",
-    "port": 80,
-    "path": "/RPC2",
-    "registerProcedure": "pingMe",
-    "protocol": "soap"
-  },
-  "item": [{
-    "title": "Star City",
-    "link": "http://liftoff.msfc.nasa.gov/news/2003/news-starcity.asp",
-    "description": "How do Americans get ready to work with Russians aboard the International Space Station? They take a crash course in culture, language and protocol at Russia's <a href=\"http://howe.iki.rssi.ru/GCTC/gctc_e.htm\">Star City</a>.",
-    "author": "foobar",
-    "category": [{
-    	"text": "Newspapers"
-    }],
-    "guid": "http://liftoff.msfc.nasa.gov/2003/06/03.html#item573",
-    "pubDate": "2003-06-03T09:39:21Z",
-    "comments": "http://localhost.com#comments",
-    "enclosure": {
-      "url": "http://www.scripting.com/mp3s/weatherReportSuite.mp3",
-      "length": 12216320,
-      "type": "audio/mpeg"
-    },
-    "source": {
-      "text": "Tomalak's Realm",
-      "url": "http://www.tomalak.org/links2.xml"
-    }
-  }]
-}
-JSON;
+        $expect = file_get_contents(__DIR__ . '/resource/rss.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);
     }

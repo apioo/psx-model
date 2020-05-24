@@ -41,113 +41,63 @@ class AtomTest extends TestCase
 {
     public function testModel()
     {
+        $person = new Person();
+        $person->setName('foobar');
+        $person->setUri('http://foo.com');
+        $person->setEmail('foo@bar.com');
+
+        $category = new Category();
+        $category->setTerm('foobar');
+        $category->setScheme('http://foo.com');
+        $category->setLabel('Foobar');
+        
+        $text = new Text();
+        $text->setContent('foobar');
+
+        $link = new Link();
+        $link->setHref('http://localhost.com');
+        $link->setRel('me');
+        $link->setType('application/xml');
+        $link->setHreflang('en');
+        $link->setTitle('Foobar');
+        $link->setLength(1337);
+
         $entry = new Entry();
-        $entry->addAuthor(new Person('foobar', 'http://foo.com', 'foo@bar.com'));
-        $entry->addCategory(new Category('foobar', 'http://foo.com', 'Foobar'));
-        $entry->setContent(new Text('foobar'));
-        $entry->addContributor(new Person('foobar', 'http://foo.com', 'foo@bar.com'));
+        $entry->setAuthor([$person]);
+        $entry->setCategory([$category]);
+        $entry->setContent($text);
+        $entry->setContributor([$person]);
         $entry->setId('http://localhost.com#1');
         $entry->setRights('foo');
         $entry->setTitle('Star City');
         $entry->setPublished(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT'));
         $entry->setUpdated(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT'));
-        $entry->addLink(new Link('http://localhost.com', 'me', 'application/xml', 'en', 'Foobar', 1337));
-        $entry->setSummary(new Text('lreom ipsum'));
+        $entry->setLink([$link]);
+        $entry->setSummary($text);
+
+        $generator = new Generator();
+        $generator->setText('foobar');
+        $generator->setUri('http://foo.com');
+        $generator->setVersion('1.0');
 
         $atom = new Atom();
-        $atom->addAuthor(new Person('foobar', 'http://foo.com', 'foo@bar.com'));
-        $atom->addCategory(new Category('foobar', 'http://foo.com', 'Foobar'));
-        $atom->addContributor(new Person('foobar', 'http://foo.com', 'foo@bar.com'));
-        $atom->setGenerator(new Generator('foobar', 'http://foo.com', '1.0'));
+        $atom->setAuthor([$person]);
+        $atom->setCategory([$category]);
+        $atom->setContributor([$person]);
+        $atom->setGenerator($generator);
         $atom->setIcon('http://localhost.com/icon.png');
         $atom->setLogo('http://localhost.com/logo.png');
         $atom->setId('http://localhost.com#1');
         $atom->setRights('foo');
         $atom->setTitle('Foo has bar');
         $atom->setUpdated(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT'));
-        $atom->addLink(new Link('http://localhost.com', 'me', 'application/xml', 'en', 'Foobar', 1337));
-        $atom->setSubTitle(new Text('And some more content'));
-        $atom->addEntry($entry);
+        $atom->setLink([$link]);
+        $atom->setSubTitle($text);
+        $atom->setEntry([$entry]);
 
         $dumper = new Dumper();
         $actual = json_encode($dumper->dump($atom), JSON_PRETTY_PRINT);
-        $expect = <<<'JSON'
-{
-  "author": [{
-    "name": "foobar",
-    "uri": "http://foo.com",
-    "email": "foo@bar.com"
-  }],
-  "category": [{
-    "term": "foobar",
-    "scheme": "http://foo.com",
-    "label": "Foobar"
-  }],
-  "contributor": [{
-    "name": "foobar",
-    "uri": "http://foo.com",
-    "email": "foo@bar.com"
-  }],
-  "generator": {
-    "text": "foobar",
-    "uri": "http://foo.com",
-    "version": "1.0"
-  },
-  "icon": "http://localhost.com/icon.png",
-  "logo": "http://localhost.com/logo.png",
-  "id": "http://localhost.com#1",
-  "link": [{
-    "href": "http://localhost.com",
-    "rel": "me",
-    "type": "application/xml",
-    "hreflang": "en",
-    "title": "Foobar",
-    "length": 1337
-  }],
-  "rights": "foo",
-  "subTitle": {
-  	"content": "And some more content"
-  },
-  "title": "Foo has bar",
-  "updated": "2003-06-10T04:00:00Z",
-  "entry": [{
-    "author": [{
-      "name": "foobar",
-      "uri": "http://foo.com",
-      "email": "foo@bar.com"
-    }],
-    "category": [{
-      "term": "foobar",
-      "scheme": "http://foo.com",
-      "label": "Foobar"
-    }],
-    "content": {
-      "content": "foobar"
-    },
-    "contributor": [{
-      "name": "foobar",
-      "uri": "http://foo.com",
-      "email": "foo@bar.com"
-    }],
-    "id": "http://localhost.com#1",
-    "link": [{
-      "href": "http://localhost.com",
-      "rel": "me",
-      "type": "application/xml",
-      "hreflang": "en",
-      "title": "Foobar",
-      "length": 1337
-    }],
-    "published": "2003-06-10T04:00:00Z",
-    "rights": "foo",
-    "summary": {
-      "content": "lreom ipsum"
-    },
-    "title": "Star City",
-    "updated": "2003-06-10T04:00:00Z"
-  }]
-}
-JSON;
+        $expect = file_get_contents(__DIR__ . '/resource/atom.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);
     }
