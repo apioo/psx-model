@@ -28,75 +28,71 @@ use DateTime;
  * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
- * @AdditionalProperties(false)
  */
 class Activity extends ObjectType
 {
     /**
-     * @Ref("PSX\Model\ActivityStream\ObjectType")
-     * @Required
+     * @var \PSX\Model\ActivityStream\ObjectType
      */
     protected $actor;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $content;
 
     /**
-     * @Ref("PSX\Model\ActivityStream\ObjectType")
+     * @var \PSX\Model\ActivityStream\ObjectType
      */
     protected $generator;
 
     /**
-     * @Ref("PSX\Model\ActivityStream\MediaLink")
+     * @var \PSX\Model\ActivityStream\MediaLink
      */
     protected $icon;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $id;
 
     /**
-     * @Ref("PSX\Model\ActivityStream\ObjectType")
+     * @var \PSX\Model\ActivityStream\ObjectType
      */
     protected $object;
 
     /**
-     * @Type("string")
-     * @Format("date-time")
+     * @var \DateTime
      */
     protected $published;
 
     /**
-     * @Ref("PSX\Model\ActivityStream\ObjectType")
+     * @var \PSX\Model\ActivityStream\ObjectType
      */
     protected $provider;
 
     /**
-     * @Ref("PSX\Model\ActivityStream\ObjectType")
+     * @var \PSX\Model\ActivityStream\ObjectType
      */
     protected $target;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $title;
 
     /**
-     * @Type("string")
-     * @Format("date-time")
+     * @var \DateTime
      */
     protected $updated;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $url;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $verb;
 
@@ -105,7 +101,7 @@ class Activity extends ObjectType
         $this->objectType = 'activity';
     }
 
-    public function getActor()
+    public function getActor(): ?ObjectType
     {
         return $this->actor;
     }
@@ -115,17 +111,17 @@ class Activity extends ObjectType
         $this->actor = $actor;
     }
 
-    public function getContent()
+    public function getContent(): ?string
     {
         return $this->content;
     }
 
-    public function setContent($content)
+    public function setContent(string $content)
     {
         $this->content = $content;
     }
 
-    public function getGenerator()
+    public function getGenerator(): ?ObjectType
     {
         return $this->generator;
     }
@@ -135,7 +131,7 @@ class Activity extends ObjectType
         $this->generator = $generator;
     }
 
-    public function getIcon()
+    public function getIcon(): ?MediaLink
     {
         return $this->icon;
     }
@@ -145,17 +141,17 @@ class Activity extends ObjectType
         $this->icon = $icon;
     }
 
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function setId($id)
+    public function setId(string $id)
     {
         $this->id = $id;
     }
 
-    public function getObject()
+    public function getObject(): ?ObjectType
     {
         return $this->object;
     }
@@ -165,7 +161,7 @@ class Activity extends ObjectType
         $this->object = $object;
     }
 
-    public function getPublished()
+    public function getPublished(): ?DateTime
     {
         return $this->published;
     }
@@ -175,7 +171,7 @@ class Activity extends ObjectType
         $this->published = $published;
     }
 
-    public function getProvider()
+    public function getProvider(): ?ObjectType
     {
         return $this->provider;
     }
@@ -185,7 +181,7 @@ class Activity extends ObjectType
         $this->provider = $provider;
     }
 
-    public function getTarget()
+    public function getTarget(): ?ObjectType
     {
         return $this->target;
     }
@@ -195,17 +191,17 @@ class Activity extends ObjectType
         $this->target = $target;
     }
 
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    public function setTitle($title)
+    public function setTitle(string $title)
     {
         $this->title = $title;
     }
 
-    public function getUpdated()
+    public function getUpdated(): ?DateTime
     {
         return $this->updated;
     }
@@ -215,22 +211,22 @@ class Activity extends ObjectType
         $this->updated = $updated;
     }
 
-    public function getUrl()
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    public function setUrl($url)
+    public function setUrl(string $url)
     {
         $this->url = $url;
     }
 
-    public function getVerb()
+    public function getVerb(): ?string
     {
         return $this->verb;
     }
 
-    public function setVerb($verb)
+    public function setVerb(string $verb)
     {
         $this->verb = $verb;
     }

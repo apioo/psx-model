@@ -28,91 +28,85 @@ use DateTime;
  * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
- * @AdditionalProperties(false)
  */
 class ObjectType
 {
     /**
-     * @Type("array")
-     * @Items(@Ref("PSX\Model\ActivityStream\ObjectType"))
+     * @var array<\PSX\Model\ActivityStream\ObjectType>
      */
     protected $attachments;
 
     /**
-     * @Ref("PSX\Model\ActivityStream\ObjectType")
+     * @var \PSX\Model\ActivityStream\ObjectType
      */
     protected $author;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $content;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $displayName;
 
     /**
-     * @Type("array")
-     * @Items(@Schema(type="string"))
+     * @var array<string>
      */
     protected $downstreamDuplicates;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $id;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $image;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $objectType;
 
     /**
-     * @Type("string")
-     * @Format("date-time")
+     * @var \DateTime
      */
     protected $published;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $summary;
 
     /**
-     * @Type("string")
-     * @Format("date-time")
+     * @var \DateTime
      */
     protected $updated;
 
     /**
-     * @Type("array")
-     * @Items(@Schema(type="string"))
+     * @var array<string>
      */
     protected $upstreamDuplicates;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $url;
 
-    public function getAttachments()
+    public function getAttachments(): ?iterable
     {
         return $this->attachments;
     }
 
-    public function setAttachments(array $attachments)
+    public function setAttachments(iterable $attachments)
     {
         $this->attachments = $attachments;
     }
 
-    public function getAuthor()
+    public function getAuthor(): ?ObjectType
     {
         return $this->author;
     }
@@ -122,67 +116,67 @@ class ObjectType
         $this->author = $author;
     }
 
-    public function getContent()
+    public function getContent(): ?string
     {
         return $this->content;
     }
 
-    public function setContent($content)
+    public function setContent(string $content)
     {
         $this->content = $content;
     }
 
-    public function getDisplayName()
+    public function getDisplayName(): ?string
     {
         return $this->displayName;
     }
 
-    public function setDisplayName($displayName)
+    public function setDisplayName(string $displayName)
     {
         $this->displayName = $displayName;
     }
 
-    public function getDownstreamDuplicates()
+    public function getDownstreamDuplicates(): ?iterable
     {
         return $this->downstreamDuplicates;
     }
 
-    public function setDownstreamDuplicates(array $downstreamDuplicates)
+    public function setDownstreamDuplicates(iterable $downstreamDuplicates)
     {
         $this->downstreamDuplicates = $downstreamDuplicates;
     }
 
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function setId($id)
+    public function setId(string $id)
     {
         $this->id = $id;
     }
 
-    public function getImage()
+    public function getImage(): ?string
     {
         return $this->image;
     }
 
-    public function setImage($image)
+    public function setImage(string $image)
     {
         $this->image = $image;
     }
 
-    public function getObjectType()
+    public function getObjectType(): ?string
     {
         return $this->objectType;
     }
 
-    public function setObjectType($objectType)
+    public function setObjectType(string $objectType)
     {
         $this->objectType = $objectType;
     }
 
-    public function getPublished()
+    public function getPublished(): ?DateTime
     {
         return $this->published;
     }
@@ -192,17 +186,17 @@ class ObjectType
         $this->published = $published;
     }
 
-    public function getSummary()
+    public function getSummary(): ?string
     {
         return $this->summary;
     }
 
-    public function setSummary($summary)
+    public function setSummary(string $summary)
     {
         $this->summary = $summary;
     }
 
-    public function getUpdated()
+    public function getUpdated(): ?DateTime
     {
         return $this->updated;
     }
@@ -212,22 +206,22 @@ class ObjectType
         $this->updated = $updated;
     }
 
-    public function getUpstreamDuplicates()
+    public function getUpstreamDuplicates(): ?iterable
     {
         return $this->upstreamDuplicates;
     }
 
-    public function setUpstreamDuplicates(array $upstreamDuplicates)
+    public function setUpstreamDuplicates(iterable $upstreamDuplicates)
     {
         $this->upstreamDuplicates = $upstreamDuplicates;
     }
 
-    public function getUrl()
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    public function setUrl($url)
+    public function setUrl(string $url)
     {
         $this->url = $url;
     }

@@ -26,22 +26,21 @@ namespace PSX\Model\ActivityStream;
  * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
- * @AdditionalProperties(false)
  */
 class Position
 {
     /**
-     * @Type("number")
+     * @var float
      */
     protected $altitude;
 
     /**
-     * @Type("number")
+     * @var float
      */
     protected $latitude;
 
     /**
-     * @Type("number")
+     * @var float
      */
     protected $longitude;
 

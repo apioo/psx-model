@@ -26,96 +26,95 @@ namespace PSX\Model\ActivityStream;
  * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
- * @AdditionalProperties(false)
  */
 class Address
 {
     /**
-     * @Type("string")
+     * @var string
      */
     protected $formatted;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $streetAddress;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $locality;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $region;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $postalCode;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $country;
 
-    public function setFormatted($formatted)
+    public function setFormatted(string $formatted)
     {
         $this->formatted = $formatted;
     }
 
-    public function getFormatted()
+    public function getFormatted(): ?string
     {
         return $this->formatted;
     }
 
-    public function setStreetAddress($streetAddress)
+    public function setStreetAddress(string $streetAddress)
     {
         $this->streetAddress = $streetAddress;
     }
 
-    public function getStreetAddress()
+    public function getStreetAddress(): ?string
     {
         return $this->streetAddress;
     }
 
-    public function setLocality($locality)
+    public function setLocality(string $locality)
     {
         $this->locality = $locality;
     }
 
-    public function getLocality()
+    public function getLocality(): ?string
     {
         return $this->locality;
     }
 
-    public function setRegion($region)
+    public function setRegion(string $region)
     {
         $this->region = $region;
     }
 
-    public function getRegion()
+    public function getRegion(): ?string
     {
         return $this->region;
     }
 
-    public function setPostalCode($postalCode)
+    public function setPostalCode(string $postalCode)
     {
         $this->postalCode = $postalCode;
     }
 
-    public function getPostalCode()
+    public function getPostalCode(): ?string
     {
         return $this->postalCode;
     }
 
-    public function setCountry($country)
+    public function setCountry(string $country)
     {
         $this->country = $country;
     }
 
-    public function getCountry()
+    public function getCountry(): ?string
     {
         return $this->country;
     }

@@ -26,27 +26,26 @@ namespace PSX\Model\ActivityStream;
  * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
- * @AdditionalProperties(false)
  */
 class MediaLink
 {
     /**
-     * @Type("string")
+     * @var string
      */
     protected $duration;
 
     /**
-     * @Type("integer")
+     * @var integer
      */
     protected $height;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $url;
 
     /**
-     * @Type("integer")
+     * @var integer
      */
     protected $width;
 
@@ -55,42 +54,42 @@ class MediaLink
         $this->url = $url;
     }
 
-    public function getDuration()
+    public function getDuration(): ?string
     {
         return $this->duration;
     }
 
-    public function setDuration($duration)
+    public function setDuration(string $duration)
     {
         $this->duration = $duration;
     }
 
-    public function getHeight()
+    public function getHeight(): ?int
     {
         return $this->height;
     }
 
-    public function setHeight($height)
+    public function setHeight(int $height)
     {
         $this->height = $height;
     }
 
-    public function getUrl()
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    public function setUrl($url)
+    public function setUrl(string $url)
     {
         $this->url = $url;
     }
 
-    public function getWidth()
+    public function getWidth(): ?int
     {
         return $this->width;
     }
 
-    public function setWidth($width)
+    public function setWidth(int $width)
     {
         $this->width = $width;
     }

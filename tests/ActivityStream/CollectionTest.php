@@ -21,8 +21,8 @@
 namespace PSX\Model\Tests\ActivityStream;
 
 use PHPUnit\Framework\TestCase;
+use PSX\Model\ActivityStream\Activity;
 use PSX\Model\ActivityStream\Collection;
-use PSX\Model\ActivityStream\ObjectType;
 use PSX\Schema\Parser\Popo\Dumper;
 
 /**
@@ -38,14 +38,14 @@ class CollectionTest extends TestCase
     {
         $items = array();
 
-        $item = new ObjectType();
+        $item = new Activity();
         $item->setContent('This was my first comment');
         $item->setUpdated(new \DateTime('2011-11-21T15:13:59+00:00'));
         $item->setId('f8f0e93f-e462-4ede-92cc-f6e8a1b7eb36');
 
         $items[] = $item;
 
-        $item = new ObjectType();
+        $item = new Activity();
         $item->setContent('This was another comment');
         $item->setUpdated(new \DateTime('2011-11-21T15:14:06+00:00'));
         $item->setId('5369ea82-d791-46cb-a87a-3696ff90d8f3');
@@ -59,18 +59,20 @@ class CollectionTest extends TestCase
         $dumper = new Dumper();
         $actual = json_encode($dumper->dump($collection), JSON_PRETTY_PRINT);
         $expect = <<<JSON
-  {
-    "totalItems": 4,
-    "items": [{
-    	"id": "f8f0e93f-e462-4ede-92cc-f6e8a1b7eb36",
-    	"content": "This was my first comment",
-    	"updated": "2011-11-21T15:13:59Z"
-    },{
-    	"id": "5369ea82-d791-46cb-a87a-3696ff90d8f3",
-    	"content": "This was another comment",
-    	"updated": "2011-11-21T15:14:06Z"
-    }]
-  }
+{
+  "totalItems": 4,
+  "items": [{
+    "id": "f8f0e93f-e462-4ede-92cc-f6e8a1b7eb36",
+    "content": "This was my first comment",
+    "objectType": "activity",
+    "updated": "2011-11-21T15:13:59Z"
+  },{
+    "id": "5369ea82-d791-46cb-a87a-3696ff90d8f3",
+    "content": "This was another comment",
+    "objectType": "activity",
+    "updated": "2011-11-21T15:14:06Z"
+  }]
+}
 JSON;
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);

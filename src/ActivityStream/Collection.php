@@ -28,23 +28,21 @@ use PSX\Data\CollectionInterface;
  * @author  Christoph Kappestein <christoph.kappestein@gmail.com>
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @link    http://phpsx.org
- * @AdditionalProperties(false)
  */
 class Collection extends ObjectType
 {
     /**
-     * @Type("integer")
+     * @var integer
      */
     protected $totalItems;
 
     /**
-     * @Type("array")
-     * @Items(@Ref("PSX\Model\ActivityStream\Activity"))
+     * @var array<\PSX\Model\ActivityStream\Activity>
      */
     protected $items;
 
     /**
-     * @Type("string")
+     * @var string
      */
     protected $url;
 
@@ -53,32 +51,32 @@ class Collection extends ObjectType
         $this->items = $items;
     }
 
-    public function setTotalItems($totalItems)
+    public function setTotalItems(int $totalItems)
     {
         $this->totalItems = $totalItems;
     }
     
-    public function getTotalItems()
+    public function getTotalItems(): ?int
     {
         return $this->totalItems;
     }
 
-    public function setItems(array $items)
+    public function setItems(iterable $items)
     {
         $this->items = $items;
     }
 
-    public function getItems()
+    public function getItems(): ?iterable
     {
         return $this->items;
     }
 
-    public function getUrl()
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    public function setUrl($url)
+    public function setUrl(string $url)
     {
         $this->url = $url;
     }
