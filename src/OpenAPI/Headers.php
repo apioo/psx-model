@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\OpenAPI;
 
 /**
- * @extends ArrayAccess<string, Header|Reference>
+ * @extends \PSX\Record\Record<Header|Reference>
  */
 class Headers extends \PSX\Record\Record
 {

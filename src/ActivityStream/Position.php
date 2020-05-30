@@ -8,54 +8,54 @@ namespace PSX\Model\ActivityStream;
 class Position
 {
     /**
-     * @var float
+     * @var float|null
      */
     protected $altitude;
     /**
-     * @var float
+     * @var float|null
      */
     protected $latitude;
     /**
-     * @var float
+     * @var float|null
      */
     protected $longitude;
     /**
-     * @param float $altitude
+     * @param float|null $altitude
      */
-    public function setAltitude(?float $altitude)
+    public function setAltitude(?float $altitude) : void
     {
         $this->altitude = $altitude;
     }
     /**
-     * @return float
+     * @return float|null
      */
     public function getAltitude() : ?float
     {
         return $this->altitude;
     }
     /**
-     * @param float $latitude
+     * @param float|null $latitude
      */
-    public function setLatitude(?float $latitude)
+    public function setLatitude(?float $latitude) : void
     {
         $this->latitude = $latitude;
     }
     /**
-     * @return float
+     * @return float|null
      */
     public function getLatitude() : ?float
     {
         return $this->latitude;
     }
     /**
-     * @param float $longitude
+     * @param float|null $longitude
      */
-    public function setLongitude(?float $longitude)
+    public function setLongitude(?float $longitude) : void
     {
         $this->longitude = $longitude;
     }
     /**
-     * @return float
+     * @return float|null
      */
     public function getLongitude() : ?float
     {

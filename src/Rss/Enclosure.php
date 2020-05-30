@@ -8,54 +8,54 @@ namespace PSX\Model\Rss;
 class Enclosure
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
-     * @var int
+     * @var int|null
      */
     protected $length;
     /**
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
-     * @param string $url
+     * @param string|null $url
      */
-    public function setUrl(?string $url)
+    public function setUrl(?string $url) : void
     {
         $this->url = $url;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getUrl() : ?string
     {
         return $this->url;
     }
     /**
-     * @param int $length
+     * @param int|null $length
      */
-    public function setLength(?int $length)
+    public function setLength(?int $length) : void
     {
         $this->length = $length;
     }
     /**
-     * @return int
+     * @return int|null
      */
     public function getLength() : ?int
     {
         return $this->length;
     }
     /**
-     * @param string $type
+     * @param string|null $type
      */
-    public function setType(?string $type)
+    public function setType(?string $type) : void
     {
         $this->type = $type;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getType() : ?string
     {

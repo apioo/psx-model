@@ -8,108 +8,108 @@ namespace PSX\Model\ActivityStream;
 class Address
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $formatted;
     /**
-     * @var string
+     * @var string|null
      */
     protected $streetAddress;
     /**
-     * @var string
+     * @var string|null
      */
     protected $locality;
     /**
-     * @var string
+     * @var string|null
      */
     protected $region;
     /**
-     * @var string
+     * @var string|null
      */
     protected $postalCode;
     /**
-     * @var string
+     * @var string|null
      */
     protected $country;
     /**
-     * @param string $formatted
+     * @param string|null $formatted
      */
-    public function setFormatted(?string $formatted)
+    public function setFormatted(?string $formatted) : void
     {
         $this->formatted = $formatted;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getFormatted() : ?string
     {
         return $this->formatted;
     }
     /**
-     * @param string $streetAddress
+     * @param string|null $streetAddress
      */
-    public function setStreetAddress(?string $streetAddress)
+    public function setStreetAddress(?string $streetAddress) : void
     {
         $this->streetAddress = $streetAddress;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getStreetAddress() : ?string
     {
         return $this->streetAddress;
     }
     /**
-     * @param string $locality
+     * @param string|null $locality
      */
-    public function setLocality(?string $locality)
+    public function setLocality(?string $locality) : void
     {
         $this->locality = $locality;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getLocality() : ?string
     {
         return $this->locality;
     }
     /**
-     * @param string $region
+     * @param string|null $region
      */
-    public function setRegion(?string $region)
+    public function setRegion(?string $region) : void
     {
         $this->region = $region;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getRegion() : ?string
     {
         return $this->region;
     }
     /**
-     * @param string $postalCode
+     * @param string|null $postalCode
      */
-    public function setPostalCode(?string $postalCode)
+    public function setPostalCode(?string $postalCode) : void
     {
         $this->postalCode = $postalCode;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getPostalCode() : ?string
     {
         return $this->postalCode;
     }
     /**
-     * @param string $country
+     * @param string|null $country
      */
-    public function setCountry(?string $country)
+    public function setCountry(?string $country) : void
     {
         $this->country = $country;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getCountry() : ?string
     {

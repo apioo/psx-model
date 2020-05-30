@@ -8,72 +8,72 @@ namespace PSX\Model\ActivityStream;
 class MediaLink
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $duration;
     /**
-     * @var int
+     * @var int|null
      */
     protected $height;
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
-     * @var int
+     * @var int|null
      */
     protected $width;
     /**
-     * @param string $duration
+     * @param string|null $duration
      */
-    public function setDuration(?string $duration)
+    public function setDuration(?string $duration) : void
     {
         $this->duration = $duration;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getDuration() : ?string
     {
         return $this->duration;
     }
     /**
-     * @param int $height
+     * @param int|null $height
      */
-    public function setHeight(?int $height)
+    public function setHeight(?int $height) : void
     {
         $this->height = $height;
     }
     /**
-     * @return int
+     * @return int|null
      */
     public function getHeight() : ?int
     {
         return $this->height;
     }
     /**
-     * @param string $url
+     * @param string|null $url
      */
-    public function setUrl(?string $url)
+    public function setUrl(?string $url) : void
     {
         $this->url = $url;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getUrl() : ?string
     {
         return $this->url;
     }
     /**
-     * @param int $width
+     * @param int|null $width
      */
-    public function setWidth(?int $width)
+    public function setWidth(?int $width) : void
     {
         $this->width = $width;
     }
     /**
-     * @return int
+     * @return int|null
      */
     public function getWidth() : ?int
     {

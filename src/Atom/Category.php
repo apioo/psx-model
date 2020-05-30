@@ -8,54 +8,54 @@ namespace PSX\Model\Atom;
 class Category
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $term;
     /**
-     * @var string
+     * @var string|null
      */
     protected $scheme;
     /**
-     * @var string
+     * @var string|null
      */
     protected $label;
     /**
-     * @param string $term
+     * @param string|null $term
      */
-    public function setTerm(?string $term)
+    public function setTerm(?string $term) : void
     {
         $this->term = $term;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getTerm() : ?string
     {
         return $this->term;
     }
     /**
-     * @param string $scheme
+     * @param string|null $scheme
      */
-    public function setScheme(?string $scheme)
+    public function setScheme(?string $scheme) : void
     {
         $this->scheme = $scheme;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getScheme() : ?string
     {
         return $this->scheme;
     }
     /**
-     * @param string $label
+     * @param string|null $label
      */
-    public function setLabel(?string $label)
+    public function setLabel(?string $label) : void
     {
         $this->label = $label;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getLabel() : ?string
     {

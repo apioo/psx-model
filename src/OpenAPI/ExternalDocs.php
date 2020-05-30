@@ -11,36 +11,36 @@ namespace PSX\Model\OpenAPI;
 class ExternalDocs
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
-     * @param string $description
+     * @param string|null $description
      */
-    public function setDescription(?string $description)
+    public function setDescription(?string $description) : void
     {
         $this->description = $description;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription() : ?string
     {
         return $this->description;
     }
     /**
-     * @param string $url
+     * @param string|null $url
      */
-    public function setUrl(?string $url)
+    public function setUrl(?string $url) : void
     {
         $this->url = $url;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getUrl() : ?string
     {

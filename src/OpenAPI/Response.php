@@ -11,72 +11,72 @@ namespace PSX\Model\OpenAPI;
 class Response
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var Header|Reference
+     * @var Header|Reference|null
      */
     protected $headers;
     /**
-     * @var MediaTypes
+     * @var MediaTypes|null
      */
     protected $content;
     /**
-     * @var Link|Reference
+     * @var Link|Reference|null
      */
     protected $links;
     /**
-     * @param string $description
+     * @param string|null $description
      */
-    public function setDescription(?string $description)
+    public function setDescription(?string $description) : void
     {
         $this->description = $description;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription() : ?string
     {
         return $this->description;
     }
     /**
-     * @param Header|Reference $headers
+     * @param Header|Reference|null $headers
      */
-    public function setHeaders($headers)
+    public function setHeaders($headers) : void
     {
         $this->headers = $headers;
     }
     /**
-     * @return Header|Reference
+     * @return Header|Reference|null
      */
     public function getHeaders()
     {
         return $this->headers;
     }
     /**
-     * @param MediaTypes $content
+     * @param MediaTypes|null $content
      */
-    public function setContent(?MediaTypes $content)
+    public function setContent(?MediaTypes $content) : void
     {
         $this->content = $content;
     }
     /**
-     * @return MediaTypes
+     * @return MediaTypes|null
      */
     public function getContent() : ?MediaTypes
     {
         return $this->content;
     }
     /**
-     * @param Link|Reference $links
+     * @param Link|Reference|null $links
      */
-    public function setLinks($links)
+    public function setLinks($links) : void
     {
         $this->links = $links;
     }
     /**
-     * @return Link|Reference
+     * @return Link|Reference|null
      */
     public function getLinks()
     {

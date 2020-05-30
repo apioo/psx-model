@@ -11,220 +11,220 @@ namespace PSX\Model\OpenAPI;
 class Operation
 {
     /**
-     * @var array<string>
+     * @var array<string>|null
      * @UniqueItems(true)
      */
     protected $tags;
     /**
-     * @var string
+     * @var string|null
      */
     protected $summary;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var ExternalDocs
+     * @var ExternalDocs|null
      */
     protected $externalDocs;
     /**
-     * @var string
+     * @var string|null
      */
     protected $operationId;
     /**
-     * @var array<Parameter|Reference>
+     * @var array<Parameter|Reference>|null
      * @UniqueItems(true)
      */
     protected $parameters;
     /**
-     * @var RequestBody|Reference
+     * @var RequestBody|Reference|null
      */
     protected $requestBody;
     /**
-     * @var Responses
+     * @var Responses|null
      */
     protected $responses;
     /**
-     * @var Callback|Reference
+     * @var Callback|Reference|null
      */
     protected $callbacks;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $deprecated;
     /**
-     * @var array<SecurityRequirement>
+     * @var array<SecurityRequirement>|null
      * @UniqueItems(true)
      */
     protected $security;
     /**
-     * @var array<Server>
+     * @var array<Server>|null
      * @UniqueItems(true)
      */
     protected $servers;
     /**
-     * @param array<string> $tags
+     * @param array<string>|null $tags
      */
-    public function setTags(?array $tags)
+    public function setTags(?array $tags) : void
     {
         $this->tags = $tags;
     }
     /**
-     * @return array<string>
+     * @return array<string>|null
      */
     public function getTags() : ?array
     {
         return $this->tags;
     }
     /**
-     * @param string $summary
+     * @param string|null $summary
      */
-    public function setSummary(?string $summary)
+    public function setSummary(?string $summary) : void
     {
         $this->summary = $summary;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getSummary() : ?string
     {
         return $this->summary;
     }
     /**
-     * @param string $description
+     * @param string|null $description
      */
-    public function setDescription(?string $description)
+    public function setDescription(?string $description) : void
     {
         $this->description = $description;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription() : ?string
     {
         return $this->description;
     }
     /**
-     * @param ExternalDocs $externalDocs
+     * @param ExternalDocs|null $externalDocs
      */
-    public function setExternalDocs(?ExternalDocs $externalDocs)
+    public function setExternalDocs(?ExternalDocs $externalDocs) : void
     {
         $this->externalDocs = $externalDocs;
     }
     /**
-     * @return ExternalDocs
+     * @return ExternalDocs|null
      */
     public function getExternalDocs() : ?ExternalDocs
     {
         return $this->externalDocs;
     }
     /**
-     * @param string $operationId
+     * @param string|null $operationId
      */
-    public function setOperationId(?string $operationId)
+    public function setOperationId(?string $operationId) : void
     {
         $this->operationId = $operationId;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getOperationId() : ?string
     {
         return $this->operationId;
     }
     /**
-     * @param array<Parameter|Reference> $parameters
+     * @param array<Parameter|Reference>|null $parameters
      */
-    public function setParameters(?array $parameters)
+    public function setParameters(?array $parameters) : void
     {
         $this->parameters = $parameters;
     }
     /**
-     * @return array<Parameter|Reference>
+     * @return array<Parameter|Reference>|null
      */
     public function getParameters() : ?array
     {
         return $this->parameters;
     }
     /**
-     * @param RequestBody|Reference $requestBody
+     * @param RequestBody|Reference|null $requestBody
      */
-    public function setRequestBody($requestBody)
+    public function setRequestBody($requestBody) : void
     {
         $this->requestBody = $requestBody;
     }
     /**
-     * @return RequestBody|Reference
+     * @return RequestBody|Reference|null
      */
     public function getRequestBody()
     {
         return $this->requestBody;
     }
     /**
-     * @param Responses $responses
+     * @param Responses|null $responses
      */
-    public function setResponses(?Responses $responses)
+    public function setResponses(?Responses $responses) : void
     {
         $this->responses = $responses;
     }
     /**
-     * @return Responses
+     * @return Responses|null
      */
     public function getResponses() : ?Responses
     {
         return $this->responses;
     }
     /**
-     * @param Callback|Reference $callbacks
+     * @param Callback|Reference|null $callbacks
      */
-    public function setCallbacks($callbacks)
+    public function setCallbacks($callbacks) : void
     {
         $this->callbacks = $callbacks;
     }
     /**
-     * @return Callback|Reference
+     * @return Callback|Reference|null
      */
     public function getCallbacks()
     {
         return $this->callbacks;
     }
     /**
-     * @param bool $deprecated
+     * @param bool|null $deprecated
      */
-    public function setDeprecated(?bool $deprecated)
+    public function setDeprecated(?bool $deprecated) : void
     {
         $this->deprecated = $deprecated;
     }
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDeprecated() : ?bool
     {
         return $this->deprecated;
     }
     /**
-     * @param array<SecurityRequirement> $security
+     * @param array<SecurityRequirement>|null $security
      */
-    public function setSecurity(?array $security)
+    public function setSecurity(?array $security) : void
     {
         $this->security = $security;
     }
     /**
-     * @return array<SecurityRequirement>
+     * @return array<SecurityRequirement>|null
      */
     public function getSecurity() : ?array
     {
         return $this->security;
     }
     /**
-     * @param array<Server> $servers
+     * @param array<Server>|null $servers
      */
-    public function setServers(?array $servers)
+    public function setServers(?array $servers) : void
     {
         $this->servers = $servers;
     }
     /**
-     * @return array<Server>
+     * @return array<Server>|null
      */
     public function getServers() : ?array
     {

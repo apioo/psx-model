@@ -8,54 +8,54 @@ namespace PSX\Model\ActivityStream;
 class Collection extends ObjectType
 {
     /**
-     * @var int
+     * @var int|null
      */
     protected $totalItems;
     /**
-     * @var array<Activity>
+     * @var array<Activity>|null
      */
     protected $items;
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
-     * @param int $totalItems
+     * @param int|null $totalItems
      */
-    public function setTotalItems(?int $totalItems)
+    public function setTotalItems(?int $totalItems) : void
     {
         $this->totalItems = $totalItems;
     }
     /**
-     * @return int
+     * @return int|null
      */
     public function getTotalItems() : ?int
     {
         return $this->totalItems;
     }
     /**
-     * @param array<Activity> $items
+     * @param array<Activity>|null $items
      */
-    public function setItems(?array $items)
+    public function setItems(?array $items) : void
     {
         $this->items = $items;
     }
     /**
-     * @return array<Activity>
+     * @return array<Activity>|null
      */
     public function getItems() : ?array
     {
         return $this->items;
     }
     /**
-     * @param string $url
+     * @param string|null $url
      */
-    public function setUrl(?string $url)
+    public function setUrl(?string $url) : void
     {
         $this->url = $url;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getUrl() : ?string
     {

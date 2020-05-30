@@ -10,72 +10,72 @@ namespace PSX\Model\OpenAPI;
 class MediaType
 {
     /**
-     * @var mixed
+     * @var mixed|null
      */
     protected $schema;
     /**
-     * @var mixed
+     * @var mixed|null
      */
     protected $example;
     /**
-     * @var Examples
+     * @var Examples|null
      */
     protected $examples;
     /**
-     * @var Encodings
+     * @var Encodings|null
      */
     protected $encoding;
     /**
-     * @param mixed $schema
+     * @param mixed|null $schema
      */
-    public function setSchema($schema)
+    public function setSchema($schema) : void
     {
         $this->schema = $schema;
     }
     /**
-     * @return mixed
+     * @return mixed|null
      */
     public function getSchema()
     {
         return $this->schema;
     }
     /**
-     * @param mixed $example
+     * @param mixed|null $example
      */
-    public function setExample($example)
+    public function setExample($example) : void
     {
         $this->example = $example;
     }
     /**
-     * @return mixed
+     * @return mixed|null
      */
     public function getExample()
     {
         return $this->example;
     }
     /**
-     * @param Examples $examples
+     * @param Examples|null $examples
      */
-    public function setExamples(?Examples $examples)
+    public function setExamples(?Examples $examples) : void
     {
         $this->examples = $examples;
     }
     /**
-     * @return Examples
+     * @return Examples|null
      */
     public function getExamples() : ?Examples
     {
         return $this->examples;
     }
     /**
-     * @param Encodings $encoding
+     * @param Encodings|null $encoding
      */
-    public function setEncoding(?Encodings $encoding)
+    public function setEncoding(?Encodings $encoding) : void
     {
         $this->encoding = $encoding;
     }
     /**
-     * @return Encodings
+     * @return Encodings|null
      */
     public function getEncoding() : ?Encodings
     {

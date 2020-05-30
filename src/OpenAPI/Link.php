@@ -10,72 +10,72 @@ namespace PSX\Model\OpenAPI;
 class Link
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $operationRef;
     /**
-     * @var string
+     * @var string|null
      */
     protected $operationId;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var Server
+     * @var Server|null
      */
     protected $server;
     /**
-     * @param string $operationRef
+     * @param string|null $operationRef
      */
-    public function setOperationRef(?string $operationRef)
+    public function setOperationRef(?string $operationRef) : void
     {
         $this->operationRef = $operationRef;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getOperationRef() : ?string
     {
         return $this->operationRef;
     }
     /**
-     * @param string $operationId
+     * @param string|null $operationId
      */
-    public function setOperationId(?string $operationId)
+    public function setOperationId(?string $operationId) : void
     {
         $this->operationId = $operationId;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getOperationId() : ?string
     {
         return $this->operationId;
     }
     /**
-     * @param string $description
+     * @param string|null $description
      */
-    public function setDescription(?string $description)
+    public function setDescription(?string $description) : void
     {
         $this->description = $description;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription() : ?string
     {
         return $this->description;
     }
     /**
-     * @param Server $server
+     * @param Server|null $server
      */
-    public function setServer(?Server $server)
+    public function setServer(?Server $server) : void
     {
         $this->server = $server;
     }
     /**
-     * @return Server
+     * @return Server|null
      */
     public function getServer() : ?Server
     {

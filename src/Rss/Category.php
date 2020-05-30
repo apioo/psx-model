@@ -8,36 +8,36 @@ namespace PSX\Model\Rss;
 class Category
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $text;
     /**
-     * @var string
+     * @var string|null
      */
     protected $domain;
     /**
-     * @param string $text
+     * @param string|null $text
      */
-    public function setText(?string $text)
+    public function setText(?string $text) : void
     {
         $this->text = $text;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getText() : ?string
     {
         return $this->text;
     }
     /**
-     * @param string $domain
+     * @param string|null $domain
      */
-    public function setDomain(?string $domain)
+    public function setDomain(?string $domain) : void
     {
         $this->domain = $domain;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getDomain() : ?string
     {

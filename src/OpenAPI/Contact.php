@@ -10,54 +10,54 @@ namespace PSX\Model\OpenAPI;
 class Contact
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
-     * @var string
+     * @var string|null
      */
     protected $email;
     /**
-     * @param string $name
+     * @param string|null $name
      */
-    public function setName(?string $name)
+    public function setName(?string $name) : void
     {
         $this->name = $name;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getName() : ?string
     {
         return $this->name;
     }
     /**
-     * @param string $url
+     * @param string|null $url
      */
-    public function setUrl(?string $url)
+    public function setUrl(?string $url) : void
     {
         $this->url = $url;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getUrl() : ?string
     {
         return $this->url;
     }
     /**
-     * @param string $email
+     * @param string|null $email
      */
-    public function setEmail(?string $email)
+    public function setEmail(?string $email) : void
     {
         $this->email = $email;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getEmail() : ?string
     {

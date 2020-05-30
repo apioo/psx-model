@@ -8,54 +8,54 @@ namespace PSX\Model\OpenAPI;
 class Example
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $summary;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var string
+     * @var string|null
      */
     protected $externalValue;
     /**
-     * @param string $summary
+     * @param string|null $summary
      */
-    public function setSummary(?string $summary)
+    public function setSummary(?string $summary) : void
     {
         $this->summary = $summary;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getSummary() : ?string
     {
         return $this->summary;
     }
     /**
-     * @param string $description
+     * @param string|null $description
      */
-    public function setDescription(?string $description)
+    public function setDescription(?string $description) : void
     {
         $this->description = $description;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription() : ?string
     {
         return $this->description;
     }
     /**
-     * @param string $externalValue
+     * @param string|null $externalValue
      */
-    public function setExternalValue(?string $externalValue)
+    public function setExternalValue(?string $externalValue) : void
     {
         $this->externalValue = $externalValue;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getExternalValue() : ?string
     {

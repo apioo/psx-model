@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\OpenAPI;
 
 /**
- * @extends ArrayAccess<string, mixed>
+ * @extends \PSX\Record\Record<mixed>
  */
 class Schemas extends \PSX\Record\Record
 {

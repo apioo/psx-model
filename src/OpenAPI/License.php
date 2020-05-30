@@ -11,36 +11,36 @@ namespace PSX\Model\OpenAPI;
 class License
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
-     * @param string $name
+     * @param string|null $name
      */
-    public function setName(?string $name)
+    public function setName(?string $name) : void
     {
         $this->name = $name;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getName() : ?string
     {
         return $this->name;
     }
     /**
-     * @param string $url
+     * @param string|null $url
      */
-    public function setUrl(?string $url)
+    public function setUrl(?string $url) : void
     {
         $this->url = $url;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getUrl() : ?string
     {

@@ -11,108 +11,108 @@ namespace PSX\Model\OpenAPI;
 class Info
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $title;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var string
+     * @var string|null
      */
     protected $termsOfService;
     /**
-     * @var Contact
+     * @var Contact|null
      */
     protected $contact;
     /**
-     * @var License
+     * @var License|null
      */
     protected $license;
     /**
-     * @var string
+     * @var string|null
      */
     protected $version;
     /**
-     * @param string $title
+     * @param string|null $title
      */
-    public function setTitle(?string $title)
+    public function setTitle(?string $title) : void
     {
         $this->title = $title;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getTitle() : ?string
     {
         return $this->title;
     }
     /**
-     * @param string $description
+     * @param string|null $description
      */
-    public function setDescription(?string $description)
+    public function setDescription(?string $description) : void
     {
         $this->description = $description;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription() : ?string
     {
         return $this->description;
     }
     /**
-     * @param string $termsOfService
+     * @param string|null $termsOfService
      */
-    public function setTermsOfService(?string $termsOfService)
+    public function setTermsOfService(?string $termsOfService) : void
     {
         $this->termsOfService = $termsOfService;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getTermsOfService() : ?string
     {
         return $this->termsOfService;
     }
     /**
-     * @param Contact $contact
+     * @param Contact|null $contact
      */
-    public function setContact(?Contact $contact)
+    public function setContact(?Contact $contact) : void
     {
         $this->contact = $contact;
     }
     /**
-     * @return Contact
+     * @return Contact|null
      */
     public function getContact() : ?Contact
     {
         return $this->contact;
     }
     /**
-     * @param License $license
+     * @param License|null $license
      */
-    public function setLicense(?License $license)
+    public function setLicense(?License $license) : void
     {
         $this->license = $license;
     }
     /**
-     * @return License
+     * @return License|null
      */
     public function getLicense() : ?License
     {
         return $this->license;
     }
     /**
-     * @param string $version
+     * @param string|null $version
      */
-    public function setVersion(?string $version)
+    public function setVersion(?string $version) : void
     {
         $this->version = $version;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getVersion() : ?string
     {

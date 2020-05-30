@@ -8,180 +8,180 @@ namespace PSX\Model\Rss;
 class Item
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $title;
     /**
-     * @var string
+     * @var string|null
      */
     protected $link;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var string
+     * @var string|null
      */
     protected $author;
     /**
-     * @var array<Category>
+     * @var array<Category>|null
      */
     protected $category;
     /**
-     * @var string
+     * @var string|null
      */
     protected $comments;
     /**
-     * @var Enclosure
+     * @var Enclosure|null
      */
     protected $enclosure;
     /**
-     * @var string
+     * @var string|null
      */
     protected $guid;
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      */
     protected $pubDate;
     /**
-     * @var Source
+     * @var Source|null
      */
     protected $source;
     /**
-     * @param string $title
+     * @param string|null $title
      */
-    public function setTitle(?string $title)
+    public function setTitle(?string $title) : void
     {
         $this->title = $title;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getTitle() : ?string
     {
         return $this->title;
     }
     /**
-     * @param string $link
+     * @param string|null $link
      */
-    public function setLink(?string $link)
+    public function setLink(?string $link) : void
     {
         $this->link = $link;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getLink() : ?string
     {
         return $this->link;
     }
     /**
-     * @param string $description
+     * @param string|null $description
      */
-    public function setDescription(?string $description)
+    public function setDescription(?string $description) : void
     {
         $this->description = $description;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription() : ?string
     {
         return $this->description;
     }
     /**
-     * @param string $author
+     * @param string|null $author
      */
-    public function setAuthor(?string $author)
+    public function setAuthor(?string $author) : void
     {
         $this->author = $author;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getAuthor() : ?string
     {
         return $this->author;
     }
     /**
-     * @param array<Category> $category
+     * @param array<Category>|null $category
      */
-    public function setCategory(?array $category)
+    public function setCategory(?array $category) : void
     {
         $this->category = $category;
     }
     /**
-     * @return array<Category>
+     * @return array<Category>|null
      */
     public function getCategory() : ?array
     {
         return $this->category;
     }
     /**
-     * @param string $comments
+     * @param string|null $comments
      */
-    public function setComments(?string $comments)
+    public function setComments(?string $comments) : void
     {
         $this->comments = $comments;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getComments() : ?string
     {
         return $this->comments;
     }
     /**
-     * @param Enclosure $enclosure
+     * @param Enclosure|null $enclosure
      */
-    public function setEnclosure(?Enclosure $enclosure)
+    public function setEnclosure(?Enclosure $enclosure) : void
     {
         $this->enclosure = $enclosure;
     }
     /**
-     * @return Enclosure
+     * @return Enclosure|null
      */
     public function getEnclosure() : ?Enclosure
     {
         return $this->enclosure;
     }
     /**
-     * @param string $guid
+     * @param string|null $guid
      */
-    public function setGuid(?string $guid)
+    public function setGuid(?string $guid) : void
     {
         $this->guid = $guid;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getGuid() : ?string
     {
         return $this->guid;
     }
     /**
-     * @param \DateTime $pubDate
+     * @param \DateTime|null $pubDate
      */
-    public function setPubDate(?\DateTime $pubDate)
+    public function setPubDate(?\DateTime $pubDate) : void
     {
         $this->pubDate = $pubDate;
     }
     /**
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getPubDate() : ?\DateTime
     {
         return $this->pubDate;
     }
     /**
-     * @param Source $source
+     * @param Source|null $source
      */
-    public function setSource(?Source $source)
+    public function setSource(?Source $source) : void
     {
         $this->source = $source;
     }
     /**
-     * @return Source
+     * @return Source|null
      */
     public function getSource() : ?Source
     {

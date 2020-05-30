@@ -11,54 +11,54 @@ namespace PSX\Model\OpenAPI;
 class Tag
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var ExternalDocs
+     * @var ExternalDocs|null
      */
     protected $externalDocs;
     /**
-     * @param string $name
+     * @param string|null $name
      */
-    public function setName(?string $name)
+    public function setName(?string $name) : void
     {
         $this->name = $name;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getName() : ?string
     {
         return $this->name;
     }
     /**
-     * @param string $description
+     * @param string|null $description
      */
-    public function setDescription(?string $description)
+    public function setDescription(?string $description) : void
     {
         $this->description = $description;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription() : ?string
     {
         return $this->description;
     }
     /**
-     * @param ExternalDocs $externalDocs
+     * @param ExternalDocs|null $externalDocs
      */
-    public function setExternalDocs(?ExternalDocs $externalDocs)
+    public function setExternalDocs(?ExternalDocs $externalDocs) : void
     {
         $this->externalDocs = $externalDocs;
     }
     /**
-     * @return ExternalDocs
+     * @return ExternalDocs|null
      */
     public function getExternalDocs() : ?ExternalDocs
     {

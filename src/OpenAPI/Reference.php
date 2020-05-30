@@ -11,19 +11,19 @@ namespace PSX\Model\OpenAPI;
 class Reference
 {
     /**
-     * @var string
+     * @var string|null
      * @Key("$ref")
      */
     protected $ref;
     /**
-     * @param string $ref
+     * @param string|null $ref
      */
-    public function setRef(?string $ref)
+    public function setRef(?string $ref) : void
     {
         $this->ref = $ref;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getRef() : ?string
     {

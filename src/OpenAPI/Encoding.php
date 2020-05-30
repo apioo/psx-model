@@ -10,90 +10,90 @@ namespace PSX\Model\OpenAPI;
 class Encoding
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $contentType;
     /**
-     * @var Headers
+     * @var Headers|null
      */
     protected $headers;
     /**
-     * @var string
+     * @var string|null
      */
     protected $style;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $explode;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $allowReserved;
     /**
-     * @param string $contentType
+     * @param string|null $contentType
      */
-    public function setContentType(?string $contentType)
+    public function setContentType(?string $contentType) : void
     {
         $this->contentType = $contentType;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getContentType() : ?string
     {
         return $this->contentType;
     }
     /**
-     * @param Headers $headers
+     * @param Headers|null $headers
      */
-    public function setHeaders(?Headers $headers)
+    public function setHeaders(?Headers $headers) : void
     {
         $this->headers = $headers;
     }
     /**
-     * @return Headers
+     * @return Headers|null
      */
     public function getHeaders() : ?Headers
     {
         return $this->headers;
     }
     /**
-     * @param string $style
+     * @param string|null $style
      */
-    public function setStyle(?string $style)
+    public function setStyle(?string $style) : void
     {
         $this->style = $style;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getStyle() : ?string
     {
         return $this->style;
     }
     /**
-     * @param bool $explode
+     * @param bool|null $explode
      */
-    public function setExplode(?bool $explode)
+    public function setExplode(?bool $explode) : void
     {
         $this->explode = $explode;
     }
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getExplode() : ?bool
     {
         return $this->explode;
     }
     /**
-     * @param bool $allowReserved
+     * @param bool|null $allowReserved
      */
-    public function setAllowReserved(?bool $allowReserved)
+    public function setAllowReserved(?bool $allowReserved) : void
     {
         $this->allowReserved = $allowReserved;
     }
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAllowReserved() : ?bool
     {

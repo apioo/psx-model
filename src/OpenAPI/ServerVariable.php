@@ -11,55 +11,55 @@ namespace PSX\Model\OpenAPI;
 class ServerVariable
 {
     /**
-     * @var array<string>
+     * @var array<string>|null
      * @UniqueItems(true)
      */
     protected $enum;
     /**
-     * @var string
+     * @var string|null
      */
     protected $default;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @param array<string> $enum
+     * @param array<string>|null $enum
      */
-    public function setEnum(?array $enum)
+    public function setEnum(?array $enum) : void
     {
         $this->enum = $enum;
     }
     /**
-     * @return array<string>
+     * @return array<string>|null
      */
     public function getEnum() : ?array
     {
         return $this->enum;
     }
     /**
-     * @param string $default
+     * @param string|null $default
      */
-    public function setDefault(?string $default)
+    public function setDefault(?string $default) : void
     {
         $this->default = $default;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getDefault() : ?string
     {
         return $this->default;
     }
     /**
-     * @param string $description
+     * @param string|null $description
      */
-    public function setDescription(?string $description)
+    public function setDescription(?string $description) : void
     {
         $this->description = $description;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription() : ?string
     {

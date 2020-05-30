@@ -8,108 +8,108 @@ namespace PSX\Model\Atom;
 class Link
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $href;
     /**
-     * @var string
+     * @var string|null
      */
     protected $rel;
     /**
-     * @var string
+     * @var string|null
      */
     protected $type;
     /**
-     * @var string
+     * @var string|null
      */
     protected $hreflang;
     /**
-     * @var string
+     * @var string|null
      */
     protected $title;
     /**
-     * @var int
+     * @var int|null
      */
     protected $length;
     /**
-     * @param string $href
+     * @param string|null $href
      */
-    public function setHref(?string $href)
+    public function setHref(?string $href) : void
     {
         $this->href = $href;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getHref() : ?string
     {
         return $this->href;
     }
     /**
-     * @param string $rel
+     * @param string|null $rel
      */
-    public function setRel(?string $rel)
+    public function setRel(?string $rel) : void
     {
         $this->rel = $rel;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getRel() : ?string
     {
         return $this->rel;
     }
     /**
-     * @param string $type
+     * @param string|null $type
      */
-    public function setType(?string $type)
+    public function setType(?string $type) : void
     {
         $this->type = $type;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getType() : ?string
     {
         return $this->type;
     }
     /**
-     * @param string $hreflang
+     * @param string|null $hreflang
      */
-    public function setHreflang(?string $hreflang)
+    public function setHreflang(?string $hreflang) : void
     {
         $this->hreflang = $hreflang;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getHreflang() : ?string
     {
         return $this->hreflang;
     }
     /**
-     * @param string $title
+     * @param string|null $title
      */
-    public function setTitle(?string $title)
+    public function setTitle(?string $title) : void
     {
         $this->title = $title;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getTitle() : ?string
     {
         return $this->title;
     }
     /**
-     * @param int $length
+     * @param int|null $length
      */
-    public function setLength(?int $length)
+    public function setLength(?int $length) : void
     {
         $this->length = $length;
     }
     /**
-     * @return int
+     * @return int|null
      */
     public function getLength() : ?int
     {

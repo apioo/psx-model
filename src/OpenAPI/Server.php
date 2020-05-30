@@ -11,54 +11,54 @@ namespace PSX\Model\OpenAPI;
 class Server
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var ServerVariables
+     * @var ServerVariables|null
      */
     protected $variables;
     /**
-     * @param string $url
+     * @param string|null $url
      */
-    public function setUrl(?string $url)
+    public function setUrl(?string $url) : void
     {
         $this->url = $url;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getUrl() : ?string
     {
         return $this->url;
     }
     /**
-     * @param string $description
+     * @param string|null $description
      */
-    public function setDescription(?string $description)
+    public function setDescription(?string $description) : void
     {
         $this->description = $description;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription() : ?string
     {
         return $this->description;
     }
     /**
-     * @param ServerVariables $variables
+     * @param ServerVariables|null $variables
      */
-    public function setVariables(?ServerVariables $variables)
+    public function setVariables(?ServerVariables $variables) : void
     {
         $this->variables = $variables;
     }
     /**
-     * @return ServerVariables
+     * @return ServerVariables|null
      */
     public function getVariables() : ?ServerVariables
     {

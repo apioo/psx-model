@@ -10,162 +10,162 @@ namespace PSX\Model\OpenAPI;
 class Components
 {
     /**
-     * @var Schemas
+     * @var Schemas|null
      */
     protected $schemas;
     /**
-     * @var Responses
+     * @var Responses|null
      */
     protected $responses;
     /**
-     * @var Parameters
+     * @var Parameters|null
      */
     protected $parameters;
     /**
-     * @var Examples
+     * @var Examples|null
      */
     protected $examples;
     /**
-     * @var RequestBodies
+     * @var RequestBodies|null
      */
     protected $requestBodies;
     /**
-     * @var Headers
+     * @var Headers|null
      */
     protected $headers;
     /**
-     * @var SecuritySchemes
+     * @var SecuritySchemes|null
      */
     protected $securitySchemes;
     /**
-     * @var Links
+     * @var Links|null
      */
     protected $links;
     /**
-     * @var Callbacks
+     * @var Callbacks|null
      */
     protected $callbacks;
     /**
-     * @param Schemas $schemas
+     * @param Schemas|null $schemas
      */
-    public function setSchemas(?Schemas $schemas)
+    public function setSchemas(?Schemas $schemas) : void
     {
         $this->schemas = $schemas;
     }
     /**
-     * @return Schemas
+     * @return Schemas|null
      */
     public function getSchemas() : ?Schemas
     {
         return $this->schemas;
     }
     /**
-     * @param Responses $responses
+     * @param Responses|null $responses
      */
-    public function setResponses(?Responses $responses)
+    public function setResponses(?Responses $responses) : void
     {
         $this->responses = $responses;
     }
     /**
-     * @return Responses
+     * @return Responses|null
      */
     public function getResponses() : ?Responses
     {
         return $this->responses;
     }
     /**
-     * @param Parameters $parameters
+     * @param Parameters|null $parameters
      */
-    public function setParameters(?Parameters $parameters)
+    public function setParameters(?Parameters $parameters) : void
     {
         $this->parameters = $parameters;
     }
     /**
-     * @return Parameters
+     * @return Parameters|null
      */
     public function getParameters() : ?Parameters
     {
         return $this->parameters;
     }
     /**
-     * @param Examples $examples
+     * @param Examples|null $examples
      */
-    public function setExamples(?Examples $examples)
+    public function setExamples(?Examples $examples) : void
     {
         $this->examples = $examples;
     }
     /**
-     * @return Examples
+     * @return Examples|null
      */
     public function getExamples() : ?Examples
     {
         return $this->examples;
     }
     /**
-     * @param RequestBodies $requestBodies
+     * @param RequestBodies|null $requestBodies
      */
-    public function setRequestBodies(?RequestBodies $requestBodies)
+    public function setRequestBodies(?RequestBodies $requestBodies) : void
     {
         $this->requestBodies = $requestBodies;
     }
     /**
-     * @return RequestBodies
+     * @return RequestBodies|null
      */
     public function getRequestBodies() : ?RequestBodies
     {
         return $this->requestBodies;
     }
     /**
-     * @param Headers $headers
+     * @param Headers|null $headers
      */
-    public function setHeaders(?Headers $headers)
+    public function setHeaders(?Headers $headers) : void
     {
         $this->headers = $headers;
     }
     /**
-     * @return Headers
+     * @return Headers|null
      */
     public function getHeaders() : ?Headers
     {
         return $this->headers;
     }
     /**
-     * @param SecuritySchemes $securitySchemes
+     * @param SecuritySchemes|null $securitySchemes
      */
-    public function setSecuritySchemes(?SecuritySchemes $securitySchemes)
+    public function setSecuritySchemes(?SecuritySchemes $securitySchemes) : void
     {
         $this->securitySchemes = $securitySchemes;
     }
     /**
-     * @return SecuritySchemes
+     * @return SecuritySchemes|null
      */
     public function getSecuritySchemes() : ?SecuritySchemes
     {
         return $this->securitySchemes;
     }
     /**
-     * @param Links $links
+     * @param Links|null $links
      */
-    public function setLinks(?Links $links)
+    public function setLinks(?Links $links) : void
     {
         $this->links = $links;
     }
     /**
-     * @return Links
+     * @return Links|null
      */
     public function getLinks() : ?Links
     {
         return $this->links;
     }
     /**
-     * @param Callbacks $callbacks
+     * @param Callbacks|null $callbacks
      */
-    public function setCallbacks(?Callbacks $callbacks)
+    public function setCallbacks(?Callbacks $callbacks) : void
     {
         $this->callbacks = $callbacks;
     }
     /**
-     * @return Callbacks
+     * @return Callbacks|null
      */
     public function getCallbacks() : ?Callbacks
     {

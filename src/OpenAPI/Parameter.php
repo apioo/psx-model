@@ -11,234 +11,234 @@ namespace PSX\Model\OpenAPI;
 class Parameter
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
     /**
-     * @var string
+     * @var string|null
      */
     protected $in;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $required;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $deprecated;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $allowEmptyValue;
     /**
-     * @var string
+     * @var string|null
      */
     protected $style;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $explode;
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $allowReserved;
     /**
-     * @var mixed
+     * @var mixed|null
      */
     protected $schema;
     /**
-     * @var mixed
+     * @var mixed|null
      */
     protected $example;
     /**
-     * @var Examples
+     * @var Examples|null
      */
     protected $examples;
     /**
-     * @var MediaTypes
+     * @var MediaTypes|null
      */
     protected $content;
     /**
-     * @param string $name
+     * @param string|null $name
      */
-    public function setName(?string $name)
+    public function setName(?string $name) : void
     {
         $this->name = $name;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getName() : ?string
     {
         return $this->name;
     }
     /**
-     * @param string $in
+     * @param string|null $in
      */
-    public function setIn(?string $in)
+    public function setIn(?string $in) : void
     {
         $this->in = $in;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getIn() : ?string
     {
         return $this->in;
     }
     /**
-     * @param string $description
+     * @param string|null $description
      */
-    public function setDescription(?string $description)
+    public function setDescription(?string $description) : void
     {
         $this->description = $description;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription() : ?string
     {
         return $this->description;
     }
     /**
-     * @param bool $required
+     * @param bool|null $required
      */
-    public function setRequired(?bool $required)
+    public function setRequired(?bool $required) : void
     {
         $this->required = $required;
     }
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getRequired() : ?bool
     {
         return $this->required;
     }
     /**
-     * @param bool $deprecated
+     * @param bool|null $deprecated
      */
-    public function setDeprecated(?bool $deprecated)
+    public function setDeprecated(?bool $deprecated) : void
     {
         $this->deprecated = $deprecated;
     }
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getDeprecated() : ?bool
     {
         return $this->deprecated;
     }
     /**
-     * @param bool $allowEmptyValue
+     * @param bool|null $allowEmptyValue
      */
-    public function setAllowEmptyValue(?bool $allowEmptyValue)
+    public function setAllowEmptyValue(?bool $allowEmptyValue) : void
     {
         $this->allowEmptyValue = $allowEmptyValue;
     }
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAllowEmptyValue() : ?bool
     {
         return $this->allowEmptyValue;
     }
     /**
-     * @param string $style
+     * @param string|null $style
      */
-    public function setStyle(?string $style)
+    public function setStyle(?string $style) : void
     {
         $this->style = $style;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getStyle() : ?string
     {
         return $this->style;
     }
     /**
-     * @param bool $explode
+     * @param bool|null $explode
      */
-    public function setExplode(?bool $explode)
+    public function setExplode(?bool $explode) : void
     {
         $this->explode = $explode;
     }
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getExplode() : ?bool
     {
         return $this->explode;
     }
     /**
-     * @param bool $allowReserved
+     * @param bool|null $allowReserved
      */
-    public function setAllowReserved(?bool $allowReserved)
+    public function setAllowReserved(?bool $allowReserved) : void
     {
         $this->allowReserved = $allowReserved;
     }
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getAllowReserved() : ?bool
     {
         return $this->allowReserved;
     }
     /**
-     * @param mixed $schema
+     * @param mixed|null $schema
      */
-    public function setSchema($schema)
+    public function setSchema($schema) : void
     {
         $this->schema = $schema;
     }
     /**
-     * @return mixed
+     * @return mixed|null
      */
     public function getSchema()
     {
         return $this->schema;
     }
     /**
-     * @param mixed $example
+     * @param mixed|null $example
      */
-    public function setExample($example)
+    public function setExample($example) : void
     {
         $this->example = $example;
     }
     /**
-     * @return mixed
+     * @return mixed|null
      */
     public function getExample()
     {
         return $this->example;
     }
     /**
-     * @param Examples $examples
+     * @param Examples|null $examples
      */
-    public function setExamples(?Examples $examples)
+    public function setExamples(?Examples $examples) : void
     {
         $this->examples = $examples;
     }
     /**
-     * @return Examples
+     * @return Examples|null
      */
     public function getExamples() : ?Examples
     {
         return $this->examples;
     }
     /**
-     * @param MediaTypes $content
+     * @param MediaTypes|null $content
      */
-    public function setContent(?MediaTypes $content)
+    public function setContent(?MediaTypes $content) : void
     {
         $this->content = $content;
     }
     /**
-     * @return MediaTypes
+     * @return MediaTypes|null
      */
     public function getContent() : ?MediaTypes
     {

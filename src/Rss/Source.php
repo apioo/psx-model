@@ -8,36 +8,36 @@ namespace PSX\Model\Rss;
 class Source
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $text;
     /**
-     * @var string
+     * @var string|null
      */
     protected $url;
     /**
-     * @param string $text
+     * @param string|null $text
      */
-    public function setText(?string $text)
+    public function setText(?string $text) : void
     {
         $this->text = $text;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getText() : ?string
     {
         return $this->text;
     }
     /**
-     * @param string $url
+     * @param string|null $url
      */
-    public function setUrl(?string $url)
+    public function setUrl(?string $url) : void
     {
         $this->url = $url;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getUrl() : ?string
     {

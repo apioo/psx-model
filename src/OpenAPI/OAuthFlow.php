@@ -8,72 +8,72 @@ namespace PSX\Model\OpenAPI;
 class OAuthFlow
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $authorizationUrl;
     /**
-     * @var string
+     * @var string|null
      */
     protected $tokenUrl;
     /**
-     * @var string
+     * @var string|null
      */
     protected $refreshUrl;
     /**
-     * @var Scopes
+     * @var Scopes|null
      */
     protected $scopes;
     /**
-     * @param string $authorizationUrl
+     * @param string|null $authorizationUrl
      */
-    public function setAuthorizationUrl(?string $authorizationUrl)
+    public function setAuthorizationUrl(?string $authorizationUrl) : void
     {
         $this->authorizationUrl = $authorizationUrl;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getAuthorizationUrl() : ?string
     {
         return $this->authorizationUrl;
     }
     /**
-     * @param string $tokenUrl
+     * @param string|null $tokenUrl
      */
-    public function setTokenUrl(?string $tokenUrl)
+    public function setTokenUrl(?string $tokenUrl) : void
     {
         $this->tokenUrl = $tokenUrl;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getTokenUrl() : ?string
     {
         return $this->tokenUrl;
     }
     /**
-     * @param string $refreshUrl
+     * @param string|null $refreshUrl
      */
-    public function setRefreshUrl(?string $refreshUrl)
+    public function setRefreshUrl(?string $refreshUrl) : void
     {
         $this->refreshUrl = $refreshUrl;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getRefreshUrl() : ?string
     {
         return $this->refreshUrl;
     }
     /**
-     * @param Scopes $scopes
+     * @param Scopes|null $scopes
      */
-    public function setScopes(?Scopes $scopes)
+    public function setScopes(?Scopes $scopes) : void
     {
         $this->scopes = $scopes;
     }
     /**
-     * @return Scopes
+     * @return Scopes|null
      */
     public function getScopes() : ?Scopes
     {

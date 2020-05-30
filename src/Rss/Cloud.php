@@ -8,90 +8,90 @@ namespace PSX\Model\Rss;
 class Cloud
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $domain;
     /**
-     * @var int
+     * @var int|null
      */
     protected $port;
     /**
-     * @var string
+     * @var string|null
      */
     protected $path;
     /**
-     * @var string
+     * @var string|null
      */
     protected $registerProcedure;
     /**
-     * @var string
+     * @var string|null
      */
     protected $protocol;
     /**
-     * @param string $domain
+     * @param string|null $domain
      */
-    public function setDomain(?string $domain)
+    public function setDomain(?string $domain) : void
     {
         $this->domain = $domain;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getDomain() : ?string
     {
         return $this->domain;
     }
     /**
-     * @param int $port
+     * @param int|null $port
      */
-    public function setPort(?int $port)
+    public function setPort(?int $port) : void
     {
         $this->port = $port;
     }
     /**
-     * @return int
+     * @return int|null
      */
     public function getPort() : ?int
     {
         return $this->port;
     }
     /**
-     * @param string $path
+     * @param string|null $path
      */
-    public function setPath(?string $path)
+    public function setPath(?string $path) : void
     {
         $this->path = $path;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getPath() : ?string
     {
         return $this->path;
     }
     /**
-     * @param string $registerProcedure
+     * @param string|null $registerProcedure
      */
-    public function setRegisterProcedure(?string $registerProcedure)
+    public function setRegisterProcedure(?string $registerProcedure) : void
     {
         $this->registerProcedure = $registerProcedure;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getRegisterProcedure() : ?string
     {
         return $this->registerProcedure;
     }
     /**
-     * @param string $protocol
+     * @param string|null $protocol
      */
-    public function setProtocol(?string $protocol)
+    public function setProtocol(?string $protocol) : void
     {
         $this->protocol = $protocol;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getProtocol() : ?string
     {

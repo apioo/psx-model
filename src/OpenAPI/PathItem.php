@@ -10,237 +10,237 @@ namespace PSX\Model\OpenAPI;
 class PathItem
 {
     /**
-     * @var string
+     * @var string|null
      * @Key("$ref")
      */
     protected $ref;
     /**
-     * @var string
+     * @var string|null
      */
     protected $summary;
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
     /**
-     * @var Operation
+     * @var Operation|null
      */
     protected $get;
     /**
-     * @var Operation
+     * @var Operation|null
      */
     protected $put;
     /**
-     * @var Operation
+     * @var Operation|null
      */
     protected $post;
     /**
-     * @var Operation
+     * @var Operation|null
      */
     protected $delete;
     /**
-     * @var Operation
+     * @var Operation|null
      */
     protected $options;
     /**
-     * @var Operation
+     * @var Operation|null
      */
     protected $head;
     /**
-     * @var Operation
+     * @var Operation|null
      */
     protected $patch;
     /**
-     * @var Operation
+     * @var Operation|null
      */
     protected $trace;
     /**
-     * @var array<Server>
+     * @var array<Server>|null
      * @UniqueItems(true)
      */
     protected $servers;
     /**
-     * @var array<Parameter|Reference>
+     * @var array<Parameter|Reference>|null
      * @UniqueItems(true)
      */
     protected $parameters;
     /**
-     * @param string $ref
+     * @param string|null $ref
      */
-    public function setRef(?string $ref)
+    public function setRef(?string $ref) : void
     {
         $this->ref = $ref;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getRef() : ?string
     {
         return $this->ref;
     }
     /**
-     * @param string $summary
+     * @param string|null $summary
      */
-    public function setSummary(?string $summary)
+    public function setSummary(?string $summary) : void
     {
         $this->summary = $summary;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getSummary() : ?string
     {
         return $this->summary;
     }
     /**
-     * @param string $description
+     * @param string|null $description
      */
-    public function setDescription(?string $description)
+    public function setDescription(?string $description) : void
     {
         $this->description = $description;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getDescription() : ?string
     {
         return $this->description;
     }
     /**
-     * @param Operation $get
+     * @param Operation|null $get
      */
-    public function setGet(?Operation $get)
+    public function setGet(?Operation $get) : void
     {
         $this->get = $get;
     }
     /**
-     * @return Operation
+     * @return Operation|null
      */
     public function getGet() : ?Operation
     {
         return $this->get;
     }
     /**
-     * @param Operation $put
+     * @param Operation|null $put
      */
-    public function setPut(?Operation $put)
+    public function setPut(?Operation $put) : void
     {
         $this->put = $put;
     }
     /**
-     * @return Operation
+     * @return Operation|null
      */
     public function getPut() : ?Operation
     {
         return $this->put;
     }
     /**
-     * @param Operation $post
+     * @param Operation|null $post
      */
-    public function setPost(?Operation $post)
+    public function setPost(?Operation $post) : void
     {
         $this->post = $post;
     }
     /**
-     * @return Operation
+     * @return Operation|null
      */
     public function getPost() : ?Operation
     {
         return $this->post;
     }
     /**
-     * @param Operation $delete
+     * @param Operation|null $delete
      */
-    public function setDelete(?Operation $delete)
+    public function setDelete(?Operation $delete) : void
     {
         $this->delete = $delete;
     }
     /**
-     * @return Operation
+     * @return Operation|null
      */
     public function getDelete() : ?Operation
     {
         return $this->delete;
     }
     /**
-     * @param Operation $options
+     * @param Operation|null $options
      */
-    public function setOptions(?Operation $options)
+    public function setOptions(?Operation $options) : void
     {
         $this->options = $options;
     }
     /**
-     * @return Operation
+     * @return Operation|null
      */
     public function getOptions() : ?Operation
     {
         return $this->options;
     }
     /**
-     * @param Operation $head
+     * @param Operation|null $head
      */
-    public function setHead(?Operation $head)
+    public function setHead(?Operation $head) : void
     {
         $this->head = $head;
     }
     /**
-     * @return Operation
+     * @return Operation|null
      */
     public function getHead() : ?Operation
     {
         return $this->head;
     }
     /**
-     * @param Operation $patch
+     * @param Operation|null $patch
      */
-    public function setPatch(?Operation $patch)
+    public function setPatch(?Operation $patch) : void
     {
         $this->patch = $patch;
     }
     /**
-     * @return Operation
+     * @return Operation|null
      */
     public function getPatch() : ?Operation
     {
         return $this->patch;
     }
     /**
-     * @param Operation $trace
+     * @param Operation|null $trace
      */
-    public function setTrace(?Operation $trace)
+    public function setTrace(?Operation $trace) : void
     {
         $this->trace = $trace;
     }
     /**
-     * @return Operation
+     * @return Operation|null
      */
     public function getTrace() : ?Operation
     {
         return $this->trace;
     }
     /**
-     * @param array<Server> $servers
+     * @param array<Server>|null $servers
      */
-    public function setServers(?array $servers)
+    public function setServers(?array $servers) : void
     {
         $this->servers = $servers;
     }
     /**
-     * @return array<Server>
+     * @return array<Server>|null
      */
     public function getServers() : ?array
     {
         return $this->servers;
     }
     /**
-     * @param array<Parameter|Reference> $parameters
+     * @param array<Parameter|Reference>|null $parameters
      */
-    public function setParameters(?array $parameters)
+    public function setParameters(?array $parameters) : void
     {
         $this->parameters = $parameters;
     }
     /**
-     * @return array<Parameter|Reference>
+     * @return array<Parameter|Reference>|null
      */
     public function getParameters() : ?array
     {

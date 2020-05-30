@@ -8,54 +8,54 @@ namespace PSX\Model\Atom;
 class Generator
 {
     /**
-     * @var string
+     * @var string|null
      */
     protected $text;
     /**
-     * @var string
+     * @var string|null
      */
     protected $uri;
     /**
-     * @var string
+     * @var string|null
      */
     protected $version;
     /**
-     * @param string $text
+     * @param string|null $text
      */
-    public function setText(?string $text)
+    public function setText(?string $text) : void
     {
         $this->text = $text;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getText() : ?string
     {
         return $this->text;
     }
     /**
-     * @param string $uri
+     * @param string|null $uri
      */
-    public function setUri(?string $uri)
+    public function setUri(?string $uri) : void
     {
         $this->uri = $uri;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getUri() : ?string
     {
         return $this->uri;
     }
     /**
-     * @param string $version
+     * @param string|null $version
      */
-    public function setVersion(?string $version)
+    public function setVersion(?string $version) : void
     {
         $this->version = $version;
     }
     /**
-     * @return string
+     * @return string|null
      */
     public function getVersion() : ?string
     {
