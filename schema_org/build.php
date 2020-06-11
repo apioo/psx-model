@@ -1,28 +1,30 @@
 <?php
 
 $definitions = [];
+$dataTypes = ['Text', 'Number', 'Date', 'DateTime', 'Time', 'Boolean', 'Float', 'Integer', 'DataType', 'URL', 'CssSelectorType', 'XPathType', 'DefinedTerm'];
 
-[$classes, $properties] = parse(__DIR__ . '/schema.ttl');
+[$classes, $properties] = parse(__DIR__ . '/schema.rdf');
 
-$dataTypes = ['Text', 'Number', 'Date', 'DateTime', 'Time', 'Boolean', 'Float', 'Integer', 'DataType', 'URL', 'CssSelectorType', 'XPathType'];
+$classes = array_filter($classes, static function(stdClass $class) use ($dataTypes) {
+    return !in_array($class->label, $dataTypes);
+});
 
 foreach ($classes as $name => $class) {
     $object = new stdClass();
 
-    if (in_array($name, $dataTypes)) {
-        continue;
-    }
-
-    $subClass = $class->{'rdfs:subClassOf'} ?? null;
-    if (!empty($subClass)) {
-        if (is_array($subClass)) {
-            $object->{'$extends'} = reset($subClass);
-        } elseif (is_string($subClass)) {
-            $object->{'$extends'} = $subClass;
+    $subClass = array_filter(array_map(function($subClass) use ($classes){
+        if (isset($classes[$subClass])) {
+            return $classes[$subClass]->label;
+        } else {
+            return null;
         }
+    }, $class->subClassOf));
+
+    if (!empty($subClass)) {
+        $object->{'$extends'} = reset($subClass);
     }
 
-    $description = $class->{'rdfs:comment'} ?? null;
+    $description = $class->comment ?? null;
     if ($description !== null) {
         $object->{'description'} = is_array($description) ? implode(', ', $description) : $description;
     }
@@ -30,7 +32,7 @@ foreach ($classes as $name => $class) {
     $object->{'type'} = 'object';
     $object->{'properties'} = getPropertiesForObject($name, $properties, $dataTypes);
 
-    $definitions[$name] = $object;
+    $definitions[$class->label] = $object;
 }
 
 
@@ -45,18 +47,12 @@ function getPropertiesForObject($objectName, $properties, $dataTypes)
 {
     $result = new stdClass();
 
-    foreach ($properties as $name => $property) {
-        $includes = $property->{':domainIncludes'} ?? null;
+    foreach ($properties as $property) {
+        if (in_array($objectName, $property->domainIncludes)) {
+            $description = $property->comment;
 
-        if ((is_array($includes) && in_array($objectName, $includes)) || $includes === $objectName) {
-            $range = $property->{':rangeIncludes'} ?? null;
-            $description = $property->{'rdfs:comment'} ?? null;
-
-            if (is_array($description)) {
-                $description = implode(', ', $description);
-            }
-
-            if (is_array($range) && count($range) === 1) {
+            $range = $property->rangeIncludes;
+            if (count($range) === 1) {
                 $range = reset($range);
             }
 
@@ -67,15 +63,19 @@ function getPropertiesForObject($objectName, $properties, $dataTypes)
                     $oneOf[] = convertToType($type);
                 }
 
-                $prop = (object) [
-                    'oneOf' => $oneOf
-                ];
+                $oneOf = array_map('json_decode', array_unique(array_map('json_encode', array_filter($oneOf))));
+
+                if (count($oneOf) > 0) {
+                    $prop = (object) [
+                        'oneOf' => $oneOf
+                    ];
+                }
             } elseif (is_string($range)) {
                 $prop = convertToType($range, $description);
             }
 
             if ($prop !== null) {
-                $result->{$name} = $prop;
+                $result->{$property->label} = $prop;
             }
         }
     }
@@ -83,42 +83,48 @@ function getPropertiesForObject($objectName, $properties, $dataTypes)
     return $result;
 }
 
-function convertToType(string $type, ?string $description = null)
+function convertToType(string $type, ?string $description = null): ?stdClass
 {
+    global $classes;
+
     $prop = new stdClass();
 
     if ($description !== null) {
         $prop->description = $description;
     }
 
-    if ($type === 'Text') {
+    if (isset($classes[$type])) {
+        $prop->{'$ref'} = $classes[$type]->label;
+    } elseif ($type === 'http://schema.org/Text') {
         $prop->{'type'} = 'string';
-    } elseif ($type === 'Number') {
+    } elseif ($type === 'http://schema.org/Number') {
         $prop->{'type'} = 'number';
-    } elseif ($type === 'Float') {
+    } elseif ($type === 'http://schema.org/Float') {
         $prop->{'type'} = 'number';
-    } elseif ($type === 'URL') {
+    } elseif ($type === 'http://schema.org/URL') {
         $prop->{'type'} = 'string';
         $prop->{'format'} = 'uri';
-    } elseif ($type === 'Integer') {
+    } elseif ($type === 'http://schema.org/Integer') {
         $prop->{'type'} = 'integer';
-    } elseif ($type === 'Date') {
+    } elseif ($type === 'http://schema.org/Date') {
         $prop->{'type'} = 'string';
         $prop->{'format'} = 'date';
-    } elseif ($type === 'DateTime') {
+    } elseif ($type === 'http://schema.org/DateTime') {
         $prop->{'type'} = 'string';
         $prop->{'format'} = 'date-time';
-    } elseif ($type === 'Time') {
+    } elseif ($type === 'http://schema.org/Time') {
         $prop->{'type'} = 'string';
         $prop->{'format'} = 'time';
-    } elseif ($type === 'Boolean') {
+    } elseif ($type === 'http://schema.org/Boolean') {
         $prop->{'type'} = 'boolean';
-    } elseif ($type === 'CssSelectorType') {
+    } elseif ($type === 'http://schema.org/CssSelectorType') {
         $prop->{'type'} = 'string';
-    } elseif ($type === 'XPathType') {
+    } elseif ($type === 'http://schema.org/XPathType') {
+        $prop->{'type'} = 'string';
+    } elseif ($type === 'http://schema.org/DefinedTerm') {
         $prop->{'type'} = 'string';
     } else {
-        $prop->{'$ref'} = $type;
+        return null;
     }
 
     return $prop;
@@ -126,58 +132,57 @@ function convertToType(string $type, ?string $description = null)
 
 function parse(string $file): array
 {
-    $lines = file($file);
+    $dom = new \DOMDocument();
+    $dom->load($file);
+
+    $propertyElements = $dom->getElementsByTagName('Property');
+    $classElements = $dom->getElementsByTagName('Class');
+
     $classes = [];
+    foreach ($classElements as $classElement) {
+        $classes[$classElement->getAttribute('rdf:about')] = (object) [
+            'subClassOf' => getElementResources($classElement, 'subClassOf'),
+            'source' => getElementResources($classElement, 'source'),
+            'comment' => getElementValue($classElement, 'comment'),
+            'label' => getElementValue($classElement, 'label'),
+        ];
+    }
+
     $properties = [];
-
-    foreach ($lines as $line) {
-        if ($line[0] === ':' && ($pos = strpos($line, ' a rdfs:Class')) !== false) {
-            $name = substr($line, 1, $pos - 1);
-            $object = new stdClass();
-            $property = null;
-
-            $classes[$name] = $object;
-        } elseif ($line[0] === ':' && ($pos = strpos($line, ' a rdf:Property')) !== false) {
-            $name = substr($line, 1, $pos - 1);
-            $object = null;
-            $property = new stdClass();
-
-            $properties[$name] = $property;
-        }
-
-        if (substr($line, 0, 8) === '        ') {
-            $value = trim(trim($line), ' :";.,');
-
-            if ($object) {
-                if (is_array($object->{$key})) {
-                    $object->{$key}[] = $value;
-                }
-
-            } elseif ($property) {
-                if (is_array($property->{$key})) {
-                    $property->{$key}[] = $value;
-                }
-            }
-        } elseif (substr($line, 0, 4) === '    ') {
-            [$key, $value] = explode(' ', trim($line), 2);
-
-            if ($object) {
-                if (substr($value, -1) === ',') {
-                    $object->{$key} = [trim($value, ' :";.,')];
-                } else {
-                    $object->{$key} = trim($value, ' :";.,');
-                }
-            } elseif ($property) {
-                if (substr($value, -1) === ',') {
-                    $property->{$key} = [trim($value, ' :";.,')];
-                } else {
-                    $property->{$key} = trim($value, ' :";.,');
-                }
-            }
-        }
+    foreach ($propertyElements as $propertyElement) {
+        $properties[$propertyElement->getAttribute('rdf:about')] = (object) [
+            'source' => getElementResources($propertyElement, 'source'),
+            'domainIncludes' => getElementResources($propertyElement, 'domainIncludes'),
+            'rangeIncludes' => getElementResources($propertyElement, 'rangeIncludes'),
+            'comment' => getElementValue($propertyElement, 'comment'),
+            'label' => getElementValue($propertyElement, 'label'),
+        ];
     }
 
     return [$classes, $properties];
 }
 
+function getElementResources(\DOMElement $classElement, string $name): array
+{
+    $result = [];
+    $elements = $classElement->getElementsByTagName($name);
+    foreach ($elements as $element) {
+        $result[] = $element->getAttribute('rdf:resource');
+    }
+    return $result;
+}
+
+function getElementValue(\DOMElement $classElement, string $name): ?string
+{
+    $elements = $classElement->getElementsByTagName($name);
+    foreach ($elements as $element) {
+        return $element->textContent;
+    }
+    return null;
+}
+
+function findLowestCommonClass(): string
+{
+    
+}
 
