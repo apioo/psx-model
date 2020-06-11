@@ -5,6 +5,7 @@ $specs = [
     'Atom' => 'atom.json',
     'OpenAPI' => 'openapi.json',
     'Rss' => 'rss.json',
+    'SchemaOrg' => 'schema_org.json',
 ];
 
 foreach ($specs as $name => $spec) {
