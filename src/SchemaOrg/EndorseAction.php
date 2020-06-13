@@ -1,0 +1,30 @@
+<?php
+
+declare(strict_types = 1);
+
+namespace PSX\Model\SchemaOrg;
+
+/**
+ * @Description("An agent approves/certifies/likes/supports/sanction an object.")
+ */
+class EndorseAction extends ReactAction
+{
+    /**
+     * @var Person|Organization|null
+     */
+    protected $endorsee;
+    /**
+     * @param Person|Organization|null $endorsee
+     */
+    public function setEndorsee($endorsee) : void
+    {
+        $this->endorsee = $endorsee;
+    }
+    /**
+     * @return Person|Organization|null
+     */
+    public function getEndorsee()
+    {
+        return $this->endorsee;
+    }
+}
