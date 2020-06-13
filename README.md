@@ -12,6 +12,7 @@ data formats:
 * Atom
 * OpenAPI
 * Rss
+* SchemaOrg
 
 All generated code is automatically Psalm level 1 compatible. These classes can
 be used standalone or in combination with the `psx/data` and `psx/schema`
