@@ -52,26 +52,14 @@ function getPropertiesForObject($objectName, $properties, $dataTypes)
             $description = $property->comment;
 
             $range = $property->rangeIncludes;
-            if (count($range) === 1) {
-                $range = reset($range);
-            }
-
             $prop = null;
-            if (is_array($range)) {
-                $oneOf = [];
-                foreach ($range as $type) {
-                    $oneOf[] = convertToType($type);
-                }
-
-                $oneOf = array_map('json_decode', array_unique(array_map('json_encode', array_filter($oneOf))));
-
-                if (count($oneOf) > 0) {
-                    $prop = (object) [
-                        'oneOf' => $oneOf
-                    ];
-                }
-            } elseif (is_string($range)) {
-                $prop = convertToType($range, $description);
+            $oneOf = resolveOneOf($range);
+            if (count($oneOf) > 1) {
+                $prop = (object)[
+                    'oneOf' => $oneOf
+                ];
+            } elseif (count($oneOf) === 1) {
+                $prop = $oneOf[0];
             }
 
             if ($prop !== null) {
@@ -150,6 +138,13 @@ function parse(string $file): array
 
     $properties = [];
     foreach ($propertyElements as $propertyElement) {
+        /** @var \DOMElement $propertyElement */
+
+        $supersededBy = $propertyElement->getElementsByTagName('supersededBy')->item(0);
+        if ($supersededBy instanceof \DOMElement) {
+            $propertyElement = $supersededBy;
+        }
+
         $properties[$propertyElement->getAttribute('rdf:about')] = (object) [
             'source' => getElementResources($propertyElement, 'source'),
             'domainIncludes' => getElementResources($propertyElement, 'domainIncludes'),
@@ -181,8 +176,62 @@ function getElementValue(\DOMElement $classElement, string $name): ?string
     return null;
 }
 
-function findLowestCommonClass(): string
+function getClassParents(string $className): array
 {
-    
+    $parents = [];
+    while (($parent = getClassParent($className)) !== null) {
+        $parents[] = $parent;
+        $className = $parent;
+    }
+    return $parents;
 }
 
+function getClassParent(string $className)
+{
+    global $classes;
+
+    if (isset($classes[$className]) && count($classes[$className]->subClassOf) > 0) {
+        return reset($classes[$className]->subClassOf);
+    } else {
+        return null;
+    }
+}
+
+function resolveOneOf(array $range): array
+{
+    $elements = [];
+    $withoutParents = [];
+    foreach ($range as $type) {
+        $parents = getClassParents($type);
+        if (count($parents) > 0) {
+            $elements[$type] = $parents;
+        } else {
+            $withoutParents[] = $type;
+        }
+    }
+
+    // remove all elements which are already included by another type
+    $result = [];
+    foreach ($elements as $type => $path) {
+        $found = false;
+        foreach ($path as $item) {
+            if (isset($elements[$item])) {
+                $found = true;
+                break;
+            }
+        }
+
+        if (!$found) {
+            $result[] = $type;
+        }
+    }
+
+    $result = array_merge($withoutParents, $result);
+
+    $oneOf = [];
+    foreach ($result as $type) {
+        $oneOf[] = convertToType($type);
+    }
+
+    return array_values(array_map('json_decode', array_unique(array_map('json_encode', array_filter($oneOf)))));
+}
