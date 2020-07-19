@@ -118,6 +118,10 @@ class Event extends Thing
      */
     protected $contributor;
     /**
+     * @var Thing|null
+     */
+    protected $about;
+    /**
      * @var Event|null
      */
     protected $superEvent;
@@ -510,6 +514,20 @@ class Event extends Thing
     public function getContributor()
     {
         return $this->contributor;
+    }
+    /**
+     * @param Thing|null $about
+     */
+    public function setAbout(?Thing $about) : void
+    {
+        $this->about = $about;
+    }
+    /**
+     * @return Thing|null
+     */
+    public function getAbout() : ?Thing
+    {
+        return $this->about;
     }
     /**
      * @param Event|null $superEvent

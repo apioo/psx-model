@@ -298,6 +298,10 @@ class CreativeWork extends Thing
      */
     protected $thumbnailUrl;
     /**
+     * @var Thing|null
+     */
+    protected $about;
+    /**
      * @var CreativeWork|null
      */
     protected $containsSeason;
@@ -1332,6 +1336,20 @@ class CreativeWork extends Thing
     public function getThumbnailUrl() : ?\PSX\Uri\Uri
     {
         return $this->thumbnailUrl;
+    }
+    /**
+     * @param Thing|null $about
+     */
+    public function setAbout(?Thing $about) : void
+    {
+        $this->about = $about;
+    }
+    /**
+     * @return Thing|null
+     */
+    public function getAbout() : ?Thing
+    {
+        return $this->about;
     }
     /**
      * @param CreativeWork|null $containsSeason
