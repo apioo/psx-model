@@ -3,6 +3,7 @@
 $specs = [
     'ActivityStream' => 'activity_stream.json',
     'Atom' => 'atom.json',
+    'Common' => 'common.json',
     'OpenAPI' => 'openapi.json',
     'Rss' => 'rss.json',
     'SchemaOrg' => 'schema_org.json',
