@@ -518,14 +518,14 @@ class Event extends Thing
     /**
      * @param Thing|null $about
      */
-    public function setAbout(?Thing $about) : void
+    public function setAbout($about) : void
     {
         $this->about = $about;
     }
     /**
      * @return Thing|null
      */
-    public function getAbout() : ?Thing
+    public function getAbout()
     {
         return $this->about;
     }
