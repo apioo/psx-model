@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The geographic coordinates of a place or event.")
  */
-class GeoCoordinates extends StructuredValue
+class GeoCoordinates extends StructuredValue implements \JsonSerializable
 {
     /**
      * @var string|Country|null
@@ -116,5 +116,11 @@ class GeoCoordinates extends StructuredValue
     public function getAddress()
     {
         return $this->address;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('addressCountry' => $this->addressCountry, 'longitude' => $this->longitude, 'postalCode' => $this->postalCode, 'elevation' => $this->elevation, 'latitude' => $this->latitude, 'address' => $this->address), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

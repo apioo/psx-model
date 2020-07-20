@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.")
  */
-class MusicGroup extends PerformingGroup
+class MusicGroup extends PerformingGroup implements \JsonSerializable
 {
     /**
      * @var ItemList|MusicRecording|null
@@ -62,5 +62,11 @@ class MusicGroup extends PerformingGroup
     public function getGenre()
     {
         return $this->genre;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('track' => $this->track, 'album' => $this->album, 'genre' => $this->genre), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

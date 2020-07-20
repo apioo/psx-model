@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The delivery of a parcel either via the postal service or a commercial service.")
  */
-class ParcelDelivery extends Intangible
+class ParcelDelivery extends Intangible implements \JsonSerializable
 {
     /**
      * @var DeliveryEvent|null
@@ -206,5 +206,11 @@ class ParcelDelivery extends Intangible
     public function getPartOfOrder() : ?Order
     {
         return $this->partOfOrder;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('deliveryStatus' => $this->deliveryStatus, 'provider' => $this->provider, 'deliveryAddress' => $this->deliveryAddress, 'expectedArrivalUntil' => $this->expectedArrivalUntil, 'trackingUrl' => $this->trackingUrl, 'trackingNumber' => $this->trackingNumber, 'originAddress' => $this->originAddress, 'itemShipped' => $this->itemShipped, 'expectedArrivalFrom' => $this->expectedArrivalFrom, 'hasDeliveryMethod' => $this->hasDeliveryMethod, 'partOfOrder' => $this->partOfOrder), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

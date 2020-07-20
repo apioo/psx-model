@@ -9,7 +9,7 @@ namespace PSX\Model\SchemaOrg;
 
 Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations. For offers of tickets, use <a class=""localLink"" href=""http://schema.org/Offer"">Offer</a>.")
 */
-class TaxiReservation extends Reservation
+class TaxiReservation extends Reservation implements \JsonSerializable
 {
     /**
      * @var \DateTime|null
@@ -64,5 +64,11 @@ class TaxiReservation extends Reservation
     public function getPickupLocation() : ?Place
     {
         return $this->pickupLocation;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('pickupTime' => $this->pickupTime, 'partySize' => $this->partySize, 'pickupLocation' => $this->pickupLocation), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

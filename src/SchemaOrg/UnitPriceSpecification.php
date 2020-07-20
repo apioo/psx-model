@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The price asked for a given offer by the respective organization or person.")
  */
-class UnitPriceSpecification extends PriceSpecification
+class UnitPriceSpecification extends PriceSpecification implements \JsonSerializable
 {
     /**
      * @var QuantitativeValue|null
@@ -98,5 +98,11 @@ class UnitPriceSpecification extends PriceSpecification
     public function getBillingIncrement() : ?float
     {
         return $this->billingIncrement;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('referenceQuantity' => $this->referenceQuantity, 'unitCode' => $this->unitCode, 'unitText' => $this->unitText, 'priceType' => $this->priceType, 'billingIncrement' => $this->billingIncrement), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

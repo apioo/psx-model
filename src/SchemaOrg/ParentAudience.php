@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A set of characteristics describing parents, who can be interested in viewing some content.")
  */
-class ParentAudience extends PeopleAudience
+class ParentAudience extends PeopleAudience implements \JsonSerializable
 {
     /**
      * @var float|null
@@ -44,5 +44,11 @@ class ParentAudience extends PeopleAudience
     public function getChildMinAge() : ?float
     {
         return $this->childMinAge;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('childMaxAge' => $this->childMaxAge, 'childMinAge' => $this->childMinAge), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

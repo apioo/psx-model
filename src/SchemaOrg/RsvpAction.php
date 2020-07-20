@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of notifying an event organizer as to whether you expect to attend the event.")
  */
-class RsvpAction extends InformAction
+class RsvpAction extends InformAction implements \JsonSerializable
 {
     /**
      * @var Comment|null
@@ -62,5 +62,11 @@ class RsvpAction extends InformAction
     public function getAdditionalNumberOfGuests() : ?float
     {
         return $this->additionalNumberOfGuests;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('comment' => $this->comment, 'rsvpResponse' => $this->rsvpResponse, 'additionalNumberOfGuests' => $this->additionalNumberOfGuests), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

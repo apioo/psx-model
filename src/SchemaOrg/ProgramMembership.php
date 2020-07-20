@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Used to describe membership in a loyalty programs (e.g. ""StarAliance""), traveler clubs (e.g. ""AAA""), purchase clubs (""Safeway Club""), etc.")
  */
-class ProgramMembership extends Intangible
+class ProgramMembership extends Intangible implements \JsonSerializable
 {
     /**
      * @var Person|Organization|null
@@ -80,5 +80,11 @@ class ProgramMembership extends Intangible
     public function getProgramName() : ?string
     {
         return $this->programName;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('member' => $this->member, 'membershipNumber' => $this->membershipNumber, 'hostingOrganization' => $this->hostingOrganization, 'programName' => $this->programName), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

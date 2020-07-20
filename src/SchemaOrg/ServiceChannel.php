@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A means for accessing a service, e.g. a government office location, web site, or phone number.")
  */
-class ServiceChannel extends Intangible
+class ServiceChannel extends Intangible implements \JsonSerializable
 {
     /**
      * @var string|Language|null
@@ -152,5 +152,11 @@ class ServiceChannel extends Intangible
     public function getProvidesService() : ?Service
     {
         return $this->providesService;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('availableLanguage' => $this->availableLanguage, 'serviceUrl' => $this->serviceUrl, 'serviceLocation' => $this->serviceLocation, 'servicePostalAddress' => $this->servicePostalAddress, 'serviceSmsNumber' => $this->serviceSmsNumber, 'servicePhone' => $this->servicePhone, 'processingTime' => $this->processingTime, 'providesService' => $this->providesService), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

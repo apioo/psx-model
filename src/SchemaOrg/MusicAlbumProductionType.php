@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Classification of the album by it's type of content: soundtrack, live album, studio album, etc.")
  */
-class MusicAlbumProductionType extends Enumeration
+class MusicAlbumProductionType extends Enumeration implements \JsonSerializable
 {
 }

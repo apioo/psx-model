@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of participating in performance arts.")
  */
-class PerformAction extends PlayAction
+class PerformAction extends PlayAction implements \JsonSerializable
 {
     /**
      * @var EntertainmentBusiness|null
@@ -26,5 +26,11 @@ class PerformAction extends PlayAction
     public function getEntertainmentBusiness() : ?EntertainmentBusiness
     {
         return $this->entertainmentBusiness;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('entertainmentBusiness' => $this->entertainmentBusiness), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

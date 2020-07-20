@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A brand is a name used by an organization or business person for labeling a product, product group, or similar.")
  */
-class Brand extends Intangible
+class Brand extends Intangible implements \JsonSerializable
 {
     /**
      * @var AggregateRating|null
@@ -80,5 +80,11 @@ class Brand extends Intangible
     public function getSlogan() : ?string
     {
         return $this->slogan;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('aggregateRating' => $this->aggregateRating, 'review' => $this->review, 'logo' => $this->logo, 'slogan' => $this->slogan), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

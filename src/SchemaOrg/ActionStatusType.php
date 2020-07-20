@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The status of an Action.")
  */
-class ActionStatusType extends Enumeration
+class ActionStatusType extends Enumeration implements \JsonSerializable
 {
 }

@@ -14,7 +14,7 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class SearchAction extends Action
+class SearchAction extends Action implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -33,5 +33,11 @@ class SearchAction extends Action
     public function getQuery() : ?string
     {
         return $this->query;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('query' => $this->query), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

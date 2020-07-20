@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of asking someone to attend an event. Reciprocal of RsvpAction.")
  */
-class InviteAction extends CommunicateAction
+class InviteAction extends CommunicateAction implements \JsonSerializable
 {
     /**
      * @var Event|null
@@ -26,5 +26,11 @@ class InviteAction extends CommunicateAction
     public function getEvent() : ?Event
     {
         return $this->event;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('event' => $this->event), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

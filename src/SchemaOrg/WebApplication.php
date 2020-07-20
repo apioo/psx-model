@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Web applications.")
  */
-class WebApplication extends SoftwareApplication
+class WebApplication extends SoftwareApplication implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -26,5 +26,11 @@ class WebApplication extends SoftwareApplication
     public function getBrowserRequirements() : ?string
     {
         return $this->browserRequirements;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('browserRequirements' => $this->browserRequirements), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

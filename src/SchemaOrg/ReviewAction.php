@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of producing a balanced opinion about the object for an audience. An agent reviews an object with participants resulting in a review.")
  */
-class ReviewAction extends AssessAction
+class ReviewAction extends AssessAction implements \JsonSerializable
 {
     /**
      * @var Review|null
@@ -26,5 +26,11 @@ class ReviewAction extends AssessAction
     public function getResultReview() : ?Review
     {
         return $this->resultReview;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('resultReview' => $this->resultReview), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

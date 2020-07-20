@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An answer offered to a question; perhaps correct, perhaps opinionated or wrong.")
  */
-class Answer extends Comment
+class Answer extends Comment implements \JsonSerializable
 {
 }

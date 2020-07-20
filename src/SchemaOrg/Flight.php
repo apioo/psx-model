@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An airline flight.")
  */
-class Flight extends Trip
+class Flight extends Trip implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -260,5 +260,11 @@ class Flight extends Trip
     public function getMealService() : ?string
     {
         return $this->mealService;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('departureGate' => $this->departureGate, 'flightDistance' => $this->flightDistance, 'estimatedFlightDuration' => $this->estimatedFlightDuration, 'boardingPolicy' => $this->boardingPolicy, 'aircraft' => $this->aircraft, 'seller' => $this->seller, 'arrivalGate' => $this->arrivalGate, 'arrivalTerminal' => $this->arrivalTerminal, 'arrivalAirport' => $this->arrivalAirport, 'flightNumber' => $this->flightNumber, 'webCheckinTime' => $this->webCheckinTime, 'departureAirport' => $this->departureAirport, 'departureTerminal' => $this->departureTerminal, 'mealService' => $this->mealService), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The mailing address.")
  */
-class PostalAddress extends ContactPoint
+class PostalAddress extends ContactPoint implements \JsonSerializable
 {
     /**
      * @var string|Country|null
@@ -116,5 +116,11 @@ class PostalAddress extends ContactPoint
     public function getPostOfficeBoxNumber() : ?string
     {
         return $this->postOfficeBoxNumber;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('addressCountry' => $this->addressCountry, 'addressLocality' => $this->addressLocality, 'postalCode' => $this->postalCode, 'addressRegion' => $this->addressRegion, 'streetAddress' => $this->streetAddress, 'postOfficeBoxNumber' => $this->postOfficeBoxNumber), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

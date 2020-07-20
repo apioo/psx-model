@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A fact-checking review of claims made (or reported) in some creative work (referenced via itemReviewed).")
  */
-class ClaimReview extends Review
+class ClaimReview extends Review implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -26,5 +26,11 @@ class ClaimReview extends Review
     public function getClaimReviewed() : ?string
     {
         return $this->claimReviewed;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('claimReviewed' => $this->claimReviewed), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

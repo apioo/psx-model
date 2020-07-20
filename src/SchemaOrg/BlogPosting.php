@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A blog post.")
  */
-class BlogPosting extends SocialMediaPosting
+class BlogPosting extends SocialMediaPosting implements \JsonSerializable
 {
 }

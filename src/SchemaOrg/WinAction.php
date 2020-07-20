@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of achieving victory in a competitive activity.")
  */
-class WinAction extends AchieveAction
+class WinAction extends AchieveAction implements \JsonSerializable
 {
     /**
      * @var Person|null
@@ -26,5 +26,11 @@ class WinAction extends AchieveAction
     public function getLoser() : ?Person
     {
         return $this->loser;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('loser' => $this->loser), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

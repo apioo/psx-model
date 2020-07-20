@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A blog.")
  */
-class Blog extends CreativeWork
+class Blog extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -44,5 +44,11 @@ class Blog extends CreativeWork
     public function getBlogPost() : ?BlogPosting
     {
         return $this->blogPost;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('issn' => $this->issn, 'blogPost' => $this->blogPost), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

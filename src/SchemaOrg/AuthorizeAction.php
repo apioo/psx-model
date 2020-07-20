@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of granting permission to an object.")
  */
-class AuthorizeAction extends AllocateAction
+class AuthorizeAction extends AllocateAction implements \JsonSerializable
 {
     /**
      * @var Person|ContactPoint|Organization|Audience|null
@@ -44,5 +44,11 @@ class AuthorizeAction extends AllocateAction
     public function getRecipient()
     {
         return $this->recipient;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('ccRecipient' => $this->ccRecipient, 'recipient' => $this->recipient), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

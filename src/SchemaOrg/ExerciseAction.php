@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of participating in exertive activity for the purposes of improving health and fitness.")
  */
-class ExerciseAction extends PlayAction
+class ExerciseAction extends PlayAction implements \JsonSerializable
 {
     /**
      * @var Place|null
@@ -152,5 +152,11 @@ class ExerciseAction extends PlayAction
     public function getSportsEvent() : ?SportsEvent
     {
         return $this->sportsEvent;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('exerciseCourse' => $this->exerciseCourse, 'sportsTeam' => $this->sportsTeam, 'sportsActivityLocation' => $this->sportsActivityLocation, 'fromLocation' => $this->fromLocation, 'distance' => $this->distance, 'toLocation' => $this->toLocation, 'opponent' => $this->opponent, 'sportsEvent' => $this->sportsEvent), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

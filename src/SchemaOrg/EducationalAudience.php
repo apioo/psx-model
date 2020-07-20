@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An EducationalAudience.")
  */
-class EducationalAudience extends Audience
+class EducationalAudience extends Audience implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -26,5 +26,11 @@ class EducationalAudience extends Audience
     public function getEducationalRole() : ?string
     {
         return $this->educationalRole;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('educationalRole' => $this->educationalRole), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

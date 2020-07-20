@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An order is a confirmation of a transaction (a receipt), which can contain multiple line items, each represented by an Offer that has been accepted by the customer.")
  */
-class Order extends Intangible
+class Order extends Intangible implements \JsonSerializable
 {
     /**
      * @var ParcelDelivery|null
@@ -368,5 +368,11 @@ class Order extends Intangible
     public function getOrderedItem()
     {
         return $this->orderedItem;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('orderDelivery' => $this->orderDelivery, 'discountCode' => $this->discountCode, 'seller' => $this->seller, 'paymentMethodId' => $this->paymentMethodId, 'broker' => $this->broker, 'paymentDueDate' => $this->paymentDueDate, 'confirmationNumber' => $this->confirmationNumber, 'acceptedOffer' => $this->acceptedOffer, 'customer' => $this->customer, 'discountCurrency' => $this->discountCurrency, 'paymentUrl' => $this->paymentUrl, 'orderNumber' => $this->orderNumber, 'isGift' => $this->isGift, 'orderStatus' => $this->orderStatus, 'discount' => $this->discount, 'paymentMethod' => $this->paymentMethod, 'partOfInvoice' => $this->partOfInvoice, 'orderDate' => $this->orderDate, 'billingAddress' => $this->billingAddress, 'orderedItem' => $this->orderedItem), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

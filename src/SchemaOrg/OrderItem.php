@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An order item is a line of an order. It includes the quantity and shipping details of a bought offer.")
  */
-class OrderItem extends Intangible
+class OrderItem extends Intangible implements \JsonSerializable
 {
     /**
      * @var ParcelDelivery|null
@@ -98,5 +98,11 @@ class OrderItem extends Intangible
     public function getOrderedItem()
     {
         return $this->orderedItem;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('orderDelivery' => $this->orderDelivery, 'orderItemStatus' => $this->orderItemStatus, 'orderQuantity' => $this->orderQuantity, 'orderItemNumber' => $this->orderItemNumber, 'orderedItem' => $this->orderedItem), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

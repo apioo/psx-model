@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A demand entity represents the public, not necessarily binding, not necessarily exclusive, announcement by an organization or person to seek a certain type of goods or services. For describing demand using this type, the very same properties used for Offer apply.")
  */
-class Demand extends Intangible
+class Demand extends Intangible implements \JsonSerializable
 {
     /**
      * @var PriceSpecification|null
@@ -566,5 +566,11 @@ class Demand extends Intangible
     public function getItemOffered()
     {
         return $this->itemOffered;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('eligibleTransactionVolume' => $this->eligibleTransactionVolume, 'itemCondition' => $this->itemCondition, 'identifier' => $this->identifier, 'eligibleCustomerType' => $this->eligibleCustomerType, 'acceptedPaymentMethod' => $this->acceptedPaymentMethod, 'warranty' => $this->warranty, 'advanceBookingRequirement' => $this->advanceBookingRequirement, 'inventoryLevel' => $this->inventoryLevel, 'priceSpecification' => $this->priceSpecification, 'includesObject' => $this->includesObject, 'areaServed' => $this->areaServed, 'eligibleRegion' => $this->eligibleRegion, 'availableDeliveryMethod' => $this->availableDeliveryMethod, 'seller' => $this->seller, 'mpn' => $this->mpn, 'availabilityStarts' => $this->availabilityStarts, 'gtin8' => $this->gtin8, 'eligibleQuantity' => $this->eligibleQuantity, 'sku' => $this->sku, 'validThrough' => $this->validThrough, 'availabilityEnds' => $this->availabilityEnds, 'validFrom' => $this->validFrom, 'vehicleIdentificationNumber' => $this->vehicleIdentificationNumber, 'serialNumber' => $this->serialNumber, 'gtin12' => $this->gtin12, 'gtin14' => $this->gtin14, 'businessFunction' => $this->businessFunction, 'eligibleDuration' => $this->eligibleDuration, 'availability' => $this->availability, 'deliveryLeadTime' => $this->deliveryLeadTime, 'itemOffered' => $this->itemOffered), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

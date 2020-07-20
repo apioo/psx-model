@@ -14,7 +14,7 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class AskAction extends CommunicateAction
+class AskAction extends CommunicateAction implements \JsonSerializable
 {
     /**
      * @var Question|null
@@ -33,5 +33,11 @@ class AskAction extends CommunicateAction
     public function getQuestion() : ?Question
     {
         return $this->question;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('question' => $this->question), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

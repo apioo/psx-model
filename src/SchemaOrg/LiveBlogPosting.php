@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A blog post intended to provide a rolling textual coverage of an ongoing event through continuous updates.")
  */
-class LiveBlogPosting extends BlogPosting
+class LiveBlogPosting extends BlogPosting implements \JsonSerializable
 {
     /**
      * @var \DateTime|null
@@ -62,5 +62,11 @@ class LiveBlogPosting extends BlogPosting
     public function getCoverageEndTime() : ?\DateTime
     {
         return $this->coverageEndTime;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('coverageStartTime' => $this->coverageStartTime, 'liveBlogUpdate' => $this->liveBlogUpdate, 'coverageEndTime' => $this->coverageEndTime), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

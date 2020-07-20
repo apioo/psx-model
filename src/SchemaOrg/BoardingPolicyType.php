@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A type of boarding policy used by an airline.")
  */
-class BoardingPolicyType extends Enumeration
+class BoardingPolicyType extends Enumeration implements \JsonSerializable
 {
 }

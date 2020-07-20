@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An event involving the delivery of an item.")
  */
-class DeliveryEvent extends Event
+class DeliveryEvent extends Event implements \JsonSerializable
 {
     /**
      * @var \DateTime|null
@@ -80,5 +80,11 @@ class DeliveryEvent extends Event
     public function getAvailableFrom() : ?\DateTime
     {
         return $this->availableFrom;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('availableThrough' => $this->availableThrough, 'accessCode' => $this->accessCode, 'hasDeliveryMethod' => $this->hasDeliveryMethod, 'availableFrom' => $this->availableFrom), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

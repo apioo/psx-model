@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("CreativeWorkSeries dedicated to TV broadcast and associated online delivery.")
  */
-class TVSeries extends CreativeWorkSeries
+class TVSeries extends CreativeWorkSeries implements \JsonSerializable
 {
     /**
      * @var VideoObject|null
@@ -188,5 +188,11 @@ class TVSeries extends CreativeWorkSeries
     public function getContainsSeason() : ?CreativeWork
     {
         return $this->containsSeason;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('trailer' => $this->trailer, 'musicBy' => $this->musicBy, 'actor' => $this->actor, 'productionCompany' => $this->productionCompany, 'episode' => $this->episode, 'countryOfOrigin' => $this->countryOfOrigin, 'director' => $this->director, 'numberOfEpisodes' => $this->numberOfEpisodes, 'numberOfSeasons' => $this->numberOfSeasons, 'containsSeason' => $this->containsSeason), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

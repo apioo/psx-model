@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A book.")
  */
-class Book extends CreativeWork
+class Book extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var Person|null
@@ -98,5 +98,11 @@ class Book extends CreativeWork
     public function getNumberOfPages() : ?int
     {
         return $this->numberOfPages;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('illustrator' => $this->illustrator, 'bookFormat' => $this->bookFormat, 'isbn' => $this->isbn, 'bookEdition' => $this->bookEdition, 'numberOfPages' => $this->numberOfPages), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

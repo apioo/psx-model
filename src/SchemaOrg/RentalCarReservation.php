@@ -9,7 +9,7 @@ namespace PSX\Model\SchemaOrg;
 
 Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.")
 */
-class RentalCarReservation extends Reservation
+class RentalCarReservation extends Reservation implements \JsonSerializable
 {
     /**
      * @var \DateTime|null
@@ -82,5 +82,11 @@ class RentalCarReservation extends Reservation
     public function getDropoffLocation() : ?Place
     {
         return $this->dropoffLocation;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('dropoffTime' => $this->dropoffTime, 'pickupTime' => $this->pickupTime, 'pickupLocation' => $this->pickupLocation, 'dropoffLocation' => $this->dropoffLocation), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

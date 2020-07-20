@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of providing goods, services, or money without compensation, often for philanthropic reasons.")
  */
-class DonateAction extends TradeAction
+class DonateAction extends TradeAction implements \JsonSerializable
 {
     /**
      * @var Person|ContactPoint|Organization|Audience|null
@@ -44,5 +44,11 @@ class DonateAction extends TradeAction
     public function getRecipient()
     {
         return $this->recipient;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('ccRecipient' => $this->ccRecipient, 'recipient' => $this->recipient), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

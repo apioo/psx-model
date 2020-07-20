@@ -9,7 +9,7 @@ namespace PSX\Model\SchemaOrg;
 
 See also <a href=""http://blog.schema.org/2014/06/introducing-role.html"">blog post</a>.")
 */
-class Role extends Intangible
+class Role extends Intangible implements \JsonSerializable
 {
     /**
      * @var \PSX\DateTime\Date|\DateTime|null
@@ -64,5 +64,11 @@ class Role extends Intangible
     public function getRoleName()
     {
         return $this->roleName;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('endDate' => $this->endDate, 'startDate' => $this->startDate, 'roleName' => $this->roleName), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of giving money in return for temporary use, but not ownership, of an object such as a vehicle or property. For example, an agent rents a property from a landlord in exchange for a periodic payment.")
  */
-class RentAction extends TradeAction
+class RentAction extends TradeAction implements \JsonSerializable
 {
     /**
      * @var Person|Organization|null
@@ -44,5 +44,11 @@ class RentAction extends TradeAction
     public function getRealEstateAgent() : ?RealEstateAgent
     {
         return $this->realEstateAgent;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('participant' => $this->participant, 'realEstateAgent' => $this->realEstateAgent), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

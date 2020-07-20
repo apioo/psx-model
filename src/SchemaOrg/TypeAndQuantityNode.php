@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A structured value indicating the quantity, unit of measurement, and business function of goods included in a bundle offer.")
  */
-class TypeAndQuantityNode extends StructuredValue
+class TypeAndQuantityNode extends StructuredValue implements \JsonSerializable
 {
     /**
      * @var Service|Product|null
@@ -98,5 +98,11 @@ class TypeAndQuantityNode extends StructuredValue
     public function getAmountOfThisGood() : ?float
     {
         return $this->amountOfThisGood;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('typeOfGood' => $this->typeOfGood, 'unitCode' => $this->unitCode, 'unitText' => $this->unitText, 'businessFunction' => $this->businessFunction, 'amountOfThisGood' => $this->amountOfThisGood), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

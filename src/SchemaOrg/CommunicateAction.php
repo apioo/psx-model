@@ -22,10 +22,6 @@ class CommunicateAction extends InteractAction implements \JsonSerializable
      */
     protected $inLanguage;
     /**
-     * @var Thing|null
-     */
-    protected $about;
-    /**
      * @param Person|ContactPoint|Organization|Audience|null $ccRecipient
      */
     public function setCcRecipient($ccRecipient) : void
@@ -66,20 +62,6 @@ class CommunicateAction extends InteractAction implements \JsonSerializable
     public function getInLanguage()
     {
         return $this->inLanguage;
-    }
-    /**
-     * @param Thing|null $about
-     */
-    public function setAbout(?Thing $about) : void
-    {
-        $this->about = $about;
-    }
-    /**
-     * @return Thing|null
-     */
-    public function getAbout() : ?Thing
-    {
-        return $this->about;
     }
     public function jsonSerialize()
     {

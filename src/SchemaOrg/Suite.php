@@ -9,7 +9,7 @@ namespace PSX\Model\SchemaOrg;
 <br /><br />
 See also the <a href=""/docs/hotels.html"">dedicated document on the use of schema.org for marking up hotels and other forms of accommodations</a>.")
 */
-class Suite extends Accommodation
+class Suite extends Accommodation implements \JsonSerializable
 {
     /**
      * @var QuantitativeValue|null
@@ -64,5 +64,11 @@ class Suite extends Accommodation
     public function getBed()
     {
         return $this->bed;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('occupancy' => $this->occupancy, 'numberOfRooms' => $this->numberOfRooms, 'bed' => $this->bed), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

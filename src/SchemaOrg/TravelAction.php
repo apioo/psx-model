@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of traveling from an fromLocation to a destination by a specified mode of transport, optionally with participants.")
  */
-class TravelAction extends MoveAction
+class TravelAction extends MoveAction implements \JsonSerializable
 {
     /**
      * @var Distance|null
@@ -26,5 +26,11 @@ class TravelAction extends MoveAction
     public function getDistance() : ?Distance
     {
         return $this->distance;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('distance' => $this->distance), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

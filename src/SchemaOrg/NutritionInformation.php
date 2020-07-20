@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Nutritional information about the recipe.")
  */
-class NutritionInformation extends StructuredValue
+class NutritionInformation extends StructuredValue implements \JsonSerializable
 {
     /**
      * @var Mass|null
@@ -224,5 +224,11 @@ class NutritionInformation extends StructuredValue
     public function getSugarContent() : ?Mass
     {
         return $this->sugarContent;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('proteinContent' => $this->proteinContent, 'calories' => $this->calories, 'sodiumContent' => $this->sodiumContent, 'cholesterolContent' => $this->cholesterolContent, 'carbohydrateContent' => $this->carbohydrateContent, 'saturatedFatContent' => $this->saturatedFatContent, 'fatContent' => $this->fatContent, 'unsaturatedFatContent' => $this->unsaturatedFatContent, 'transFatContent' => $this->transFatContent, 'servingSize' => $this->servingSize, 'fiberContent' => $this->fiberContent, 'sugarContent' => $this->sugarContent), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An agent pays a price to a participant.")
  */
-class PayAction extends TradeAction
+class PayAction extends TradeAction implements \JsonSerializable
 {
     /**
      * @var Person|ContactPoint|Organization|Audience|null
@@ -44,5 +44,11 @@ class PayAction extends TradeAction
     public function getRecipient()
     {
         return $this->recipient;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('ccRecipient' => $this->ccRecipient, 'recipient' => $this->recipient), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

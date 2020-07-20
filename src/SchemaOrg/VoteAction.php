@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of expressing a preference from a fixed/finite/structured set of choices/options.")
  */
-class VoteAction extends ChooseAction
+class VoteAction extends ChooseAction implements \JsonSerializable
 {
     /**
      * @var Person|null
@@ -26,5 +26,11 @@ class VoteAction extends ChooseAction
     public function getCandidate() : ?Person
     {
         return $this->candidate;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('candidate' => $this->candidate), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

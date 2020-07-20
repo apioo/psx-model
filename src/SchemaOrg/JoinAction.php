@@ -16,7 +16,7 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class JoinAction extends InteractAction
+class JoinAction extends InteractAction implements \JsonSerializable
 {
     /**
      * @var Event|null
@@ -35,5 +35,11 @@ class JoinAction extends InteractAction
     public function getEvent() : ?Event
     {
         return $this->event;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('event' => $this->event), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

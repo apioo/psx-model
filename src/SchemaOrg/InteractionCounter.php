@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A summary of how users have interacted with this CreativeWork. In most cases, authors will use a subtype to specify the specific type of interaction.")
  */
-class InteractionCounter extends StructuredValue
+class InteractionCounter extends StructuredValue implements \JsonSerializable
 {
     /**
      * @var int|null
@@ -62,5 +62,11 @@ class InteractionCounter extends StructuredValue
     public function getInteractionType() : ?Action
     {
         return $this->interactionType;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('userInteractionCount' => $this->userInteractionCount, 'interactionService' => $this->interactionService, 'interactionType' => $this->interactionType), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

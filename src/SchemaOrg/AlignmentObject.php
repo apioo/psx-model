@@ -9,7 +9,7 @@ namespace PSX\Model\SchemaOrg;
 
 Should not be used where the nature of the alignment can be described using a simple property, for example to express that a resource <a class=""localLink"" href=""http://schema.org/teaches"">teaches</a> or <a class=""localLink"" href=""http://schema.org/assesses"">assesses</a> a competency.")
 */
-class AlignmentObject extends Intangible
+class AlignmentObject extends Intangible implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -100,5 +100,11 @@ class AlignmentObject extends Intangible
     public function getEducationalFramework() : ?string
     {
         return $this->educationalFramework;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('alignmentType' => $this->alignmentType, 'targetDescription' => $this->targetDescription, 'targetUrl' => $this->targetUrl, 'targetName' => $this->targetName, 'educationalFramework' => $this->educationalFramework), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

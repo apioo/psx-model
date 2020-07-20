@@ -18,7 +18,7 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class FollowAction extends InteractAction
+class FollowAction extends InteractAction implements \JsonSerializable
 {
     /**
      * @var Organization|Person|null
@@ -37,5 +37,11 @@ class FollowAction extends InteractAction
     public function getFollowee()
     {
         return $this->followee;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('followee' => $this->followee), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

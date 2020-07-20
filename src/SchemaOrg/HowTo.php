@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Instructions that explain how to achieve a result by performing a sequence of steps.")
  */
-class HowTo extends CreativeWork
+class HowTo extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var string|QuantitativeValue|null
@@ -170,5 +170,11 @@ class HowTo extends CreativeWork
     public function getPrepTime() : ?Duration
     {
         return $this->prepTime;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('yield' => $this->yield, 'estimatedCost' => $this->estimatedCost, 'totalTime' => $this->totalTime, 'cookTime' => $this->cookTime, 'performTime' => $this->performTime, 'supply' => $this->supply, 'tool' => $this->tool, 'step' => $this->step, 'prepTime' => $this->prepTime), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

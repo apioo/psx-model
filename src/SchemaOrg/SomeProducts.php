@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A placeholder for multiple similar products of the same kind.")
  */
-class SomeProducts extends Product
+class SomeProducts extends Product implements \JsonSerializable
 {
     /**
      * @var QuantitativeValue|null
@@ -26,5 +26,11 @@ class SomeProducts extends Product
     public function getInventoryLevel() : ?QuantitativeValue
     {
         return $this->inventoryLevel;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('inventoryLevel' => $this->inventoryLevel), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

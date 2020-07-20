@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Computer programming source code. Example: Full (compile ready) solutions, code snippet samples, scripts, templates.")
  */
-class SoftwareSourceCode extends CreativeWork
+class SoftwareSourceCode extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var \PSX\Uri\Uri|null
@@ -98,5 +98,11 @@ class SoftwareSourceCode extends CreativeWork
     public function getProgrammingLanguage()
     {
         return $this->programmingLanguage;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('codeRepository' => $this->codeRepository, 'codeSampleType' => $this->codeSampleType, 'runtimePlatform' => $this->runtimePlatform, 'targetProduct' => $this->targetProduct, 'programmingLanguage' => $this->programmingLanguage), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

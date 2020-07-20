@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A software application.")
  */
-class SoftwareApplication extends CreativeWork
+class SoftwareApplication extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -404,5 +404,11 @@ class SoftwareApplication extends CreativeWork
     public function getProcessorRequirements() : ?string
     {
         return $this->processorRequirements;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('operatingSystem' => $this->operatingSystem, 'availableOnDevice' => $this->availableOnDevice, 'screenshot' => $this->screenshot, 'releaseNotes' => $this->releaseNotes, 'featureList' => $this->featureList, 'softwareVersion' => $this->softwareVersion, 'countriesNotSupported' => $this->countriesNotSupported, 'memoryRequirements' => $this->memoryRequirements, 'softwareRequirements' => $this->softwareRequirements, 'softwareHelp' => $this->softwareHelp, 'fileSize' => $this->fileSize, 'permissions' => $this->permissions, 'countriesSupported' => $this->countriesSupported, 'storageRequirements' => $this->storageRequirements, 'applicationCategory' => $this->applicationCategory, 'softwareAddOn' => $this->softwareAddOn, 'applicationSuite' => $this->applicationSuite, 'applicationSubCategory' => $this->applicationSubCategory, 'installUrl' => $this->installUrl, 'downloadUrl' => $this->downloadUrl, 'supportingData' => $this->supportingData, 'processorRequirements' => $this->processorRequirements), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

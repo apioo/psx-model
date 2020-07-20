@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of producing/preparing food.")
  */
-class CookAction extends CreateAction
+class CookAction extends CreateAction implements \JsonSerializable
 {
     /**
      * @var Place|FoodEstablishment|null
@@ -62,5 +62,11 @@ class CookAction extends CreateAction
     public function getFoodEvent() : ?FoodEvent
     {
         return $this->foodEvent;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('foodEstablishment' => $this->foodEstablishment, 'recipe' => $this->recipe, 'foodEvent' => $this->foodEvent), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

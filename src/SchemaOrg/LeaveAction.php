@@ -15,7 +15,7 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class LeaveAction extends InteractAction
+class LeaveAction extends InteractAction implements \JsonSerializable
 {
     /**
      * @var Event|null
@@ -34,5 +34,11 @@ class LeaveAction extends InteractAction
     public function getEvent() : ?Event
     {
         return $this->event;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('event' => $this->event), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

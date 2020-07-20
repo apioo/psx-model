@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Reference documentation for application programming interfaces (APIs).")
  */
-class APIReference extends TechArticle
+class APIReference extends TechArticle implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -80,5 +80,11 @@ class APIReference extends TechArticle
     public function getExecutableLibraryName() : ?string
     {
         return $this->executableLibraryName;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('targetPlatform' => $this->targetPlatform, 'programmingModel' => $this->programmingModel, 'assemblyVersion' => $this->assemblyVersion, 'executableLibraryName' => $this->executableLibraryName), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

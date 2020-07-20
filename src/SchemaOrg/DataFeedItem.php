@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A single item within a larger data feed.")
  */
-class DataFeedItem extends Intangible
+class DataFeedItem extends Intangible implements \JsonSerializable
 {
     /**
      * @var \PSX\DateTime\Date|\DateTime|null
@@ -80,5 +80,11 @@ class DataFeedItem extends Intangible
     public function getDateDeleted()
     {
         return $this->dateDeleted;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('dateModified' => $this->dateModified, 'dateCreated' => $this->dateCreated, 'item' => $this->item, 'dateDeleted' => $this->dateDeleted), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Organization: Sports team.")
  */
-class SportsTeam extends SportsOrganization
+class SportsTeam extends SportsOrganization implements \JsonSerializable
 {
     /**
      * @var Person|null
@@ -44,5 +44,11 @@ class SportsTeam extends SportsOrganization
     public function getCoach() : ?Person
     {
         return $this->coach;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('athlete' => $this->athlete, 'coach' => $this->coach), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

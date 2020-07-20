@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Status of a game server.")
  */
-class GameServerStatus extends Enumeration
+class GameServerStatus extends Enumeration implements \JsonSerializable
 {
 }

@@ -15,7 +15,7 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class TrackAction extends FindAction
+class TrackAction extends FindAction implements \JsonSerializable
 {
     /**
      * @var Thing|DeliveryMethod|null
@@ -34,5 +34,11 @@ class TrackAction extends FindAction
     public function getDeliveryMethod()
     {
         return $this->deliveryMethod;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('deliveryMethod' => $this->deliveryMethod), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

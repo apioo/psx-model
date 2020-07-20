@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A structured value providing information about when a certain organization or person owned a certain product.")
  */
-class OwnershipInfo extends StructuredValue
+class OwnershipInfo extends StructuredValue implements \JsonSerializable
 {
     /**
      * @var Service|Product|null
@@ -80,5 +80,11 @@ class OwnershipInfo extends StructuredValue
     public function getOwnedThrough() : ?\DateTime
     {
         return $this->ownedThrough;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('typeOfGood' => $this->typeOfGood, 'acquiredFrom' => $this->acquiredFrom, 'ownedFrom' => $this->ownedFrom, 'ownedThrough' => $this->ownedThrough), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

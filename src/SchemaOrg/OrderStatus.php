@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Enumerated status values for Order.")
  */
-class OrderStatus extends Enumeration
+class OrderStatus extends Enumeration implements \JsonSerializable
 {
 }

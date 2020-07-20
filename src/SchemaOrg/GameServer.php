@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Server that provides game interaction in a multiplayer game.")
  */
-class GameServer extends Intangible
+class GameServer extends Intangible implements \JsonSerializable
 {
     /**
      * @var int|null
@@ -80,5 +80,11 @@ class GameServer extends Intangible
     public function getGame() : ?VideoGame
     {
         return $this->game;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('playersOnline' => $this->playersOnline, 'serverStatus' => $this->serverStatus, 'gameServer' => $this->gameServer, 'game' => $this->game), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

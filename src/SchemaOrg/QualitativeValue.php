@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A predefined value for a product characteristic, e.g. the power cord plug type 'US' or the garment sizes 'S', 'M', 'L', and 'XL'.")
  */
-class QualitativeValue extends Enumeration
+class QualitativeValue extends Enumeration implements \JsonSerializable
 {
     /**
      * @var Enumeration|StructuredValue|null
@@ -152,5 +152,11 @@ class QualitativeValue extends Enumeration
     public function getLesserOrEqual() : ?QualitativeValue
     {
         return $this->lesserOrEqual;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('valueReference' => $this->valueReference, 'greaterOrEqual' => $this->greaterOrEqual, 'lesser' => $this->lesser, 'equal' => $this->equal, 'greater' => $this->greater, 'nonEqual' => $this->nonEqual, 'additionalProperty' => $this->additionalProperty, 'lesserOrEqual' => $this->lesserOrEqual), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

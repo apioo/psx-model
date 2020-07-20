@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A series of movies. Included movies can be indicated with the hasPart property.")
  */
-class MovieSeries extends CreativeWorkSeries
+class MovieSeries extends CreativeWorkSeries implements \JsonSerializable
 {
     /**
      * @var VideoObject|null
@@ -98,5 +98,11 @@ class MovieSeries extends CreativeWorkSeries
     public function getDirector() : ?Person
     {
         return $this->director;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('trailer' => $this->trailer, 'musicBy' => $this->musicBy, 'actor' => $this->actor, 'productionCompany' => $this->productionCompany, 'director' => $this->director), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

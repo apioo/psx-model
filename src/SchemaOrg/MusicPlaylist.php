@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A collection of music tracks in playlist form.")
  */
-class MusicPlaylist extends CreativeWork
+class MusicPlaylist extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var int|null
@@ -44,5 +44,11 @@ class MusicPlaylist extends CreativeWork
     public function getTrack()
     {
         return $this->track;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('numTracks' => $this->numTracks, 'track' => $this->track), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

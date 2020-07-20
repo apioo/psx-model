@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The Game type represents things which are games. These are typically rule-governed recreational activities, e.g. role-playing games in which players assume the role of characters in a fictional setting.")
  */
-class Game extends CreativeWork
+class Game extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var \PSX\Uri\Uri|Place|PostalAddress|null
@@ -98,5 +98,11 @@ class Game extends CreativeWork
     public function getGameItem() : ?Thing
     {
         return $this->gameItem;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('gameLocation' => $this->gameLocation, 'quest' => $this->quest, 'characterAttribute' => $this->characterAttribute, 'numberOfPlayers' => $this->numberOfPlayers, 'gameItem' => $this->gameItem), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -15,7 +15,7 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class ReceiveAction extends TransferAction
+class ReceiveAction extends TransferAction implements \JsonSerializable
 {
     /**
      * @var Thing|DeliveryMethod|null
@@ -52,5 +52,11 @@ class ReceiveAction extends TransferAction
     public function getSender()
     {
         return $this->sender;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('deliveryMethod' => $this->deliveryMethod, 'sender' => $this->sender), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

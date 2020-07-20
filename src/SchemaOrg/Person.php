@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A person (alive, dead, undead, or fictional).")
  */
-class Person extends Thing
+class Person extends Thing implements \JsonSerializable
 {
     /**
      * @var OwnershipInfo|Product|null
@@ -890,5 +890,11 @@ class Person extends Thing
     public function getAlumniOf()
     {
         return $this->alumniOf;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('owns' => $this->owns, 'parent' => $this->parent, 'telephone' => $this->telephone, 'givenName' => $this->givenName, 'naics' => $this->naics, 'publishingPrinciples' => $this->publishingPrinciples, 'hasPOS' => $this->hasPOS, 'sponsor' => $this->sponsor, 'follows' => $this->follows, 'honorificPrefix' => $this->honorificPrefix, 'workLocation' => $this->workLocation, 'seeks' => $this->seeks, 'duns' => $this->duns, 'children' => $this->children, 'knows' => $this->knows, 'birthDate' => $this->birthDate, 'taxID' => $this->taxID, 'height' => $this->height, 'deathPlace' => $this->deathPlace, 'award' => $this->award, 'email' => $this->email, 'faxNumber' => $this->faxNumber, 'isicV4' => $this->isicV4, 'netWorth' => $this->netWorth, 'colleague' => $this->colleague, 'globalLocationNumber' => $this->globalLocationNumber, 'relatedTo' => $this->relatedTo, 'worksFor' => $this->worksFor, 'vatID' => $this->vatID, 'hasOccupation' => $this->hasOccupation, 'contactPoint' => $this->contactPoint, 'memberOf' => $this->memberOf, 'additionalName' => $this->additionalName, 'sibling' => $this->sibling, 'brand' => $this->brand, 'hasOfferCatalog' => $this->hasOfferCatalog, 'address' => $this->address, 'familyName' => $this->familyName, 'deathDate' => $this->deathDate, 'interactionStatistic' => $this->interactionStatistic, 'weight' => $this->weight, 'homeLocation' => $this->homeLocation, 'nationality' => $this->nationality, 'birthPlace' => $this->birthPlace, 'honorificSuffix' => $this->honorificSuffix, 'spouse' => $this->spouse, 'performerIn' => $this->performerIn, 'makesOffer' => $this->makesOffer, 'alumniOf' => $this->alumniOf), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

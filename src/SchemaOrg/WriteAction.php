@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of authoring written creative content.")
  */
-class WriteAction extends CreateAction
+class WriteAction extends CreateAction implements \JsonSerializable
 {
     /**
      * @var string|Language|null
@@ -26,5 +26,11 @@ class WriteAction extends CreateAction
     public function getInLanguage()
     {
         return $this->inLanguage;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('inLanguage' => $this->inLanguage), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

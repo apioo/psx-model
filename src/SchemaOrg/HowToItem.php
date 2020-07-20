@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An item used as either a tool or supply when performing the instructions for how to to achieve a result.")
  */
-class HowToItem extends ListItem
+class HowToItem extends ListItem implements \JsonSerializable
 {
     /**
      * @var float|string|QuantitativeValue|null
@@ -26,5 +26,11 @@ class HowToItem extends ListItem
     public function getRequiredQuantity()
     {
         return $this->requiredQuantity;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('requiredQuantity' => $this->requiredQuantity), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

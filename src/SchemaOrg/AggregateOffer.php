@@ -9,7 +9,7 @@ namespace PSX\Model\SchemaOrg;
 
 Note: AggregateOffers are normally expected to associate multiple offers that all share the same defined <a class=""localLink"" href=""http://schema.org/businessFunction"">businessFunction</a> value, or default to http://purl.org/goodrelations/v1#Sell if businessFunction is not explicitly defined.")
 */
-class AggregateOffer extends Offer
+class AggregateOffer extends Offer implements \JsonSerializable
 {
     /**
      * @var string|float|null
@@ -100,5 +100,11 @@ class AggregateOffer extends Offer
     public function getOffers()
     {
         return $this->offers;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('highPrice' => $this->highPrice, 'lowPrice' => $this->lowPrice, 'offerCount' => $this->offerCount, 'itemOffered' => $this->itemOffered, 'offers' => $this->offers), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A movie.")
  */
-class Movie extends CreativeWork
+class Movie extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var VideoObject|null
@@ -134,5 +134,11 @@ class Movie extends CreativeWork
     public function getDuration() : ?Duration
     {
         return $this->duration;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('trailer' => $this->trailer, 'musicBy' => $this->musicBy, 'actor' => $this->actor, 'productionCompany' => $this->productionCompany, 'countryOfOrigin' => $this->countryOfOrigin, 'director' => $this->director, 'duration' => $this->duration), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Intended audience for an item, i.e. the group for whom the item was created.")
  */
-class Audience extends Intangible
+class Audience extends Intangible implements \JsonSerializable
 {
     /**
      * @var AdministrativeArea|null
@@ -44,5 +44,11 @@ class Audience extends Intangible
     public function getAudienceType() : ?string
     {
         return $this->audienceType;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('geographicArea' => $this->geographicArea, 'audienceType' => $this->audienceType), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

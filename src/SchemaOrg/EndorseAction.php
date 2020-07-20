@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An agent approves/certifies/likes/supports/sanction an object.")
  */
-class EndorseAction extends ReactAction
+class EndorseAction extends ReactAction implements \JsonSerializable
 {
     /**
      * @var Person|Organization|null
@@ -26,5 +26,11 @@ class EndorseAction extends ReactAction
     public function getEndorsee()
     {
         return $this->endorsee;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('endorsee' => $this->endorsee), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A video game is an electronic game that involves human interaction with a user interface to generate visual feedback on a video device.")
  */
-class VideoGame extends SoftwareApplication
+class VideoGame extends SoftwareApplication implements \JsonSerializable
 {
     /**
      * @var VideoObject|null
@@ -170,5 +170,11 @@ class VideoGame extends SoftwareApplication
     public function getGameServer()
     {
         return $this->gameServer;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('trailer' => $this->trailer, 'gamePlatform' => $this->gamePlatform, 'musicBy' => $this->musicBy, 'actor' => $this->actor, 'gameTip' => $this->gameTip, 'cheatCode' => $this->cheatCode, 'director' => $this->director, 'playMode' => $this->playMode, 'gameServer' => $this->gameServer), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

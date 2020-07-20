@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A music recording (track), usually a single song.")
  */
-class MusicRecording extends CreativeWork
+class MusicRecording extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var MusicGroup|Person|null
@@ -116,5 +116,11 @@ class MusicRecording extends CreativeWork
     public function getRecordingOf() : ?MusicComposition
     {
         return $this->recordingOf;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('byArtist' => $this->byArtist, 'isrcCode' => $this->isrcCode, 'inAlbum' => $this->inAlbum, 'inPlaylist' => $this->inPlaylist, 'duration' => $this->duration, 'recordingOf' => $this->recordingOf), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

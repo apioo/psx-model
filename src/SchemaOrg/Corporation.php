@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Organization: A business corporation.")
  */
-class Corporation extends Organization
+class Corporation extends Organization implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -26,5 +26,11 @@ class Corporation extends Organization
     public function getTickerSymbol() : ?string
     {
         return $this->tickerSymbol;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('tickerSymbol' => $this->tickerSymbol), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

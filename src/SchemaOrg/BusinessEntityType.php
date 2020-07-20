@@ -17,6 +17,6 @@ Commonly used values:<br/><br/>
 </ul>
 ")
 */
-class BusinessEntityType extends Enumeration
+class BusinessEntityType extends Enumeration implements \JsonSerializable
 {
 }

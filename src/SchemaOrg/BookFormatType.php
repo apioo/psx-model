@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The publication format of the book.")
  */
-class BookFormatType extends Enumeration
+class BookFormatType extends Enumeration implements \JsonSerializable
 {
 }

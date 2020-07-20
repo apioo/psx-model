@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A monetary value or range. This type can be used to describe an amount of money such as $50 USD, or a range as in describing a bank account being suitable for a balance between £1,000 and £1,000,000 GBP, or the value of a salary, etc. It is recommended to use <a class=""localLink"" href=""http://schema.org/PriceSpecification"">PriceSpecification</a> Types to describe the price of an Offer, Invoice, etc.")
  */
-class MonetaryAmount extends StructuredValue
+class MonetaryAmount extends StructuredValue implements \JsonSerializable
 {
     /**
      * @var float|null
@@ -116,5 +116,11 @@ class MonetaryAmount extends StructuredValue
     public function getValidFrom()
     {
         return $this->validFrom;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('maxValue' => $this->maxValue, 'currency' => $this->currency, 'minValue' => $this->minValue, 'value' => $this->value, 'validThrough' => $this->validThrough, 'validFrom' => $this->validFrom), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

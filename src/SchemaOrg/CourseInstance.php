@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An instance of a <a class=""localLink"" href=""http://schema.org/Course"">Course</a> which is distinct from other instances because it is offered at a different time or location or through different media or modes of study or to a specific section of students.")
  */
-class CourseInstance extends Event
+class CourseInstance extends Event implements \JsonSerializable
 {
     /**
      * @var Person|null
@@ -44,5 +44,11 @@ class CourseInstance extends Event
     public function getCourseMode()
     {
         return $this->courseMode;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('instructor' => $this->instructor, 'courseMode' => $this->courseMode), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

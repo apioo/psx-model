@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("UserInteraction and its subtypes is an old way of talking about users interacting with pages. It is generally better to use <a class=""localLink"" href=""http://schema.org/Action"">Action</a>-based vocabulary, alongside types such as <a class=""localLink"" href=""http://schema.org/Comment"">Comment</a>.")
  */
-class UserComments extends UserInteraction
+class UserComments extends UserInteraction implements \JsonSerializable
 {
     /**
      * @var CreativeWork|null
@@ -98,5 +98,11 @@ class UserComments extends UserInteraction
     public function getReplyToUrl() : ?\PSX\Uri\Uri
     {
         return $this->replyToUrl;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('discusses' => $this->discusses, 'commentTime' => $this->commentTime, 'creator' => $this->creator, 'commentText' => $this->commentText, 'replyToUrl' => $this->replyToUrl), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

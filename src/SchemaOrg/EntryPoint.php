@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An entry point, within some Web-based protocol.")
  */
-class EntryPoint extends Intangible
+class EntryPoint extends Intangible implements \JsonSerializable
 {
     /**
      * @var string|\PSX\Uri\Uri|null
@@ -116,5 +116,11 @@ class EntryPoint extends Intangible
     public function getHttpMethod() : ?string
     {
         return $this->httpMethod;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('actionPlatform' => $this->actionPlatform, 'contentType' => $this->contentType, 'encodingType' => $this->encodingType, 'urlTemplate' => $this->urlTemplate, 'actionApplication' => $this->actionApplication, 'httpMethod' => $this->httpMethod), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

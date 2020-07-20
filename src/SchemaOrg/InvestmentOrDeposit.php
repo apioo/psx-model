@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A type of financial product that typically requires the client to transfer funds to a financial service in return for potential beneficial financial return.")
  */
-class InvestmentOrDeposit extends FinancialProduct
+class InvestmentOrDeposit extends FinancialProduct implements \JsonSerializable
 {
     /**
      * @var float|MonetaryAmount|null
@@ -26,5 +26,11 @@ class InvestmentOrDeposit extends FinancialProduct
     public function getAmount()
     {
         return $this->amount;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('amount' => $this->amount), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

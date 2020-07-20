@@ -9,7 +9,7 @@ namespace PSX\Model\SchemaOrg;
 
 A more detailed overview of <a href=""/docs/news.html"">schema.org News markup</a> is also available.")
 */
-class NewsArticle extends Article
+class NewsArticle extends Article implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -100,5 +100,11 @@ class NewsArticle extends Article
     public function getPrintEdition() : ?string
     {
         return $this->printEdition;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('printPage' => $this->printPage, 'printSection' => $this->printSection, 'printColumn' => $this->printColumn, 'dateline' => $this->dateline, 'printEdition' => $this->printEdition), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

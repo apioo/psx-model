@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A direction indicating a single action to do in the instructions for how to achieve a result.")
  */
-class HowToDirection extends ListItem
+class HowToDirection extends ListItem implements \JsonSerializable
 {
     /**
      * @var Duration|null
@@ -170,5 +170,11 @@ class HowToDirection extends ListItem
     public function getDuringMedia()
     {
         return $this->duringMedia;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('totalTime' => $this->totalTime, 'cookTime' => $this->cookTime, 'performTime' => $this->performTime, 'afterMedia' => $this->afterMedia, 'supply' => $this->supply, 'tool' => $this->tool, 'prepTime' => $this->prepTime, 'beforeMedia' => $this->beforeMedia, 'duringMedia' => $this->duringMedia), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

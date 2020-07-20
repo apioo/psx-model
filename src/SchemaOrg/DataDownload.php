@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A dataset in downloadable form.")
  */
-class DataDownload extends MediaObject
+class DataDownload extends MediaObject implements \JsonSerializable
 {
 }

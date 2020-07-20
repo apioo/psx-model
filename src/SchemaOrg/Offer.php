@@ -11,7 +11,7 @@ Note: As the <a class=""localLink"" href=""http://schema.org/businessFunction"">
 
 For <a href=""http://www.gs1.org/barcodes/technical/idkeys/gtin"">GTIN</a>-related fields, see <a href=""http://www.gs1.org/barcodes/support/check_digit_calculator"">Check Digit calculator</a> and <a href=""http://www.gs1us.org/resources/standards/gtin-validation-guide"">validation guide</a> from <a href=""http://www.gs1.org/"">GS1</a>.")
 */
-class Offer extends Intangible
+class Offer extends Intangible implements \JsonSerializable
 {
     /**
      * @var PriceSpecification|null
@@ -732,5 +732,11 @@ class Offer extends Intangible
     public function getItemOffered()
     {
         return $this->itemOffered;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('eligibleTransactionVolume' => $this->eligibleTransactionVolume, 'itemCondition' => $this->itemCondition, 'identifier' => $this->identifier, 'eligibleCustomerType' => $this->eligibleCustomerType, 'acceptedPaymentMethod' => $this->acceptedPaymentMethod, 'warranty' => $this->warranty, 'advanceBookingRequirement' => $this->advanceBookingRequirement, 'priceValidUntil' => $this->priceValidUntil, 'inventoryLevel' => $this->inventoryLevel, 'priceSpecification' => $this->priceSpecification, 'price' => $this->price, 'includesObject' => $this->includesObject, 'areaServed' => $this->areaServed, 'eligibleRegion' => $this->eligibleRegion, 'category' => $this->category, 'availableDeliveryMethod' => $this->availableDeliveryMethod, 'addOn' => $this->addOn, 'priceCurrency' => $this->priceCurrency, 'seller' => $this->seller, 'mpn' => $this->mpn, 'availabilityStarts' => $this->availabilityStarts, 'aggregateRating' => $this->aggregateRating, 'gtin8' => $this->gtin8, 'eligibleQuantity' => $this->eligibleQuantity, 'review' => $this->review, 'sku' => $this->sku, 'validThrough' => $this->validThrough, 'availabilityEnds' => $this->availabilityEnds, 'validFrom' => $this->validFrom, 'vehicleIdentificationNumber' => $this->vehicleIdentificationNumber, 'serialNumber' => $this->serialNumber, 'gtin12' => $this->gtin12, 'gtin14' => $this->gtin14, 'businessFunction' => $this->businessFunction, 'eligibleDuration' => $this->eligibleDuration, 'availability' => $this->availability, 'deliveryLeadTime' => $this->deliveryLeadTime, 'makesOffer' => $this->makesOffer, 'offeredBy' => $this->offeredBy, 'itemOffered' => $this->itemOffered), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

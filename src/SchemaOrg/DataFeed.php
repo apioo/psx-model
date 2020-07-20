@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A single feed providing structured information about one or more entities or topics.")
  */
-class DataFeed extends Dataset
+class DataFeed extends Dataset implements \JsonSerializable
 {
     /**
      * @var string|Thing|DataFeedItem|null
@@ -26,5 +26,11 @@ class DataFeed extends Dataset
     public function getDataFeedElement()
     {
         return $this->dataFeedElement;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('dataFeedElement' => $this->dataFeedElement), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

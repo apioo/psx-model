@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An audio file.")
  */
-class AudioObject extends MediaObject
+class AudioObject extends MediaObject implements \JsonSerializable
 {
     /**
      * @var string|MediaObject|null
@@ -44,5 +44,11 @@ class AudioObject extends MediaObject
     public function getTranscript() : ?string
     {
         return $this->transcript;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('caption' => $this->caption, 'transcript' => $this->transcript), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

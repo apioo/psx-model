@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The costs of settling the payment using a particular payment method.")
  */
-class PaymentChargeSpecification extends PriceSpecification
+class PaymentChargeSpecification extends PriceSpecification implements \JsonSerializable
 {
     /**
      * @var PaymentMethod|null
@@ -44,5 +44,11 @@ class PaymentChargeSpecification extends PriceSpecification
     public function getAppliesToDeliveryMethod() : ?DeliveryMethod
     {
         return $this->appliesToDeliveryMethod;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('appliesToPaymentMethod' => $this->appliesToPaymentMethod, 'appliesToDeliveryMethod' => $this->appliesToDeliveryMethod), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

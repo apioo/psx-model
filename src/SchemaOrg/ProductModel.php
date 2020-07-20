@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A datasheet or vendor specification of a product (in the sense of a prototypical description).")
  */
-class ProductModel extends Product
+class ProductModel extends Product implements \JsonSerializable
 {
     /**
      * @var ProductModel|null
@@ -62,5 +62,11 @@ class ProductModel extends Product
     public function getIsVariantOf() : ?ProductModel
     {
         return $this->isVariantOf;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('predecessorOf' => $this->predecessorOf, 'successorOf' => $this->successorOf, 'isVariantOf' => $this->isVariantOf), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

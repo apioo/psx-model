@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A sub-grouping of food or drink items in a menu. E.g. courses (such as 'Dinner', 'Breakfast', etc.), specific type of dishes (such as 'Meat', 'Vegan', 'Drinks', etc.), or some other classification made by the menu provider.")
  */
-class MenuSection extends CreativeWork
+class MenuSection extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var MenuSection|null
@@ -44,5 +44,11 @@ class MenuSection extends CreativeWork
     public function getHasMenuItem() : ?MenuItem
     {
         return $this->hasMenuItem;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('hasMenuSection' => $this->hasMenuSection, 'hasMenuItem' => $this->hasMenuItem), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A structured value representing a price or price range. Typically, only the subclasses of this type are used for markup. It is recommended to use <a class=""localLink"" href=""http://schema.org/MonetaryAmount"">MonetaryAmount</a> to describe independent amounts of money such as a salary, credit card limits, etc.")
  */
-class PriceSpecification extends StructuredValue
+class PriceSpecification extends StructuredValue implements \JsonSerializable
 {
     /**
      * @var PriceSpecification|null
@@ -170,5 +170,11 @@ class PriceSpecification extends StructuredValue
     public function getMaxPrice() : ?float
     {
         return $this->maxPrice;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('eligibleTransactionVolume' => $this->eligibleTransactionVolume, 'price' => $this->price, 'priceCurrency' => $this->priceCurrency, 'valueAddedTaxIncluded' => $this->valueAddedTaxIncluded, 'eligibleQuantity' => $this->eligibleQuantity, 'validThrough' => $this->validThrough, 'validFrom' => $this->validFrom, 'minPrice' => $this->minPrice, 'maxPrice' => $this->maxPrice), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

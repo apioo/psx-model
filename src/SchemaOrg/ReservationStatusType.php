@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Enumerated status values for Reservation.")
  */
-class ReservationStatusType extends Enumeration
+class ReservationStatusType extends Enumeration implements \JsonSerializable
 {
 }

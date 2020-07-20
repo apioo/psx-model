@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A food or drink item listed in a menu or menu section.")
  */
-class MenuItem extends Intangible
+class MenuItem extends Intangible implements \JsonSerializable
 {
     /**
      * @var MenuSection|MenuItem|null
@@ -98,5 +98,11 @@ class MenuItem extends Intangible
     public function getOffers()
     {
         return $this->offers;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('menuAddOn' => $this->menuAddOn, 'nutrition' => $this->nutrition, 'suitableForDiet' => $this->suitableForDiet, 'itemOffered' => $this->itemOffered, 'offers' => $this->offers), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

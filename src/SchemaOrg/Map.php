@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A map.")
  */
-class Map extends CreativeWork
+class Map extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var MapCategoryType|null
@@ -26,5 +26,11 @@ class Map extends CreativeWork
     public function getMapType() : ?MapCategoryType
     {
         return $this->mapType;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('mapType' => $this->mapType), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -9,7 +9,7 @@ namespace PSX\Model\SchemaOrg;
 
 Always use specific schema.org properties when a) they exist and b) you can populate them. Using PropertyValue as a substitute will typically not trigger the same effect as using the original, specific property.")
 */
-class PropertyValue extends StructuredValue
+class PropertyValue extends StructuredValue implements \JsonSerializable
 {
     /**
      * @var float|null
@@ -136,5 +136,11 @@ class PropertyValue extends StructuredValue
     public function getUnitText() : ?string
     {
         return $this->unitText;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('maxValue' => $this->maxValue, 'valueReference' => $this->valueReference, 'propertyID' => $this->propertyID, 'minValue' => $this->minValue, 'value' => $this->value, 'unitCode' => $this->unitCode, 'unitText' => $this->unitText), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

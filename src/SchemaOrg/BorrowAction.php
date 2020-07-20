@@ -14,7 +14,7 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class BorrowAction extends TransferAction
+class BorrowAction extends TransferAction implements \JsonSerializable
 {
     /**
      * @var Organization|Person|null
@@ -33,5 +33,11 @@ class BorrowAction extends TransferAction
     public function getLender()
     {
         return $this->lender;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('lender' => $this->lender), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

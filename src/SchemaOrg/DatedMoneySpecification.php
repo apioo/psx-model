@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A DatedMoneySpecification represents monetary values with optional start and end dates. For example, this could represent an employee's salary over a specific period of time. <strong>Note:</strong> This type has been superseded by <a class=""localLink"" href=""http://schema.org/MonetaryAmount"">MonetaryAmount</a> use of that type is recommended")
  */
-class DatedMoneySpecification extends StructuredValue
+class DatedMoneySpecification extends StructuredValue implements \JsonSerializable
 {
     /**
      * @var \PSX\DateTime\Date|\DateTime|null
@@ -80,5 +80,11 @@ class DatedMoneySpecification extends StructuredValue
     public function getAmount()
     {
         return $this->amount;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('endDate' => $this->endDate, 'startDate' => $this->startDate, 'currency' => $this->currency, 'amount' => $this->amount), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

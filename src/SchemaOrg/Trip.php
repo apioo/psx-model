@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A trip or journey. An itinerary of visits to one or more places.")
  */
-class Trip extends Intangible
+class Trip extends Intangible implements \JsonSerializable
 {
     /**
      * @var Organization|Person|null
@@ -98,5 +98,11 @@ class Trip extends Intangible
     public function getOffers()
     {
         return $this->offers;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('provider' => $this->provider, 'departureTime' => $this->departureTime, 'arrivalTime' => $this->arrivalTime, 'itemOffered' => $this->itemOffered, 'offers' => $this->offers), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

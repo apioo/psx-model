@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A Property value specification.")
  */
-class PropertyValueSpecification extends Intangible
+class PropertyValueSpecification extends Intangible implements \JsonSerializable
 {
     /**
      * @var float|null
@@ -206,5 +206,11 @@ class PropertyValueSpecification extends Intangible
     public function getValueRequired() : ?bool
     {
         return $this->valueRequired;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('maxValue' => $this->maxValue, 'minValue' => $this->minValue, 'valueMinLength' => $this->valueMinLength, 'readonlyValue' => $this->readonlyValue, 'valueName' => $this->valueName, 'valueMaxLength' => $this->valueMaxLength, 'multipleValues' => $this->multipleValues, 'valuePattern' => $this->valuePattern, 'defaultValue' => $this->defaultValue, 'stepValue' => $this->stepValue, 'valueRequired' => $this->valueRequired), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

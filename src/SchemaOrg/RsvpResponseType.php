@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("RsvpResponseType is an enumeration type whose instances represent responding to an RSVP request.")
  */
-class RsvpResponseType extends Enumeration
+class RsvpResponseType extends Enumeration implements \JsonSerializable
 {
 }

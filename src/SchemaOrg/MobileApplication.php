@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A software application designed specifically to work well on a mobile device such as a telephone.")
  */
-class MobileApplication extends SoftwareApplication
+class MobileApplication extends SoftwareApplication implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -26,5 +26,11 @@ class MobileApplication extends SoftwareApplication
     public function getCarrierRequirements() : ?string
     {
         return $this->carrierRequirements;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('carrierRequirements' => $this->carrierRequirements), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

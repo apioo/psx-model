@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A recipe. For dietary restrictions covered by the recipe, a few common restrictions are enumerated via <a class=""localLink"" href=""http://schema.org/suitableForDiet"">suitableForDiet</a>. The <a class=""localLink"" href=""http://schema.org/keywords"">keywords</a> property can also be used to add more detail.")
  */
-class Recipe extends HowTo
+class Recipe extends HowTo implements \JsonSerializable
 {
     /**
      * @var string|QuantitativeValue|null
@@ -170,5 +170,11 @@ class Recipe extends HowTo
     public function getSuitableForDiet() : ?RestrictedDiet
     {
         return $this->suitableForDiet;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('yield' => $this->yield, 'recipeCategory' => $this->recipeCategory, 'cookTime' => $this->cookTime, 'recipeIngredient' => $this->recipeIngredient, 'recipeInstructions' => $this->recipeInstructions, 'cookingMethod' => $this->cookingMethod, 'recipeCuisine' => $this->recipeCuisine, 'nutrition' => $this->nutrition, 'suitableForDiet' => $this->suitableForDiet), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

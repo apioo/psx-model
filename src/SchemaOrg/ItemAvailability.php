@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A list of possible product availability options.")
  */
-class ItemAvailability extends Enumeration
+class ItemAvailability extends Enumeration implements \JsonSerializable
 {
 }

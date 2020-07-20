@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of generating a comment about a subject.")
  */
-class CommentAction extends CommunicateAction
+class CommentAction extends CommunicateAction implements \JsonSerializable
 {
     /**
      * @var Thing|Comment|null
@@ -26,5 +26,11 @@ class CommentAction extends CommunicateAction
     public function getResultComment()
     {
         return $this->resultComment;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('resultComment' => $this->resultComment), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

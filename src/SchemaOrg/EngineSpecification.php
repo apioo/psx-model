@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Information about the engine of the vehicle. A vehicle can have multiple engines represented by multiple engine specification entities.")
  */
-class EngineSpecification extends StructuredValue
+class EngineSpecification extends StructuredValue implements \JsonSerializable
 {
     /**
      * @var string|\PSX\Uri\Uri|QualitativeValue|null
@@ -26,5 +26,11 @@ class EngineSpecification extends StructuredValue
     public function getFuelType()
     {
         return $this->fuelType;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('fuelType' => $this->fuelType), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

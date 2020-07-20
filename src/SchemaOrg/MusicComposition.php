@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A musical composition.")
  */
-class MusicComposition extends CreativeWork
+class MusicComposition extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -188,5 +188,11 @@ class MusicComposition extends CreativeWork
     public function getRecordingOf()
     {
         return $this->recordingOf;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('iswcCode' => $this->iswcCode, 'includedComposition' => $this->includedComposition, 'lyricist' => $this->lyricist, 'musicArrangement' => $this->musicArrangement, 'firstPerformance' => $this->firstPerformance, 'lyrics' => $this->lyrics, 'composer' => $this->composer, 'musicalKey' => $this->musicalKey, 'musicCompositionForm' => $this->musicCompositionForm, 'recordingOf' => $this->recordingOf), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

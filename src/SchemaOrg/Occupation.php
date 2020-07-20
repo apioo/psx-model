@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A profession, may involve prolonged training and/or a formal qualification.")
  */
-class Occupation extends Intangible
+class Occupation extends Intangible implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -98,5 +98,11 @@ class Occupation extends Intangible
     public function getResponsibilities() : ?string
     {
         return $this->responsibilities;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('experienceRequirements' => $this->experienceRequirements, 'estimatedSalary' => $this->estimatedSalary, 'skills' => $this->skills, 'occupationLocation' => $this->occupationLocation, 'responsibilities' => $this->responsibilities), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

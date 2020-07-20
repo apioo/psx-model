@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An enumeration of several kinds of Map.")
  */
-class MapCategoryType extends Enumeration
+class MapCategoryType extends Enumeration implements \JsonSerializable
 {
 }

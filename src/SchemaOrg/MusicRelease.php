@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A MusicRelease is a specific release of a music album.")
  */
-class MusicRelease extends MusicPlaylist
+class MusicRelease extends MusicPlaylist implements \JsonSerializable
 {
     /**
      * @var Organization|null
@@ -116,5 +116,11 @@ class MusicRelease extends MusicPlaylist
     public function getReleaseOf() : ?MusicAlbum
     {
         return $this->releaseOf;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('recordLabel' => $this->recordLabel, 'musicReleaseFormat' => $this->musicReleaseFormat, 'catalogNumber' => $this->catalogNumber, 'creditedTo' => $this->creditedTo, 'duration' => $this->duration, 'releaseOf' => $this->releaseOf), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Event type: Sports event.")
  */
-class SportsEvent extends Event
+class SportsEvent extends Event implements \JsonSerializable
 {
     /**
      * @var Person|SportsTeam|null
@@ -62,5 +62,11 @@ class SportsEvent extends Event
     public function getHomeTeam()
     {
         return $this->homeTeam;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('awayTeam' => $this->awayTeam, 'competitor' => $this->competitor, 'homeTeam' => $this->homeTeam), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An list item, e.g. a step in a checklist or how-to description.")
  */
-class ListItem extends Intangible
+class ListItem extends Intangible implements \JsonSerializable
 {
     /**
      * @var int|string|null
@@ -80,5 +80,11 @@ class ListItem extends Intangible
     public function getNextItem() : ?ListItem
     {
         return $this->nextItem;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('position' => $this->position, 'previousItem' => $this->previousItem, 'item' => $this->item, 'nextItem' => $this->nextItem), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

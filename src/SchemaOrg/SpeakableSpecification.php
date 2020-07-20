@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A SpeakableSpecification indicates (typically via <a class=""localLink"" href=""http://schema.org/xpath"">xpath</a> or <a class=""localLink"" href=""http://schema.org/cssSelector"">cssSelector</a>) sections of a document that are highlighted as particularly <a class=""localLink"" href=""http://schema.org/speakable"">speakable</a>. Instances of this type are expected to be used primarily as values of the <a class=""localLink"" href=""http://schema.org/speakable"">speakable</a> property.")
  */
-class SpeakableSpecification extends Intangible
+class SpeakableSpecification extends Intangible implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -44,5 +44,11 @@ class SpeakableSpecification extends Intangible
     public function getXpath() : ?string
     {
         return $this->xpath;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('cssSelector' => $this->cssSelector, 'xpath' => $this->xpath), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

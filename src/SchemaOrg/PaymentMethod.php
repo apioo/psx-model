@@ -22,6 +22,6 @@ Commonly used values:<br/><br/>
 </ul>
 ")
 */
-class PaymentMethod extends Enumeration
+class PaymentMethod extends Enumeration implements \JsonSerializable
 {
 }

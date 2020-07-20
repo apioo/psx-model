@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Specifies a location feature by providing a structured value representing a feature of an accommodation as a property-value pair of varying degrees of formality.")
  */
-class LocationFeatureSpecification extends PropertyValue
+class LocationFeatureSpecification extends PropertyValue implements \JsonSerializable
 {
     /**
      * @var \PSX\DateTime\Date|\DateTime|null
@@ -62,5 +62,11 @@ class LocationFeatureSpecification extends PropertyValue
     public function getValidFrom()
     {
         return $this->validFrom;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('validThrough' => $this->validThrough, 'hoursAvailable' => $this->hoursAvailable, 'validFrom' => $this->validFrom), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

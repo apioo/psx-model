@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A set of characteristics belonging to people, e.g. who compose an item's target audience.")
  */
-class PeopleAudience extends Audience
+class PeopleAudience extends Audience implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -116,5 +116,11 @@ class PeopleAudience extends Audience
     public function getSuggestedMaxAge() : ?float
     {
         return $this->suggestedMaxAge;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('suggestedGender' => $this->suggestedGender, 'requiredGender' => $this->requiredGender, 'suggestedMinAge' => $this->suggestedMinAge, 'requiredMaxAge' => $this->requiredMaxAge, 'requiredMinAge' => $this->requiredMinAge, 'suggestedMaxAge' => $this->suggestedMaxAge), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

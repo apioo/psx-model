@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A comment on an item - for example, a comment on a blog post. The comment's content is expressed via the <a class=""localLink"" href=""http://schema.org/text"">text</a> property, and its topic via <a class=""localLink"" href=""http://schema.org/about"">about</a>, properties shared with all CreativeWorks.")
  */
-class Comment extends CreativeWork
+class Comment extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var int|null
@@ -62,5 +62,11 @@ class Comment extends CreativeWork
     public function getParentItem() : ?Question
     {
         return $this->parentItem;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('upvoteCount' => $this->upvoteCount, 'downvoteCount' => $this->downvoteCount, 'parentItem' => $this->parentItem), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

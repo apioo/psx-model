@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A PerformanceRole is a Role that some entity places with regard to a theatrical performance, e.g. in a Movie, TVSeries etc.")
  */
-class PerformanceRole extends Role
+class PerformanceRole extends Role implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -26,5 +26,11 @@ class PerformanceRole extends Role
     public function getCharacterName() : ?string
     {
         return $this->characterName;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('characterName' => $this->characterName), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

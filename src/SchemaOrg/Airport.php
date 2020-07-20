@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An airport.")
  */
-class Airport extends CivicStructure
+class Airport extends CivicStructure implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -44,5 +44,11 @@ class Airport extends CivicStructure
     public function getIcaoCode() : ?string
     {
         return $this->icaoCode;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('iataCode' => $this->iataCode, 'icaoCode' => $this->icaoCode), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

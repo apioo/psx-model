@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A subscription which allows a user to access media including audio, video, books, etc.")
  */
-class MediaSubscription extends Intangible
+class MediaSubscription extends Intangible implements \JsonSerializable
 {
     /**
      * @var Offer|null
@@ -44,5 +44,11 @@ class MediaSubscription extends Intangible
     public function getAuthenticator() : ?Organization
     {
         return $this->authenticator;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('expectsAcceptanceOf' => $this->expectsAcceptanceOf, 'authenticator' => $this->authenticator), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

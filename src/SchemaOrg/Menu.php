@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A structured representation of food or drink items available from a FoodEstablishment.")
  */
-class Menu extends CreativeWork
+class Menu extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var MenuSection|null
@@ -44,5 +44,11 @@ class Menu extends CreativeWork
     public function getHasMenuItem() : ?MenuItem
     {
         return $this->hasMenuItem;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('hasMenuSection' => $this->hasMenuSection, 'hasMenuItem' => $this->hasMenuItem), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

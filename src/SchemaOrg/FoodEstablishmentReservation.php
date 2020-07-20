@@ -9,7 +9,7 @@ namespace PSX\Model\SchemaOrg;
 
 Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.")
 */
-class FoodEstablishmentReservation extends Reservation
+class FoodEstablishmentReservation extends Reservation implements \JsonSerializable
 {
     /**
      * @var \PSX\DateTime\Time|\DateTime|null
@@ -64,5 +64,11 @@ class FoodEstablishmentReservation extends Reservation
     public function getPartySize()
     {
         return $this->partySize;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('startTime' => $this->startTime, 'endTime' => $this->endTime, 'partySize' => $this->partySize), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

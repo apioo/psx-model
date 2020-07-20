@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A set of characteristics belonging to businesses, e.g. who compose an item's target audience.")
  */
-class BusinessAudience extends Audience
+class BusinessAudience extends Audience implements \JsonSerializable
 {
     /**
      * @var QuantitativeValue|null
@@ -62,5 +62,11 @@ class BusinessAudience extends Audience
     public function getYearlyRevenue() : ?QuantitativeValue
     {
         return $this->yearlyRevenue;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('numberOfEmployees' => $this->numberOfEmployees, 'yearsInOperation' => $this->yearsInOperation, 'yearlyRevenue' => $this->yearlyRevenue), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

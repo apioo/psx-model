@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A collection of datasets.")
  */
-class DataCatalog extends CreativeWork
+class DataCatalog extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var Dataset|null
@@ -26,5 +26,11 @@ class DataCatalog extends CreativeWork
     public function getDataset() : ?Dataset
     {
         return $this->dataset;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('dataset' => $this->dataset), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

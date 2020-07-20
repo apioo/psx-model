@@ -9,7 +9,7 @@ namespace PSX\Model\SchemaOrg;
 
 See also <a href=""http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html"">blog post</a>.")
 */
-class PublicationIssue extends CreativeWork
+class PublicationIssue extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var string|int|null
@@ -82,5 +82,11 @@ class PublicationIssue extends CreativeWork
     public function getIssueNumber()
     {
         return $this->issueNumber;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('pageStart' => $this->pageStart, 'pagination' => $this->pagination, 'pageEnd' => $this->pageEnd, 'issueNumber' => $this->issueNumber), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

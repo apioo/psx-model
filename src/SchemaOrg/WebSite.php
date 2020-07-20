@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A WebSite is a set of related web pages and other items typically served from a single web domain and accessible via URLs.")
  */
-class WebSite extends CreativeWork
+class WebSite extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -26,5 +26,11 @@ class WebSite extends CreativeWork
     public function getIssn() : ?string
     {
         return $this->issn;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('issn' => $this->issn), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

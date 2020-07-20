@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The kind of release which this album is: single, EP or album.")
  */
-class MusicAlbumReleaseType extends Enumeration
+class MusicAlbumReleaseType extends Enumeration implements \JsonSerializable
 {
 }

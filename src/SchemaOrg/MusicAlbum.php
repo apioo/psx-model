@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A collection of music tracks.")
  */
-class MusicAlbum extends MusicPlaylist
+class MusicAlbum extends MusicPlaylist implements \JsonSerializable
 {
     /**
      * @var MusicAlbumProductionType|null
@@ -80,5 +80,11 @@ class MusicAlbum extends MusicPlaylist
     public function getReleaseOf()
     {
         return $this->releaseOf;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('albumProductionType' => $this->albumProductionType, 'byArtist' => $this->byArtist, 'albumReleaseType' => $this->albumReleaseType, 'releaseOf' => $this->releaseOf), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

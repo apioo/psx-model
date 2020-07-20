@@ -21,6 +21,6 @@ Commonly used values:<br/><br/>
 </ul>
 ")
 */
-class BusinessFunction extends Enumeration
+class BusinessFunction extends Enumeration implements \JsonSerializable
 {
 }

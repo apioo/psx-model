@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An over the air or online broadcast event.")
  */
-class BroadcastEvent extends PublicationEvent
+class BroadcastEvent extends PublicationEvent implements \JsonSerializable
 {
     /**
      * @var Event|null
@@ -62,5 +62,11 @@ class BroadcastEvent extends PublicationEvent
     public function getIsLiveBroadcast() : ?bool
     {
         return $this->isLiveBroadcast;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('broadcastOfEvent' => $this->broadcastOfEvent, 'videoFormat' => $this->videoFormat, 'isLiveBroadcast' => $this->isLiveBroadcast), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Residence type: Single-family home.")
  */
-class SingleFamilyResidence extends House
+class SingleFamilyResidence extends House implements \JsonSerializable
 {
     /**
      * @var QuantitativeValue|null
@@ -44,5 +44,11 @@ class SingleFamilyResidence extends House
     public function getNumberOfRooms()
     {
         return $this->numberOfRooms;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('occupancy' => $this->occupancy, 'numberOfRooms' => $this->numberOfRooms), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

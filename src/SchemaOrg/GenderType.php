@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An enumeration of genders.")
  */
-class GenderType extends Enumeration
+class GenderType extends Enumeration implements \JsonSerializable
 {
 }

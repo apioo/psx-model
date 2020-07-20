@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A movie theater.")
  */
-class MovieTheater extends CivicStructure
+class MovieTheater extends CivicStructure implements \JsonSerializable
 {
     /**
      * @var float|null
@@ -26,5 +26,11 @@ class MovieTheater extends CivicStructure
     public function getScreenCount() : ?float
     {
         return $this->screenCount;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('screenCount' => $this->screenCount), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

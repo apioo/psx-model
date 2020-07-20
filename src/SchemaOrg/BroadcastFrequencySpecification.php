@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The frequency in MHz and the modulation used for a particular BroadcastService.")
  */
-class BroadcastFrequencySpecification extends Intangible
+class BroadcastFrequencySpecification extends Intangible implements \JsonSerializable
 {
     /**
      * @var float|QuantitativeValue|null
@@ -26,5 +26,11 @@ class BroadcastFrequencySpecification extends Intangible
     public function getBroadcastFrequencyValue()
     {
         return $this->broadcastFrequencyValue;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('broadcastFrequencyValue' => $this->broadcastFrequencyValue), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

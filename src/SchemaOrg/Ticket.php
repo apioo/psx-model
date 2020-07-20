@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Used to describe a ticket to an event, a flight, a bus ride, etc.")
  */
-class Ticket extends Intangible
+class Ticket extends Intangible implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -152,5 +152,11 @@ class Ticket extends Intangible
     public function getTicketNumber() : ?string
     {
         return $this->ticketNumber;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('priceCurrency' => $this->priceCurrency, 'underName' => $this->underName, 'totalPrice' => $this->totalPrice, 'issuedBy' => $this->issuedBy, 'ticketedSeat' => $this->ticketedSeat, 'dateIssued' => $this->dateIssued, 'ticketToken' => $this->ticketToken, 'ticketNumber' => $this->ticketNumber), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

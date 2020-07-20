@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Season dedicated to TV broadcast and associated online delivery.")
  */
-class TVSeason extends CreativeWorkSeason
+class TVSeason extends CreativeWorkSeason implements \JsonSerializable
 {
     /**
      * @var Country|null
@@ -26,5 +26,11 @@ class TVSeason extends CreativeWorkSeason
     public function getCountryOfOrigin() : ?Country
     {
         return $this->countryOfOrigin;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('countryOfOrigin' => $this->countryOfOrigin), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

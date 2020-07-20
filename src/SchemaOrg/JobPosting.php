@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A listing that describes a job opening in a certain organization.")
  */
-class JobPosting extends Intangible
+class JobPosting extends Intangible implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -332,5 +332,11 @@ class JobPosting extends Intangible
     public function getIndustry() : ?string
     {
         return $this->industry;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('experienceRequirements' => $this->experienceRequirements, 'estimatedSalary' => $this->estimatedSalary, 'workHours' => $this->workHours, 'hiringOrganization' => $this->hiringOrganization, 'incentiveCompensation' => $this->incentiveCompensation, 'skills' => $this->skills, 'datePosted' => $this->datePosted, 'jobBenefits' => $this->jobBenefits, 'validThrough' => $this->validThrough, 'baseSalary' => $this->baseSalary, 'employmentType' => $this->employmentType, 'jobLocation' => $this->jobLocation, 'salaryCurrency' => $this->salaryCurrency, 'specialCommitments' => $this->specialCommitments, 'title' => $this->title, 'relevantOccupation' => $this->relevantOccupation, 'responsibilities' => $this->responsibilities, 'industry' => $this->industry), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A specific question - e.g. from a user seeking answers online, or collected in a Frequently Asked Questions (FAQ) document.")
  */
-class Question extends CreativeWork
+class Question extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var int|null
@@ -80,5 +80,11 @@ class Question extends CreativeWork
     public function getAnswerCount() : ?int
     {
         return $this->answerCount;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('upvoteCount' => $this->upvoteCount, 'suggestedAnswer' => $this->suggestedAnswer, 'downvoteCount' => $this->downvoteCount, 'answerCount' => $this->answerCount), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

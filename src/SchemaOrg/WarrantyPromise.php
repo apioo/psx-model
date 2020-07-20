@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A structured value representing the duration and scope of services that will be provided to a customer free of charge in case of a defect or malfunction of a product.")
  */
-class WarrantyPromise extends StructuredValue
+class WarrantyPromise extends StructuredValue implements \JsonSerializable
 {
     /**
      * @var WarrantyScope|null
@@ -44,5 +44,11 @@ class WarrantyPromise extends StructuredValue
     public function getDurationOfWarranty() : ?QuantitativeValue
     {
         return $this->durationOfWarranty;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('warrantyScope' => $this->warrantyScope, 'durationOfWarranty' => $this->durationOfWarranty), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

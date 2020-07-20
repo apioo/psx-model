@@ -9,7 +9,7 @@ namespace PSX\Model\SchemaOrg;
 
 Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.")
 */
-class LodgingReservation extends Reservation
+class LodgingReservation extends Reservation implements \JsonSerializable
 {
     /**
      * @var int|QuantitativeValue|null
@@ -118,5 +118,11 @@ class LodgingReservation extends Reservation
     public function getCheckinTime()
     {
         return $this->checkinTime;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('numAdults' => $this->numAdults, 'lodgingUnitType' => $this->lodgingUnitType, 'numChildren' => $this->numChildren, 'lodgingUnitDescription' => $this->lodgingUnitDescription, 'checkoutTime' => $this->checkoutTime, 'checkinTime' => $this->checkinTime), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A work of art that is primarily visual in character.")
  */
-class VisualArtwork extends CreativeWork
+class VisualArtwork extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var QuantitativeValue|Distance|null
@@ -134,5 +134,11 @@ class VisualArtwork extends CreativeWork
     public function getDepth()
     {
         return $this->depth;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('width' => $this->width, 'artform' => $this->artform, 'artworkSurface' => $this->artworkSurface, 'height' => $this->height, 'artMedium' => $this->artMedium, 'artEdition' => $this->artEdition, 'depth' => $this->depth), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

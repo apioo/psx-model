@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A TV episode which can be part of a series or season.")
  */
-class TVEpisode extends Episode
+class TVEpisode extends Episode implements \JsonSerializable
 {
     /**
      * @var Country|null
@@ -26,5 +26,11 @@ class TVEpisode extends Episode
     public function getCountryOfOrigin() : ?Country
     {
         return $this->countryOfOrigin;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('countryOfOrigin' => $this->countryOfOrigin), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

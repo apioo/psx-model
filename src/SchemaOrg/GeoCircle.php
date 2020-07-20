@@ -9,7 +9,7 @@ namespace PSX\Model\SchemaOrg;
          it provides the simple textual property 'circle', but also allows the combination of postalCode alongside geoRadius.
          The center of the circle can be indicated via the 'geoMidpoint' property, or more approximately using 'address', 'postalCode'.")
 */
-class GeoCircle extends GeoShape
+class GeoCircle extends GeoShape implements \JsonSerializable
 {
     /**
      * @var GeoCoordinates|null
@@ -46,5 +46,11 @@ class GeoCircle extends GeoShape
     public function getGeoRadius()
     {
         return $this->geoRadius;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('geoMidpoint' => $this->geoMidpoint, 'geoRadius' => $this->geoRadius), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -11,7 +11,7 @@ The place is <strong>open</strong> if the <a class=""localLink"" href=""http://s
 
 If the value for the <a class=""localLink"" href=""http://schema.org/closes"">closes</a> property is less than the value for the <a class=""localLink"" href=""http://schema.org/opens"">opens</a> property then the hour range is assumed to span over the next day.")
 */
-class OpeningHoursSpecification extends StructuredValue
+class OpeningHoursSpecification extends StructuredValue implements \JsonSerializable
 {
     /**
      * @var \PSX\DateTime\Time|null
@@ -102,5 +102,11 @@ class OpeningHoursSpecification extends StructuredValue
     public function getValidFrom()
     {
         return $this->validFrom;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('closes' => $this->closes, 'dayOfWeek' => $this->dayOfWeek, 'opens' => $this->opens, 'validThrough' => $this->validThrough, 'validFrom' => $this->validFrom), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

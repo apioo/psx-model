@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A statement of the money due for goods or services; a bill.")
  */
-class Invoice extends Intangible
+class Invoice extends Intangible implements \JsonSerializable
 {
     /**
      * @var string|PaymentStatusType|null
@@ -278,5 +278,11 @@ class Invoice extends Intangible
     public function getPaymentMethod() : ?PaymentMethod
     {
         return $this->paymentMethod;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('paymentStatus' => $this->paymentStatus, 'billingPeriod' => $this->billingPeriod, 'scheduledPaymentDate' => $this->scheduledPaymentDate, 'category' => $this->category, 'provider' => $this->provider, 'paymentMethodId' => $this->paymentMethodId, 'referencesOrder' => $this->referencesOrder, 'minimumPaymentDue' => $this->minimumPaymentDue, 'totalPaymentDue' => $this->totalPaymentDue, 'broker' => $this->broker, 'paymentDueDate' => $this->paymentDueDate, 'confirmationNumber' => $this->confirmationNumber, 'accountId' => $this->accountId, 'customer' => $this->customer, 'paymentMethod' => $this->paymentMethod), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

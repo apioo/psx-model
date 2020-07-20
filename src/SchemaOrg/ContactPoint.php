@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A contact point&#x2014;for example, a Customer Complaints department.")
  */
-class ContactPoint extends StructuredValue
+class ContactPoint extends StructuredValue implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -170,5 +170,11 @@ class ContactPoint extends StructuredValue
     public function getHoursAvailable() : ?OpeningHoursSpecification
     {
         return $this->hoursAvailable;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('telephone' => $this->telephone, 'contactOption' => $this->contactOption, 'availableLanguage' => $this->availableLanguage, 'productSupported' => $this->productSupported, 'areaServed' => $this->areaServed, 'contactType' => $this->contactType, 'email' => $this->email, 'faxNumber' => $this->faxNumber, 'hoursAvailable' => $this->hoursAvailable), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

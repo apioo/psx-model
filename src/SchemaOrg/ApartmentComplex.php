@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Residence type: Apartment complex.")
  */
-class ApartmentComplex extends Residence
+class ApartmentComplex extends Residence implements \JsonSerializable
 {
     /**
      * @var bool|string|null
@@ -26,5 +26,11 @@ class ApartmentComplex extends Residence
     public function getPetsAllowed()
     {
         return $this->petsAllowed;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('petsAllowed' => $this->petsAllowed), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

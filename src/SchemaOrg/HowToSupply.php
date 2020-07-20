@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A supply consumed when performing the instructions for how to achieve a result.")
  */
-class HowToSupply extends HowToItem
+class HowToSupply extends HowToItem implements \JsonSerializable
 {
     /**
      * @var string|MonetaryAmount|null
@@ -26,5 +26,11 @@ class HowToSupply extends HowToItem
     public function getEstimatedCost()
     {
         return $this->estimatedCost;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('estimatedCost' => $this->estimatedCost), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

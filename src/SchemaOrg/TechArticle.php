@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A technical article - Example: How-to (task) topics, step-by-step, procedural troubleshooting, specifications, etc.")
  */
-class TechArticle extends Article
+class TechArticle extends Article implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -44,5 +44,11 @@ class TechArticle extends Article
     public function getProficiencyLevel() : ?string
     {
         return $this->proficiencyLevel;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('dependencies' => $this->dependencies, 'proficiencyLevel' => $this->proficiencyLevel), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

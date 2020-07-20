@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An organization that provides flights for passengers.")
  */
-class Airline extends Organization
+class Airline extends Organization implements \JsonSerializable
 {
     /**
      * @var BoardingPolicyType|null
@@ -44,5 +44,11 @@ class Airline extends Organization
     public function getIataCode() : ?string
     {
         return $this->iataCode;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('boardingPolicy' => $this->boardingPolicy, 'iataCode' => $this->iataCode), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

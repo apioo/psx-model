@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A subclass of Role used to describe roles within organizations.")
  */
-class OrganizationRole extends Role
+class OrganizationRole extends Role implements \JsonSerializable
 {
     /**
      * @var float|null
@@ -26,5 +26,11 @@ class OrganizationRole extends Role
     public function getNumberedPosition() : ?float
     {
         return $this->numberedPosition;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('numberedPosition' => $this->numberedPosition), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

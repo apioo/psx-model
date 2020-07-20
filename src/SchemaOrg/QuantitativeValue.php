@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A point value or interval for product characteristics and other purposes.")
  */
-class QuantitativeValue extends StructuredValue
+class QuantitativeValue extends StructuredValue implements \JsonSerializable
 {
     /**
      * @var float|null
@@ -134,5 +134,11 @@ class QuantitativeValue extends StructuredValue
     public function getAdditionalProperty() : ?PropertyValue
     {
         return $this->additionalProperty;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('maxValue' => $this->maxValue, 'valueReference' => $this->valueReference, 'minValue' => $this->minValue, 'value' => $this->value, 'unitCode' => $this->unitCode, 'unitText' => $this->unitText, 'additionalProperty' => $this->additionalProperty), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

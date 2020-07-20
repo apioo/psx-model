@@ -14,7 +14,7 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class ReplyAction extends CommunicateAction
+class ReplyAction extends CommunicateAction implements \JsonSerializable
 {
     /**
      * @var Thing|Comment|null
@@ -33,5 +33,11 @@ class ReplyAction extends CommunicateAction
     public function getResultComment()
     {
         return $this->resultComment;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('resultComment' => $this->resultComment), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

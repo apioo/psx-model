@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A statistical distribution of monetary amounts.")
  */
-class MonetaryAmountDistribution extends QuantitativeValueDistribution
+class MonetaryAmountDistribution extends QuantitativeValueDistribution implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -26,5 +26,11 @@ class MonetaryAmountDistribution extends QuantitativeValueDistribution
     public function getCurrency() : ?string
     {
         return $this->currency;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('currency' => $this->currency), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of editing a recipient by replacing an old object with a new object.")
  */
-class ReplaceAction extends UpdateAction
+class ReplaceAction extends UpdateAction implements \JsonSerializable
 {
     /**
      * @var Thing|null
@@ -44,5 +44,11 @@ class ReplaceAction extends UpdateAction
     public function getReplacer() : ?Thing
     {
         return $this->replacer;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('replacee' => $this->replacee, 'replacer' => $this->replacer), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A review of an item - for example, of a restaurant, movie, or store.")
  */
-class Review extends CreativeWork
+class Review extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var Thing|null
@@ -80,5 +80,11 @@ class Review extends CreativeWork
     public function getReviewAspect() : ?string
     {
         return $this->reviewAspect;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('itemReviewed' => $this->itemReviewed, 'reviewBody' => $this->reviewBody, 'reviewRating' => $this->reviewRating, 'reviewAspect' => $this->reviewAspect), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

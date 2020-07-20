@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An apartment (in American English) or flat (in British English) is a self-contained housing unit (a type of residential real estate) that occupies only part of a building (Source: Wikipedia, the free encyclopedia, see <a href=""http://en.wikipedia.org/wiki/Apartment"">http://en.wikipedia.org/wiki/Apartment</a>).")
  */
-class Apartment extends Accommodation
+class Apartment extends Accommodation implements \JsonSerializable
 {
     /**
      * @var QuantitativeValue|null
@@ -44,5 +44,11 @@ class Apartment extends Accommodation
     public function getNumberOfRooms()
     {
         return $this->numberOfRooms;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('occupancy' => $this->occupancy, 'numberOfRooms' => $this->numberOfRooms), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The geographic shape of a place. A GeoShape can be described using several properties whose values are based on latitude/longitude pairs. Either whitespace or commas can be used to separate latitude and longitude; whitespace should be used when writing a list of several such points.")
  */
-class GeoShape extends StructuredValue
+class GeoShape extends StructuredValue implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -152,5 +152,11 @@ class GeoShape extends StructuredValue
     public function getCircle() : ?string
     {
         return $this->circle;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('polygon' => $this->polygon, 'addressCountry' => $this->addressCountry, 'postalCode' => $this->postalCode, 'box' => $this->box, 'elevation' => $this->elevation, 'line' => $this->line, 'address' => $this->address, 'circle' => $this->circle), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

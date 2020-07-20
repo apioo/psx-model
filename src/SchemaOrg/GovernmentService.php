@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A service provided by a government organization, e.g. food stamps, veterans benefits, etc.")
  */
-class GovernmentService extends Service
+class GovernmentService extends Service implements \JsonSerializable
 {
     /**
      * @var Organization|null
@@ -26,5 +26,11 @@ class GovernmentService extends Service
     public function getServiceOperator() : ?Organization
     {
         return $this->serviceOperator;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('serviceOperator' => $this->serviceOperator), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

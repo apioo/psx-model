@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Used to describe a seat, such as a reserved seat in an event reservation.")
  */
-class Seat extends Intangible
+class Seat extends Intangible implements \JsonSerializable
 {
     /**
      * @var string|QualitativeValue|null
@@ -80,5 +80,11 @@ class Seat extends Intangible
     public function getSeatNumber() : ?string
     {
         return $this->seatNumber;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('seatingType' => $this->seatingType, 'seatRow' => $this->seatRow, 'seatSection' => $this->seatSection, 'seatNumber' => $this->seatNumber), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

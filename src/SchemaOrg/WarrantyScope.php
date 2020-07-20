@@ -16,6 +16,6 @@ Commonly used values:<br/><br/>
 </ul>
 ")
 */
-class WarrantyScope extends Enumeration
+class WarrantyScope extends Enumeration implements \JsonSerializable
 {
 }

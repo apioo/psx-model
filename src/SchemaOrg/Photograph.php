@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A photograph.")
  */
-class Photograph extends CreativeWork
+class Photograph extends CreativeWork implements \JsonSerializable
 {
 }

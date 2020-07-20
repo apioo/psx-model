@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A set of requirements that a must be fulfilled in order to perform an Action.")
  */
-class ActionAccessSpecification extends Intangible
+class ActionAccessSpecification extends Intangible implements \JsonSerializable
 {
     /**
      * @var string|GeoShape|Place|null
@@ -116,5 +116,11 @@ class ActionAccessSpecification extends Intangible
     public function getRequiresSubscription()
     {
         return $this->requiresSubscription;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('eligibleRegion' => $this->eligibleRegion, 'expectsAcceptanceOf' => $this->expectsAcceptanceOf, 'category' => $this->category, 'availabilityStarts' => $this->availabilityStarts, 'availabilityEnds' => $this->availabilityEnds, 'requiresSubscription' => $this->requiresSubscription), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

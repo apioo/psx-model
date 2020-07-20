@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The price for the delivery of an offer using a particular delivery method.")
  */
-class DeliveryChargeSpecification extends PriceSpecification
+class DeliveryChargeSpecification extends PriceSpecification implements \JsonSerializable
 {
     /**
      * @var string|Place|GeoShape|null
@@ -62,5 +62,11 @@ class DeliveryChargeSpecification extends PriceSpecification
     public function getAppliesToDeliveryMethod() : ?DeliveryMethod
     {
         return $this->appliesToDeliveryMethod;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('areaServed' => $this->areaServed, 'eligibleRegion' => $this->eligibleRegion, 'appliesToDeliveryMethod' => $this->appliesToDeliveryMethod), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

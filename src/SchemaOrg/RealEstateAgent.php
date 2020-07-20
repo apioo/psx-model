@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A real-estate agent.")
  */
-class RealEstateAgent extends LocalBusiness
+class RealEstateAgent extends LocalBusiness implements \JsonSerializable
 {
 }

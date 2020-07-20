@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A description of an educational course which may be offered as distinct instances at which take place at different times or take place at different locations, or be offered through different media or modes of study. An educational course is a sequence of one or more educational events and/or creative works which aims to build knowledge, competence or ability of learners.")
  */
-class Course extends CreativeWork
+class Course extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -80,5 +80,11 @@ class Course extends CreativeWork
     public function getHasCourseInstance() : ?CourseInstance
     {
         return $this->hasCourseInstance;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('courseCode' => $this->courseCode, 'coursePrerequisites' => $this->coursePrerequisites, 'educationalCredentialAwarded' => $this->educationalCredentialAwarded, 'hasCourseInstance' => $this->hasCourseInstance), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

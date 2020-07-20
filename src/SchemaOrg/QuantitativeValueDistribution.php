@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A statistical distribution of values.")
  */
-class QuantitativeValueDistribution extends StructuredValue
+class QuantitativeValueDistribution extends StructuredValue implements \JsonSerializable
 {
     /**
      * @var float|null
@@ -116,5 +116,11 @@ class QuantitativeValueDistribution extends StructuredValue
     public function getDuration() : ?Duration
     {
         return $this->duration;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('median' => $this->median, 'percentile25' => $this->percentile25, 'percentile75' => $this->percentile75, 'percentile10' => $this->percentile10, 'percentile90' => $this->percentile90, 'duration' => $this->duration), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

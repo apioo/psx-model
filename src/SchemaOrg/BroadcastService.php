@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A delivery service through which content is provided via broadcast over the air or online.")
  */
-class BroadcastService extends Service
+class BroadcastService extends Service implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -170,5 +170,11 @@ class BroadcastService extends Service
     public function getProvidesBroadcastService()
     {
         return $this->providesBroadcastService;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('broadcastDisplayName' => $this->broadcastDisplayName, 'inLanguage' => $this->inLanguage, 'broadcastAffiliateOf' => $this->broadcastAffiliateOf, 'broadcastTimezone' => $this->broadcastTimezone, 'parentService' => $this->parentService, 'videoFormat' => $this->videoFormat, 'broadcaster' => $this->broadcaster, 'broadcastFrequency' => $this->broadcastFrequency, 'providesBroadcastService' => $this->providesBroadcastService), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

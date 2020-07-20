@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A body of structured information describing some topic(s) of interest.")
  */
-class Dataset extends CreativeWork
+class Dataset extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -62,5 +62,11 @@ class Dataset extends CreativeWork
     public function getDistribution() : ?DataDownload
     {
         return $this->distribution;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('issn' => $this->issn, 'includedInDataCatalog' => $this->includedInDataCatalog, 'distribution' => $this->distribution), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

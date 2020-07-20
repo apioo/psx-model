@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A screening of a movie or other video.")
  */
-class ScreeningEvent extends Event
+class ScreeningEvent extends Event implements \JsonSerializable
 {
     /**
      * @var CreativeWork|null
@@ -44,5 +44,11 @@ class ScreeningEvent extends Event
     public function getVideoFormat() : ?string
     {
         return $this->videoFormat;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('workFeatured' => $this->workFeatured, 'videoFormat' => $this->videoFormat), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

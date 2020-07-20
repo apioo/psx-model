@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A video file.")
  */
-class VideoObject extends MediaObject
+class VideoObject extends MediaObject implements \JsonSerializable
 {
     /**
      * @var ImageObject|null
@@ -152,5 +152,11 @@ class VideoObject extends MediaObject
     public function getTranscript() : ?string
     {
         return $this->transcript;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('thumbnail' => $this->thumbnail, 'videoFrameSize' => $this->videoFrameSize, 'musicBy' => $this->musicBy, 'actor' => $this->actor, 'videoQuality' => $this->videoQuality, 'caption' => $this->caption, 'director' => $this->director, 'transcript' => $this->transcript), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

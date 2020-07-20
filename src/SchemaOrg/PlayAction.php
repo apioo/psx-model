@@ -15,7 +15,7 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class PlayAction extends Action
+class PlayAction extends Action implements \JsonSerializable
 {
     /**
      * @var Audience|null
@@ -52,5 +52,11 @@ class PlayAction extends Action
     public function getEvent() : ?Event
     {
         return $this->event;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('audience' => $this->audience, 'event' => $this->event), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

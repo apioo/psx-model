@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A trip on a commercial bus line.")
  */
-class BusTrip extends Trip
+class BusTrip extends Trip implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -80,5 +80,11 @@ class BusTrip extends Trip
     public function getDepartureBusStop()
     {
         return $this->departureBusStop;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('busName' => $this->busName, 'arrivalBusStop' => $this->arrivalBusStop, 'busNumber' => $this->busNumber, 'departureBusStop' => $this->departureBusStop), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A permission for a particular person or group to access a particular file.")
  */
-class DigitalDocumentPermission extends Intangible
+class DigitalDocumentPermission extends Intangible implements \JsonSerializable
 {
     /**
      * @var DigitalDocumentPermissionType|null
@@ -44,5 +44,11 @@ class DigitalDocumentPermission extends Intangible
     public function getGrantee()
     {
         return $this->grantee;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('permissionType' => $this->permissionType, 'grantee' => $this->grantee), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }
