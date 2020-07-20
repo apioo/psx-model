@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An organization such as a school, NGO, corporation, club, etc.")
  */
-class Organization extends Thing
+class Organization extends Thing implements \JsonSerializable
 {
     /**
      * @var OwnershipInfo|Product|null
@@ -782,5 +782,11 @@ class Organization extends Thing
     public function getSubOrganization() : ?Organization
     {
         return $this->subOrganization;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('owns' => $this->owns, 'telephone' => $this->telephone, 'foundingDate' => $this->foundingDate, 'naics' => $this->naics, 'member' => $this->member, 'publishingPrinciples' => $this->publishingPrinciples, 'hasPOS' => $this->hasPOS, 'sponsor' => $this->sponsor, 'location' => $this->location, 'founder' => $this->founder, 'legalName' => $this->legalName, 'event' => $this->event, 'areaServed' => $this->areaServed, 'foundingLocation' => $this->foundingLocation, 'leiCode' => $this->leiCode, 'numberOfEmployees' => $this->numberOfEmployees, 'seeks' => $this->seeks, 'duns' => $this->duns, 'aggregateRating' => $this->aggregateRating, 'department' => $this->department, 'taxID' => $this->taxID, 'award' => $this->award, 'email' => $this->email, 'faxNumber' => $this->faxNumber, 'review' => $this->review, 'isicV4' => $this->isicV4, 'globalLocationNumber' => $this->globalLocationNumber, 'vatID' => $this->vatID, 'dissolutionDate' => $this->dissolutionDate, 'contactPoint' => $this->contactPoint, 'memberOf' => $this->memberOf, 'logo' => $this->logo, 'brand' => $this->brand, 'hasOfferCatalog' => $this->hasOfferCatalog, 'address' => $this->address, 'employee' => $this->employee, 'interactionStatistic' => $this->interactionStatistic, 'slogan' => $this->slogan, 'parentOrganization' => $this->parentOrganization, 'makesOffer' => $this->makesOffer, 'alumniOf' => $this->alumniOf, 'alumni' => $this->alumni, 'subOrganization' => $this->subOrganization), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

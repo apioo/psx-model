@@ -8,7 +8,7 @@ namespace PSX\Model\OpenAPI;
  * @Description("The object provides metadata about the API. The metadata can be used by the clients if needed, and can be presented in editing or documentation generation tools for convenience.")
  * @Required({"title", "version"})
  */
-class Info
+class Info implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -117,5 +117,11 @@ class Info
     public function getVersion() : ?string
     {
         return $this->version;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('title' => $this->title, 'description' => $this->description, 'termsOfService' => $this->termsOfService, 'contact' => $this->contact, 'license' => $this->license, 'version' => $this->version), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

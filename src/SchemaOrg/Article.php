@@ -9,7 +9,7 @@ namespace PSX\Model\SchemaOrg;
 
 See also <a href=""http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html"">blog post</a>.")
 */
-class Article extends CreativeWork
+class Article extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var string|int|null
@@ -136,5 +136,11 @@ class Article extends CreativeWork
     public function getArticleSection() : ?string
     {
         return $this->articleSection;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('pageStart' => $this->pageStart, 'articleBody' => $this->articleBody, 'pagination' => $this->pagination, 'pageEnd' => $this->pageEnd, 'speakable' => $this->speakable, 'wordCount' => $this->wordCount, 'articleSection' => $this->articleSection), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

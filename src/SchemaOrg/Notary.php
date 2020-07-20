@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A notary.")
  */
-class Notary extends LegalService
+class Notary extends LegalService implements \JsonSerializable
 {
 }

@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\ActivityStream;
 
 
-class Address
+class Address implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -114,5 +114,11 @@ class Address
     public function getCountry() : ?string
     {
         return $this->country;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('formatted' => $this->formatted, 'streetAddress' => $this->streetAddress, 'locality' => $this->locality, 'region' => $this->region, 'postalCode' => $this->postalCode, 'country' => $this->country), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

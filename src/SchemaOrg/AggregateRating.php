@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The average rating based on multiple ratings or reviews.")
  */
-class AggregateRating extends Rating
+class AggregateRating extends Rating implements \JsonSerializable
 {
     /**
      * @var int|null
@@ -62,5 +62,11 @@ class AggregateRating extends Rating
     public function getItemReviewed() : ?Thing
     {
         return $this->itemReviewed;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('ratingCount' => $this->ratingCount, 'reviewCount' => $this->reviewCount, 'itemReviewed' => $this->itemReviewed), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

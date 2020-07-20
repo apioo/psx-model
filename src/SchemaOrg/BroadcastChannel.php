@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A unique instance of a BroadcastService on a CableOrSatelliteService lineup.")
  */
-class BroadcastChannel extends Intangible
+class BroadcastChannel extends Intangible implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -116,5 +116,11 @@ class BroadcastChannel extends Intangible
     public function getProvidesBroadcastService() : ?BroadcastService
     {
         return $this->providesBroadcastService;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('broadcastServiceTier' => $this->broadcastServiceTier, 'inBroadcastLineup' => $this->inBroadcastLineup, 'genre' => $this->genre, 'broadcastChannelId' => $this->broadcastChannelId, 'broadcastFrequency' => $this->broadcastFrequency, 'providesBroadcastService' => $this->providesBroadcastService), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of forming one's opinion, reaction or sentiment.")
  */
-class AssessAction extends Action
+class AssessAction extends Action implements \JsonSerializable
 {
 }

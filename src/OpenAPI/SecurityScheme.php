@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\OpenAPI;
 
 
-class SecurityScheme
+class SecurityScheme implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -150,5 +150,11 @@ class SecurityScheme
     public function getOpenIdConnectUrl() : ?string
     {
         return $this->openIdConnectUrl;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('type' => $this->type, 'description' => $this->description, 'name' => $this->name, 'in' => $this->in, 'scheme' => $this->scheme, 'bearerFormat' => $this->bearerFormat, 'flows' => $this->flows, 'openIdConnectUrl' => $this->openIdConnectUrl), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

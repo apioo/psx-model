@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\Common;
 
 
-class Message
+class Message implements \JsonSerializable
 {
     /**
      * @var bool|null
@@ -42,5 +42,11 @@ class Message
     public function getMessage() : ?string
     {
         return $this->message;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('success' => $this->success, 'message' => $this->message), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

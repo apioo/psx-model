@@ -16,6 +16,6 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class SubscribeAction extends InteractAction
+class SubscribeAction extends InteractAction implements \JsonSerializable
 {
 }

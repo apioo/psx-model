@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A place offering space for ""Recreational Vehicles"", Caravans, mobile homes and the like.")
  */
-class RVPark extends CivicStructure
+class RVPark extends CivicStructure implements \JsonSerializable
 {
 }

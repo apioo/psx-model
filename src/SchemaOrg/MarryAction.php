@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of marrying a person.")
  */
-class MarryAction extends InteractAction
+class MarryAction extends InteractAction implements \JsonSerializable
 {
 }

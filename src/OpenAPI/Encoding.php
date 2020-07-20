@@ -7,7 +7,7 @@ namespace PSX\Model\OpenAPI;
 /**
  * @Description("A single encoding definition applied to a single schema property.")
  */
-class Encoding
+class Encoding implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -98,5 +98,11 @@ class Encoding
     public function getAllowReserved() : ?bool
     {
         return $this->allowReserved;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('contentType' => $this->contentType, 'headers' => $this->headers, 'style' => $this->style, 'explode' => $this->explode, 'allowReserved' => $this->allowReserved), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

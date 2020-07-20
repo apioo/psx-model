@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("ATM/cash machine.")
  */
-class AutomatedTeller extends FinancialService
+class AutomatedTeller extends FinancialService implements \JsonSerializable
 {
 }

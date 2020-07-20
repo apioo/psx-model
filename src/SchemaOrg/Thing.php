@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The most generic type of item.")
  */
-class Thing
+class Thing implements \JsonSerializable
 {
     /**
      * @var \PSX\Uri\Uri|string|PropertyValue|null
@@ -260,5 +260,11 @@ class Thing
     public function getSubjectOf()
     {
         return $this->subjectOf;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('identifier' => $this->identifier, 'additionalType' => $this->additionalType, 'name' => $this->name, 'alternateName' => $this->alternateName, 'disambiguatingDescription' => $this->disambiguatingDescription, 'description' => $this->description, 'logo' => $this->logo, 'image' => $this->image, 'url' => $this->url, 'potentialAction' => $this->potentialAction, 'sameAs' => $this->sameAs, 'about' => $this->about, 'mainEntityOfPage' => $this->mainEntityOfPage, 'subjectOf' => $this->subjectOf), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

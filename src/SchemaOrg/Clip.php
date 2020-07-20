@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A short TV or radio program or a segment/part of a program.")
  */
-class Clip extends CreativeWork
+class Clip extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var int|string|null
@@ -134,5 +134,11 @@ class Clip extends CreativeWork
     public function getDirector() : ?Person
     {
         return $this->director;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('position' => $this->position, 'musicBy' => $this->musicBy, 'partOfSeries' => $this->partOfSeries, 'actor' => $this->actor, 'partOfSeason' => $this->partOfSeason, 'partOfEpisode' => $this->partOfEpisode, 'director' => $this->director), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

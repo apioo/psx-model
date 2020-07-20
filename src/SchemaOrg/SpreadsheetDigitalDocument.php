@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A spreadsheet file.")
  */
-class SpreadsheetDigitalDocument extends DigitalDocument
+class SpreadsheetDigitalDocument extends DigitalDocument implements \JsonSerializable
 {
 }

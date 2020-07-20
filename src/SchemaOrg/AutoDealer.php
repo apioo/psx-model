@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An car dealership.")
  */
-class AutoDealer extends AutomotiveBusiness
+class AutoDealer extends AutomotiveBusiness implements \JsonSerializable
 {
 }

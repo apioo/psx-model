@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\ActivityStream;
 
 
-class Position
+class Position implements \JsonSerializable
 {
     /**
      * @var float|null
@@ -60,5 +60,11 @@ class Position
     public function getLongitude() : ?float
     {
         return $this->longitude;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('altitude' => $this->altitude, 'latitude' => $this->latitude, 'longitude' => $this->longitude), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Financial services business.")
  */
-class FinancialService extends LocalBusiness
+class FinancialService extends LocalBusiness implements \JsonSerializable
 {
     /**
      * @var \PSX\Uri\Uri|string|null
@@ -26,5 +26,11 @@ class FinancialService extends LocalBusiness
     public function getFeesAndCommissionsSpecification()
     {
         return $this->feesAndCommissionsSpecification;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('feesAndCommissionsSpecification' => $this->feesAndCommissionsSpecification), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

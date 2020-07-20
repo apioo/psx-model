@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A fire station. With firemen.")
  */
-class FireStation extends EmergencyService
+class FireStation extends EmergencyService implements \JsonSerializable
 {
 }

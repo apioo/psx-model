@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A graveyard.")
  */
-class Cemetery extends CivicStructure
+class Cemetery extends CivicStructure implements \JsonSerializable
 {
 }

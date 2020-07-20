@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A legislative building&#x2014;for example, the state capitol.")
  */
-class LegislativeBuilding extends GovernmentBuilding
+class LegislativeBuilding extends GovernmentBuilding implements \JsonSerializable
 {
 }

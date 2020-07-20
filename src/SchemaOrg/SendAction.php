@@ -13,7 +13,7 @@ namespace PSX\Model\SchemaOrg;
 </ul>
 ")
 */
-class SendAction extends TransferAction
+class SendAction extends TransferAction implements \JsonSerializable
 {
     /**
      * @var Thing|DeliveryMethod|null
@@ -68,5 +68,11 @@ class SendAction extends TransferAction
     public function getRecipient()
     {
         return $this->recipient;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('deliveryMethod' => $this->deliveryMethod, 'ccRecipient' => $this->ccRecipient, 'recipient' => $this->recipient), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

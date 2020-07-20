@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Season dedicated to radio broadcast and associated online delivery.")
  */
-class RadioSeason extends CreativeWorkSeason
+class RadioSeason extends CreativeWorkSeason implements \JsonSerializable
 {
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of transferring/moving (abstract or concrete) animate or inanimate objects from one place to another.")
  */
-class TransferAction extends Action
+class TransferAction extends Action implements \JsonSerializable
 {
     /**
      * @var Place|null
@@ -44,5 +44,11 @@ class TransferAction extends Action
     public function getToLocation() : ?Place
     {
         return $this->toLocation;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('fromLocation' => $this->fromLocation, 'toLocation' => $this->toLocation), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

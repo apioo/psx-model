@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of adding at a specific location in an ordered collection.")
  */
-class InsertAction extends AddAction
+class InsertAction extends AddAction implements \JsonSerializable
 {
     /**
      * @var Place|null
@@ -26,5 +26,11 @@ class InsertAction extends AddAction
     public function getToLocation() : ?Place
     {
         return $this->toLocation;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('toLocation' => $this->toLocation), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

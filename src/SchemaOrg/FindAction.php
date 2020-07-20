@@ -14,6 +14,6 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class FindAction extends Action
+class FindAction extends Action implements \JsonSerializable
 {
 }

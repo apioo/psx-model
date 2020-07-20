@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A doctor's office.")
  */
-class Physician extends MedicalOrganization
+class Physician extends MedicalOrganization implements \JsonSerializable
 {
 }

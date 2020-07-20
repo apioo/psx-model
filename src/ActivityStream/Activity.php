@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\ActivityStream;
 
 
-class Activity extends ObjectType
+class Activity extends ObjectType implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -258,5 +258,11 @@ class Activity extends ObjectType
     public function getVerb() : ?string
     {
         return $this->verb;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('objectType' => $this->objectType, 'actor' => $this->actor, 'content' => $this->content, 'generator' => $this->generator, 'icon' => $this->icon, 'id' => $this->id, 'object' => $this->object, 'published' => $this->published, 'provider' => $this->provider, 'target' => $this->target, 'title' => $this->title, 'updated' => $this->updated, 'url' => $this->url, 'verb' => $this->verb), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

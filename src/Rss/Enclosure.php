@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\Rss;
 
 
-class Enclosure
+class Enclosure implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -60,5 +60,11 @@ class Enclosure
     public function getType() : ?string
     {
         return $this->type;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('url' => $this->url, 'length' => $this->length, 'type' => $this->type), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

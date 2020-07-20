@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A table on a Web page.")
  */
-class Table extends WebPageElement
+class Table extends WebPageElement implements \JsonSerializable
 {
 }

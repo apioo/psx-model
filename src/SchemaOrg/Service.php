@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A service provided by an organization, e.g. delivery service, print services, etc.")
  */
-class Service extends Intangible
+class Service extends Intangible implements \JsonSerializable
 {
     /**
      * @var Audience|null
@@ -386,5 +386,11 @@ class Service extends Intangible
     public function getOffers()
     {
         return $this->offers;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('audience' => $this->audience, 'availableChannel' => $this->availableChannel, 'areaServed' => $this->areaServed, 'category' => $this->category, 'provider' => $this->provider, 'aggregateRating' => $this->aggregateRating, 'award' => $this->award, 'review' => $this->review, 'serviceType' => $this->serviceType, 'broker' => $this->broker, 'isSimilarTo' => $this->isSimilarTo, 'hoursAvailable' => $this->hoursAvailable, 'isRelatedTo' => $this->isRelatedTo, 'providerMobility' => $this->providerMobility, 'logo' => $this->logo, 'brand' => $this->brand, 'hasOfferCatalog' => $this->hasOfferCatalog, 'serviceOutput' => $this->serviceOutput, 'slogan' => $this->slogan, 'itemOffered' => $this->itemOffered, 'offers' => $this->offers), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

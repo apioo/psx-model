@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A recycling center.")
  */
-class RecyclingCenter extends LocalBusiness
+class RecyclingCenter extends LocalBusiness implements \JsonSerializable
 {
 }

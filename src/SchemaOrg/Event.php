@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the <a class=""localLink"" href=""http://schema.org/offers"">offers</a> property. Repeated events may be structured as separate Event objects.")
  */
-class Event extends Thing
+class Event extends Thing implements \JsonSerializable
 {
     /**
      * @var Audience|null
@@ -117,6 +117,10 @@ class Event extends Thing
      * @var Organization|Person|null
      */
     protected $contributor;
+    /**
+     * @var Thing|null
+     */
+    protected $about;
     /**
      * @var Event|null
      */
@@ -512,6 +516,20 @@ class Event extends Thing
         return $this->contributor;
     }
     /**
+     * @param Thing|null $about
+     */
+    public function setAbout(?Thing $about) : void
+    {
+        $this->about = $about;
+    }
+    /**
+     * @return Thing|null
+     */
+    public function getAbout() : ?Thing
+    {
+        return $this->about;
+    }
+    /**
      * @param Event|null $superEvent
      */
     public function setSuperEvent(?Event $superEvent) : void
@@ -566,5 +584,11 @@ class Event extends Thing
     public function getRecordedAt()
     {
         return $this->recordedAt;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('audience' => $this->audience, 'endDate' => $this->endDate, 'remainingAttendeeCapacity' => $this->remainingAttendeeCapacity, 'sponsor' => $this->sponsor, 'startDate' => $this->startDate, 'location' => $this->location, 'performer' => $this->performer, 'typicalAgeRange' => $this->typicalAgeRange, 'actor' => $this->actor, 'workFeatured' => $this->workFeatured, 'aggregateRating' => $this->aggregateRating, 'inLanguage' => $this->inLanguage, 'review' => $this->review, 'doorTime' => $this->doorTime, 'translator' => $this->translator, 'eventStatus' => $this->eventStatus, 'maximumAttendeeCapacity' => $this->maximumAttendeeCapacity, 'attendee' => $this->attendee, 'organizer' => $this->organizer, 'isAccessibleForFree' => $this->isAccessibleForFree, 'workPerformed' => $this->workPerformed, 'director' => $this->director, 'subEvent' => $this->subEvent, 'composer' => $this->composer, 'previousStartDate' => $this->previousStartDate, 'duration' => $this->duration, 'contributor' => $this->contributor, 'about' => $this->about, 'superEvent' => $this->superEvent, 'itemOffered' => $this->itemOffered, 'offers' => $this->offers, 'recordedAt' => $this->recordedAt), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

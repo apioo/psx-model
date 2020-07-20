@@ -16,6 +16,6 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class RegisterAction extends InteractAction
+class RegisterAction extends InteractAction implements \JsonSerializable
 {
 }

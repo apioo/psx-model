@@ -7,7 +7,7 @@ namespace PSX\Model\OpenAPI;
 /**
  * @Description("Holds a set of reusable objects for different aspects of the OAS. All objects defined within the components object will have no effect on the API unless they are explicitly referenced from properties outside the components object.")
  */
-class Components
+class Components implements \JsonSerializable
 {
     /**
      * @var Schemas|null
@@ -170,5 +170,11 @@ class Components
     public function getCallbacks() : ?Callbacks
     {
         return $this->callbacks;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('schemas' => $this->schemas, 'responses' => $this->responses, 'parameters' => $this->parameters, 'examples' => $this->examples, 'requestBodies' => $this->requestBodies, 'headers' => $this->headers, 'securitySchemes' => $this->securitySchemes, 'links' => $this->links, 'callbacks' => $this->callbacks), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

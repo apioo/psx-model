@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A travel agency.")
  */
-class TravelAgency extends LocalBusiness
+class TravelAgency extends LocalBusiness implements \JsonSerializable
 {
 }

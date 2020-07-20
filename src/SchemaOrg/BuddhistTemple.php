@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A Buddhist temple.")
  */
-class BuddhistTemple extends PlaceOfWorship
+class BuddhistTemple extends PlaceOfWorship implements \JsonSerializable
 {
 }

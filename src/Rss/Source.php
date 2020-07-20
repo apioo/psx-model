@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\Rss;
 
 
-class Source
+class Source implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -42,5 +42,11 @@ class Source
     public function getUrl() : ?string
     {
         return $this->url;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('text' => $this->text, 'url' => $this->url), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

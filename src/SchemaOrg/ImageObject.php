@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An image file.")
  */
-class ImageObject extends MediaObject
+class ImageObject extends MediaObject implements \JsonSerializable
 {
     /**
      * @var bool|null
@@ -80,5 +80,11 @@ class ImageObject extends MediaObject
     public function getCaption()
     {
         return $this->caption;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('representativeOfPage' => $this->representativeOfPage, 'thumbnail' => $this->thumbnail, 'exifData' => $this->exifData, 'caption' => $this->caption), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

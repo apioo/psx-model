@@ -7,7 +7,7 @@ namespace PSX\Model\OpenAPI;
 /**
  * @Description("The Header Object follows the structure of the Parameter Object with the following changes:  1. `name` MUST NOT be specified, it is given in the corresponding `headers` map. 1. `in` MUST NOT be specified, it is implicitly in `header`. 1. All traits that are affected by the location MUST be applicable to a location of `header` (for example, `style`).")
  */
-class Header
+class Header implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -206,5 +206,11 @@ class Header
     public function getContent() : ?MediaTypes
     {
         return $this->content;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('description' => $this->description, 'required' => $this->required, 'deprecated' => $this->deprecated, 'allowEmptyValue' => $this->allowEmptyValue, 'style' => $this->style, 'explode' => $this->explode, 'allowReserved' => $this->allowReserved, 'schema' => $this->schema, 'example' => $this->example, 'examples' => $this->examples, 'content' => $this->content), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

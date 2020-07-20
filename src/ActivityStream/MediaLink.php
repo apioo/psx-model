@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\ActivityStream;
 
 
-class MediaLink
+class MediaLink implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -78,5 +78,11 @@ class MediaLink
     public function getWidth() : ?int
     {
         return $this->width;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('duration' => $this->duration, 'height' => $this->height, 'url' => $this->url, 'width' => $this->width), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

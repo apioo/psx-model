@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A short radio program or a segment/part of a radio program.")
  */
-class RadioClip extends Clip
+class RadioClip extends Clip implements \JsonSerializable
 {
 }

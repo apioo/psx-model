@@ -9,6 +9,6 @@ namespace PSX\Model\SchemaOrg;
 
 This type is deprecated - <a class=""localLink"" href=""http://schema.org/LegalService"">LegalService</a> is more inclusive and less ambiguous.")
 */
-class Attorney extends LegalService
+class Attorney extends LegalService implements \JsonSerializable
 {
 }

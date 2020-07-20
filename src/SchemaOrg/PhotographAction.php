@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of capturing still images of objects using a camera.")
  */
-class PhotographAction extends CreateAction
+class PhotographAction extends CreateAction implements \JsonSerializable
 {
 }

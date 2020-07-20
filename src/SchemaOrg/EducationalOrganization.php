@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An educational organization.")
  */
-class EducationalOrganization extends Organization
+class EducationalOrganization extends Organization implements \JsonSerializable
 {
     /**
      * @var Organization|Person|null
@@ -44,5 +44,11 @@ class EducationalOrganization extends Organization
     public function getAlumni() : ?Person
     {
         return $this->alumni;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('alumniOf' => $this->alumniOf, 'alumni' => $this->alumni), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

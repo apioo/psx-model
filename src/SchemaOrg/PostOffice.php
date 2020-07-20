@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A post office.")
  */
-class PostOffice extends GovernmentOffice
+class PostOffice extends GovernmentOffice implements \JsonSerializable
 {
 }

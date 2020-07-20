@@ -9,7 +9,7 @@ namespace PSX\Model\SchemaOrg;
 
 See also <a href=""http://blog.schema.org/2014/04/announcing-schemaorg-actions.html"">blog post</a> and <a href=""http://schema.org/docs/actions.html"">Actions overview document</a>.")
 */
-class Action extends Thing
+class Action extends Thing implements \JsonSerializable
 {
     /**
      * @var Thing|null
@@ -244,5 +244,11 @@ class Action extends Thing
     public function getError() : ?Thing
     {
         return $this->error;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('object' => $this->object, 'deliveryMethod' => $this->deliveryMethod, 'instrument' => $this->instrument, 'location' => $this->location, 'target' => $this->target, 'participant' => $this->participant, 'agent' => $this->agent, 'resultComment' => $this->resultComment, 'result' => $this->result, 'startTime' => $this->startTime, 'endTime' => $this->endTime, 'actionStatus' => $this->actionStatus, 'error' => $this->error), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

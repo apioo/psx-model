@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of inserting at the end if an ordered collection.")
  */
-class AppendAction extends InsertAction
+class AppendAction extends InsertAction implements \JsonSerializable
 {
 }

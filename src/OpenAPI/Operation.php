@@ -8,7 +8,7 @@ namespace PSX\Model\OpenAPI;
  * @Description("Describes a single API operation on a path.")
  * @Required({"responses"})
  */
-class Operation
+class Operation implements \JsonSerializable
 {
     /**
      * @var array<string>|null
@@ -229,5 +229,11 @@ class Operation
     public function getServers() : ?array
     {
         return $this->servers;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('tags' => $this->tags, 'summary' => $this->summary, 'description' => $this->description, 'externalDocs' => $this->externalDocs, 'operationId' => $this->operationId, 'parameters' => $this->parameters, 'requestBody' => $this->requestBody, 'responses' => $this->responses, 'callbacks' => $this->callbacks, 'deprecated' => $this->deprecated, 'security' => $this->security, 'servers' => $this->servers), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

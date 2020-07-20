@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A service to convert funds from one currency to another currency.")
  */
-class CurrencyConversionService extends FinancialProduct
+class CurrencyConversionService extends FinancialProduct implements \JsonSerializable
 {
 }

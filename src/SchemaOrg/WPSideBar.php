@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A sidebar section of the page.")
  */
-class WPSideBar extends WebPageElement
+class WPSideBar extends WebPageElement implements \JsonSerializable
 {
 }

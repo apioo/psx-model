@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A food-related business.")
  */
-class FoodEstablishment extends LocalBusiness
+class FoodEstablishment extends LocalBusiness implements \JsonSerializable
 {
     /**
      * @var string|\PSX\Uri\Uri|Menu|null
@@ -80,5 +80,11 @@ class FoodEstablishment extends LocalBusiness
     public function getServesCuisine() : ?string
     {
         return $this->servesCuisine;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('hasMenu' => $this->hasMenu, 'acceptsReservations' => $this->acceptsReservations, 'starRating' => $this->starRating, 'servesCuisine' => $this->servesCuisine), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

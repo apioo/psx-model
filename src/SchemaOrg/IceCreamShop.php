@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An ice cream shop.")
  */
-class IceCreamShop extends FoodEstablishment
+class IceCreamShop extends FoodEstablishment implements \JsonSerializable
 {
 }

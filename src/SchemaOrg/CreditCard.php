@@ -19,6 +19,6 @@ Commonly used values:<br/><br/>
 </ul>
 ")
 */
-class CreditCard extends LoanOrCredit
+class CreditCard extends LoanOrCredit implements \JsonSerializable
 {
 }

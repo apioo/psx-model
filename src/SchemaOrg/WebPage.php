@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A web page. Every web page is implicitly assumed to be declared to be of type WebPage, so the various properties about that webpage, such as <code>breadcrumb</code> may be used. We recommend explicit declaration if these properties are specified, but if they are found outside of an itemscope, they will be assumed to be about the page.")
  */
-class WebPage extends CreativeWork
+class WebPage extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var \PSX\Uri\Uri|null
@@ -170,5 +170,11 @@ class WebPage extends CreativeWork
     public function getMainContentOfPage() : ?WebPageElement
     {
         return $this->mainContentOfPage;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('significantLink' => $this->significantLink, 'breadcrumb' => $this->breadcrumb, 'lastReviewed' => $this->lastReviewed, 'specialty' => $this->specialty, 'primaryImageOfPage' => $this->primaryImageOfPage, 'speakable' => $this->speakable, 'reviewedBy' => $this->reviewedBy, 'relatedLink' => $this->relatedLink, 'mainContentOfPage' => $this->mainContentOfPage), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

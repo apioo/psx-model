@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\Atom;
 
 
-class Link
+class Link implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -114,5 +114,11 @@ class Link
     public function getLength() : ?int
     {
         return $this->length;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('href' => $this->href, 'rel' => $this->rel, 'type' => $this->type, 'hreflang' => $this->hreflang, 'title' => $this->title, 'length' => $this->length), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

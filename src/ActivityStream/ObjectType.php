@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\ActivityStream;
 
 
-class ObjectType
+class ObjectType implements \JsonSerializable
 {
     /**
      * @var array<ObjectType>|null
@@ -240,5 +240,11 @@ class ObjectType
     public function getUrl() : ?string
     {
         return $this->url;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('attachments' => $this->attachments, 'author' => $this->author, 'content' => $this->content, 'displayName' => $this->displayName, 'downstreamDuplicates' => $this->downstreamDuplicates, 'id' => $this->id, 'image' => $this->image, 'objectType' => $this->objectType, 'published' => $this->published, 'summary' => $this->summary, 'updated' => $this->updated, 'upstreamDuplicates' => $this->upstreamDuplicates, 'url' => $this->url), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A computer store.")
  */
-class ComputerStore extends Store
+class ComputerStore extends Store implements \JsonSerializable
 {
 }

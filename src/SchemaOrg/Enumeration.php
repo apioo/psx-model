@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Lists or enumerations—for example, a list of cuisines or music genres, etc.")
  */
-class Enumeration extends Intangible
+class Enumeration extends Intangible implements \JsonSerializable
 {
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of planning the execution of an event/task/action/reservation/plan to a future date.")
  */
-class PlanAction extends OrganizeAction
+class PlanAction extends OrganizeAction implements \JsonSerializable
 {
     /**
      * @var \DateTime|null
@@ -26,5 +26,11 @@ class PlanAction extends OrganizeAction
     public function getScheduledTime() : ?\DateTime
     {
         return $this->scheduledTime;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('scheduledTime' => $this->scheduledTime), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

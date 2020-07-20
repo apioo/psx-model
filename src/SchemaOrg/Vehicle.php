@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A vehicle is a device that is designed or used to transport people or cargo over land, water, air, or through space.")
  */
-class Vehicle extends Product
+class Vehicle extends Product implements \JsonSerializable
 {
     /**
      * @var SteeringPositionValue|null
@@ -440,5 +440,11 @@ class Vehicle extends Product
     public function getNumberOfAirbags()
     {
         return $this->numberOfAirbags;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('steeringPosition' => $this->steeringPosition, 'vehicleConfiguration' => $this->vehicleConfiguration, 'cargoVolume' => $this->cargoVolume, 'mileageFromOdometer' => $this->mileageFromOdometer, 'vehicleTransmission' => $this->vehicleTransmission, 'numberOfAxles' => $this->numberOfAxles, 'knownVehicleDamages' => $this->knownVehicleDamages, 'numberOfDoors' => $this->numberOfDoors, 'vehicleModelDate' => $this->vehicleModelDate, 'dateVehicleFirstRegistered' => $this->dateVehicleFirstRegistered, 'numberOfPreviousOwners' => $this->numberOfPreviousOwners, 'vehicleIdentificationNumber' => $this->vehicleIdentificationNumber, 'vehicleEngine' => $this->vehicleEngine, 'driveWheelConfiguration' => $this->driveWheelConfiguration, 'fuelType' => $this->fuelType, 'vehicleInteriorColor' => $this->vehicleInteriorColor, 'vehicleSeatingCapacity' => $this->vehicleSeatingCapacity, 'purchaseDate' => $this->purchaseDate, 'vehicleInteriorType' => $this->vehicleInteriorType, 'productionDate' => $this->productionDate, 'fuelEfficiency' => $this->fuelEfficiency, 'fuelConsumption' => $this->fuelConsumption, 'numberOfForwardGears' => $this->numberOfForwardGears, 'numberOfAirbags' => $this->numberOfAirbags), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

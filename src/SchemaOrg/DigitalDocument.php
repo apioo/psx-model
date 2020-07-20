@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An electronic file or document.")
  */
-class DigitalDocument extends CreativeWork
+class DigitalDocument extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var DigitalDocumentPermission|null
@@ -26,5 +26,11 @@ class DigitalDocument extends CreativeWork
     public function getHasDigitalDocumentPermission() : ?DigitalDocumentPermission
     {
         return $this->hasDigitalDocumentPermission;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('hasDigitalDocumentPermission' => $this->hasDigitalDocumentPermission), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

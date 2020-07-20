@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\Atom;
 
 
-class Person
+class Person implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -60,5 +60,11 @@ class Person
     public function getEmail() : ?string
     {
         return $this->email;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('name' => $this->name, 'uri' => $this->uri, 'email' => $this->email), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

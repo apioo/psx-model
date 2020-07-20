@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A geographical region, typically under the jurisdiction of a particular government.")
  */
-class AdministrativeArea extends Place
+class AdministrativeArea extends Place implements \JsonSerializable
 {
 }

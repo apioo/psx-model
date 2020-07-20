@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of swallowing liquids.")
  */
-class DrinkAction extends ConsumeAction
+class DrinkAction extends ConsumeAction implements \JsonSerializable
 {
 }

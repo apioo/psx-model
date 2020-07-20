@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of conveying information to another person via a communication medium (instrument) such as speech, email, or telephone conversation.")
  */
-class CommunicateAction extends InteractAction
+class CommunicateAction extends InteractAction implements \JsonSerializable
 {
     /**
      * @var Person|ContactPoint|Organization|Audience|null
@@ -21,6 +21,10 @@ class CommunicateAction extends InteractAction
      * @var string|Language|null
      */
     protected $inLanguage;
+    /**
+     * @var Thing|null
+     */
+    protected $about;
     /**
      * @param Person|ContactPoint|Organization|Audience|null $ccRecipient
      */
@@ -62,5 +66,25 @@ class CommunicateAction extends InteractAction
     public function getInLanguage()
     {
         return $this->inLanguage;
+    }
+    /**
+     * @param Thing|null $about
+     */
+    public function setAbout(?Thing $about) : void
+    {
+        $this->about = $about;
+    }
+    /**
+     * @return Thing|null
+     */
+    public function getAbout() : ?Thing
+    {
+        return $this->about;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('ccRecipient' => $this->ccRecipient, 'recipient' => $this->recipient, 'inLanguage' => $this->inLanguage, 'about' => $this->about), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\OpenAPI;
 /**
  * @Description("Contact information for the exposed API.")
  */
-class Contact
+class Contact implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -62,5 +62,11 @@ class Contact
     public function getEmail() : ?string
     {
         return $this->email;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('name' => $this->name, 'url' => $this->url, 'email' => $this->email), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

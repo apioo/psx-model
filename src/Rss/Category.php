@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\Rss;
 
 
-class Category
+class Category implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -42,5 +42,11 @@ class Category
     public function getDomain() : ?string
     {
         return $this->domain;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('text' => $this->text, 'domain' => $this->domain), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

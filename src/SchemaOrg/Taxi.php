@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A taxi.")
  */
-class Taxi extends Service
+class Taxi extends Service implements \JsonSerializable
 {
 }

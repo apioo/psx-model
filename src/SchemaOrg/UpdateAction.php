@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of managing by changing/editing the state of the object.")
  */
-class UpdateAction extends Action
+class UpdateAction extends Action implements \JsonSerializable
 {
     /**
      * @var Thing|null
@@ -26,5 +26,11 @@ class UpdateAction extends Action
     public function getTargetCollection() : ?Thing
     {
         return $this->targetCollection;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('targetCollection' => $this->targetCollection), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A media object, such as an image, video, or audio object embedded in a web page or a downloadable dataset i.e. DataDownload. Note that a creative work may have many media objects associated with it on the same web page. For example, a page about a single song (MusicRecording) may have a music video (VideoObject), and a high and low bandwidth audio stream (2 AudioObject's).")
  */
-class MediaObject extends CreativeWork
+class MediaObject extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var QuantitativeValue|Distance|null
@@ -314,5 +314,11 @@ class MediaObject extends CreativeWork
     public function getEncodesCreativeWork() : ?CreativeWork
     {
         return $this->encodesCreativeWork;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('width' => $this->width, 'contentUrl' => $this->contentUrl, 'encodingFormat' => $this->encodingFormat, 'associatedArticle' => $this->associatedArticle, 'height' => $this->height, 'productionCompany' => $this->productionCompany, 'startTime' => $this->startTime, 'endTime' => $this->endTime, 'requiresSubscription' => $this->requiresSubscription, 'playerType' => $this->playerType, 'contentSize' => $this->contentSize, 'bitrate' => $this->bitrate, 'embedUrl' => $this->embedUrl, 'uploadDate' => $this->uploadDate, 'duration' => $this->duration, 'regionsAllowed' => $this->regionsAllowed, 'encodesCreativeWork' => $this->encodesCreativeWork), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

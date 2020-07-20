@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of discovering/finding an object.")
  */
-class DiscoverAction extends FindAction
+class DiscoverAction extends FindAction implements \JsonSerializable
 {
 }

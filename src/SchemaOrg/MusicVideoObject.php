@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A music video file.")
  */
-class MusicVideoObject extends MediaObject
+class MusicVideoObject extends MediaObject implements \JsonSerializable
 {
 }

@@ -9,7 +9,7 @@ namespace PSX\Model\SchemaOrg;
 
 Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations. For offers of tickets, restaurant reservations, flights, or rental cars, use <a class=""localLink"" href=""http://schema.org/Offer"">Offer</a>.")
 */
-class Reservation extends Intangible
+class Reservation extends Intangible implements \JsonSerializable
 {
     /**
      * @var Thing|null
@@ -226,5 +226,11 @@ class Reservation extends Intangible
     public function getProgramMembershipUsed() : ?ProgramMembership
     {
         return $this->programMembershipUsed;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('reservationFor' => $this->reservationFor, 'provider' => $this->provider, 'priceCurrency' => $this->priceCurrency, 'reservationId' => $this->reservationId, 'broker' => $this->broker, 'underName' => $this->underName, 'totalPrice' => $this->totalPrice, 'modifiedTime' => $this->modifiedTime, 'reservationStatus' => $this->reservationStatus, 'bookingTime' => $this->bookingTime, 'reservedTicket' => $this->reservedTicket, 'programMembershipUsed' => $this->programMembershipUsed), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

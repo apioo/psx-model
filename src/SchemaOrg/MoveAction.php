@@ -14,7 +14,7 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class MoveAction extends Action
+class MoveAction extends Action implements \JsonSerializable
 {
     /**
      * @var Place|null
@@ -51,5 +51,11 @@ class MoveAction extends Action
     public function getToLocation() : ?Place
     {
         return $this->toLocation;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('fromLocation' => $this->fromLocation, 'toLocation' => $this->toLocation), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\Rss;
 
 
-class Item
+class Item implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -186,5 +186,11 @@ class Item
     public function getSource() : ?Source
     {
         return $this->source;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('title' => $this->title, 'link' => $this->link, 'description' => $this->description, 'author' => $this->author, 'category' => $this->category, 'comments' => $this->comments, 'enclosure' => $this->enclosure, 'guid' => $this->guid, 'pubDate' => $this->pubDate, 'source' => $this->source), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

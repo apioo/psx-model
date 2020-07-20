@@ -8,7 +8,7 @@ namespace PSX\Model\OpenAPI;
  * @Description("This is the root document object of the OpenAPI definition file.")
  * @Required({"openapi", "info", "paths"})
  */
-class OpenAPI
+class OpenAPI implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -156,5 +156,11 @@ class OpenAPI
     public function getExternalDocs() : ?ExternalDocs
     {
         return $this->externalDocs;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('openapi' => $this->openapi, 'info' => $this->info, 'servers' => $this->servers, 'paths' => $this->paths, 'components' => $this->components, 'security' => $this->security, 'tags' => $this->tags, 'externalDocs' => $this->externalDocs), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

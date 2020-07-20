@@ -14,6 +14,6 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class BefriendAction extends InteractAction
+class BefriendAction extends InteractAction implements \JsonSerializable
 {
 }

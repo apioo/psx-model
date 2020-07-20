@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Bank or credit union.")
  */
-class BankOrCreditUnion extends FinancialService
+class BankOrCreditUnion extends FinancialService implements \JsonSerializable
 {
 }

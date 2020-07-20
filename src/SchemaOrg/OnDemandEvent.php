@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A publication event e.g. catch-up TV or radio podcast, during which a program is available on-demand.")
  */
-class OnDemandEvent extends PublicationEvent
+class OnDemandEvent extends PublicationEvent implements \JsonSerializable
 {
 }

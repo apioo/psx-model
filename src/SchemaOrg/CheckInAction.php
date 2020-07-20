@@ -16,6 +16,6 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class CheckInAction extends CommunicateAction
+class CheckInAction extends CommunicateAction implements \JsonSerializable
 {
 }

@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A mountain, like Mount Whitney or Mount Everest.")
  */
-class Mountain extends Landform
+class Mountain extends Landform implements \JsonSerializable
 {
 }

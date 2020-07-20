@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A lodging business, such as a motel, hotel, or inn.")
  */
-class LodgingBusiness extends LocalBusiness
+class LodgingBusiness extends LocalBusiness implements \JsonSerializable
 {
     /**
      * @var Audience|null
@@ -152,5 +152,11 @@ class LodgingBusiness extends LocalBusiness
     public function getCheckinTime()
     {
         return $this->checkinTime;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('audience' => $this->audience, 'availableLanguage' => $this->availableLanguage, 'numberOfRooms' => $this->numberOfRooms, 'amenityFeature' => $this->amenityFeature, 'starRating' => $this->starRating, 'petsAllowed' => $this->petsAllowed, 'checkoutTime' => $this->checkoutTime, 'checkinTime' => $this->checkinTime), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

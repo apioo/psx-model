@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A state or province of a country.")
  */
-class State extends AdministrativeArea
+class State extends AdministrativeArea implements \JsonSerializable
 {
 }

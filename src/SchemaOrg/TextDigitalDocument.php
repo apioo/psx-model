@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A file composed primarily of text.")
  */
-class TextDigitalDocument extends DigitalDocument
+class TextDigitalDocument extends DigitalDocument implements \JsonSerializable
 {
 }

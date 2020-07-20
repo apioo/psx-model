@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A media season e.g. tv, radio, video game etc.")
  */
-class CreativeWorkSeason extends CreativeWork
+class CreativeWorkSeason extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var \PSX\DateTime\Date|\DateTime|null
@@ -188,5 +188,11 @@ class CreativeWorkSeason extends CreativeWork
     public function getNumberOfEpisodes() : ?int
     {
         return $this->numberOfEpisodes;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('endDate' => $this->endDate, 'trailer' => $this->trailer, 'startDate' => $this->startDate, 'partOfSeries' => $this->partOfSeries, 'actor' => $this->actor, 'seasonNumber' => $this->seasonNumber, 'productionCompany' => $this->productionCompany, 'episode' => $this->episode, 'director' => $this->director, 'numberOfEpisodes' => $this->numberOfEpisodes), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

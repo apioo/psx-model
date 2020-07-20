@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A lake (for example, Lake Pontrachain).")
  */
-class LakeBodyOfWater extends BodyOfWater
+class LakeBodyOfWater extends BodyOfWater implements \JsonSerializable
 {
 }

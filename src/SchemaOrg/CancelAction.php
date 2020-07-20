@@ -14,6 +14,6 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class CancelAction extends PlanAction
+class CancelAction extends PlanAction implements \JsonSerializable
 {
 }

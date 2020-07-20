@@ -11,6 +11,6 @@ In British English a campsite is an area, usually divided into a number of pitch
 
 See also the dedicated <a href=""/docs/hotels.html"">document on the use of schema.org for marking up hotels and other forms of accommodations</a>.")
 */
-class Campground extends CivicStructure
+class Campground extends CivicStructure implements \JsonSerializable
 {
 }

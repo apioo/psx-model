@@ -8,7 +8,7 @@ namespace PSX\Model\OpenAPI;
  * @Description("Describes a single response from an API Operation, including design-time, static  `links` to operations based on the response.")
  * @Required({"description"})
  */
-class Response
+class Response implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -81,5 +81,11 @@ class Response
     public function getLinks()
     {
         return $this->links;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('description' => $this->description, 'headers' => $this->headers, 'content' => $this->content, 'links' => $this->links), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

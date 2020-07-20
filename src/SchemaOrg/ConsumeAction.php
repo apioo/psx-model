@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of ingesting information/resources/food.")
  */
-class ConsumeAction extends Action
+class ConsumeAction extends Action implements \JsonSerializable
 {
     /**
      * @var ActionAccessSpecification|null
@@ -44,5 +44,11 @@ class ConsumeAction extends Action
     public function getExpectsAcceptanceOf() : ?Offer
     {
         return $this->expectsAcceptanceOf;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('actionAccessibilityRequirement' => $this->actionAccessibilityRequirement, 'expectsAcceptanceOf' => $this->expectsAcceptanceOf), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

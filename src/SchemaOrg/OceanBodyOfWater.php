@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An ocean (for example, the Pacific).")
  */
-class OceanBodyOfWater extends BodyOfWater
+class OceanBodyOfWater extends BodyOfWater implements \JsonSerializable
 {
 }

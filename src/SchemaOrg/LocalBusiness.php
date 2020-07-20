@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A particular physical business or branch of an organization. Examples of LocalBusiness include a restaurant, a particular branch of a restaurant chain, a branch of a bank, a medical practice, a club, a bowling alley, etc.")
  */
-class LocalBusiness extends Organization
+class LocalBusiness extends Organization implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -80,5 +80,11 @@ class LocalBusiness extends Organization
     public function getPaymentAccepted() : ?string
     {
         return $this->paymentAccepted;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('currenciesAccepted' => $this->currenciesAccepted, 'openingHours' => $this->openingHours, 'priceRange' => $this->priceRange, 'paymentAccepted' => $this->paymentAccepted), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

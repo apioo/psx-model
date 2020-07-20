@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A media episode (e.g. TV, radio, video game) which can be part of a series or season.")
  */
-class Episode extends CreativeWork
+class Episode extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var VideoObject|null
@@ -152,5 +152,11 @@ class Episode extends CreativeWork
     public function getDirector() : ?Person
     {
         return $this->director;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('trailer' => $this->trailer, 'episodeNumber' => $this->episodeNumber, 'musicBy' => $this->musicBy, 'partOfSeries' => $this->partOfSeries, 'actor' => $this->actor, 'partOfSeason' => $this->partOfSeason, 'productionCompany' => $this->productionCompany, 'director' => $this->director), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

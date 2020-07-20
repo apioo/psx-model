@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An email message.")
  */
-class EmailMessage extends Message
+class EmailMessage extends Message implements \JsonSerializable
 {
 }

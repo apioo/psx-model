@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A library.")
  */
-class Library extends LocalBusiness
+class Library extends LocalBusiness implements \JsonSerializable
 {
 }

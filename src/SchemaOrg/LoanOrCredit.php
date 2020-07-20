@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A financial product for the loaning of an amount of money under agreed terms and charges.")
  */
-class LoanOrCredit extends FinancialProduct
+class LoanOrCredit extends FinancialProduct implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -80,5 +80,11 @@ class LoanOrCredit extends FinancialProduct
     public function getDuration()
     {
         return $this->duration;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('currency' => $this->currency, 'requiredCollateral' => $this->requiredCollateral, 'amount' => $this->amount, 'duration' => $this->duration), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

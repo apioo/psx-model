@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A shop that sells alcoholic drinks such as wine, beer, whisky and other spirits.")
  */
-class LiquorStore extends Store
+class LiquorStore extends Store implements \JsonSerializable
 {
 }

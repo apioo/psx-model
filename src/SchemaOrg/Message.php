@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A single message from a sender to one or more organizations or people.")
  */
-class Message extends CreativeWork
+class Message extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var \DateTime|\PSX\DateTime\Date|null
@@ -170,5 +170,11 @@ class Message extends CreativeWork
     public function getDateReceived() : ?\DateTime
     {
         return $this->dateReceived;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('dateRead' => $this->dateRead, 'ccRecipient' => $this->ccRecipient, 'recipient' => $this->recipient, 'messageAttachment' => $this->messageAttachment, 'dateSent' => $this->dateSent, 'bccRecipient' => $this->bccRecipient, 'sender' => $this->sender, 'toRecipient' => $this->toRecipient, 'dateReceived' => $this->dateReceived), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of editing a recipient by removing one of its objects.")
  */
-class DeleteAction extends UpdateAction
+class DeleteAction extends UpdateAction implements \JsonSerializable
 {
 }

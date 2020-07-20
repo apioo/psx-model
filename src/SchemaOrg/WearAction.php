@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of dressing oneself in clothing.")
  */
-class WearAction extends UseAction
+class WearAction extends UseAction implements \JsonSerializable
 {
 }

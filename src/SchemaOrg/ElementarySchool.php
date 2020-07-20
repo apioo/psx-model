@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An elementary school.")
  */
-class ElementarySchool extends EducationalOrganization
+class ElementarySchool extends EducationalOrganization implements \JsonSerializable
 {
 }

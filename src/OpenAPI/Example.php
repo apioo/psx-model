@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\OpenAPI;
 
 
-class Example
+class Example implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -60,5 +60,11 @@ class Example
     public function getExternalValue() : ?string
     {
         return $this->externalValue;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('summary' => $this->summary, 'description' => $this->description, 'externalValue' => $this->externalValue), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

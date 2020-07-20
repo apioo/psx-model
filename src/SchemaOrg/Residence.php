@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The place where a person lives.")
  */
-class Residence extends Place
+class Residence extends Place implements \JsonSerializable
 {
 }

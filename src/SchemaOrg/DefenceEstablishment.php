@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A defence establishment, such as an army or navy base.")
  */
-class DefenceEstablishment extends GovernmentBuilding
+class DefenceEstablishment extends GovernmentBuilding implements \JsonSerializable
 {
 }

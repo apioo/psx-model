@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of editing by adding an object to a collection.")
  */
-class AddAction extends UpdateAction
+class AddAction extends UpdateAction implements \JsonSerializable
 {
 }

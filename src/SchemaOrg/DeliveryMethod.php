@@ -21,6 +21,6 @@ Commonly used values:<br/><br/>
 </ul>
 ")
 */
-class DeliveryMethod extends Enumeration
+class DeliveryMethod extends Enumeration implements \JsonSerializable
 {
 }

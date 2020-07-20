@@ -12,6 +12,6 @@ some <a class=""localLink"" href=""http://schema.org/agent"">agent</a>. As is co
 An <a class=""localLink"" href=""http://schema.org/EndorsementRating"">EndorsementRating</a> may be part of a numeric scale or organized system, but this is not required: having an explicit type for indicating a positive,
 endorsement rating is particularly useful in the absence of numeric scales as it helps consumers understand that the rating is broadly positive.")
 */
-class EndorsementRating extends Rating
+class EndorsementRating extends Rating implements \JsonSerializable
 {
 }

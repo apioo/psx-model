@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An agent orders a (not yet released) object/product/service to be delivered/sent.")
  */
-class PreOrderAction extends TradeAction
+class PreOrderAction extends TradeAction implements \JsonSerializable
 {
 }

@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Event type: Comedy event.")
  */
-class ComedyEvent extends Event
+class ComedyEvent extends Event implements \JsonSerializable
 {
 }

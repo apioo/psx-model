@@ -14,6 +14,6 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class ReserveAction extends PlanAction
+class ReserveAction extends PlanAction implements \JsonSerializable
 {
 }

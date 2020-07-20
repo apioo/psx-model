@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\Atom;
 
 
-class Generator
+class Generator implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -60,5 +60,11 @@ class Generator
     public function getVersion() : ?string
     {
         return $this->version;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('text' => $this->text, 'uri' => $this->uri, 'version' => $this->version), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A radio channel that uses AM.")
  */
-class AMRadioChannel extends RadioChannel
+class AMRadioChannel extends RadioChannel implements \JsonSerializable
 {
 }

@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A middle school (typically for children aged around 11-14, although this varies somewhat).")
  */
-class MiddleSchool extends EducationalOrganization
+class MiddleSchool extends EducationalOrganization implements \JsonSerializable
 {
 }

@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of consuming audio content.")
  */
-class ListenAction extends ConsumeAction
+class ListenAction extends ConsumeAction implements \JsonSerializable
 {
 }

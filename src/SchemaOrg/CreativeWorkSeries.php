@@ -11,7 +11,7 @@ Specific subtypes are available for describing <a class=""localLink"" href=""htt
 
 It is common for properties applicable to an item from the series to be usefully applied to the containing group. Schema.org attempts to anticipate some of these cases, but publishers should be free to apply properties of the series parts to the series as a whole wherever they seem appropriate.")
 */
-class CreativeWorkSeries extends Series
+class CreativeWorkSeries extends Series implements \JsonSerializable
 {
     /**
      * @var \PSX\DateTime\Date|\DateTime|null
@@ -66,5 +66,11 @@ class CreativeWorkSeries extends Series
     public function getStartDate()
     {
         return $this->startDate;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('endDate' => $this->endDate, 'issn' => $this->issn, 'startDate' => $this->startDate), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

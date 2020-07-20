@@ -8,7 +8,7 @@ namespace PSX\Model\OpenAPI;
  * @Description("An object representing a Server Variable for server URL template substitution.")
  * @Required({"default"})
  */
-class ServerVariable
+class ServerVariable implements \JsonSerializable
 {
     /**
      * @var array<string>|null
@@ -64,5 +64,11 @@ class ServerVariable
     public function getDescription() : ?string
     {
         return $this->description;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('enum' => $this->enum, 'default' => $this->default, 'description' => $this->description), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

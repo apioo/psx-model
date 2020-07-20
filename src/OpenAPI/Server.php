@@ -8,7 +8,7 @@ namespace PSX\Model\OpenAPI;
  * @Description("An object representing a Server.")
  * @Required({"url"})
  */
-class Server
+class Server implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -63,5 +63,11 @@ class Server
     public function getVariables() : ?ServerVariables
     {
         return $this->variables;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('url' => $this->url, 'description' => $this->description, 'variables' => $this->variables), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A television station.")
  */
-class TelevisionStation extends LocalBusiness
+class TelevisionStation extends LocalBusiness implements \JsonSerializable
 {
 }

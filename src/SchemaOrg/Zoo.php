@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A zoo.")
  */
-class Zoo extends CivicStructure
+class Zoo extends CivicStructure implements \JsonSerializable
 {
 }

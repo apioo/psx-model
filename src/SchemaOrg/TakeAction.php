@@ -15,6 +15,6 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class TakeAction extends TransferAction
+class TakeAction extends TransferAction implements \JsonSerializable
 {
 }

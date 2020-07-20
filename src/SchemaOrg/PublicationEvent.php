@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A PublicationEvent corresponds indifferently to the event of publication for a CreativeWork of any type e.g. a broadcast event, an on-demand event, a book/journal publication via a variety of delivery media.")
  */
-class PublicationEvent extends Event
+class PublicationEvent extends Event implements \JsonSerializable
 {
     /**
      * @var BroadcastService|null
@@ -44,5 +44,11 @@ class PublicationEvent extends Event
     public function getIsAccessibleForFree() : ?bool
     {
         return $this->isAccessibleForFree;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('publishedOn' => $this->publishedOn, 'isAccessibleForFree' => $this->isAccessibleForFree), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

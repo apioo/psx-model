@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A canal, like the Panama Canal.")
  */
-class Canal extends BodyOfWater
+class Canal extends BodyOfWater implements \JsonSerializable
 {
 }

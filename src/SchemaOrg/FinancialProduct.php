@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A product provided to consumers and businesses by financial institutions such as banks, insurance companies, brokerage firms, consumer finance companies, and investment companies which comprise the financial services industry.")
  */
-class FinancialProduct extends Service
+class FinancialProduct extends Service implements \JsonSerializable
 {
     /**
      * @var float|QuantitativeValue|null
@@ -62,5 +62,11 @@ class FinancialProduct extends Service
     public function getInterestRate()
     {
         return $this->interestRate;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('annualPercentageRate' => $this->annualPercentageRate, 'feesAndCommissionsSpecification' => $this->feesAndCommissionsSpecification, 'interestRate' => $this->interestRate), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

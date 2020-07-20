@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A scholarly article.")
  */
-class ScholarlyArticle extends Article
+class ScholarlyArticle extends Article implements \JsonSerializable
 {
 }

@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A comedy club.")
  */
-class ComedyClub extends EntertainmentBusiness
+class ComedyClub extends EntertainmentBusiness implements \JsonSerializable
 {
 }

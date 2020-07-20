@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\ActivityStream;
 
 
-class Collection extends ObjectType
+class Collection extends ObjectType implements \JsonSerializable
 {
     /**
      * @var int|null
@@ -60,5 +60,11 @@ class Collection extends ObjectType
     public function getUrl() : ?string
     {
         return $this->url;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('totalItems' => $this->totalItems, 'items' => $this->items, 'url' => $this->url), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Web page type: About page.")
  */
-class AboutPage extends WebPage
+class AboutPage extends WebPage implements \JsonSerializable
 {
 }

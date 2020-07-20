@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of downloading an object.")
  */
-class DownloadAction extends TransferAction
+class DownloadAction extends TransferAction implements \JsonSerializable
 {
 }

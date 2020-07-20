@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\Atom;
 
 
-class Text
+class Text implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -42,5 +42,11 @@ class Text
     public function getContent() : ?string
     {
         return $this->content;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('type' => $this->type, 'content' => $this->content), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

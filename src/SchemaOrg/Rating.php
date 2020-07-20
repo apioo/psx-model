@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A rating is an evaluation on a numeric scale, such as 1 to 5 stars.")
  */
-class Rating extends Intangible
+class Rating extends Intangible implements \JsonSerializable
 {
     /**
      * @var string|float|null
@@ -98,5 +98,11 @@ class Rating extends Intangible
     public function getReviewAspect() : ?string
     {
         return $this->reviewAspect;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('worstRating' => $this->worstRating, 'author' => $this->author, 'ratingValue' => $this->ratingValue, 'bestRating' => $this->bestRating, 'reviewAspect' => $this->reviewAspect), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

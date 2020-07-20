@@ -8,7 +8,7 @@ namespace PSX\Model\OpenAPI;
  * @Description("Adds metadata to a single tag that is used by the Operation Object. It is not mandatory to have a Tag Object per tag defined in the Operation Object instances.")
  * @Required({"name"})
  */
-class Tag
+class Tag implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -63,5 +63,11 @@ class Tag
     public function getExternalDocs() : ?ExternalDocs
     {
         return $this->externalDocs;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('name' => $this->name, 'description' => $this->description, 'externalDocs' => $this->externalDocs), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

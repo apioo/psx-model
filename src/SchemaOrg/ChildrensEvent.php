@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Event type: Children's event.")
  */
-class ChildrensEvent extends Event
+class ChildrensEvent extends Event implements \JsonSerializable
 {
 }

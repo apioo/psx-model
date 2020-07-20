@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Entities that have a somewhat fixed, physical extension.")
  */
-class Place extends Thing
+class Place extends Thing implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -656,5 +656,11 @@ class Place extends Thing
     public function getContainsPlace() : ?Place
     {
         return $this->containsPlace;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('telephone' => $this->telephone, 'geoContains' => $this->geoContains, 'longitude' => $this->longitude, 'event' => $this->event, 'geoWithin' => $this->geoWithin, 'hasMap' => $this->hasMap, 'amenityFeature' => $this->amenityFeature, 'geoEquals' => $this->geoEquals, 'geoCrosses' => $this->geoCrosses, 'geoOverlaps' => $this->geoOverlaps, 'geoCoveredBy' => $this->geoCoveredBy, 'containedInPlace' => $this->containedInPlace, 'aggregateRating' => $this->aggregateRating, 'geo' => $this->geo, 'faxNumber' => $this->faxNumber, 'review' => $this->review, 'isicV4' => $this->isicV4, 'photo' => $this->photo, 'geoDisjoint' => $this->geoDisjoint, 'maximumAttendeeCapacity' => $this->maximumAttendeeCapacity, 'globalLocationNumber' => $this->globalLocationNumber, 'specialOpeningHoursSpecification' => $this->specialOpeningHoursSpecification, 'publicAccess' => $this->publicAccess, 'geoCovers' => $this->geoCovers, 'logo' => $this->logo, 'latitude' => $this->latitude, 'isAccessibleForFree' => $this->isAccessibleForFree, 'additionalProperty' => $this->additionalProperty, 'address' => $this->address, 'geoIntersects' => $this->geoIntersects, 'slogan' => $this->slogan, 'geoTouches' => $this->geoTouches, 'branchCode' => $this->branchCode, 'smokingAllowed' => $this->smokingAllowed, 'openingHoursSpecification' => $this->openingHoursSpecification, 'containsPlace' => $this->containsPlace), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

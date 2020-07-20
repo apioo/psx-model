@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A file containing a note, primarily for the author.")
  */
-class NoteDigitalDocument extends DigitalDocument
+class NoteDigitalDocument extends DigitalDocument implements \JsonSerializable
 {
 }

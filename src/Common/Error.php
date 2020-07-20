@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\Common;
 
 
-class Error
+class Error implements \JsonSerializable
 {
     /**
      * @var bool|null
@@ -96,5 +96,11 @@ class Error
     public function getContext() : ?string
     {
         return $this->context;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('success' => $this->success, 'title' => $this->title, 'message' => $this->message, 'trace' => $this->trace, 'context' => $this->context), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

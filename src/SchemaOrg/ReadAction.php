@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of consuming written content.")
  */
-class ReadAction extends ConsumeAction
+class ReadAction extends ConsumeAction implements \JsonSerializable
 {
 }

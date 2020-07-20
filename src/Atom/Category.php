@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\Atom;
 
 
-class Category
+class Category implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -60,5 +60,11 @@ class Category
     public function getLabel() : ?string
     {
         return $this->label;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('term' => $this->term, 'scheme' => $this->scheme, 'label' => $this->label), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -14,6 +14,6 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class ApplyAction extends OrganizeAction
+class ApplyAction extends OrganizeAction implements \JsonSerializable
 {
 }

@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\OpenAPI;
 
 
-class OAuthFlow
+class OAuthFlow implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -78,5 +78,11 @@ class OAuthFlow
     public function getScopes() : ?Scopes
     {
         return $this->scopes;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('authorizationUrl' => $this->authorizationUrl, 'tokenUrl' => $this->tokenUrl, 'refreshUrl' => $this->refreshUrl, 'scopes' => $this->scopes), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

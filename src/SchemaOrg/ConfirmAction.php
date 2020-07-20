@@ -14,6 +14,6 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class ConfirmAction extends InformAction
+class ConfirmAction extends InformAction implements \JsonSerializable
 {
 }

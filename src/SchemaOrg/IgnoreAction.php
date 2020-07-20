@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("The act of intentionally disregarding the object. An agent ignores an object.")
  */
-class IgnoreAction extends AssessAction
+class IgnoreAction extends AssessAction implements \JsonSerializable
 {
 }

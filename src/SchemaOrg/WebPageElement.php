@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A web page element, like a table or an image.")
  */
-class WebPageElement extends CreativeWork
+class WebPageElement extends CreativeWork implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -44,5 +44,11 @@ class WebPageElement extends CreativeWork
     public function getXpath() : ?string
     {
         return $this->xpath;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('cssSelector' => $this->cssSelector, 'xpath' => $this->xpath), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

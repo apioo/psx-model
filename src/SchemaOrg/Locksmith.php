@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A locksmith.")
  */
-class Locksmith extends HomeAndConstructionBusiness
+class Locksmith extends HomeAndConstructionBusiness implements \JsonSerializable
 {
 }

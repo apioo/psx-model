@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A post to a social media platform, including blog posts, tweets, Facebook posts, etc.")
  */
-class SocialMediaPosting extends Article
+class SocialMediaPosting extends Article implements \JsonSerializable
 {
     /**
      * @var CreativeWork|null
@@ -26,5 +26,11 @@ class SocialMediaPosting extends Article
     public function getSharedContent() : ?CreativeWork
     {
         return $this->sharedContent;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('sharedContent' => $this->sharedContent), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

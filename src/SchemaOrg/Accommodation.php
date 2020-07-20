@@ -10,7 +10,7 @@ For more specific types of accommodations not defined in schema.org, one can use
 <br /><br />
 See also the <a href=""/docs/hotels.html"">dedicated document on the use of schema.org for marking up hotels and other forms of accommodations</a>.")
 */
-class Accommodation extends Place
+class Accommodation extends Place implements \JsonSerializable
 {
     /**
      * @var QuantitativeValue|null
@@ -101,5 +101,11 @@ class Accommodation extends Place
     public function getPetsAllowed()
     {
         return $this->petsAllowed;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('floorSize' => $this->floorSize, 'numberOfRooms' => $this->numberOfRooms, 'amenityFeature' => $this->amenityFeature, 'permittedUsage' => $this->permittedUsage, 'petsAllowed' => $this->petsAllowed), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

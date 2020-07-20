@@ -7,7 +7,7 @@ namespace PSX\Model\OpenAPI;
 /**
  * @Description("Describes the operations available on a single path. A Path Item MAY be empty, due to ACL constraints. The path itself is still exposed to the documentation viewer but they will not know which operations and parameters are available.")
  */
-class PathItem
+class PathItem implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -245,5 +245,11 @@ class PathItem
     public function getParameters() : ?array
     {
         return $this->parameters;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('$ref' => $this->ref, 'summary' => $this->summary, 'description' => $this->description, 'get' => $this->get, 'put' => $this->put, 'post' => $this->post, 'delete' => $this->delete, 'options' => $this->options, 'head' => $this->head, 'patch' => $this->patch, 'trace' => $this->trace, 'servers' => $this->servers, 'parameters' => $this->parameters), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

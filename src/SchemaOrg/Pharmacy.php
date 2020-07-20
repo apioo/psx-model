@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A pharmacy or drugstore.")
  */
-class Pharmacy extends MedicalOrganization
+class Pharmacy extends MedicalOrganization implements \JsonSerializable
 {
 }

@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Web page type: Video gallery page.")
  */
-class VideoGallery extends MediaGallery
+class VideoGallery extends MediaGallery implements \JsonSerializable
 {
 }

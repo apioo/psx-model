@@ -14,6 +14,6 @@ Related actions:<br/><br/>
 </ul>
 ")
 */
-class RejectAction extends AllocateAction
+class RejectAction extends AllocateAction implements \JsonSerializable
 {
 }

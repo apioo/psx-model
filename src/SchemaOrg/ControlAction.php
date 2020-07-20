@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An agent controls a device or application.")
  */
-class ControlAction extends Action
+class ControlAction extends Action implements \JsonSerializable
 {
 }

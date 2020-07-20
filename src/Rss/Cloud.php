@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\Rss;
 
 
-class Cloud
+class Cloud implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -96,5 +96,11 @@ class Cloud
     public function getProtocol() : ?string
     {
         return $this->protocol;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('domain' => $this->domain, 'port' => $this->port, 'path' => $this->path, 'registerProcedure' => $this->registerProcedure, 'protocol' => $this->protocol), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A music venue.")
  */
-class MusicVenue extends CivicStructure
+class MusicVenue extends CivicStructure implements \JsonSerializable
 {
 }

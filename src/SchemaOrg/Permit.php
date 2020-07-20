@@ -7,7 +7,7 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("A permit issued by an organization, e.g. a parking pass.")
  */
-class Permit extends Intangible
+class Permit extends Intangible implements \JsonSerializable
 {
     /**
      * @var Audience|null
@@ -134,5 +134,11 @@ class Permit extends Intangible
     public function getIssuedBy() : ?Organization
     {
         return $this->issuedBy;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('permitAudience' => $this->permitAudience, 'issuedThrough' => $this->issuedThrough, 'validFor' => $this->validFor, 'validUntil' => $this->validUntil, 'validIn' => $this->validIn, 'validFrom' => $this->validFrom, 'issuedBy' => $this->issuedBy), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

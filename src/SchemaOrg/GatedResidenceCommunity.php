@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Residence type: Gated community.")
  */
-class GatedResidenceCommunity extends Residence
+class GatedResidenceCommunity extends Residence implements \JsonSerializable
 {
 }

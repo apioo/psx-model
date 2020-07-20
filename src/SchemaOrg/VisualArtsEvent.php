@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Event type: Visual arts event.")
  */
-class VisualArtsEvent extends Event
+class VisualArtsEvent extends Event implements \JsonSerializable
 {
 }

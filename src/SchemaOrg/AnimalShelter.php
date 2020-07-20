@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("Animal shelter.")
  */
-class AnimalShelter extends LocalBusiness
+class AnimalShelter extends LocalBusiness implements \JsonSerializable
 {
 }

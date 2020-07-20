@@ -8,7 +8,7 @@ namespace PSX\Model\OpenAPI;
  * @Description("License information for the exposed API.")
  * @Required({"name"})
  */
-class License
+class License implements \JsonSerializable
 {
     /**
      * @var string|null
@@ -45,5 +45,11 @@ class License
     public function getUrl() : ?string
     {
         return $this->url;
+    }
+    public function jsonSerialize()
+    {
+        return (object) array_filter(array('name' => $this->name, 'url' => $this->url), static function ($value) : bool {
+            return $value !== null;
+        });
     }
 }

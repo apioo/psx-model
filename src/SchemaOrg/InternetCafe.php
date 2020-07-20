@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An internet cafe.")
  */
-class InternetCafe extends LocalBusiness
+class InternetCafe extends LocalBusiness implements \JsonSerializable
 {
 }

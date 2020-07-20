@@ -9,6 +9,6 @@ namespace PSX\Model\SchemaOrg;
 
 See also <a href=""http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html"">blog post</a>.")
 */
-class Periodical extends CreativeWorkSeries
+class Periodical extends CreativeWorkSeries implements \JsonSerializable
 {
 }

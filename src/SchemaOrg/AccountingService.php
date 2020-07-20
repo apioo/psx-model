@@ -9,6 +9,6 @@ namespace PSX\Model\SchemaOrg;
 
 As a <a class=""localLink"" href=""http://schema.org/LocalBusiness"">LocalBusiness</a> it can be described as a <a class=""localLink"" href=""http://schema.org/provider"">provider</a> of one or more <a class=""localLink"" href=""http://schema.org/Service"">Service</a>(s).")
 */
-class AccountingService extends FinancialService
+class AccountingService extends FinancialService implements \JsonSerializable
 {
 }

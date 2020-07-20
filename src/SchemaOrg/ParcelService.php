@@ -16,6 +16,6 @@ Commonly used values:<br/><br/>
 </ul>
 ")
 */
-class ParcelService extends DeliveryMethod
+class ParcelService extends DeliveryMethod implements \JsonSerializable
 {
 }

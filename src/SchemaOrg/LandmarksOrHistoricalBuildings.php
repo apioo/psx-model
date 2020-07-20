@@ -7,6 +7,6 @@ namespace PSX\Model\SchemaOrg;
 /**
  * @Description("An historical landmark or building.")
  */
-class LandmarksOrHistoricalBuildings extends Place
+class LandmarksOrHistoricalBuildings extends Place implements \JsonSerializable
 {
 }
