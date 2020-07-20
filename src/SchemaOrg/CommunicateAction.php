@@ -22,10 +22,6 @@ class CommunicateAction extends InteractAction
      */
     protected $inLanguage;
     /**
-     * @var Thing|null
-     */
-    protected $about;
-    /**
      * @param Person|ContactPoint|Organization|Audience|null $ccRecipient
      */
     public function setCcRecipient($ccRecipient) : void
@@ -66,19 +62,5 @@ class CommunicateAction extends InteractAction
     public function getInLanguage()
     {
         return $this->inLanguage;
-    }
-    /**
-     * @param Thing|\PSX\Uri\Uri|CreativeWork|null $about
-     */
-    public function setAbout($about) : void
-    {
-        $this->about = $about;
-    }
-    /**
-     * @return Thing|\PSX\Uri\Uri|CreativeWork|null
-     */
-    public function getAbout()
-    {
-        return $this->about;
     }
 }
