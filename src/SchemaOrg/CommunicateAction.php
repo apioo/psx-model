@@ -68,14 +68,14 @@ class CommunicateAction extends InteractAction
         return $this->inLanguage;
     }
     /**
-     * @param Thing|null $about
+     * @param Thing|\PSX\Uri\Uri|CreativeWork|null $about
      */
     public function setAbout($about) : void
     {
         $this->about = $about;
     }
     /**
-     * @return Thing|null
+     * @return Thing|\PSX\Uri\Uri|CreativeWork|null
      */
     public function getAbout()
     {
