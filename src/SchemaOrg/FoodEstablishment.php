@@ -83,8 +83,8 @@ class FoodEstablishment extends LocalBusiness implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('hasMenu' => $this->hasMenu, 'acceptsReservations' => $this->acceptsReservations, 'starRating' => $this->starRating, 'servesCuisine' => $this->servesCuisine), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('hasMenu' => $this->hasMenu, 'acceptsReservations' => $this->acceptsReservations, 'starRating' => $this->starRating, 'servesCuisine' => $this->servesCuisine), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

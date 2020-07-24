@@ -65,8 +65,8 @@ class FinancialProduct extends Service implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('annualPercentageRate' => $this->annualPercentageRate, 'feesAndCommissionsSpecification' => $this->feesAndCommissionsSpecification, 'interestRate' => $this->interestRate), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('annualPercentageRate' => $this->annualPercentageRate, 'feesAndCommissionsSpecification' => $this->feesAndCommissionsSpecification, 'interestRate' => $this->interestRate), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

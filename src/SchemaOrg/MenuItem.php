@@ -101,8 +101,8 @@ class MenuItem extends Intangible implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('menuAddOn' => $this->menuAddOn, 'nutrition' => $this->nutrition, 'suitableForDiet' => $this->suitableForDiet, 'itemOffered' => $this->itemOffered, 'offers' => $this->offers), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('menuAddOn' => $this->menuAddOn, 'nutrition' => $this->nutrition, 'suitableForDiet' => $this->suitableForDiet, 'itemOffered' => $this->itemOffered, 'offers' => $this->offers), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

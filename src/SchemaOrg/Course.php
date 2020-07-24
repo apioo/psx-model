@@ -83,8 +83,8 @@ class Course extends CreativeWork implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('courseCode' => $this->courseCode, 'coursePrerequisites' => $this->coursePrerequisites, 'educationalCredentialAwarded' => $this->educationalCredentialAwarded, 'hasCourseInstance' => $this->hasCourseInstance), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('courseCode' => $this->courseCode, 'coursePrerequisites' => $this->coursePrerequisites, 'educationalCredentialAwarded' => $this->educationalCredentialAwarded, 'hasCourseInstance' => $this->hasCourseInstance), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

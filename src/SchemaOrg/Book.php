@@ -101,8 +101,8 @@ class Book extends CreativeWork implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('illustrator' => $this->illustrator, 'bookFormat' => $this->bookFormat, 'isbn' => $this->isbn, 'bookEdition' => $this->bookEdition, 'numberOfPages' => $this->numberOfPages), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('illustrator' => $this->illustrator, 'bookFormat' => $this->bookFormat, 'isbn' => $this->isbn, 'bookEdition' => $this->bookEdition, 'numberOfPages' => $this->numberOfPages), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

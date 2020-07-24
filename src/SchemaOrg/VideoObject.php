@@ -155,8 +155,8 @@ class VideoObject extends MediaObject implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('thumbnail' => $this->thumbnail, 'videoFrameSize' => $this->videoFrameSize, 'musicBy' => $this->musicBy, 'actor' => $this->actor, 'videoQuality' => $this->videoQuality, 'caption' => $this->caption, 'director' => $this->director, 'transcript' => $this->transcript), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('thumbnail' => $this->thumbnail, 'videoFrameSize' => $this->videoFrameSize, 'musicBy' => $this->musicBy, 'actor' => $this->actor, 'videoQuality' => $this->videoQuality, 'caption' => $this->caption, 'director' => $this->director, 'transcript' => $this->transcript), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

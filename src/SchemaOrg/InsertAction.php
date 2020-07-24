@@ -29,8 +29,8 @@ class InsertAction extends AddAction implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('toLocation' => $this->toLocation), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('toLocation' => $this->toLocation), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

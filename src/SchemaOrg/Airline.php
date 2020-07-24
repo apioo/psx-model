@@ -47,8 +47,8 @@ class Airline extends Organization implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('boardingPolicy' => $this->boardingPolicy, 'iataCode' => $this->iataCode), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('boardingPolicy' => $this->boardingPolicy, 'iataCode' => $this->iataCode), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

@@ -63,8 +63,8 @@ class Collection extends ObjectType implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('totalItems' => $this->totalItems, 'items' => $this->items, 'url' => $this->url), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('totalItems' => $this->totalItems, 'items' => $this->items, 'url' => $this->url), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

@@ -173,8 +173,8 @@ class BroadcastService extends Service implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('broadcastDisplayName' => $this->broadcastDisplayName, 'inLanguage' => $this->inLanguage, 'broadcastAffiliateOf' => $this->broadcastAffiliateOf, 'broadcastTimezone' => $this->broadcastTimezone, 'parentService' => $this->parentService, 'videoFormat' => $this->videoFormat, 'broadcaster' => $this->broadcaster, 'broadcastFrequency' => $this->broadcastFrequency, 'providesBroadcastService' => $this->providesBroadcastService), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('broadcastDisplayName' => $this->broadcastDisplayName, 'inLanguage' => $this->inLanguage, 'broadcastAffiliateOf' => $this->broadcastAffiliateOf, 'broadcastTimezone' => $this->broadcastTimezone, 'parentService' => $this->parentService, 'videoFormat' => $this->videoFormat, 'broadcaster' => $this->broadcaster, 'broadcastFrequency' => $this->broadcastFrequency, 'providesBroadcastService' => $this->providesBroadcastService), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

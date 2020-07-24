@@ -45,7 +45,7 @@ class Source implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('text' => $this->text, 'url' => $this->url), static function ($value) : bool {
+        return array_filter(array('text' => $this->text, 'url' => $this->url), static function ($value) : bool {
             return $value !== null;
         });
     }

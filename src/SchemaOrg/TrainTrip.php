@@ -119,8 +119,8 @@ class TrainTrip extends Trip implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('departureStation' => $this->departureStation, 'trainNumber' => $this->trainNumber, 'departurePlatform' => $this->departurePlatform, 'trainName' => $this->trainName, 'arrivalStation' => $this->arrivalStation, 'arrivalPlatform' => $this->arrivalPlatform), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('departureStation' => $this->departureStation, 'trainNumber' => $this->trainNumber, 'departurePlatform' => $this->departurePlatform, 'trainName' => $this->trainName, 'arrivalStation' => $this->arrivalStation, 'arrivalPlatform' => $this->arrivalPlatform), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

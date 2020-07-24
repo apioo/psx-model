@@ -155,8 +155,8 @@ class QualitativeValue extends Enumeration implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('valueReference' => $this->valueReference, 'greaterOrEqual' => $this->greaterOrEqual, 'lesser' => $this->lesser, 'equal' => $this->equal, 'greater' => $this->greater, 'nonEqual' => $this->nonEqual, 'additionalProperty' => $this->additionalProperty, 'lesserOrEqual' => $this->lesserOrEqual), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('valueReference' => $this->valueReference, 'greaterOrEqual' => $this->greaterOrEqual, 'lesser' => $this->lesser, 'equal' => $this->equal, 'greater' => $this->greater, 'nonEqual' => $this->nonEqual, 'additionalProperty' => $this->additionalProperty, 'lesserOrEqual' => $this->lesserOrEqual), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

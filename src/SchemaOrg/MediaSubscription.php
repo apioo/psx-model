@@ -47,8 +47,8 @@ class MediaSubscription extends Intangible implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('expectsAcceptanceOf' => $this->expectsAcceptanceOf, 'authenticator' => $this->authenticator), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('expectsAcceptanceOf' => $this->expectsAcceptanceOf, 'authenticator' => $this->authenticator), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

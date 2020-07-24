@@ -137,8 +137,8 @@ class Movie extends CreativeWork implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('trailer' => $this->trailer, 'musicBy' => $this->musicBy, 'actor' => $this->actor, 'productionCompany' => $this->productionCompany, 'countryOfOrigin' => $this->countryOfOrigin, 'director' => $this->director, 'duration' => $this->duration), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('trailer' => $this->trailer, 'musicBy' => $this->musicBy, 'actor' => $this->actor, 'productionCompany' => $this->productionCompany, 'countryOfOrigin' => $this->countryOfOrigin, 'director' => $this->director, 'duration' => $this->duration), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

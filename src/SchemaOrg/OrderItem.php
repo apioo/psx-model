@@ -101,8 +101,8 @@ class OrderItem extends Intangible implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('orderDelivery' => $this->orderDelivery, 'orderItemStatus' => $this->orderItemStatus, 'orderQuantity' => $this->orderQuantity, 'orderItemNumber' => $this->orderItemNumber, 'orderedItem' => $this->orderedItem), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('orderDelivery' => $this->orderDelivery, 'orderItemStatus' => $this->orderItemStatus, 'orderQuantity' => $this->orderQuantity, 'orderItemNumber' => $this->orderItemNumber, 'orderedItem' => $this->orderedItem), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

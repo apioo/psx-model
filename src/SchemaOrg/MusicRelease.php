@@ -119,8 +119,8 @@ class MusicRelease extends MusicPlaylist implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('recordLabel' => $this->recordLabel, 'musicReleaseFormat' => $this->musicReleaseFormat, 'catalogNumber' => $this->catalogNumber, 'creditedTo' => $this->creditedTo, 'duration' => $this->duration, 'releaseOf' => $this->releaseOf), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('recordLabel' => $this->recordLabel, 'musicReleaseFormat' => $this->musicReleaseFormat, 'catalogNumber' => $this->catalogNumber, 'creditedTo' => $this->creditedTo, 'duration' => $this->duration, 'releaseOf' => $this->releaseOf), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

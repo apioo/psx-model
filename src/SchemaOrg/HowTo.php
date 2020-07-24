@@ -173,8 +173,8 @@ class HowTo extends CreativeWork implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('yield' => $this->yield, 'estimatedCost' => $this->estimatedCost, 'totalTime' => $this->totalTime, 'cookTime' => $this->cookTime, 'performTime' => $this->performTime, 'supply' => $this->supply, 'tool' => $this->tool, 'step' => $this->step, 'prepTime' => $this->prepTime), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('yield' => $this->yield, 'estimatedCost' => $this->estimatedCost, 'totalTime' => $this->totalTime, 'cookTime' => $this->cookTime, 'performTime' => $this->performTime, 'supply' => $this->supply, 'tool' => $this->tool, 'step' => $this->step, 'prepTime' => $this->prepTime), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

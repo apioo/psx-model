@@ -191,8 +191,8 @@ class CreativeWorkSeason extends CreativeWork implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('endDate' => $this->endDate, 'trailer' => $this->trailer, 'startDate' => $this->startDate, 'partOfSeries' => $this->partOfSeries, 'actor' => $this->actor, 'seasonNumber' => $this->seasonNumber, 'productionCompany' => $this->productionCompany, 'episode' => $this->episode, 'director' => $this->director, 'numberOfEpisodes' => $this->numberOfEpisodes), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('endDate' => $this->endDate, 'trailer' => $this->trailer, 'startDate' => $this->startDate, 'partOfSeries' => $this->partOfSeries, 'actor' => $this->actor, 'seasonNumber' => $this->seasonNumber, 'productionCompany' => $this->productionCompany, 'episode' => $this->episode, 'director' => $this->director, 'numberOfEpisodes' => $this->numberOfEpisodes), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

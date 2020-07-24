@@ -83,8 +83,8 @@ class ListItem extends Intangible implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('position' => $this->position, 'previousItem' => $this->previousItem, 'item' => $this->item, 'nextItem' => $this->nextItem), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('position' => $this->position, 'previousItem' => $this->previousItem, 'item' => $this->item, 'nextItem' => $this->nextItem), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

@@ -119,8 +119,8 @@ class MusicRecording extends CreativeWork implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('byArtist' => $this->byArtist, 'isrcCode' => $this->isrcCode, 'inAlbum' => $this->inAlbum, 'inPlaylist' => $this->inPlaylist, 'duration' => $this->duration, 'recordingOf' => $this->recordingOf), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('byArtist' => $this->byArtist, 'isrcCode' => $this->isrcCode, 'inAlbum' => $this->inAlbum, 'inPlaylist' => $this->inPlaylist, 'duration' => $this->duration, 'recordingOf' => $this->recordingOf), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

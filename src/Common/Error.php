@@ -99,7 +99,7 @@ class Error implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('success' => $this->success, 'title' => $this->title, 'message' => $this->message, 'trace' => $this->trace, 'context' => $this->context), static function ($value) : bool {
+        return array_filter(array('success' => $this->success, 'title' => $this->title, 'message' => $this->message, 'trace' => $this->trace, 'context' => $this->context), static function ($value) : bool {
             return $value !== null;
         });
     }

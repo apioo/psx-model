@@ -83,8 +83,8 @@ class Question extends CreativeWork implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('upvoteCount' => $this->upvoteCount, 'suggestedAnswer' => $this->suggestedAnswer, 'downvoteCount' => $this->downvoteCount, 'answerCount' => $this->answerCount), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('upvoteCount' => $this->upvoteCount, 'suggestedAnswer' => $this->suggestedAnswer, 'downvoteCount' => $this->downvoteCount, 'answerCount' => $this->answerCount), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

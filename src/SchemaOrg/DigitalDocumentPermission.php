@@ -47,8 +47,8 @@ class DigitalDocumentPermission extends Intangible implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('permissionType' => $this->permissionType, 'grantee' => $this->grantee), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('permissionType' => $this->permissionType, 'grantee' => $this->grantee), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

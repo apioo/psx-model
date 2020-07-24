@@ -47,8 +47,8 @@ class MusicPlaylist extends CreativeWork implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('numTracks' => $this->numTracks, 'track' => $this->track), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('numTracks' => $this->numTracks, 'track' => $this->track), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

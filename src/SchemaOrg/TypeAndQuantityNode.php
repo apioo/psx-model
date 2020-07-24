@@ -101,8 +101,8 @@ class TypeAndQuantityNode extends StructuredValue implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('typeOfGood' => $this->typeOfGood, 'unitCode' => $this->unitCode, 'unitText' => $this->unitText, 'businessFunction' => $this->businessFunction, 'amountOfThisGood' => $this->amountOfThisGood), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('typeOfGood' => $this->typeOfGood, 'unitCode' => $this->unitCode, 'unitText' => $this->unitText, 'businessFunction' => $this->businessFunction, 'amountOfThisGood' => $this->amountOfThisGood), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

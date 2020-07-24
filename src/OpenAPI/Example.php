@@ -63,7 +63,7 @@ class Example implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('summary' => $this->summary, 'description' => $this->description, 'externalValue' => $this->externalValue), static function ($value) : bool {
+        return array_filter(array('summary' => $this->summary, 'description' => $this->description, 'externalValue' => $this->externalValue), static function ($value) : bool {
             return $value !== null;
         });
     }

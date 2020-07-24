@@ -119,8 +119,8 @@ class EntryPoint extends Intangible implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('actionPlatform' => $this->actionPlatform, 'contentType' => $this->contentType, 'encodingType' => $this->encodingType, 'urlTemplate' => $this->urlTemplate, 'actionApplication' => $this->actionApplication, 'httpMethod' => $this->httpMethod), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('actionPlatform' => $this->actionPlatform, 'contentType' => $this->contentType, 'encodingType' => $this->encodingType, 'urlTemplate' => $this->urlTemplate, 'actionApplication' => $this->actionApplication, 'httpMethod' => $this->httpMethod), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

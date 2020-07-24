@@ -281,8 +281,8 @@ class Invoice extends Intangible implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('paymentStatus' => $this->paymentStatus, 'billingPeriod' => $this->billingPeriod, 'scheduledPaymentDate' => $this->scheduledPaymentDate, 'category' => $this->category, 'provider' => $this->provider, 'paymentMethodId' => $this->paymentMethodId, 'referencesOrder' => $this->referencesOrder, 'minimumPaymentDue' => $this->minimumPaymentDue, 'totalPaymentDue' => $this->totalPaymentDue, 'broker' => $this->broker, 'paymentDueDate' => $this->paymentDueDate, 'confirmationNumber' => $this->confirmationNumber, 'accountId' => $this->accountId, 'customer' => $this->customer, 'paymentMethod' => $this->paymentMethod), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('paymentStatus' => $this->paymentStatus, 'billingPeriod' => $this->billingPeriod, 'scheduledPaymentDate' => $this->scheduledPaymentDate, 'category' => $this->category, 'provider' => $this->provider, 'paymentMethodId' => $this->paymentMethodId, 'referencesOrder' => $this->referencesOrder, 'minimumPaymentDue' => $this->minimumPaymentDue, 'totalPaymentDue' => $this->totalPaymentDue, 'broker' => $this->broker, 'paymentDueDate' => $this->paymentDueDate, 'confirmationNumber' => $this->confirmationNumber, 'accountId' => $this->accountId, 'customer' => $this->customer, 'paymentMethod' => $this->paymentMethod), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

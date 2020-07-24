@@ -29,8 +29,8 @@ class Map extends CreativeWork implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('mapType' => $this->mapType), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('mapType' => $this->mapType), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

@@ -317,8 +317,8 @@ class MediaObject extends CreativeWork implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('width' => $this->width, 'contentUrl' => $this->contentUrl, 'encodingFormat' => $this->encodingFormat, 'associatedArticle' => $this->associatedArticle, 'height' => $this->height, 'productionCompany' => $this->productionCompany, 'startTime' => $this->startTime, 'endTime' => $this->endTime, 'requiresSubscription' => $this->requiresSubscription, 'playerType' => $this->playerType, 'contentSize' => $this->contentSize, 'bitrate' => $this->bitrate, 'embedUrl' => $this->embedUrl, 'uploadDate' => $this->uploadDate, 'duration' => $this->duration, 'regionsAllowed' => $this->regionsAllowed, 'encodesCreativeWork' => $this->encodesCreativeWork), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('width' => $this->width, 'contentUrl' => $this->contentUrl, 'encodingFormat' => $this->encodingFormat, 'associatedArticle' => $this->associatedArticle, 'height' => $this->height, 'productionCompany' => $this->productionCompany, 'startTime' => $this->startTime, 'endTime' => $this->endTime, 'requiresSubscription' => $this->requiresSubscription, 'playerType' => $this->playerType, 'contentSize' => $this->contentSize, 'bitrate' => $this->bitrate, 'embedUrl' => $this->embedUrl, 'uploadDate' => $this->uploadDate, 'duration' => $this->duration, 'regionsAllowed' => $this->regionsAllowed, 'encodesCreativeWork' => $this->encodesCreativeWork), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

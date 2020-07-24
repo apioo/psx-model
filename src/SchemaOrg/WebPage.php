@@ -173,8 +173,8 @@ class WebPage extends CreativeWork implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('significantLink' => $this->significantLink, 'breadcrumb' => $this->breadcrumb, 'lastReviewed' => $this->lastReviewed, 'specialty' => $this->specialty, 'primaryImageOfPage' => $this->primaryImageOfPage, 'speakable' => $this->speakable, 'reviewedBy' => $this->reviewedBy, 'relatedLink' => $this->relatedLink, 'mainContentOfPage' => $this->mainContentOfPage), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('significantLink' => $this->significantLink, 'breadcrumb' => $this->breadcrumb, 'lastReviewed' => $this->lastReviewed, 'specialty' => $this->specialty, 'primaryImageOfPage' => $this->primaryImageOfPage, 'speakable' => $this->speakable, 'reviewedBy' => $this->reviewedBy, 'relatedLink' => $this->relatedLink, 'mainContentOfPage' => $this->mainContentOfPage), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

@@ -83,8 +83,8 @@ class LoanOrCredit extends FinancialProduct implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('currency' => $this->currency, 'requiredCollateral' => $this->requiredCollateral, 'amount' => $this->amount, 'duration' => $this->duration), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('currency' => $this->currency, 'requiredCollateral' => $this->requiredCollateral, 'amount' => $this->amount, 'duration' => $this->duration), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

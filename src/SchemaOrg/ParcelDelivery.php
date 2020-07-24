@@ -209,8 +209,8 @@ class ParcelDelivery extends Intangible implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('deliveryStatus' => $this->deliveryStatus, 'provider' => $this->provider, 'deliveryAddress' => $this->deliveryAddress, 'expectedArrivalUntil' => $this->expectedArrivalUntil, 'trackingUrl' => $this->trackingUrl, 'trackingNumber' => $this->trackingNumber, 'originAddress' => $this->originAddress, 'itemShipped' => $this->itemShipped, 'expectedArrivalFrom' => $this->expectedArrivalFrom, 'hasDeliveryMethod' => $this->hasDeliveryMethod, 'partOfOrder' => $this->partOfOrder), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('deliveryStatus' => $this->deliveryStatus, 'provider' => $this->provider, 'deliveryAddress' => $this->deliveryAddress, 'expectedArrivalUntil' => $this->expectedArrivalUntil, 'trackingUrl' => $this->trackingUrl, 'trackingNumber' => $this->trackingNumber, 'originAddress' => $this->originAddress, 'itemShipped' => $this->itemShipped, 'expectedArrivalFrom' => $this->expectedArrivalFrom, 'hasDeliveryMethod' => $this->hasDeliveryMethod, 'partOfOrder' => $this->partOfOrder), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

@@ -65,8 +65,8 @@ class LocationFeatureSpecification extends PropertyValue implements \JsonSeriali
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('validThrough' => $this->validThrough, 'hoursAvailable' => $this->hoursAvailable, 'validFrom' => $this->validFrom), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('validThrough' => $this->validThrough, 'hoursAvailable' => $this->hoursAvailable, 'validFrom' => $this->validFrom), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

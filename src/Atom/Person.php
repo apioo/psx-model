@@ -63,7 +63,7 @@ class Person implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('name' => $this->name, 'uri' => $this->uri, 'email' => $this->email), static function ($value) : bool {
+        return array_filter(array('name' => $this->name, 'uri' => $this->uri, 'email' => $this->email), static function ($value) : bool {
             return $value !== null;
         });
     }

@@ -173,8 +173,8 @@ class Recipe extends HowTo implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('yield' => $this->yield, 'recipeCategory' => $this->recipeCategory, 'cookTime' => $this->cookTime, 'recipeIngredient' => $this->recipeIngredient, 'recipeInstructions' => $this->recipeInstructions, 'cookingMethod' => $this->cookingMethod, 'recipeCuisine' => $this->recipeCuisine, 'nutrition' => $this->nutrition, 'suitableForDiet' => $this->suitableForDiet), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('yield' => $this->yield, 'recipeCategory' => $this->recipeCategory, 'cookTime' => $this->cookTime, 'recipeIngredient' => $this->recipeIngredient, 'recipeInstructions' => $this->recipeInstructions, 'cookingMethod' => $this->cookingMethod, 'recipeCuisine' => $this->recipeCuisine, 'nutrition' => $this->nutrition, 'suitableForDiet' => $this->suitableForDiet), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

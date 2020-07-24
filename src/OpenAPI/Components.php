@@ -173,7 +173,7 @@ class Components implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('schemas' => $this->schemas, 'responses' => $this->responses, 'parameters' => $this->parameters, 'examples' => $this->examples, 'requestBodies' => $this->requestBodies, 'headers' => $this->headers, 'securitySchemes' => $this->securitySchemes, 'links' => $this->links, 'callbacks' => $this->callbacks), static function ($value) : bool {
+        return array_filter(array('schemas' => $this->schemas, 'responses' => $this->responses, 'parameters' => $this->parameters, 'examples' => $this->examples, 'requestBodies' => $this->requestBodies, 'headers' => $this->headers, 'securitySchemes' => $this->securitySchemes, 'links' => $this->links, 'callbacks' => $this->callbacks), static function ($value) : bool {
             return $value !== null;
         });
     }

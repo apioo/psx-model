@@ -101,8 +101,8 @@ class SoftwareSourceCode extends CreativeWork implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('codeRepository' => $this->codeRepository, 'codeSampleType' => $this->codeSampleType, 'runtimePlatform' => $this->runtimePlatform, 'targetProduct' => $this->targetProduct, 'programmingLanguage' => $this->programmingLanguage), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('codeRepository' => $this->codeRepository, 'codeSampleType' => $this->codeSampleType, 'runtimePlatform' => $this->runtimePlatform, 'targetProduct' => $this->targetProduct, 'programmingLanguage' => $this->programmingLanguage), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

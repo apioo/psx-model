@@ -65,8 +65,8 @@ class AggregateRating extends Rating implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('ratingCount' => $this->ratingCount, 'reviewCount' => $this->reviewCount, 'itemReviewed' => $this->itemReviewed), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('ratingCount' => $this->ratingCount, 'reviewCount' => $this->reviewCount, 'itemReviewed' => $this->itemReviewed), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

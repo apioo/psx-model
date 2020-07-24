@@ -63,7 +63,7 @@ class Category implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('term' => $this->term, 'scheme' => $this->scheme, 'label' => $this->label), static function ($value) : bool {
+        return array_filter(array('term' => $this->term, 'scheme' => $this->scheme, 'label' => $this->label), static function ($value) : bool {
             return $value !== null;
         });
     }

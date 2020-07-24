@@ -389,8 +389,8 @@ class Service extends Intangible implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('audience' => $this->audience, 'availableChannel' => $this->availableChannel, 'areaServed' => $this->areaServed, 'category' => $this->category, 'provider' => $this->provider, 'aggregateRating' => $this->aggregateRating, 'award' => $this->award, 'review' => $this->review, 'serviceType' => $this->serviceType, 'broker' => $this->broker, 'isSimilarTo' => $this->isSimilarTo, 'hoursAvailable' => $this->hoursAvailable, 'isRelatedTo' => $this->isRelatedTo, 'providerMobility' => $this->providerMobility, 'logo' => $this->logo, 'brand' => $this->brand, 'hasOfferCatalog' => $this->hasOfferCatalog, 'serviceOutput' => $this->serviceOutput, 'slogan' => $this->slogan, 'itemOffered' => $this->itemOffered, 'offers' => $this->offers), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('audience' => $this->audience, 'availableChannel' => $this->availableChannel, 'areaServed' => $this->areaServed, 'category' => $this->category, 'provider' => $this->provider, 'aggregateRating' => $this->aggregateRating, 'award' => $this->award, 'review' => $this->review, 'serviceType' => $this->serviceType, 'broker' => $this->broker, 'isSimilarTo' => $this->isSimilarTo, 'hoursAvailable' => $this->hoursAvailable, 'isRelatedTo' => $this->isRelatedTo, 'providerMobility' => $this->providerMobility, 'logo' => $this->logo, 'brand' => $this->brand, 'hasOfferCatalog' => $this->hasOfferCatalog, 'serviceOutput' => $this->serviceOutput, 'slogan' => $this->slogan, 'itemOffered' => $this->itemOffered, 'offers' => $this->offers), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

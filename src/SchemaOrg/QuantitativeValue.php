@@ -137,8 +137,8 @@ class QuantitativeValue extends StructuredValue implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('maxValue' => $this->maxValue, 'valueReference' => $this->valueReference, 'minValue' => $this->minValue, 'value' => $this->value, 'unitCode' => $this->unitCode, 'unitText' => $this->unitText, 'additionalProperty' => $this->additionalProperty), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('maxValue' => $this->maxValue, 'valueReference' => $this->valueReference, 'minValue' => $this->minValue, 'value' => $this->value, 'unitCode' => $this->unitCode, 'unitText' => $this->unitText, 'additionalProperty' => $this->additionalProperty), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

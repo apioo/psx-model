@@ -173,8 +173,8 @@ class ContactPoint extends StructuredValue implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('telephone' => $this->telephone, 'contactOption' => $this->contactOption, 'availableLanguage' => $this->availableLanguage, 'productSupported' => $this->productSupported, 'areaServed' => $this->areaServed, 'contactType' => $this->contactType, 'email' => $this->email, 'faxNumber' => $this->faxNumber, 'hoursAvailable' => $this->hoursAvailable), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('telephone' => $this->telephone, 'contactOption' => $this->contactOption, 'availableLanguage' => $this->availableLanguage, 'productSupported' => $this->productSupported, 'areaServed' => $this->areaServed, 'contactType' => $this->contactType, 'email' => $this->email, 'faxNumber' => $this->faxNumber, 'hoursAvailable' => $this->hoursAvailable), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

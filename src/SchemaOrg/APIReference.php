@@ -83,8 +83,8 @@ class APIReference extends TechArticle implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('targetPlatform' => $this->targetPlatform, 'programmingModel' => $this->programmingModel, 'assemblyVersion' => $this->assemblyVersion, 'executableLibraryName' => $this->executableLibraryName), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('targetPlatform' => $this->targetPlatform, 'programmingModel' => $this->programmingModel, 'assemblyVersion' => $this->assemblyVersion, 'executableLibraryName' => $this->executableLibraryName), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

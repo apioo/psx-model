@@ -83,8 +83,8 @@ class DataFeedItem extends Intangible implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('dateModified' => $this->dateModified, 'dateCreated' => $this->dateCreated, 'item' => $this->item, 'dateDeleted' => $this->dateDeleted), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('dateModified' => $this->dateModified, 'dateCreated' => $this->dateCreated, 'item' => $this->item, 'dateDeleted' => $this->dateDeleted), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

@@ -83,8 +83,8 @@ class LocalBusiness extends Organization implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('currenciesAccepted' => $this->currenciesAccepted, 'openingHours' => $this->openingHours, 'priceRange' => $this->priceRange, 'paymentAccepted' => $this->paymentAccepted), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('currenciesAccepted' => $this->currenciesAccepted, 'openingHours' => $this->openingHours, 'priceRange' => $this->priceRange, 'paymentAccepted' => $this->paymentAccepted), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

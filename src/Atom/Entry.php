@@ -225,7 +225,7 @@ class Entry implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('author' => $this->author, 'category' => $this->category, 'content' => $this->content, 'contributor' => $this->contributor, 'id' => $this->id, 'link' => $this->link, 'published' => $this->published, 'rights' => $this->rights, 'source' => $this->source, 'summary' => $this->summary, 'title' => $this->title, 'updated' => $this->updated), static function ($value) : bool {
+        return array_filter(array('author' => $this->author, 'category' => $this->category, 'content' => $this->content, 'contributor' => $this->contributor, 'id' => $this->id, 'link' => $this->link, 'published' => $this->published, 'rights' => $this->rights, 'source' => $this->source, 'summary' => $this->summary, 'title' => $this->title, 'updated' => $this->updated), static function ($value) : bool {
             return $value !== null;
         });
     }

@@ -54,8 +54,8 @@ class MoveAction extends Action implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('fromLocation' => $this->fromLocation, 'toLocation' => $this->toLocation), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('fromLocation' => $this->fromLocation, 'toLocation' => $this->toLocation), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

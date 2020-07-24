@@ -65,8 +65,8 @@ class DeliveryChargeSpecification extends PriceSpecification implements \JsonSer
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('areaServed' => $this->areaServed, 'eligibleRegion' => $this->eligibleRegion, 'appliesToDeliveryMethod' => $this->appliesToDeliveryMethod), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('areaServed' => $this->areaServed, 'eligibleRegion' => $this->eligibleRegion, 'appliesToDeliveryMethod' => $this->appliesToDeliveryMethod), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

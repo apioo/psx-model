@@ -47,8 +47,8 @@ class EducationalOrganization extends Organization implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('alumniOf' => $this->alumniOf, 'alumni' => $this->alumni), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('alumniOf' => $this->alumniOf, 'alumni' => $this->alumni), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

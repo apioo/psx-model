@@ -29,8 +29,8 @@ class OrganizationRole extends Role implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('numberedPosition' => $this->numberedPosition), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('numberedPosition' => $this->numberedPosition), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

@@ -117,7 +117,7 @@ class Link implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('href' => $this->href, 'rel' => $this->rel, 'type' => $this->type, 'hreflang' => $this->hreflang, 'title' => $this->title, 'length' => $this->length), static function ($value) : bool {
+        return array_filter(array('href' => $this->href, 'rel' => $this->rel, 'type' => $this->type, 'hreflang' => $this->hreflang, 'title' => $this->title, 'length' => $this->length), static function ($value) : bool {
             return $value !== null;
         });
     }

@@ -83,8 +83,8 @@ class OwnershipInfo extends StructuredValue implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('typeOfGood' => $this->typeOfGood, 'acquiredFrom' => $this->acquiredFrom, 'ownedFrom' => $this->ownedFrom, 'ownedThrough' => $this->ownedThrough), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('typeOfGood' => $this->typeOfGood, 'acquiredFrom' => $this->acquiredFrom, 'ownedFrom' => $this->ownedFrom, 'ownedThrough' => $this->ownedThrough), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

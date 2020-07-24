@@ -67,7 +67,7 @@ class ServerVariable implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('enum' => $this->enum, 'default' => $this->default, 'description' => $this->description), static function ($value) : bool {
+        return array_filter(array('enum' => $this->enum, 'default' => $this->default, 'description' => $this->description), static function ($value) : bool {
             return $value !== null;
         });
     }

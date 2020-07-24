@@ -248,7 +248,7 @@ class PathItem implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('$ref' => $this->ref, 'summary' => $this->summary, 'description' => $this->description, 'get' => $this->get, 'put' => $this->put, 'post' => $this->post, 'delete' => $this->delete, 'options' => $this->options, 'head' => $this->head, 'patch' => $this->patch, 'trace' => $this->trace, 'servers' => $this->servers, 'parameters' => $this->parameters), static function ($value) : bool {
+        return array_filter(array('$ref' => $this->ref, 'summary' => $this->summary, 'description' => $this->description, 'get' => $this->get, 'put' => $this->put, 'post' => $this->post, 'delete' => $this->delete, 'options' => $this->options, 'head' => $this->head, 'patch' => $this->patch, 'trace' => $this->trace, 'servers' => $this->servers, 'parameters' => $this->parameters), static function ($value) : bool {
             return $value !== null;
         });
     }

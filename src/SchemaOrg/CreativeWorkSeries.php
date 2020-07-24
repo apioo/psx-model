@@ -69,8 +69,8 @@ class CreativeWorkSeries extends Series implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('endDate' => $this->endDate, 'issn' => $this->issn, 'startDate' => $this->startDate), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('endDate' => $this->endDate, 'issn' => $this->issn, 'startDate' => $this->startDate), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

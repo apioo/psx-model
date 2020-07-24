@@ -29,8 +29,8 @@ class SomeProducts extends Product implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('inventoryLevel' => $this->inventoryLevel), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('inventoryLevel' => $this->inventoryLevel), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }

@@ -119,8 +119,8 @@ class PeopleAudience extends Audience implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return (object) array_filter(array('suggestedGender' => $this->suggestedGender, 'requiredGender' => $this->requiredGender, 'suggestedMinAge' => $this->suggestedMinAge, 'requiredMaxAge' => $this->requiredMaxAge, 'requiredMinAge' => $this->requiredMinAge, 'suggestedMaxAge' => $this->suggestedMaxAge), static function ($value) : bool {
+        return array_merge(parent::jsonSerialize(), array_filter(array('suggestedGender' => $this->suggestedGender, 'requiredGender' => $this->requiredGender, 'suggestedMinAge' => $this->suggestedMinAge, 'requiredMaxAge' => $this->requiredMaxAge, 'requiredMinAge' => $this->requiredMinAge, 'suggestedMaxAge' => $this->suggestedMaxAge), static function ($value) : bool {
             return $value !== null;
-        });
+        }));
     }
 }
