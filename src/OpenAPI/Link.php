@@ -83,7 +83,7 @@ class Link implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_filter(array('operationRef' => $this->operationRef, 'operationId' => $this->operationId, 'description' => $this->description, 'server' => $this->server), static function ($value) : bool {
+        return (object) array_filter(array('operationRef' => $this->operationRef, 'operationId' => $this->operationId, 'description' => $this->description, 'server' => $this->server), static function ($value) : bool {
             return $value !== null;
         });
     }

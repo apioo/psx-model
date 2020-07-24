@@ -63,7 +63,7 @@ class Enclosure implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_filter(array('url' => $this->url, 'length' => $this->length, 'type' => $this->type), static function ($value) : bool {
+        return (object) array_filter(array('url' => $this->url, 'length' => $this->length, 'type' => $this->type), static function ($value) : bool {
             return $value !== null;
         });
     }

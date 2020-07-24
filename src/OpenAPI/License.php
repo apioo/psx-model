@@ -48,7 +48,7 @@ class License implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_filter(array('name' => $this->name, 'url' => $this->url), static function ($value) : bool {
+        return (object) array_filter(array('name' => $this->name, 'url' => $this->url), static function ($value) : bool {
             return $value !== null;
         });
     }

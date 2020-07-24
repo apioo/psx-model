@@ -243,7 +243,7 @@ class Atom implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_filter(array('author' => $this->author, 'category' => $this->category, 'contributor' => $this->contributor, 'generator' => $this->generator, 'icon' => $this->icon, 'logo' => $this->logo, 'id' => $this->id, 'link' => $this->link, 'rights' => $this->rights, 'subTitle' => $this->subTitle, 'title' => $this->title, 'updated' => $this->updated, 'entry' => $this->entry), static function ($value) : bool {
+        return (object) array_filter(array('author' => $this->author, 'category' => $this->category, 'contributor' => $this->contributor, 'generator' => $this->generator, 'icon' => $this->icon, 'logo' => $this->logo, 'id' => $this->id, 'link' => $this->link, 'rights' => $this->rights, 'subTitle' => $this->subTitle, 'title' => $this->title, 'updated' => $this->updated, 'entry' => $this->entry), static function ($value) : bool {
             return $value !== null;
         });
     }

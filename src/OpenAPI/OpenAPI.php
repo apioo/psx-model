@@ -159,7 +159,7 @@ class OpenAPI implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_filter(array('openapi' => $this->openapi, 'info' => $this->info, 'servers' => $this->servers, 'paths' => $this->paths, 'components' => $this->components, 'security' => $this->security, 'tags' => $this->tags, 'externalDocs' => $this->externalDocs), static function ($value) : bool {
+        return (object) array_filter(array('openapi' => $this->openapi, 'info' => $this->info, 'servers' => $this->servers, 'paths' => $this->paths, 'components' => $this->components, 'security' => $this->security, 'tags' => $this->tags, 'externalDocs' => $this->externalDocs), static function ($value) : bool {
             return $value !== null;
         });
     }

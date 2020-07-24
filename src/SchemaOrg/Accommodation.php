@@ -104,7 +104,7 @@ class Accommodation extends Place implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('floorSize' => $this->floorSize, 'numberOfRooms' => $this->numberOfRooms, 'amenityFeature' => $this->amenityFeature, 'permittedUsage' => $this->permittedUsage, 'petsAllowed' => $this->petsAllowed), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('floorSize' => $this->floorSize, 'numberOfRooms' => $this->numberOfRooms, 'amenityFeature' => $this->amenityFeature, 'permittedUsage' => $this->permittedUsage, 'petsAllowed' => $this->petsAllowed), static function ($value) : bool {
             return $value !== null;
         }));
     }

@@ -47,7 +47,7 @@ class AudioObject extends MediaObject implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('caption' => $this->caption, 'transcript' => $this->transcript), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('caption' => $this->caption, 'transcript' => $this->transcript), static function ($value) : bool {
             return $value !== null;
         }));
     }

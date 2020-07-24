@@ -117,7 +117,7 @@ class Address implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_filter(array('formatted' => $this->formatted, 'streetAddress' => $this->streetAddress, 'locality' => $this->locality, 'region' => $this->region, 'postalCode' => $this->postalCode, 'country' => $this->country), static function ($value) : bool {
+        return (object) array_filter(array('formatted' => $this->formatted, 'streetAddress' => $this->streetAddress, 'locality' => $this->locality, 'region' => $this->region, 'postalCode' => $this->postalCode, 'country' => $this->country), static function ($value) : bool {
             return $value !== null;
         });
     }

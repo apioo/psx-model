@@ -153,7 +153,7 @@ class SecurityScheme implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_filter(array('type' => $this->type, 'description' => $this->description, 'name' => $this->name, 'in' => $this->in, 'scheme' => $this->scheme, 'bearerFormat' => $this->bearerFormat, 'flows' => $this->flows, 'openIdConnectUrl' => $this->openIdConnectUrl), static function ($value) : bool {
+        return (object) array_filter(array('type' => $this->type, 'description' => $this->description, 'name' => $this->name, 'in' => $this->in, 'scheme' => $this->scheme, 'bearerFormat' => $this->bearerFormat, 'flows' => $this->flows, 'openIdConnectUrl' => $this->openIdConnectUrl), static function ($value) : bool {
             return $value !== null;
         });
     }

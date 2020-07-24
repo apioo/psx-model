@@ -83,7 +83,7 @@ class BusTrip extends Trip implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('busName' => $this->busName, 'arrivalBusStop' => $this->arrivalBusStop, 'busNumber' => $this->busNumber, 'departureBusStop' => $this->departureBusStop), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('busName' => $this->busName, 'arrivalBusStop' => $this->arrivalBusStop, 'busNumber' => $this->busNumber, 'departureBusStop' => $this->departureBusStop), static function ($value) : bool {
             return $value !== null;
         }));
     }

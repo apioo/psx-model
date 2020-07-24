@@ -173,7 +173,7 @@ class Message extends CreativeWork implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('dateRead' => $this->dateRead, 'ccRecipient' => $this->ccRecipient, 'recipient' => $this->recipient, 'messageAttachment' => $this->messageAttachment, 'dateSent' => $this->dateSent, 'bccRecipient' => $this->bccRecipient, 'sender' => $this->sender, 'toRecipient' => $this->toRecipient, 'dateReceived' => $this->dateReceived), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('dateRead' => $this->dateRead, 'ccRecipient' => $this->ccRecipient, 'recipient' => $this->recipient, 'messageAttachment' => $this->messageAttachment, 'dateSent' => $this->dateSent, 'bccRecipient' => $this->bccRecipient, 'sender' => $this->sender, 'toRecipient' => $this->toRecipient, 'dateReceived' => $this->dateReceived), static function ($value) : bool {
             return $value !== null;
         }));
     }

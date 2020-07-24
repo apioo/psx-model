@@ -65,7 +65,7 @@ class LiveBlogPosting extends BlogPosting implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('coverageStartTime' => $this->coverageStartTime, 'liveBlogUpdate' => $this->liveBlogUpdate, 'coverageEndTime' => $this->coverageEndTime), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('coverageStartTime' => $this->coverageStartTime, 'liveBlogUpdate' => $this->liveBlogUpdate, 'coverageEndTime' => $this->coverageEndTime), static function ($value) : bool {
             return $value !== null;
         }));
     }

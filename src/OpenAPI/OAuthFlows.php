@@ -81,7 +81,7 @@ class OAuthFlows implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_filter(array('implicit' => $this->implicit, 'password' => $this->password, 'clientCredentials' => $this->clientCredentials, 'authorizationCode' => $this->authorizationCode), static function ($value) : bool {
+        return (object) array_filter(array('implicit' => $this->implicit, 'password' => $this->password, 'clientCredentials' => $this->clientCredentials, 'authorizationCode' => $this->authorizationCode), static function ($value) : bool {
             return $value !== null;
         });
     }

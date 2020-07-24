@@ -173,7 +173,7 @@ class PriceSpecification extends StructuredValue implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('eligibleTransactionVolume' => $this->eligibleTransactionVolume, 'price' => $this->price, 'priceCurrency' => $this->priceCurrency, 'valueAddedTaxIncluded' => $this->valueAddedTaxIncluded, 'eligibleQuantity' => $this->eligibleQuantity, 'validThrough' => $this->validThrough, 'validFrom' => $this->validFrom, 'minPrice' => $this->minPrice, 'maxPrice' => $this->maxPrice), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('eligibleTransactionVolume' => $this->eligibleTransactionVolume, 'price' => $this->price, 'priceCurrency' => $this->priceCurrency, 'valueAddedTaxIncluded' => $this->valueAddedTaxIncluded, 'eligibleQuantity' => $this->eligibleQuantity, 'validThrough' => $this->validThrough, 'validFrom' => $this->validFrom, 'minPrice' => $this->minPrice, 'maxPrice' => $this->maxPrice), static function ($value) : bool {
             return $value !== null;
         }));
     }

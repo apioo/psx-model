@@ -63,7 +63,7 @@ class Position implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_filter(array('altitude' => $this->altitude, 'latitude' => $this->latitude, 'longitude' => $this->longitude), static function ($value) : bool {
+        return (object) array_filter(array('altitude' => $this->altitude, 'latitude' => $this->latitude, 'longitude' => $this->longitude), static function ($value) : bool {
             return $value !== null;
         });
     }

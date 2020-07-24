@@ -45,7 +45,7 @@ class Category implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_filter(array('text' => $this->text, 'domain' => $this->domain), static function ($value) : bool {
+        return (object) array_filter(array('text' => $this->text, 'domain' => $this->domain), static function ($value) : bool {
             return $value !== null;
         });
     }

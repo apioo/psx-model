@@ -317,7 +317,7 @@ class VideoGameSeries extends CreativeWorkSeries implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('trailer' => $this->trailer, 'gameLocation' => $this->gameLocation, 'gamePlatform' => $this->gamePlatform, 'musicBy' => $this->musicBy, 'actor' => $this->actor, 'quest' => $this->quest, 'productionCompany' => $this->productionCompany, 'characterAttribute' => $this->characterAttribute, 'episode' => $this->episode, 'numberOfPlayers' => $this->numberOfPlayers, 'cheatCode' => $this->cheatCode, 'director' => $this->director, 'numberOfEpisodes' => $this->numberOfEpisodes, 'gameItem' => $this->gameItem, 'numberOfSeasons' => $this->numberOfSeasons, 'playMode' => $this->playMode, 'containsSeason' => $this->containsSeason), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('trailer' => $this->trailer, 'gameLocation' => $this->gameLocation, 'gamePlatform' => $this->gamePlatform, 'musicBy' => $this->musicBy, 'actor' => $this->actor, 'quest' => $this->quest, 'productionCompany' => $this->productionCompany, 'characterAttribute' => $this->characterAttribute, 'episode' => $this->episode, 'numberOfPlayers' => $this->numberOfPlayers, 'cheatCode' => $this->cheatCode, 'director' => $this->director, 'numberOfEpisodes' => $this->numberOfEpisodes, 'gameItem' => $this->gameItem, 'numberOfSeasons' => $this->numberOfSeasons, 'playMode' => $this->playMode, 'containsSeason' => $this->containsSeason), static function ($value) : bool {
             return $value !== null;
         }));
     }

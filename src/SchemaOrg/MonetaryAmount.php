@@ -119,7 +119,7 @@ class MonetaryAmount extends StructuredValue implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('maxValue' => $this->maxValue, 'currency' => $this->currency, 'minValue' => $this->minValue, 'value' => $this->value, 'validThrough' => $this->validThrough, 'validFrom' => $this->validFrom), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('maxValue' => $this->maxValue, 'currency' => $this->currency, 'minValue' => $this->minValue, 'value' => $this->value, 'validThrough' => $this->validThrough, 'validFrom' => $this->validFrom), static function ($value) : bool {
             return $value !== null;
         }));
     }

@@ -139,7 +139,7 @@ class PropertyValue extends StructuredValue implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('maxValue' => $this->maxValue, 'valueReference' => $this->valueReference, 'propertyID' => $this->propertyID, 'minValue' => $this->minValue, 'value' => $this->value, 'unitCode' => $this->unitCode, 'unitText' => $this->unitText), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('maxValue' => $this->maxValue, 'valueReference' => $this->valueReference, 'propertyID' => $this->propertyID, 'minValue' => $this->minValue, 'value' => $this->value, 'unitCode' => $this->unitCode, 'unitText' => $this->unitText), static function ($value) : bool {
             return $value !== null;
         }));
     }

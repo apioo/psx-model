@@ -155,7 +155,7 @@ class GeoShape extends StructuredValue implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('polygon' => $this->polygon, 'addressCountry' => $this->addressCountry, 'postalCode' => $this->postalCode, 'box' => $this->box, 'elevation' => $this->elevation, 'line' => $this->line, 'address' => $this->address, 'circle' => $this->circle), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('polygon' => $this->polygon, 'addressCountry' => $this->addressCountry, 'postalCode' => $this->postalCode, 'box' => $this->box, 'elevation' => $this->elevation, 'line' => $this->line, 'address' => $this->address, 'circle' => $this->circle), static function ($value) : bool {
             return $value !== null;
         }));
     }

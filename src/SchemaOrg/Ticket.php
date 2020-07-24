@@ -155,7 +155,7 @@ class Ticket extends Intangible implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('priceCurrency' => $this->priceCurrency, 'underName' => $this->underName, 'totalPrice' => $this->totalPrice, 'issuedBy' => $this->issuedBy, 'ticketedSeat' => $this->ticketedSeat, 'dateIssued' => $this->dateIssued, 'ticketToken' => $this->ticketToken, 'ticketNumber' => $this->ticketNumber), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('priceCurrency' => $this->priceCurrency, 'underName' => $this->underName, 'totalPrice' => $this->totalPrice, 'issuedBy' => $this->issuedBy, 'ticketedSeat' => $this->ticketedSeat, 'dateIssued' => $this->dateIssued, 'ticketToken' => $this->ticketToken, 'ticketNumber' => $this->ticketNumber), static function ($value) : bool {
             return $value !== null;
         }));
     }

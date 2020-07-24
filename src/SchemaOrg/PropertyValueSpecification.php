@@ -209,7 +209,7 @@ class PropertyValueSpecification extends Intangible implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('maxValue' => $this->maxValue, 'minValue' => $this->minValue, 'valueMinLength' => $this->valueMinLength, 'readonlyValue' => $this->readonlyValue, 'valueName' => $this->valueName, 'valueMaxLength' => $this->valueMaxLength, 'multipleValues' => $this->multipleValues, 'valuePattern' => $this->valuePattern, 'defaultValue' => $this->defaultValue, 'stepValue' => $this->stepValue, 'valueRequired' => $this->valueRequired), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('maxValue' => $this->maxValue, 'minValue' => $this->minValue, 'valueMinLength' => $this->valueMinLength, 'readonlyValue' => $this->readonlyValue, 'valueName' => $this->valueName, 'valueMaxLength' => $this->valueMaxLength, 'multipleValues' => $this->multipleValues, 'valuePattern' => $this->valuePattern, 'defaultValue' => $this->defaultValue, 'stepValue' => $this->stepValue, 'valueRequired' => $this->valueRequired), static function ($value) : bool {
             return $value !== null;
         }));
     }

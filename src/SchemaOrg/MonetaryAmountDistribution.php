@@ -29,7 +29,7 @@ class MonetaryAmountDistribution extends QuantitativeValueDistribution implement
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('currency' => $this->currency), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('currency' => $this->currency), static function ($value) : bool {
             return $value !== null;
         }));
     }

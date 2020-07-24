@@ -155,7 +155,7 @@ class ServiceChannel extends Intangible implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('availableLanguage' => $this->availableLanguage, 'serviceUrl' => $this->serviceUrl, 'serviceLocation' => $this->serviceLocation, 'servicePostalAddress' => $this->servicePostalAddress, 'serviceSmsNumber' => $this->serviceSmsNumber, 'servicePhone' => $this->servicePhone, 'processingTime' => $this->processingTime, 'providesService' => $this->providesService), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('availableLanguage' => $this->availableLanguage, 'serviceUrl' => $this->serviceUrl, 'serviceLocation' => $this->serviceLocation, 'servicePostalAddress' => $this->servicePostalAddress, 'serviceSmsNumber' => $this->serviceSmsNumber, 'servicePhone' => $this->servicePhone, 'processingTime' => $this->processingTime, 'providesService' => $this->providesService), static function ($value) : bool {
             return $value !== null;
         }));
     }

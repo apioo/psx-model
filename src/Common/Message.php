@@ -45,7 +45,7 @@ class Message implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_filter(array('success' => $this->success, 'message' => $this->message), static function ($value) : bool {
+        return (object) array_filter(array('success' => $this->success, 'message' => $this->message), static function ($value) : bool {
             return $value !== null;
         });
     }

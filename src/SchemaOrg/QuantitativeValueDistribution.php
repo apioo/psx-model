@@ -119,7 +119,7 @@ class QuantitativeValueDistribution extends StructuredValue implements \JsonSeri
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('median' => $this->median, 'percentile25' => $this->percentile25, 'percentile75' => $this->percentile75, 'percentile10' => $this->percentile10, 'percentile90' => $this->percentile90, 'duration' => $this->duration), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('median' => $this->median, 'percentile25' => $this->percentile25, 'percentile75' => $this->percentile75, 'percentile10' => $this->percentile10, 'percentile90' => $this->percentile90, 'duration' => $this->duration), static function ($value) : bool {
             return $value !== null;
         }));
     }

@@ -66,7 +66,7 @@ class Server implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_filter(array('url' => $this->url, 'description' => $this->description, 'variables' => $this->variables), static function ($value) : bool {
+        return (object) array_filter(array('url' => $this->url, 'description' => $this->description, 'variables' => $this->variables), static function ($value) : bool {
             return $value !== null;
         });
     }

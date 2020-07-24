@@ -66,7 +66,7 @@ class Tag implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_filter(array('name' => $this->name, 'description' => $this->description, 'externalDocs' => $this->externalDocs), static function ($value) : bool {
+        return (object) array_filter(array('name' => $this->name, 'description' => $this->description, 'externalDocs' => $this->externalDocs), static function ($value) : bool {
             return $value !== null;
         });
     }

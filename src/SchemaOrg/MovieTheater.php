@@ -29,7 +29,7 @@ class MovieTheater extends CivicStructure implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('screenCount' => $this->screenCount), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('screenCount' => $this->screenCount), static function ($value) : bool {
             return $value !== null;
         }));
     }

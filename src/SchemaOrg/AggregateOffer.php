@@ -103,7 +103,7 @@ class AggregateOffer extends Offer implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('highPrice' => $this->highPrice, 'lowPrice' => $this->lowPrice, 'offerCount' => $this->offerCount, 'itemOffered' => $this->itemOffered, 'offers' => $this->offers), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('highPrice' => $this->highPrice, 'lowPrice' => $this->lowPrice, 'offerCount' => $this->offerCount, 'itemOffered' => $this->itemOffered, 'offers' => $this->offers), static function ($value) : bool {
             return $value !== null;
         }));
     }

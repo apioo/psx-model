@@ -173,7 +173,7 @@ class VideoGame extends SoftwareApplication implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('trailer' => $this->trailer, 'gamePlatform' => $this->gamePlatform, 'musicBy' => $this->musicBy, 'actor' => $this->actor, 'gameTip' => $this->gameTip, 'cheatCode' => $this->cheatCode, 'director' => $this->director, 'playMode' => $this->playMode, 'gameServer' => $this->gameServer), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('trailer' => $this->trailer, 'gamePlatform' => $this->gamePlatform, 'musicBy' => $this->musicBy, 'actor' => $this->actor, 'gameTip' => $this->gameTip, 'cheatCode' => $this->cheatCode, 'director' => $this->director, 'playMode' => $this->playMode, 'gameServer' => $this->gameServer), static function ($value) : bool {
             return $value !== null;
         }));
     }

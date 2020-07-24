@@ -65,7 +65,7 @@ class TradeAction extends Action implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('priceSpecification' => $this->priceSpecification, 'price' => $this->price, 'priceCurrency' => $this->priceCurrency), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('priceSpecification' => $this->priceSpecification, 'price' => $this->price, 'priceCurrency' => $this->priceCurrency), static function ($value) : bool {
             return $value !== null;
         }));
     }

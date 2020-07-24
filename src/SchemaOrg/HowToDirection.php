@@ -173,7 +173,7 @@ class HowToDirection extends ListItem implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('totalTime' => $this->totalTime, 'cookTime' => $this->cookTime, 'performTime' => $this->performTime, 'afterMedia' => $this->afterMedia, 'supply' => $this->supply, 'tool' => $this->tool, 'prepTime' => $this->prepTime, 'beforeMedia' => $this->beforeMedia, 'duringMedia' => $this->duringMedia), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('totalTime' => $this->totalTime, 'cookTime' => $this->cookTime, 'performTime' => $this->performTime, 'afterMedia' => $this->afterMedia, 'supply' => $this->supply, 'tool' => $this->tool, 'prepTime' => $this->prepTime, 'beforeMedia' => $this->beforeMedia, 'duringMedia' => $this->duringMedia), static function ($value) : bool {
             return $value !== null;
         }));
     }

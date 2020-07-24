@@ -101,7 +101,7 @@ class Trip extends Intangible implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('provider' => $this->provider, 'departureTime' => $this->departureTime, 'arrivalTime' => $this->arrivalTime, 'itemOffered' => $this->itemOffered, 'offers' => $this->offers), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('provider' => $this->provider, 'departureTime' => $this->departureTime, 'arrivalTime' => $this->arrivalTime, 'itemOffered' => $this->itemOffered, 'offers' => $this->offers), static function ($value) : bool {
             return $value !== null;
         }));
     }

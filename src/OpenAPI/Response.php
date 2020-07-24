@@ -84,7 +84,7 @@ class Response implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_filter(array('description' => $this->description, 'headers' => $this->headers, 'content' => $this->content, 'links' => $this->links), static function ($value) : bool {
+        return (object) array_filter(array('description' => $this->description, 'headers' => $this->headers, 'content' => $this->content, 'links' => $this->links), static function ($value) : bool {
             return $value !== null;
         });
     }

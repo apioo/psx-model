@@ -243,7 +243,7 @@ class ObjectType implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_filter(array('attachments' => $this->attachments, 'author' => $this->author, 'content' => $this->content, 'displayName' => $this->displayName, 'downstreamDuplicates' => $this->downstreamDuplicates, 'id' => $this->id, 'image' => $this->image, 'objectType' => $this->objectType, 'published' => $this->published, 'summary' => $this->summary, 'updated' => $this->updated, 'upstreamDuplicates' => $this->upstreamDuplicates, 'url' => $this->url), static function ($value) : bool {
+        return (object) array_filter(array('attachments' => $this->attachments, 'author' => $this->author, 'content' => $this->content, 'displayName' => $this->displayName, 'downstreamDuplicates' => $this->downstreamDuplicates, 'id' => $this->id, 'image' => $this->image, 'objectType' => $this->objectType, 'published' => $this->published, 'summary' => $this->summary, 'updated' => $this->updated, 'upstreamDuplicates' => $this->upstreamDuplicates, 'url' => $this->url), static function ($value) : bool {
             return $value !== null;
         });
     }

@@ -83,7 +83,7 @@ class DeliveryEvent extends Event implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('availableThrough' => $this->availableThrough, 'accessCode' => $this->accessCode, 'hasDeliveryMethod' => $this->hasDeliveryMethod, 'availableFrom' => $this->availableFrom), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('availableThrough' => $this->availableThrough, 'accessCode' => $this->accessCode, 'hasDeliveryMethod' => $this->hasDeliveryMethod, 'availableFrom' => $this->availableFrom), static function ($value) : bool {
             return $value !== null;
         }));
     }

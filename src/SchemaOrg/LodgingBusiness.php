@@ -155,7 +155,7 @@ class LodgingBusiness extends LocalBusiness implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('audience' => $this->audience, 'availableLanguage' => $this->availableLanguage, 'numberOfRooms' => $this->numberOfRooms, 'amenityFeature' => $this->amenityFeature, 'starRating' => $this->starRating, 'petsAllowed' => $this->petsAllowed, 'checkoutTime' => $this->checkoutTime, 'checkinTime' => $this->checkinTime), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('audience' => $this->audience, 'availableLanguage' => $this->availableLanguage, 'numberOfRooms' => $this->numberOfRooms, 'amenityFeature' => $this->amenityFeature, 'starRating' => $this->starRating, 'petsAllowed' => $this->petsAllowed, 'checkoutTime' => $this->checkoutTime, 'checkinTime' => $this->checkinTime), static function ($value) : bool {
             return $value !== null;
         }));
     }

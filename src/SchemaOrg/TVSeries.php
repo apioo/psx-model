@@ -191,7 +191,7 @@ class TVSeries extends CreativeWorkSeries implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('trailer' => $this->trailer, 'musicBy' => $this->musicBy, 'actor' => $this->actor, 'productionCompany' => $this->productionCompany, 'episode' => $this->episode, 'countryOfOrigin' => $this->countryOfOrigin, 'director' => $this->director, 'numberOfEpisodes' => $this->numberOfEpisodes, 'numberOfSeasons' => $this->numberOfSeasons, 'containsSeason' => $this->containsSeason), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('trailer' => $this->trailer, 'musicBy' => $this->musicBy, 'actor' => $this->actor, 'productionCompany' => $this->productionCompany, 'episode' => $this->episode, 'countryOfOrigin' => $this->countryOfOrigin, 'director' => $this->director, 'numberOfEpisodes' => $this->numberOfEpisodes, 'numberOfSeasons' => $this->numberOfSeasons, 'containsSeason' => $this->containsSeason), static function ($value) : bool {
             return $value !== null;
         }));
     }

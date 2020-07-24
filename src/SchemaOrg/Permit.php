@@ -137,7 +137,7 @@ class Permit extends Intangible implements \JsonSerializable
     }
     public function jsonSerialize()
     {
-        return array_merge(parent::jsonSerialize(), array_filter(array('permitAudience' => $this->permitAudience, 'issuedThrough' => $this->issuedThrough, 'validFor' => $this->validFor, 'validUntil' => $this->validUntil, 'validIn' => $this->validIn, 'validFrom' => $this->validFrom, 'issuedBy' => $this->issuedBy), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('permitAudience' => $this->permitAudience, 'issuedThrough' => $this->issuedThrough, 'validFor' => $this->validFor, 'validUntil' => $this->validUntil, 'validIn' => $this->validIn, 'validFrom' => $this->validFrom, 'issuedBy' => $this->issuedBy), static function ($value) : bool {
             return $value !== null;
         }));
     }
