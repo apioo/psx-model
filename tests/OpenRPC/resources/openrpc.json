@@ -1,0 +1,74 @@
+{
+  "openrpc": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Petstore",
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080"
+    }
+  ],
+  "methods": [
+    {
+      "name": "list_pets",
+      "summary": "List all pets",
+      "tags": [
+        {
+          "name": "pets"
+        }
+      ],
+      "params": [
+        {
+          "name": "limit",
+          "description": "How many items to return at one time (max 100)",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      ],
+      "result": {
+        "name": "pets",
+        "description": "A paged array of pets",
+        "schema": {
+          "$ref": "#/components/schemas/Pets"
+        }
+      },
+      "errors": [
+        {
+          "code": 100,
+          "message": "pets busy"
+        }
+      ],
+      "examples": [
+        {
+          "name": "listPetExample",
+          "description": "List pet example",
+          "params": [
+            {
+              "name": "limit",
+              "value": 1
+            }
+          ],
+          "result": {
+            "name": "listPetResultExample",
+            "value": [
+              {
+                "id": 7,
+                "name": "fluffy",
+                "tag": "poodle"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "components": {
+  }
+}
