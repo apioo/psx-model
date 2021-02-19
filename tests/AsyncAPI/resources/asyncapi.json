@@ -1,0 +1,47 @@
+{
+  "asyncapi": "3.0.0",
+  "info": {
+    "title": "Account Service",
+    "description": "This service is in charge of processing user signups :rocket:",
+    "version": "1.0.0"
+  },
+  "channels": {
+    "user\/signedup": {
+      "publish": {
+        "bindings": {
+          "http": {
+            "type": "request",
+            "method": "POST"
+          }
+        },
+        "message": {
+          "payload": {
+            "$ref": "#\/components\/schemas\/Pet"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Pet": {
+        "required": [
+          "id",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "tag": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

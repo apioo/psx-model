@@ -2,6 +2,7 @@
 
 $specs = [
     'ActivityStream' => 'activity_stream.json',
+    'AsyncAPI' => 'asyncapi.json',
     'Atom' => 'atom.json',
     'Common' => 'common.json',
     'OpenAPI' => 'openapi.json',

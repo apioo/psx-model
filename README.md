@@ -9,8 +9,10 @@ generate all models by using the command `php gen.php`. We support the following
 data formats:
 
 * ActivityStream
+* AsyncAPI
 * Atom
 * OpenAPI
+* OpenRPC
 * Rss
 * SchemaOrg
 

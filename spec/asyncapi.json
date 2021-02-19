@@ -1,0 +1,213 @@
+{
+  "$import": {
+    "openapi": "file:///openapi.json"
+  },
+  "definitions": {
+    "AsyncAPI": {
+      "description": "This is the root document object for the API specification. It combines resource listing and API declaration together into one document.",
+      "type": "object",
+      "properties": {
+        "asyncapi": {
+          "type": "string",
+          "const": "3.0.0"
+        },
+        "info": {
+          "$ref": "openapi:Info"
+        },
+        "servers": {
+          "type": "array",
+          "items": {
+            "$ref": "openapi:Server"
+          }
+        },
+        "channels": {
+          "$ref": "Channels"
+        },
+        "components": {
+          "$ref": "Components"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "$ref": "openapi:Tag"
+          }
+        },
+        "externalDocs": {
+          "$ref": "openapi:ExternalDocs"
+        }
+      },
+      "required": [
+        "asyncapi",
+        "info",
+        "channels"
+      ]
+    },
+    "Channels": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "Channel"
+      }
+    },
+    "Channel": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "subscribe": {
+          "$ref": "Operation"
+        },
+        "publish": {
+          "$ref": "Operation"
+        },
+        "parameters": {
+          "$ref": "openapi:Parameters"
+        }
+      }
+    },
+    "Operation": {
+      "type": "object",
+      "properties": {
+        "operationId": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "$ref": "openapi:Tag"
+          }
+        },
+        "externalDocs": {
+          "$ref": "openapi:ExternalDocs"
+        },
+        "bindings": {
+          "$ref": "OperationBindings"
+        },
+        "message": {
+          "$ref": "Message"
+        }
+      }
+    },
+    "OperationBindings": {
+      "type": "object",
+      "properties": {
+        "http": {
+          "$ref": "HttpOperationBinding"
+        }
+      }
+    },
+    "HttpOperationBinding": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["request", "response"]
+        },
+        "method": {
+          "type": "string",
+          "enum": ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS", "CONNECT", "TRACE"]
+        },
+        "query": {
+          "type": "any"
+        },
+        "bindingVersion": {
+          "type": "string"
+        }
+      }
+    },
+    "Message": {
+      "type": "object",
+      "properties": {
+        "headers": {
+          "type": "any"
+        },
+        "payload": {
+          "type": "any"
+        },
+        "correlationId": {
+          "type": "string"
+        },
+        "schemaFormat": {
+          "type": "string"
+        },
+        "contentType": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "$ref": "openapi:Tag"
+          }
+        },
+        "externalDocs": {
+          "$ref": "openapi:ExternalDocs"
+        },
+        "bindings": {
+          "$ref": "MessageBindings"
+        }
+      }
+    },
+    "MessageBindings": {
+      "type": "object",
+      "properties": {
+        "http": {
+          "$ref": "HttpMessageBinding"
+        }
+      }
+    },
+    "HttpMessageBinding": {
+      "type": "object",
+      "properties": {
+        "headers": {
+          "type": "any"
+        },
+        "bindingVersion": {
+          "type": "string"
+        }
+      }
+    },
+    "Components": {
+      "description": "Holds a set of reusable objects for different aspects of the OAS. All objects defined within the components object will have no effect on the API unless they are explicitly referenced from properties outside the components object.",
+      "type": "object",
+      "properties": {
+        "schemas": {
+          "$ref": "Schemas"
+        },
+        "messages": {
+          "$ref": "Messages"
+        }
+      }
+    },
+    "Schemas": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "any"
+      }
+    },
+    "Messages": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "any"
+      }
+    }
+  },
+  "$ref": "AsyncAPI"
+}
