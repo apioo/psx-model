@@ -1,5 +1,5 @@
-PSX Model
-===
+
+# Model
 
 ## About
 
