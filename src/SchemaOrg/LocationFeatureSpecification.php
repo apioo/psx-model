@@ -4,62 +4,35 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("Specifies a location feature by providing a structured value representing a feature of an accommodation as a property-value pair of varying degrees of formality.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('Specifies a location feature by providing a structured value representing a feature of an accommodation as a property-value pair of varying degrees of formality.')]
 class LocationFeatureSpecification extends PropertyValue implements \JsonSerializable
 {
-    /**
-     * @var \PSX\DateTime\Date|\DateTime|null
-     */
-    protected $validThrough;
-    /**
-     * @var OpeningHoursSpecification|null
-     */
-    protected $hoursAvailable;
-    /**
-     * @var \PSX\DateTime\Date|\DateTime|null
-     */
-    protected $validFrom;
-    /**
-     * @param \PSX\DateTime\Date|\DateTime|null $validThrough
-     */
-    public function setValidThrough($validThrough) : void
+    protected \PSX\DateTime\Date|\DateTime|null $validThrough = null;
+    protected ?OpeningHoursSpecification $hoursAvailable = null;
+    protected \PSX\DateTime\Date|\DateTime|null $validFrom = null;
+    public function setValidThrough(\PSX\DateTime\Date|\DateTime|null $validThrough) : void
     {
         $this->validThrough = $validThrough;
     }
-    /**
-     * @return \PSX\DateTime\Date|\DateTime|null
-     */
-    public function getValidThrough()
+    public function getValidThrough() : \PSX\DateTime\Date|\DateTime|null
     {
         return $this->validThrough;
     }
-    /**
-     * @param OpeningHoursSpecification|null $hoursAvailable
-     */
     public function setHoursAvailable(?OpeningHoursSpecification $hoursAvailable) : void
     {
         $this->hoursAvailable = $hoursAvailable;
     }
-    /**
-     * @return OpeningHoursSpecification|null
-     */
     public function getHoursAvailable() : ?OpeningHoursSpecification
     {
         return $this->hoursAvailable;
     }
-    /**
-     * @param \PSX\DateTime\Date|\DateTime|null $validFrom
-     */
-    public function setValidFrom($validFrom) : void
+    public function setValidFrom(\PSX\DateTime\Date|\DateTime|null $validFrom) : void
     {
         $this->validFrom = $validFrom;
     }
-    /**
-     * @return \PSX\DateTime\Date|\DateTime|null
-     */
-    public function getValidFrom()
+    public function getValidFrom() : \PSX\DateTime\Date|\DateTime|null
     {
         return $this->validFrom;
     }
@@ -70,3 +43,4 @@ class LocationFeatureSpecification extends PropertyValue implements \JsonSeriali
         }));
     }
 }
+

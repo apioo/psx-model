@@ -10,3 +10,4 @@ namespace PSX\Model\OpenRPC;
 class ContentDescriptors extends \PSX\Record\Record
 {
 }
+

@@ -10,3 +10,4 @@ namespace PSX\Model\OpenAPI;
 class SecuritySchemes extends \PSX\Record\Record
 {
 }
+

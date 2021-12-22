@@ -4,62 +4,35 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.')]
 class MusicGroup extends PerformingGroup implements \JsonSerializable
 {
-    /**
-     * @var ItemList|MusicRecording|null
-     */
-    protected $track;
-    /**
-     * @var MusicAlbum|null
-     */
-    protected $album;
-    /**
-     * @var \PSX\Uri\Uri|string|null
-     */
-    protected $genre;
-    /**
-     * @param ItemList|MusicRecording|null $track
-     */
-    public function setTrack($track) : void
+    protected ItemList|MusicRecording|null $track = null;
+    protected ?MusicAlbum $album = null;
+    protected \PSX\Uri\Uri|string|null $genre = null;
+    public function setTrack(ItemList|MusicRecording|null $track) : void
     {
         $this->track = $track;
     }
-    /**
-     * @return ItemList|MusicRecording|null
-     */
-    public function getTrack()
+    public function getTrack() : ItemList|MusicRecording|null
     {
         return $this->track;
     }
-    /**
-     * @param MusicAlbum|null $album
-     */
     public function setAlbum(?MusicAlbum $album) : void
     {
         $this->album = $album;
     }
-    /**
-     * @return MusicAlbum|null
-     */
     public function getAlbum() : ?MusicAlbum
     {
         return $this->album;
     }
-    /**
-     * @param \PSX\Uri\Uri|string|null $genre
-     */
-    public function setGenre($genre) : void
+    public function setGenre(\PSX\Uri\Uri|string|null $genre) : void
     {
         $this->genre = $genre;
     }
-    /**
-     * @return \PSX\Uri\Uri|string|null
-     */
-    public function getGenre()
+    public function getGenre() : \PSX\Uri\Uri|string|null
     {
         return $this->genre;
     }
@@ -70,3 +43,4 @@ class MusicGroup extends PerformingGroup implements \JsonSerializable
         }));
     }
 }
+

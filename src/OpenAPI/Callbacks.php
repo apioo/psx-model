@@ -10,3 +10,4 @@ namespace PSX\Model\OpenAPI;
 class Callbacks extends \PSX\Record\Record
 {
 }
+

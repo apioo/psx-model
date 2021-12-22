@@ -4,133 +4,70 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A permit issued by an organization, e.g. a parking pass.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A permit issued by an organization, e.g. a parking pass.')]
 class Permit extends Intangible implements \JsonSerializable
 {
-    /**
-     * @var Audience|null
-     */
-    protected $permitAudience;
-    /**
-     * @var Service|null
-     */
-    protected $issuedThrough;
-    /**
-     * @var Duration|null
-     */
-    protected $validFor;
-    /**
-     * @var \PSX\DateTime\Date|null
-     */
-    protected $validUntil;
-    /**
-     * @var AdministrativeArea|null
-     */
-    protected $validIn;
-    /**
-     * @var \PSX\DateTime\Date|\DateTime|null
-     */
-    protected $validFrom;
-    /**
-     * @var Organization|null
-     */
-    protected $issuedBy;
-    /**
-     * @param Audience|null $permitAudience
-     */
+    protected ?Audience $permitAudience = null;
+    protected ?Service $issuedThrough = null;
+    protected ?Duration $validFor = null;
+    protected ?\PSX\DateTime\Date $validUntil = null;
+    protected ?AdministrativeArea $validIn = null;
+    protected \PSX\DateTime\Date|\DateTime|null $validFrom = null;
+    protected ?Organization $issuedBy = null;
     public function setPermitAudience(?Audience $permitAudience) : void
     {
         $this->permitAudience = $permitAudience;
     }
-    /**
-     * @return Audience|null
-     */
     public function getPermitAudience() : ?Audience
     {
         return $this->permitAudience;
     }
-    /**
-     * @param Service|null $issuedThrough
-     */
     public function setIssuedThrough(?Service $issuedThrough) : void
     {
         $this->issuedThrough = $issuedThrough;
     }
-    /**
-     * @return Service|null
-     */
     public function getIssuedThrough() : ?Service
     {
         return $this->issuedThrough;
     }
-    /**
-     * @param Duration|null $validFor
-     */
     public function setValidFor(?Duration $validFor) : void
     {
         $this->validFor = $validFor;
     }
-    /**
-     * @return Duration|null
-     */
     public function getValidFor() : ?Duration
     {
         return $this->validFor;
     }
-    /**
-     * @param \PSX\DateTime\Date|null $validUntil
-     */
     public function setValidUntil(?\PSX\DateTime\Date $validUntil) : void
     {
         $this->validUntil = $validUntil;
     }
-    /**
-     * @return \PSX\DateTime\Date|null
-     */
     public function getValidUntil() : ?\PSX\DateTime\Date
     {
         return $this->validUntil;
     }
-    /**
-     * @param AdministrativeArea|null $validIn
-     */
     public function setValidIn(?AdministrativeArea $validIn) : void
     {
         $this->validIn = $validIn;
     }
-    /**
-     * @return AdministrativeArea|null
-     */
     public function getValidIn() : ?AdministrativeArea
     {
         return $this->validIn;
     }
-    /**
-     * @param \PSX\DateTime\Date|\DateTime|null $validFrom
-     */
-    public function setValidFrom($validFrom) : void
+    public function setValidFrom(\PSX\DateTime\Date|\DateTime|null $validFrom) : void
     {
         $this->validFrom = $validFrom;
     }
-    /**
-     * @return \PSX\DateTime\Date|\DateTime|null
-     */
-    public function getValidFrom()
+    public function getValidFrom() : \PSX\DateTime\Date|\DateTime|null
     {
         return $this->validFrom;
     }
-    /**
-     * @param Organization|null $issuedBy
-     */
     public function setIssuedBy(?Organization $issuedBy) : void
     {
         $this->issuedBy = $issuedBy;
     }
-    /**
-     * @return Organization|null
-     */
     public function getIssuedBy() : ?Organization
     {
         return $this->issuedBy;
@@ -142,3 +79,4 @@ class Permit extends Intangible implements \JsonSerializable
         }));
     }
 }
+

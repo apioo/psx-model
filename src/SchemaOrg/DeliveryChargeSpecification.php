@@ -4,61 +4,34 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("The price for the delivery of an offer using a particular delivery method.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('The price for the delivery of an offer using a particular delivery method.')]
 class DeliveryChargeSpecification extends PriceSpecification implements \JsonSerializable
 {
-    /**
-     * @var string|Place|GeoShape|null
-     */
-    protected $areaServed;
-    /**
-     * @var string|GeoShape|Place|null
-     */
-    protected $eligibleRegion;
-    /**
-     * @var DeliveryMethod|null
-     */
-    protected $appliesToDeliveryMethod;
-    /**
-     * @param string|Place|GeoShape|null $areaServed
-     */
-    public function setAreaServed($areaServed) : void
+    protected string|Place|GeoShape|null $areaServed = null;
+    protected string|GeoShape|Place|null $eligibleRegion = null;
+    protected ?DeliveryMethod $appliesToDeliveryMethod = null;
+    public function setAreaServed(string|Place|GeoShape|null $areaServed) : void
     {
         $this->areaServed = $areaServed;
     }
-    /**
-     * @return string|Place|GeoShape|null
-     */
-    public function getAreaServed()
+    public function getAreaServed() : string|Place|GeoShape|null
     {
         return $this->areaServed;
     }
-    /**
-     * @param string|GeoShape|Place|null $eligibleRegion
-     */
-    public function setEligibleRegion($eligibleRegion) : void
+    public function setEligibleRegion(string|GeoShape|Place|null $eligibleRegion) : void
     {
         $this->eligibleRegion = $eligibleRegion;
     }
-    /**
-     * @return string|GeoShape|Place|null
-     */
-    public function getEligibleRegion()
+    public function getEligibleRegion() : string|GeoShape|Place|null
     {
         return $this->eligibleRegion;
     }
-    /**
-     * @param DeliveryMethod|null $appliesToDeliveryMethod
-     */
     public function setAppliesToDeliveryMethod(?DeliveryMethod $appliesToDeliveryMethod) : void
     {
         $this->appliesToDeliveryMethod = $appliesToDeliveryMethod;
     }
-    /**
-     * @return DeliveryMethod|null
-     */
     public function getAppliesToDeliveryMethod() : ?DeliveryMethod
     {
         return $this->appliesToDeliveryMethod;
@@ -70,3 +43,4 @@ class DeliveryChargeSpecification extends PriceSpecification implements \JsonSer
         }));
     }
 }
+

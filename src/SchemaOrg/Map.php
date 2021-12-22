@@ -4,25 +4,16 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A map.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A map.')]
 class Map extends CreativeWork implements \JsonSerializable
 {
-    /**
-     * @var MapCategoryType|null
-     */
-    protected $mapType;
-    /**
-     * @param MapCategoryType|null $mapType
-     */
+    protected ?MapCategoryType $mapType = null;
     public function setMapType(?MapCategoryType $mapType) : void
     {
         $this->mapType = $mapType;
     }
-    /**
-     * @return MapCategoryType|null
-     */
     public function getMapType() : ?MapCategoryType
     {
         return $this->mapType;
@@ -34,3 +25,4 @@ class Map extends CreativeWork implements \JsonSerializable
         }));
     }
 }
+

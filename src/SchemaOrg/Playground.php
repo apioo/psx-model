@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A playground.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A playground.')]
 class Playground extends CivicStructure implements \JsonSerializable
 {
 }
+

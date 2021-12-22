@@ -4,26 +4,17 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("Information about the engine of the vehicle. A vehicle can have multiple engines represented by multiple engine specification entities.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('Information about the engine of the vehicle. A vehicle can have multiple engines represented by multiple engine specification entities.')]
 class EngineSpecification extends StructuredValue implements \JsonSerializable
 {
-    /**
-     * @var string|\PSX\Uri\Uri|QualitativeValue|null
-     */
-    protected $fuelType;
-    /**
-     * @param string|\PSX\Uri\Uri|QualitativeValue|null $fuelType
-     */
-    public function setFuelType($fuelType) : void
+    protected string|\PSX\Uri\Uri|QualitativeValue|null $fuelType = null;
+    public function setFuelType(string|\PSX\Uri\Uri|QualitativeValue|null $fuelType) : void
     {
         $this->fuelType = $fuelType;
     }
-    /**
-     * @return string|\PSX\Uri\Uri|QualitativeValue|null
-     */
-    public function getFuelType()
+    public function getFuelType() : string|\PSX\Uri\Uri|QualitativeValue|null
     {
         return $this->fuelType;
     }
@@ -34,3 +25,4 @@ class EngineSpecification extends StructuredValue implements \JsonSerializable
         }));
     }
 }
+

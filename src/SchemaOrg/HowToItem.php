@@ -4,26 +4,17 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("An item used as either a tool or supply when performing the instructions for how to to achieve a result.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('An item used as either a tool or supply when performing the instructions for how to to achieve a result.')]
 class HowToItem extends ListItem implements \JsonSerializable
 {
-    /**
-     * @var float|string|QuantitativeValue|null
-     */
-    protected $requiredQuantity;
-    /**
-     * @param float|string|QuantitativeValue|null $requiredQuantity
-     */
-    public function setRequiredQuantity($requiredQuantity) : void
+    protected float|string|QuantitativeValue|null $requiredQuantity = null;
+    public function setRequiredQuantity(float|string|QuantitativeValue|null $requiredQuantity) : void
     {
         $this->requiredQuantity = $requiredQuantity;
     }
-    /**
-     * @return float|string|QuantitativeValue|null
-     */
-    public function getRequiredQuantity()
+    public function getRequiredQuantity() : float|string|QuantitativeValue|null
     {
         return $this->requiredQuantity;
     }
@@ -34,3 +25,4 @@ class HowToItem extends ListItem implements \JsonSerializable
         }));
     }
 }
+

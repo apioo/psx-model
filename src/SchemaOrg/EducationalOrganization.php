@@ -4,43 +4,25 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("An educational organization.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('An educational organization.')]
 class EducationalOrganization extends Organization implements \JsonSerializable
 {
-    /**
-     * @var Organization|Person|null
-     */
-    protected $alumniOf;
-    /**
-     * @var Person|null
-     */
-    protected $alumni;
-    /**
-     * @param Organization|Person|null $alumniOf
-     */
-    public function setAlumniOf($alumniOf) : void
+    protected Organization|Person|null $alumniOf = null;
+    protected ?Person $alumni = null;
+    public function setAlumniOf(Organization|Person|null $alumniOf) : void
     {
         $this->alumniOf = $alumniOf;
     }
-    /**
-     * @return Organization|Person|null
-     */
-    public function getAlumniOf()
+    public function getAlumniOf() : Organization|Person|null
     {
         return $this->alumniOf;
     }
-    /**
-     * @param Person|null $alumni
-     */
     public function setAlumni(?Person $alumni) : void
     {
         $this->alumni = $alumni;
     }
-    /**
-     * @return Person|null
-     */
     public function getAlumni() : ?Person
     {
         return $this->alumni;
@@ -52,3 +34,4 @@ class EducationalOrganization extends Organization implements \JsonSerializable
         }));
     }
 }
+

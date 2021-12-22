@@ -4,80 +4,44 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A single item within a larger data feed.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A single item within a larger data feed.')]
 class DataFeedItem extends Intangible implements \JsonSerializable
 {
-    /**
-     * @var \PSX\DateTime\Date|\DateTime|null
-     */
-    protected $dateModified;
-    /**
-     * @var \PSX\DateTime\Date|\DateTime|null
-     */
-    protected $dateCreated;
-    /**
-     * @var Thing|null
-     */
-    protected $item;
-    /**
-     * @var \DateTime|\PSX\DateTime\Date|null
-     */
-    protected $dateDeleted;
-    /**
-     * @param \PSX\DateTime\Date|\DateTime|null $dateModified
-     */
-    public function setDateModified($dateModified) : void
+    protected \PSX\DateTime\Date|\DateTime|null $dateModified = null;
+    protected \PSX\DateTime\Date|\DateTime|null $dateCreated = null;
+    protected ?Thing $item = null;
+    protected \DateTime|\PSX\DateTime\Date|null $dateDeleted = null;
+    public function setDateModified(\PSX\DateTime\Date|\DateTime|null $dateModified) : void
     {
         $this->dateModified = $dateModified;
     }
-    /**
-     * @return \PSX\DateTime\Date|\DateTime|null
-     */
-    public function getDateModified()
+    public function getDateModified() : \PSX\DateTime\Date|\DateTime|null
     {
         return $this->dateModified;
     }
-    /**
-     * @param \PSX\DateTime\Date|\DateTime|null $dateCreated
-     */
-    public function setDateCreated($dateCreated) : void
+    public function setDateCreated(\PSX\DateTime\Date|\DateTime|null $dateCreated) : void
     {
         $this->dateCreated = $dateCreated;
     }
-    /**
-     * @return \PSX\DateTime\Date|\DateTime|null
-     */
-    public function getDateCreated()
+    public function getDateCreated() : \PSX\DateTime\Date|\DateTime|null
     {
         return $this->dateCreated;
     }
-    /**
-     * @param Thing|null $item
-     */
     public function setItem(?Thing $item) : void
     {
         $this->item = $item;
     }
-    /**
-     * @return Thing|null
-     */
     public function getItem() : ?Thing
     {
         return $this->item;
     }
-    /**
-     * @param \DateTime|\PSX\DateTime\Date|null $dateDeleted
-     */
-    public function setDateDeleted($dateDeleted) : void
+    public function setDateDeleted(\DateTime|\PSX\DateTime\Date|null $dateDeleted) : void
     {
         $this->dateDeleted = $dateDeleted;
     }
-    /**
-     * @return \DateTime|\PSX\DateTime\Date|null
-     */
-    public function getDateDeleted()
+    public function getDateDeleted() : \DateTime|\PSX\DateTime\Date|null
     {
         return $this->dateDeleted;
     }
@@ -88,3 +52,4 @@ class DataFeedItem extends Intangible implements \JsonSerializable
         }));
     }
 }
+

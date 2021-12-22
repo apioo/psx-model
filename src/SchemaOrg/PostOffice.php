@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A post office.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A post office.')]
 class PostOffice extends GovernmentOffice implements \JsonSerializable
 {
 }
+

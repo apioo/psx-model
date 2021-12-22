@@ -4,44 +4,27 @@ declare(strict_types = 1);
 
 namespace PSX\Model\OpenAPI;
 
-/**
- * @Description("Allows referencing an external resource for extended documentation.")
- * @Required({"url"})
- */
+use PSX\Schema\Attribute\Description;
+use PSX\Schema\Attribute\Required;
+
+#[Description('Allows referencing an external resource for extended documentation.')]
+#[Required(array('url'))]
 class ExternalDocs implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $description;
-    /**
-     * @var string|null
-     */
-    protected $url;
-    /**
-     * @param string|null $description
-     */
+    protected ?string $description = null;
+    protected ?string $url = null;
     public function setDescription(?string $description) : void
     {
         $this->description = $description;
     }
-    /**
-     * @return string|null
-     */
     public function getDescription() : ?string
     {
         return $this->description;
     }
-    /**
-     * @param string|null $url
-     */
     public function setUrl(?string $url) : void
     {
         $this->url = $url;
     }
-    /**
-     * @return string|null
-     */
     public function getUrl() : ?string
     {
         return $this->url;
@@ -53,3 +36,4 @@ class ExternalDocs implements \JsonSerializable
         });
     }
 }
+

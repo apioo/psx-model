@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A file composed primarily of text.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A file composed primarily of text.')]
 class TextDigitalDocument extends DigitalDocument implements \JsonSerializable
 {
 }
+

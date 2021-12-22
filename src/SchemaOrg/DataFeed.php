@@ -4,26 +4,17 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A single feed providing structured information about one or more entities or topics.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A single feed providing structured information about one or more entities or topics.')]
 class DataFeed extends Dataset implements \JsonSerializable
 {
-    /**
-     * @var string|Thing|DataFeedItem|null
-     */
-    protected $dataFeedElement;
-    /**
-     * @param string|Thing|DataFeedItem|null $dataFeedElement
-     */
-    public function setDataFeedElement($dataFeedElement) : void
+    protected string|Thing|DataFeedItem|null $dataFeedElement = null;
+    public function setDataFeedElement(string|Thing|DataFeedItem|null $dataFeedElement) : void
     {
         $this->dataFeedElement = $dataFeedElement;
     }
-    /**
-     * @return string|Thing|DataFeedItem|null
-     */
-    public function getDataFeedElement()
+    public function getDataFeedElement() : string|Thing|DataFeedItem|null
     {
         return $this->dataFeedElement;
     }
@@ -34,3 +25,4 @@ class DataFeed extends Dataset implements \JsonSerializable
         }));
     }
 }
+

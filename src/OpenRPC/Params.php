@@ -10,3 +10,4 @@ namespace PSX\Model\OpenRPC;
 class Params extends \PSX\Record\Record
 {
 }
+

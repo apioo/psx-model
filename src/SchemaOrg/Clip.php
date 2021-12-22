@@ -4,133 +4,70 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A short TV or radio program or a segment/part of a program.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A short TV or radio program or a segment/part of a program.')]
 class Clip extends CreativeWork implements \JsonSerializable
 {
-    /**
-     * @var int|string|null
-     */
-    protected $position;
-    /**
-     * @var Person|MusicGroup|null
-     */
-    protected $musicBy;
-    /**
-     * @var CreativeWorkSeries|null
-     */
-    protected $partOfSeries;
-    /**
-     * @var Person|null
-     */
-    protected $actor;
-    /**
-     * @var CreativeWorkSeason|null
-     */
-    protected $partOfSeason;
-    /**
-     * @var Episode|null
-     */
-    protected $partOfEpisode;
-    /**
-     * @var Person|null
-     */
-    protected $director;
-    /**
-     * @param int|string|null $position
-     */
-    public function setPosition($position) : void
+    protected int|string|null $position = null;
+    protected Person|MusicGroup|null $musicBy = null;
+    protected ?CreativeWorkSeries $partOfSeries = null;
+    protected ?Person $actor = null;
+    protected ?CreativeWorkSeason $partOfSeason = null;
+    protected ?Episode $partOfEpisode = null;
+    protected ?Person $director = null;
+    public function setPosition(int|string|null $position) : void
     {
         $this->position = $position;
     }
-    /**
-     * @return int|string|null
-     */
-    public function getPosition()
+    public function getPosition() : int|string|null
     {
         return $this->position;
     }
-    /**
-     * @param Person|MusicGroup|null $musicBy
-     */
-    public function setMusicBy($musicBy) : void
+    public function setMusicBy(Person|MusicGroup|null $musicBy) : void
     {
         $this->musicBy = $musicBy;
     }
-    /**
-     * @return Person|MusicGroup|null
-     */
-    public function getMusicBy()
+    public function getMusicBy() : Person|MusicGroup|null
     {
         return $this->musicBy;
     }
-    /**
-     * @param CreativeWorkSeries|null $partOfSeries
-     */
     public function setPartOfSeries(?CreativeWorkSeries $partOfSeries) : void
     {
         $this->partOfSeries = $partOfSeries;
     }
-    /**
-     * @return CreativeWorkSeries|null
-     */
     public function getPartOfSeries() : ?CreativeWorkSeries
     {
         return $this->partOfSeries;
     }
-    /**
-     * @param Person|null $actor
-     */
     public function setActor(?Person $actor) : void
     {
         $this->actor = $actor;
     }
-    /**
-     * @return Person|null
-     */
     public function getActor() : ?Person
     {
         return $this->actor;
     }
-    /**
-     * @param CreativeWorkSeason|null $partOfSeason
-     */
     public function setPartOfSeason(?CreativeWorkSeason $partOfSeason) : void
     {
         $this->partOfSeason = $partOfSeason;
     }
-    /**
-     * @return CreativeWorkSeason|null
-     */
     public function getPartOfSeason() : ?CreativeWorkSeason
     {
         return $this->partOfSeason;
     }
-    /**
-     * @param Episode|null $partOfEpisode
-     */
     public function setPartOfEpisode(?Episode $partOfEpisode) : void
     {
         $this->partOfEpisode = $partOfEpisode;
     }
-    /**
-     * @return Episode|null
-     */
     public function getPartOfEpisode() : ?Episode
     {
         return $this->partOfEpisode;
     }
-    /**
-     * @param Person|null $director
-     */
     public function setDirector(?Person $director) : void
     {
         $this->director = $director;
     }
-    /**
-     * @return Person|null
-     */
     public function getDirector() : ?Person
     {
         return $this->director;
@@ -142,3 +79,4 @@ class Clip extends CreativeWork implements \JsonSerializable
         }));
     }
 }
+

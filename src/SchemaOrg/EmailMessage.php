@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("An email message.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('An email message.')]
 class EmailMessage extends Message implements \JsonSerializable
 {
 }
+

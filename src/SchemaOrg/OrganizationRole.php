@@ -4,25 +4,16 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A subclass of Role used to describe roles within organizations.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A subclass of Role used to describe roles within organizations.')]
 class OrganizationRole extends Role implements \JsonSerializable
 {
-    /**
-     * @var float|null
-     */
-    protected $numberedPosition;
-    /**
-     * @param float|null $numberedPosition
-     */
+    protected ?float $numberedPosition = null;
     public function setNumberedPosition(?float $numberedPosition) : void
     {
         $this->numberedPosition = $numberedPosition;
     }
-    /**
-     * @return float|null
-     */
     public function getNumberedPosition() : ?float
     {
         return $this->numberedPosition;
@@ -34,3 +25,4 @@ class OrganizationRole extends Role implements \JsonSerializable
         }));
     }
 }
+

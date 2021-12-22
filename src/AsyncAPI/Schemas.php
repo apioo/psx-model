@@ -10,3 +10,4 @@ namespace PSX\Model\AsyncAPI;
 class Schemas extends \PSX\Record\Record
 {
 }
+

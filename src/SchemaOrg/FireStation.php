@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A fire station. With firemen.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A fire station. With firemen.')]
 class FireStation extends EmergencyService implements \JsonSerializable
 {
 }
+

@@ -4,62 +4,35 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A product provided to consumers and businesses by financial institutions such as banks, insurance companies, brokerage firms, consumer finance companies, and investment companies which comprise the financial services industry.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A product provided to consumers and businesses by financial institutions such as banks, insurance companies, brokerage firms, consumer finance companies, and investment companies which comprise the financial services industry.')]
 class FinancialProduct extends Service implements \JsonSerializable
 {
-    /**
-     * @var float|QuantitativeValue|null
-     */
-    protected $annualPercentageRate;
-    /**
-     * @var \PSX\Uri\Uri|string|null
-     */
-    protected $feesAndCommissionsSpecification;
-    /**
-     * @var float|QuantitativeValue|null
-     */
-    protected $interestRate;
-    /**
-     * @param float|QuantitativeValue|null $annualPercentageRate
-     */
-    public function setAnnualPercentageRate($annualPercentageRate) : void
+    protected float|QuantitativeValue|null $annualPercentageRate = null;
+    protected \PSX\Uri\Uri|string|null $feesAndCommissionsSpecification = null;
+    protected float|QuantitativeValue|null $interestRate = null;
+    public function setAnnualPercentageRate(float|QuantitativeValue|null $annualPercentageRate) : void
     {
         $this->annualPercentageRate = $annualPercentageRate;
     }
-    /**
-     * @return float|QuantitativeValue|null
-     */
-    public function getAnnualPercentageRate()
+    public function getAnnualPercentageRate() : float|QuantitativeValue|null
     {
         return $this->annualPercentageRate;
     }
-    /**
-     * @param \PSX\Uri\Uri|string|null $feesAndCommissionsSpecification
-     */
-    public function setFeesAndCommissionsSpecification($feesAndCommissionsSpecification) : void
+    public function setFeesAndCommissionsSpecification(\PSX\Uri\Uri|string|null $feesAndCommissionsSpecification) : void
     {
         $this->feesAndCommissionsSpecification = $feesAndCommissionsSpecification;
     }
-    /**
-     * @return \PSX\Uri\Uri|string|null
-     */
-    public function getFeesAndCommissionsSpecification()
+    public function getFeesAndCommissionsSpecification() : \PSX\Uri\Uri|string|null
     {
         return $this->feesAndCommissionsSpecification;
     }
-    /**
-     * @param float|QuantitativeValue|null $interestRate
-     */
-    public function setInterestRate($interestRate) : void
+    public function setInterestRate(float|QuantitativeValue|null $interestRate) : void
     {
         $this->interestRate = $interestRate;
     }
-    /**
-     * @return float|QuantitativeValue|null
-     */
-    public function getInterestRate()
+    public function getInterestRate() : float|QuantitativeValue|null
     {
         return $this->interestRate;
     }
@@ -70,3 +43,4 @@ class FinancialProduct extends Service implements \JsonSerializable
         }));
     }
 }
+

@@ -10,55 +10,31 @@ class Atom implements \JsonSerializable
     /**
      * @var array<Person>|null
      */
-    protected $author;
+    protected ?array $author = null;
     /**
      * @var array<Category>|null
      */
-    protected $category;
+    protected ?array $category = null;
     /**
      * @var array<Person>|null
      */
-    protected $contributor;
-    /**
-     * @var Generator|null
-     */
-    protected $generator;
-    /**
-     * @var string|null
-     */
-    protected $icon;
-    /**
-     * @var string|null
-     */
-    protected $logo;
-    /**
-     * @var string|null
-     */
-    protected $id;
+    protected ?array $contributor = null;
+    protected ?Generator $generator = null;
+    protected ?string $icon = null;
+    protected ?string $logo = null;
+    protected ?string $id = null;
     /**
      * @var array<Link>|null
      */
-    protected $link;
-    /**
-     * @var string|null
-     */
-    protected $rights;
-    /**
-     * @var Text|null
-     */
-    protected $subTitle;
-    /**
-     * @var string|null
-     */
-    protected $title;
-    /**
-     * @var \DateTime|null
-     */
-    protected $updated;
+    protected ?array $link = null;
+    protected ?string $rights = null;
+    protected ?Text $subTitle = null;
+    protected ?string $title = null;
+    protected ?\DateTime $updated = null;
     /**
      * @var array<Entry>|null
      */
-    protected $entry;
+    protected ?array $entry = null;
     /**
      * @param array<Person>|null $author
      */
@@ -66,9 +42,6 @@ class Atom implements \JsonSerializable
     {
         $this->author = $author;
     }
-    /**
-     * @return array<Person>|null
-     */
     public function getAuthor() : ?array
     {
         return $this->author;
@@ -80,9 +53,6 @@ class Atom implements \JsonSerializable
     {
         $this->category = $category;
     }
-    /**
-     * @return array<Category>|null
-     */
     public function getCategory() : ?array
     {
         return $this->category;
@@ -94,65 +64,38 @@ class Atom implements \JsonSerializable
     {
         $this->contributor = $contributor;
     }
-    /**
-     * @return array<Person>|null
-     */
     public function getContributor() : ?array
     {
         return $this->contributor;
     }
-    /**
-     * @param Generator|null $generator
-     */
     public function setGenerator(?Generator $generator) : void
     {
         $this->generator = $generator;
     }
-    /**
-     * @return Generator|null
-     */
     public function getGenerator() : ?Generator
     {
         return $this->generator;
     }
-    /**
-     * @param string|null $icon
-     */
     public function setIcon(?string $icon) : void
     {
         $this->icon = $icon;
     }
-    /**
-     * @return string|null
-     */
     public function getIcon() : ?string
     {
         return $this->icon;
     }
-    /**
-     * @param string|null $logo
-     */
     public function setLogo(?string $logo) : void
     {
         $this->logo = $logo;
     }
-    /**
-     * @return string|null
-     */
     public function getLogo() : ?string
     {
         return $this->logo;
     }
-    /**
-     * @param string|null $id
-     */
     public function setId(?string $id) : void
     {
         $this->id = $id;
     }
-    /**
-     * @return string|null
-     */
     public function getId() : ?string
     {
         return $this->id;
@@ -164,65 +107,38 @@ class Atom implements \JsonSerializable
     {
         $this->link = $link;
     }
-    /**
-     * @return array<Link>|null
-     */
     public function getLink() : ?array
     {
         return $this->link;
     }
-    /**
-     * @param string|null $rights
-     */
     public function setRights(?string $rights) : void
     {
         $this->rights = $rights;
     }
-    /**
-     * @return string|null
-     */
     public function getRights() : ?string
     {
         return $this->rights;
     }
-    /**
-     * @param Text|null $subTitle
-     */
     public function setSubTitle(?Text $subTitle) : void
     {
         $this->subTitle = $subTitle;
     }
-    /**
-     * @return Text|null
-     */
     public function getSubTitle() : ?Text
     {
         return $this->subTitle;
     }
-    /**
-     * @param string|null $title
-     */
     public function setTitle(?string $title) : void
     {
         $this->title = $title;
     }
-    /**
-     * @return string|null
-     */
     public function getTitle() : ?string
     {
         return $this->title;
     }
-    /**
-     * @param \DateTime|null $updated
-     */
     public function setUpdated(?\DateTime $updated) : void
     {
         $this->updated = $updated;
     }
-    /**
-     * @return \DateTime|null
-     */
     public function getUpdated() : ?\DateTime
     {
         return $this->updated;
@@ -234,9 +150,6 @@ class Atom implements \JsonSerializable
     {
         $this->entry = $entry;
     }
-    /**
-     * @return array<Entry>|null
-     */
     public function getEntry() : ?array
     {
         return $this->entry;
@@ -248,3 +161,4 @@ class Atom implements \JsonSerializable
         });
     }
 }
+

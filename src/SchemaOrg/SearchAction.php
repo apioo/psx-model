@@ -4,32 +4,23 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
-* @Description("The act of searching for an object.<br/><br/>
+use PSX\Schema\Attribute\Description;
+
+#[Description('The act of searching for an object.<br/><br/>
 
 Related actions:<br/><br/>
 
 <ul>
-<li><a class=""localLink"" href=""http://schema.org/FindAction"">FindAction</a>: SearchAction generally leads to a FindAction, but not necessarily.</li>
+<li><a class="localLink" href="http://schema.org/FindAction">FindAction</a>: SearchAction generally leads to a FindAction, but not necessarily.</li>
 </ul>
-")
-*/
+')]
 class SearchAction extends Action implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $query;
-    /**
-     * @param string|null $query
-     */
+    protected ?string $query = null;
     public function setQuery(?string $query) : void
     {
         $this->query = $query;
     }
-    /**
-     * @return string|null
-     */
     public function getQuery() : ?string
     {
         return $this->query;
@@ -41,3 +32,4 @@ class SearchAction extends Action implements \JsonSerializable
         }));
     }
 }
+

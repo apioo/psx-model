@@ -4,26 +4,17 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("Residence type: Apartment complex.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('Residence type: Apartment complex.')]
 class ApartmentComplex extends Residence implements \JsonSerializable
 {
-    /**
-     * @var bool|string|null
-     */
-    protected $petsAllowed;
-    /**
-     * @param bool|string|null $petsAllowed
-     */
-    public function setPetsAllowed($petsAllowed) : void
+    protected bool|string|null $petsAllowed = null;
+    public function setPetsAllowed(bool|string|null $petsAllowed) : void
     {
         $this->petsAllowed = $petsAllowed;
     }
-    /**
-     * @return bool|string|null
-     */
-    public function getPetsAllowed()
+    public function getPetsAllowed() : bool|string|null
     {
         return $this->petsAllowed;
     }
@@ -34,3 +25,4 @@ class ApartmentComplex extends Residence implements \JsonSerializable
         }));
     }
 }
+

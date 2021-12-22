@@ -4,69 +4,39 @@ declare(strict_types = 1);
 
 namespace PSX\Model\OpenRPC;
 
-/**
- * @Description("The example Pairing object consists of a set of example params and result. The result is what you can expect from the JSON-RPC service given the exact params.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('The example Pairing object consists of a set of example params and result. The result is what you can expect from the JSON-RPC service given the exact params.')]
 class ExamplePairingObject implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $name;
-    /**
-     * @var string|null
-     */
-    protected $description;
-    /**
-     * @var string|null
-     */
-    protected $summary;
+    protected ?string $name = null;
+    protected ?string $description = null;
+    protected ?string $summary = null;
     /**
      * @var array<ExampleObject>|null
      */
-    protected $params;
-    /**
-     * @var ExampleObject|null
-     */
-    protected $result;
-    /**
-     * @param string|null $name
-     */
+    protected ?array $params = null;
+    protected ?ExampleObject $result = null;
     public function setName(?string $name) : void
     {
         $this->name = $name;
     }
-    /**
-     * @return string|null
-     */
     public function getName() : ?string
     {
         return $this->name;
     }
-    /**
-     * @param string|null $description
-     */
     public function setDescription(?string $description) : void
     {
         $this->description = $description;
     }
-    /**
-     * @return string|null
-     */
     public function getDescription() : ?string
     {
         return $this->description;
     }
-    /**
-     * @param string|null $summary
-     */
     public function setSummary(?string $summary) : void
     {
         $this->summary = $summary;
     }
-    /**
-     * @return string|null
-     */
     public function getSummary() : ?string
     {
         return $this->summary;
@@ -78,23 +48,14 @@ class ExamplePairingObject implements \JsonSerializable
     {
         $this->params = $params;
     }
-    /**
-     * @return array<ExampleObject>|null
-     */
     public function getParams() : ?array
     {
         return $this->params;
     }
-    /**
-     * @param ExampleObject|null $result
-     */
     public function setResult(?ExampleObject $result) : void
     {
         $this->result = $result;
     }
-    /**
-     * @return ExampleObject|null
-     */
     public function getResult() : ?ExampleObject
     {
         return $this->result;
@@ -106,3 +67,4 @@ class ExamplePairingObject implements \JsonSerializable
         });
     }
 }
+

@@ -10,3 +10,4 @@ namespace PSX\Model\OpenRPC;
 class Errors extends \PSX\Record\Record
 {
 }
+

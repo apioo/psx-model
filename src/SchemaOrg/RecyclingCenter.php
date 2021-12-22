@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A recycling center.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A recycling center.')]
 class RecyclingCenter extends LocalBusiness implements \JsonSerializable
 {
 }
+

@@ -4,82 +4,46 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
-* @Description("A part of a successively published publication such as a periodical or multi-volume work, often numbered. It may represent a time span, such as a year.<br/><br/>
+use PSX\Schema\Attribute\Description;
 
-See also <a href=""http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html"">blog post</a>.")
-*/
+#[Description('A part of a successively published publication such as a periodical or multi-volume work, often numbered. It may represent a time span, such as a year.<br/><br/>
+
+See also <a href="http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html">blog post</a>.')]
 class PublicationVolume extends CreativeWork implements \JsonSerializable
 {
-    /**
-     * @var string|int|null
-     */
-    protected $pageStart;
-    /**
-     * @var string|null
-     */
-    protected $pagination;
-    /**
-     * @var string|int|null
-     */
-    protected $pageEnd;
-    /**
-     * @var string|int|null
-     */
-    protected $volumeNumber;
-    /**
-     * @param string|int|null $pageStart
-     */
-    public function setPageStart($pageStart) : void
+    protected string|int|null $pageStart = null;
+    protected ?string $pagination = null;
+    protected string|int|null $pageEnd = null;
+    protected string|int|null $volumeNumber = null;
+    public function setPageStart(string|int|null $pageStart) : void
     {
         $this->pageStart = $pageStart;
     }
-    /**
-     * @return string|int|null
-     */
-    public function getPageStart()
+    public function getPageStart() : string|int|null
     {
         return $this->pageStart;
     }
-    /**
-     * @param string|null $pagination
-     */
     public function setPagination(?string $pagination) : void
     {
         $this->pagination = $pagination;
     }
-    /**
-     * @return string|null
-     */
     public function getPagination() : ?string
     {
         return $this->pagination;
     }
-    /**
-     * @param string|int|null $pageEnd
-     */
-    public function setPageEnd($pageEnd) : void
+    public function setPageEnd(string|int|null $pageEnd) : void
     {
         $this->pageEnd = $pageEnd;
     }
-    /**
-     * @return string|int|null
-     */
-    public function getPageEnd()
+    public function getPageEnd() : string|int|null
     {
         return $this->pageEnd;
     }
-    /**
-     * @param string|int|null $volumeNumber
-     */
-    public function setVolumeNumber($volumeNumber) : void
+    public function setVolumeNumber(string|int|null $volumeNumber) : void
     {
         $this->volumeNumber = $volumeNumber;
     }
-    /**
-     * @return string|int|null
-     */
-    public function getVolumeNumber()
+    public function getVolumeNumber() : string|int|null
     {
         return $this->volumeNumber;
     }
@@ -90,3 +54,4 @@ class PublicationVolume extends CreativeWork implements \JsonSerializable
         }));
     }
 }
+

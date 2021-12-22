@@ -4,25 +4,16 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("Web applications.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('Web applications.')]
 class WebApplication extends SoftwareApplication implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $browserRequirements;
-    /**
-     * @param string|null $browserRequirements
-     */
+    protected ?string $browserRequirements = null;
     public function setBrowserRequirements(?string $browserRequirements) : void
     {
         $this->browserRequirements = $browserRequirements;
     }
-    /**
-     * @return string|null
-     */
     public function getBrowserRequirements() : ?string
     {
         return $this->browserRequirements;
@@ -34,3 +25,4 @@ class WebApplication extends SoftwareApplication implements \JsonSerializable
         }));
     }
 }
+

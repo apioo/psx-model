@@ -4,44 +4,26 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("The act of returning to the origin that which was previously received (concrete objects) or taken (ownership).")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('The act of returning to the origin that which was previously received (concrete objects) or taken (ownership).')]
 class ReturnAction extends TransferAction implements \JsonSerializable
 {
-    /**
-     * @var Person|ContactPoint|Organization|Audience|null
-     */
-    protected $ccRecipient;
-    /**
-     * @var Organization|ContactPoint|Person|Audience|null
-     */
-    protected $recipient;
-    /**
-     * @param Person|ContactPoint|Organization|Audience|null $ccRecipient
-     */
-    public function setCcRecipient($ccRecipient) : void
+    protected Person|ContactPoint|Organization|Audience|null $ccRecipient = null;
+    protected Organization|ContactPoint|Person|Audience|null $recipient = null;
+    public function setCcRecipient(Person|ContactPoint|Organization|Audience|null $ccRecipient) : void
     {
         $this->ccRecipient = $ccRecipient;
     }
-    /**
-     * @return Person|ContactPoint|Organization|Audience|null
-     */
-    public function getCcRecipient()
+    public function getCcRecipient() : Person|ContactPoint|Organization|Audience|null
     {
         return $this->ccRecipient;
     }
-    /**
-     * @param Organization|ContactPoint|Person|Audience|null $recipient
-     */
-    public function setRecipient($recipient) : void
+    public function setRecipient(Organization|ContactPoint|Person|Audience|null $recipient) : void
     {
         $this->recipient = $recipient;
     }
-    /**
-     * @return Organization|ContactPoint|Person|Audience|null
-     */
-    public function getRecipient()
+    public function getRecipient() : Organization|ContactPoint|Person|Audience|null
     {
         return $this->recipient;
     }
@@ -52,3 +34,4 @@ class ReturnAction extends TransferAction implements \JsonSerializable
         }));
     }
 }
+

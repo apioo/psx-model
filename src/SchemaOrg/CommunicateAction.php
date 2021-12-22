@@ -4,62 +4,35 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("The act of conveying information to another person via a communication medium (instrument) such as speech, email, or telephone conversation.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('The act of conveying information to another person via a communication medium (instrument) such as speech, email, or telephone conversation.')]
 class CommunicateAction extends InteractAction implements \JsonSerializable
 {
-    /**
-     * @var Person|ContactPoint|Organization|Audience|null
-     */
-    protected $ccRecipient;
-    /**
-     * @var Organization|ContactPoint|Person|Audience|null
-     */
-    protected $recipient;
-    /**
-     * @var string|Language|null
-     */
-    protected $inLanguage;
-    /**
-     * @param Person|ContactPoint|Organization|Audience|null $ccRecipient
-     */
-    public function setCcRecipient($ccRecipient) : void
+    protected Person|ContactPoint|Organization|Audience|null $ccRecipient = null;
+    protected Organization|ContactPoint|Person|Audience|null $recipient = null;
+    protected string|Language|null $inLanguage = null;
+    public function setCcRecipient(Person|ContactPoint|Organization|Audience|null $ccRecipient) : void
     {
         $this->ccRecipient = $ccRecipient;
     }
-    /**
-     * @return Person|ContactPoint|Organization|Audience|null
-     */
-    public function getCcRecipient()
+    public function getCcRecipient() : Person|ContactPoint|Organization|Audience|null
     {
         return $this->ccRecipient;
     }
-    /**
-     * @param Organization|ContactPoint|Person|Audience|null $recipient
-     */
-    public function setRecipient($recipient) : void
+    public function setRecipient(Organization|ContactPoint|Person|Audience|null $recipient) : void
     {
         $this->recipient = $recipient;
     }
-    /**
-     * @return Organization|ContactPoint|Person|Audience|null
-     */
-    public function getRecipient()
+    public function getRecipient() : Organization|ContactPoint|Person|Audience|null
     {
         return $this->recipient;
     }
-    /**
-     * @param string|Language|null $inLanguage
-     */
-    public function setInLanguage($inLanguage) : void
+    public function setInLanguage(string|Language|null $inLanguage) : void
     {
         $this->inLanguage = $inLanguage;
     }
-    /**
-     * @return string|Language|null
-     */
-    public function getInLanguage()
+    public function getInLanguage() : string|Language|null
     {
         return $this->inLanguage;
     }
@@ -70,3 +43,4 @@ class CommunicateAction extends InteractAction implements \JsonSerializable
         }));
     }
 }
+

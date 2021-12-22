@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("Residence type: Gated community.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('Residence type: Gated community.')]
 class GatedResidenceCommunity extends Residence implements \JsonSerializable
 {
 }
+

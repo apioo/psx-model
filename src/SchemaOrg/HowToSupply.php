@@ -4,26 +4,17 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A supply consumed when performing the instructions for how to achieve a result.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A supply consumed when performing the instructions for how to achieve a result.')]
 class HowToSupply extends HowToItem implements \JsonSerializable
 {
-    /**
-     * @var string|MonetaryAmount|null
-     */
-    protected $estimatedCost;
-    /**
-     * @param string|MonetaryAmount|null $estimatedCost
-     */
-    public function setEstimatedCost($estimatedCost) : void
+    protected string|MonetaryAmount|null $estimatedCost = null;
+    public function setEstimatedCost(string|MonetaryAmount|null $estimatedCost) : void
     {
         $this->estimatedCost = $estimatedCost;
     }
-    /**
-     * @return string|MonetaryAmount|null
-     */
-    public function getEstimatedCost()
+    public function getEstimatedCost() : string|MonetaryAmount|null
     {
         return $this->estimatedCost;
     }
@@ -34,3 +25,4 @@ class HowToSupply extends HowToItem implements \JsonSerializable
         }));
     }
 }
+

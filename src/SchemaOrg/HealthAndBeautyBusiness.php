@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("Health and beauty.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('Health and beauty.')]
 class HealthAndBeautyBusiness extends LocalBusiness implements \JsonSerializable
 {
 }
+

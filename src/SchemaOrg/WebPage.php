@@ -4,169 +4,88 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A web page. Every web page is implicitly assumed to be declared to be of type WebPage, so the various properties about that webpage, such as <code>breadcrumb</code> may be used. We recommend explicit declaration if these properties are specified, but if they are found outside of an itemscope, they will be assumed to be about the page.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A web page. Every web page is implicitly assumed to be declared to be of type WebPage, so the various properties about that webpage, such as <code>breadcrumb</code> may be used. We recommend explicit declaration if these properties are specified, but if they are found outside of an itemscope, they will be assumed to be about the page.')]
 class WebPage extends CreativeWork implements \JsonSerializable
 {
-    /**
-     * @var \PSX\Uri\Uri|null
-     */
-    protected $significantLink;
-    /**
-     * @var string|BreadcrumbList|null
-     */
-    protected $breadcrumb;
-    /**
-     * @var \PSX\DateTime\Date|null
-     */
-    protected $lastReviewed;
-    /**
-     * @var Specialty|null
-     */
-    protected $specialty;
-    /**
-     * @var ImageObject|null
-     */
-    protected $primaryImageOfPage;
-    /**
-     * @var \PSX\Uri\Uri|SpeakableSpecification|null
-     */
-    protected $speakable;
-    /**
-     * @var Person|Organization|null
-     */
-    protected $reviewedBy;
-    /**
-     * @var \PSX\Uri\Uri|null
-     */
-    protected $relatedLink;
-    /**
-     * @var WebPageElement|null
-     */
-    protected $mainContentOfPage;
-    /**
-     * @param \PSX\Uri\Uri|null $significantLink
-     */
+    protected ?\PSX\Uri\Uri $significantLink = null;
+    protected string|BreadcrumbList|null $breadcrumb = null;
+    protected ?\PSX\DateTime\Date $lastReviewed = null;
+    protected ?Specialty $specialty = null;
+    protected ?ImageObject $primaryImageOfPage = null;
+    protected \PSX\Uri\Uri|SpeakableSpecification|null $speakable = null;
+    protected Person|Organization|null $reviewedBy = null;
+    protected ?\PSX\Uri\Uri $relatedLink = null;
+    protected ?WebPageElement $mainContentOfPage = null;
     public function setSignificantLink(?\PSX\Uri\Uri $significantLink) : void
     {
         $this->significantLink = $significantLink;
     }
-    /**
-     * @return \PSX\Uri\Uri|null
-     */
     public function getSignificantLink() : ?\PSX\Uri\Uri
     {
         return $this->significantLink;
     }
-    /**
-     * @param string|BreadcrumbList|null $breadcrumb
-     */
-    public function setBreadcrumb($breadcrumb) : void
+    public function setBreadcrumb(string|BreadcrumbList|null $breadcrumb) : void
     {
         $this->breadcrumb = $breadcrumb;
     }
-    /**
-     * @return string|BreadcrumbList|null
-     */
-    public function getBreadcrumb()
+    public function getBreadcrumb() : string|BreadcrumbList|null
     {
         return $this->breadcrumb;
     }
-    /**
-     * @param \PSX\DateTime\Date|null $lastReviewed
-     */
     public function setLastReviewed(?\PSX\DateTime\Date $lastReviewed) : void
     {
         $this->lastReviewed = $lastReviewed;
     }
-    /**
-     * @return \PSX\DateTime\Date|null
-     */
     public function getLastReviewed() : ?\PSX\DateTime\Date
     {
         return $this->lastReviewed;
     }
-    /**
-     * @param Specialty|null $specialty
-     */
     public function setSpecialty(?Specialty $specialty) : void
     {
         $this->specialty = $specialty;
     }
-    /**
-     * @return Specialty|null
-     */
     public function getSpecialty() : ?Specialty
     {
         return $this->specialty;
     }
-    /**
-     * @param ImageObject|null $primaryImageOfPage
-     */
     public function setPrimaryImageOfPage(?ImageObject $primaryImageOfPage) : void
     {
         $this->primaryImageOfPage = $primaryImageOfPage;
     }
-    /**
-     * @return ImageObject|null
-     */
     public function getPrimaryImageOfPage() : ?ImageObject
     {
         return $this->primaryImageOfPage;
     }
-    /**
-     * @param \PSX\Uri\Uri|SpeakableSpecification|null $speakable
-     */
-    public function setSpeakable($speakable) : void
+    public function setSpeakable(\PSX\Uri\Uri|SpeakableSpecification|null $speakable) : void
     {
         $this->speakable = $speakable;
     }
-    /**
-     * @return \PSX\Uri\Uri|SpeakableSpecification|null
-     */
-    public function getSpeakable()
+    public function getSpeakable() : \PSX\Uri\Uri|SpeakableSpecification|null
     {
         return $this->speakable;
     }
-    /**
-     * @param Person|Organization|null $reviewedBy
-     */
-    public function setReviewedBy($reviewedBy) : void
+    public function setReviewedBy(Person|Organization|null $reviewedBy) : void
     {
         $this->reviewedBy = $reviewedBy;
     }
-    /**
-     * @return Person|Organization|null
-     */
-    public function getReviewedBy()
+    public function getReviewedBy() : Person|Organization|null
     {
         return $this->reviewedBy;
     }
-    /**
-     * @param \PSX\Uri\Uri|null $relatedLink
-     */
     public function setRelatedLink(?\PSX\Uri\Uri $relatedLink) : void
     {
         $this->relatedLink = $relatedLink;
     }
-    /**
-     * @return \PSX\Uri\Uri|null
-     */
     public function getRelatedLink() : ?\PSX\Uri\Uri
     {
         return $this->relatedLink;
     }
-    /**
-     * @param WebPageElement|null $mainContentOfPage
-     */
     public function setMainContentOfPage(?WebPageElement $mainContentOfPage) : void
     {
         $this->mainContentOfPage = $mainContentOfPage;
     }
-    /**
-     * @return WebPageElement|null
-     */
     public function getMainContentOfPage() : ?WebPageElement
     {
         return $this->mainContentOfPage;
@@ -178,3 +97,4 @@ class WebPage extends CreativeWork implements \JsonSerializable
         }));
     }
 }
+

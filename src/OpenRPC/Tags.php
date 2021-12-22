@@ -10,3 +10,4 @@ namespace PSX\Model\OpenRPC;
 class Tags extends \PSX\Record\Record
 {
 }
+

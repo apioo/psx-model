@@ -4,43 +4,25 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A single, identifiable product instance (e.g. a laptop with a particular serial number).")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A single, identifiable product instance (e.g. a laptop with a particular serial number).')]
 class IndividualProduct extends Product implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $vehicleIdentificationNumber;
-    /**
-     * @var string|null
-     */
-    protected $serialNumber;
-    /**
-     * @param string|null $vehicleIdentificationNumber
-     */
+    protected ?string $vehicleIdentificationNumber = null;
+    protected ?string $serialNumber = null;
     public function setVehicleIdentificationNumber(?string $vehicleIdentificationNumber) : void
     {
         $this->vehicleIdentificationNumber = $vehicleIdentificationNumber;
     }
-    /**
-     * @return string|null
-     */
     public function getVehicleIdentificationNumber() : ?string
     {
         return $this->vehicleIdentificationNumber;
     }
-    /**
-     * @param string|null $serialNumber
-     */
     public function setSerialNumber(?string $serialNumber) : void
     {
         $this->serialNumber = $serialNumber;
     }
-    /**
-     * @return string|null
-     */
     public function getSerialNumber() : ?string
     {
         return $this->serialNumber;
@@ -52,3 +34,4 @@ class IndividualProduct extends Product implements \JsonSerializable
         }));
     }
 }
+

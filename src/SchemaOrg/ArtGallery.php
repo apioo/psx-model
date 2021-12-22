@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("An art gallery.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('An art gallery.')]
 class ArtGallery extends EntertainmentBusiness implements \JsonSerializable
 {
 }
+

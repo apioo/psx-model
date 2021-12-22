@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("Auto body shop.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('Auto body shop.')]
 class AutoBodyShop extends AutomotiveBusiness implements \JsonSerializable
 {
 }
+

@@ -4,25 +4,16 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A collection of datasets.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A collection of datasets.')]
 class DataCatalog extends CreativeWork implements \JsonSerializable
 {
-    /**
-     * @var Dataset|null
-     */
-    protected $dataset;
-    /**
-     * @param Dataset|null $dataset
-     */
+    protected ?Dataset $dataset = null;
     public function setDataset(?Dataset $dataset) : void
     {
         $this->dataset = $dataset;
     }
-    /**
-     * @return Dataset|null
-     */
     public function getDataset() : ?Dataset
     {
         return $this->dataset;
@@ -34,3 +25,4 @@ class DataCatalog extends CreativeWork implements \JsonSerializable
         }));
     }
 }
+

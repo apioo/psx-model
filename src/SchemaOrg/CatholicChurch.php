@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A Catholic church.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A Catholic church.')]
 class CatholicChurch extends Church implements \JsonSerializable
 {
 }
+

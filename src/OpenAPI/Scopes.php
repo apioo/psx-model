@@ -10,3 +10,4 @@ namespace PSX\Model\OpenAPI;
 class Scopes extends \PSX\Record\Record
 {
 }
+

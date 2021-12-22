@@ -7,20 +7,11 @@ namespace PSX\Model\AsyncAPI;
 
 class OperationBindings implements \JsonSerializable
 {
-    /**
-     * @var HttpOperationBinding|null
-     */
-    protected $http;
-    /**
-     * @param HttpOperationBinding|null $http
-     */
+    protected ?HttpOperationBinding $http = null;
     public function setHttp(?HttpOperationBinding $http) : void
     {
         $this->http = $http;
     }
-    /**
-     * @return HttpOperationBinding|null
-     */
     public function getHttp() : ?HttpOperationBinding
     {
         return $this->http;
@@ -32,3 +23,4 @@ class OperationBindings implements \JsonSerializable
         });
     }
 }
+

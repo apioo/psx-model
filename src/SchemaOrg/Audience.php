@@ -4,43 +4,25 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("Intended audience for an item, i.e. the group for whom the item was created.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('Intended audience for an item, i.e. the group for whom the item was created.')]
 class Audience extends Intangible implements \JsonSerializable
 {
-    /**
-     * @var AdministrativeArea|null
-     */
-    protected $geographicArea;
-    /**
-     * @var string|null
-     */
-    protected $audienceType;
-    /**
-     * @param AdministrativeArea|null $geographicArea
-     */
+    protected ?AdministrativeArea $geographicArea = null;
+    protected ?string $audienceType = null;
     public function setGeographicArea(?AdministrativeArea $geographicArea) : void
     {
         $this->geographicArea = $geographicArea;
     }
-    /**
-     * @return AdministrativeArea|null
-     */
     public function getGeographicArea() : ?AdministrativeArea
     {
         return $this->geographicArea;
     }
-    /**
-     * @param string|null $audienceType
-     */
     public function setAudienceType(?string $audienceType) : void
     {
         $this->audienceType = $audienceType;
     }
-    /**
-     * @return string|null
-     */
     public function getAudienceType() : ?string
     {
         return $this->audienceType;
@@ -52,3 +34,4 @@ class Audience extends Intangible implements \JsonSerializable
         }));
     }
 }
+

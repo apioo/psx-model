@@ -4,25 +4,16 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("Season dedicated to TV broadcast and associated online delivery.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('Season dedicated to TV broadcast and associated online delivery.')]
 class TVSeason extends CreativeWorkSeason implements \JsonSerializable
 {
-    /**
-     * @var Country|null
-     */
-    protected $countryOfOrigin;
-    /**
-     * @param Country|null $countryOfOrigin
-     */
+    protected ?Country $countryOfOrigin = null;
     public function setCountryOfOrigin(?Country $countryOfOrigin) : void
     {
         $this->countryOfOrigin = $countryOfOrigin;
     }
-    /**
-     * @return Country|null
-     */
     public function getCountryOfOrigin() : ?Country
     {
         return $this->countryOfOrigin;
@@ -34,3 +25,4 @@ class TVSeason extends CreativeWorkSeason implements \JsonSerializable
         }));
     }
 }
+

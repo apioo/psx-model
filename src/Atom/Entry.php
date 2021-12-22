@@ -10,51 +10,27 @@ class Entry implements \JsonSerializable
     /**
      * @var array<Person>|null
      */
-    protected $author;
+    protected ?array $author = null;
     /**
      * @var array<Category>|null
      */
-    protected $category;
-    /**
-     * @var Text|null
-     */
-    protected $content;
+    protected ?array $category = null;
+    protected ?Text $content = null;
     /**
      * @var array<Person>|null
      */
-    protected $contributor;
-    /**
-     * @var string|null
-     */
-    protected $id;
+    protected ?array $contributor = null;
+    protected ?string $id = null;
     /**
      * @var array<Link>|null
      */
-    protected $link;
-    /**
-     * @var \DateTime|null
-     */
-    protected $published;
-    /**
-     * @var string|null
-     */
-    protected $rights;
-    /**
-     * @var Atom|null
-     */
-    protected $source;
-    /**
-     * @var Text|null
-     */
-    protected $summary;
-    /**
-     * @var string|null
-     */
-    protected $title;
-    /**
-     * @var \DateTime|null
-     */
-    protected $updated;
+    protected ?array $link = null;
+    protected ?\DateTime $published = null;
+    protected ?string $rights = null;
+    protected ?Atom $source = null;
+    protected ?Text $summary = null;
+    protected ?string $title = null;
+    protected ?\DateTime $updated = null;
     /**
      * @param array<Person>|null $author
      */
@@ -62,9 +38,6 @@ class Entry implements \JsonSerializable
     {
         $this->author = $author;
     }
-    /**
-     * @return array<Person>|null
-     */
     public function getAuthor() : ?array
     {
         return $this->author;
@@ -76,23 +49,14 @@ class Entry implements \JsonSerializable
     {
         $this->category = $category;
     }
-    /**
-     * @return array<Category>|null
-     */
     public function getCategory() : ?array
     {
         return $this->category;
     }
-    /**
-     * @param Text|null $content
-     */
     public function setContent(?Text $content) : void
     {
         $this->content = $content;
     }
-    /**
-     * @return Text|null
-     */
     public function getContent() : ?Text
     {
         return $this->content;
@@ -104,23 +68,14 @@ class Entry implements \JsonSerializable
     {
         $this->contributor = $contributor;
     }
-    /**
-     * @return array<Person>|null
-     */
     public function getContributor() : ?array
     {
         return $this->contributor;
     }
-    /**
-     * @param string|null $id
-     */
     public function setId(?string $id) : void
     {
         $this->id = $id;
     }
-    /**
-     * @return string|null
-     */
     public function getId() : ?string
     {
         return $this->id;
@@ -132,93 +87,54 @@ class Entry implements \JsonSerializable
     {
         $this->link = $link;
     }
-    /**
-     * @return array<Link>|null
-     */
     public function getLink() : ?array
     {
         return $this->link;
     }
-    /**
-     * @param \DateTime|null $published
-     */
     public function setPublished(?\DateTime $published) : void
     {
         $this->published = $published;
     }
-    /**
-     * @return \DateTime|null
-     */
     public function getPublished() : ?\DateTime
     {
         return $this->published;
     }
-    /**
-     * @param string|null $rights
-     */
     public function setRights(?string $rights) : void
     {
         $this->rights = $rights;
     }
-    /**
-     * @return string|null
-     */
     public function getRights() : ?string
     {
         return $this->rights;
     }
-    /**
-     * @param Atom|null $source
-     */
     public function setSource(?Atom $source) : void
     {
         $this->source = $source;
     }
-    /**
-     * @return Atom|null
-     */
     public function getSource() : ?Atom
     {
         return $this->source;
     }
-    /**
-     * @param Text|null $summary
-     */
     public function setSummary(?Text $summary) : void
     {
         $this->summary = $summary;
     }
-    /**
-     * @return Text|null
-     */
     public function getSummary() : ?Text
     {
         return $this->summary;
     }
-    /**
-     * @param string|null $title
-     */
     public function setTitle(?string $title) : void
     {
         $this->title = $title;
     }
-    /**
-     * @return string|null
-     */
     public function getTitle() : ?string
     {
         return $this->title;
     }
-    /**
-     * @param \DateTime|null $updated
-     */
     public function setUpdated(?\DateTime $updated) : void
     {
         $this->updated = $updated;
     }
-    /**
-     * @return \DateTime|null
-     */
     public function getUpdated() : ?\DateTime
     {
         return $this->updated;
@@ -230,3 +146,4 @@ class Entry implements \JsonSerializable
         });
     }
 }
+

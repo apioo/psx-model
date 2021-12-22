@@ -10,3 +10,4 @@ namespace PSX\Model\AsyncAPI;
 class Channels extends \PSX\Record\Record
 {
 }
+

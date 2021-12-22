@@ -4,100 +4,55 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
-* @Description("When a single product is associated with multiple offers (for example, the same pair of shoes is offered by different merchants), then AggregateOffer can be used.<br/><br/>
+use PSX\Schema\Attribute\Description;
 
-Note: AggregateOffers are normally expected to associate multiple offers that all share the same defined <a class=""localLink"" href=""http://schema.org/businessFunction"">businessFunction</a> value, or default to http://purl.org/goodrelations/v1#Sell if businessFunction is not explicitly defined.")
-*/
+#[Description('When a single product is associated with multiple offers (for example, the same pair of shoes is offered by different merchants), then AggregateOffer can be used.<br/><br/>
+
+Note: AggregateOffers are normally expected to associate multiple offers that all share the same defined <a class="localLink" href="http://schema.org/businessFunction">businessFunction</a> value, or default to http://purl.org/goodrelations/v1#Sell if businessFunction is not explicitly defined.')]
 class AggregateOffer extends Offer implements \JsonSerializable
 {
-    /**
-     * @var string|float|null
-     */
-    protected $highPrice;
-    /**
-     * @var string|float|null
-     */
-    protected $lowPrice;
-    /**
-     * @var int|null
-     */
-    protected $offerCount;
-    /**
-     * @var Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null
-     */
-    protected $itemOffered;
-    /**
-     * @var Offer|Demand|null
-     */
-    protected $offers;
-    /**
-     * @param string|float|null $highPrice
-     */
-    public function setHighPrice($highPrice) : void
+    protected string|float|null $highPrice = null;
+    protected string|float|null $lowPrice = null;
+    protected ?int $offerCount = null;
+    protected Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered = null;
+    protected Offer|Demand|null $offers = null;
+    public function setHighPrice(string|float|null $highPrice) : void
     {
         $this->highPrice = $highPrice;
     }
-    /**
-     * @return string|float|null
-     */
-    public function getHighPrice()
+    public function getHighPrice() : string|float|null
     {
         return $this->highPrice;
     }
-    /**
-     * @param string|float|null $lowPrice
-     */
-    public function setLowPrice($lowPrice) : void
+    public function setLowPrice(string|float|null $lowPrice) : void
     {
         $this->lowPrice = $lowPrice;
     }
-    /**
-     * @return string|float|null
-     */
-    public function getLowPrice()
+    public function getLowPrice() : string|float|null
     {
         return $this->lowPrice;
     }
-    /**
-     * @param int|null $offerCount
-     */
     public function setOfferCount(?int $offerCount) : void
     {
         $this->offerCount = $offerCount;
     }
-    /**
-     * @return int|null
-     */
     public function getOfferCount() : ?int
     {
         return $this->offerCount;
     }
-    /**
-     * @param Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered
-     */
-    public function setItemOffered($itemOffered) : void
+    public function setItemOffered(Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered) : void
     {
         $this->itemOffered = $itemOffered;
     }
-    /**
-     * @return Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null
-     */
-    public function getItemOffered()
+    public function getItemOffered() : Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null
     {
         return $this->itemOffered;
     }
-    /**
-     * @param Offer|Demand|null $offers
-     */
-    public function setOffers($offers) : void
+    public function setOffers(Offer|Demand|null $offers) : void
     {
         $this->offers = $offers;
     }
-    /**
-     * @return Offer|Demand|null
-     */
-    public function getOffers()
+    public function getOffers() : Offer|Demand|null
     {
         return $this->offers;
     }
@@ -108,3 +63,4 @@ class AggregateOffer extends Offer implements \JsonSerializable
         }));
     }
 }
+

@@ -4,116 +4,62 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("The geographic coordinates of a place or event.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('The geographic coordinates of a place or event.')]
 class GeoCoordinates extends StructuredValue implements \JsonSerializable
 {
-    /**
-     * @var string|Country|null
-     */
-    protected $addressCountry;
-    /**
-     * @var string|float|null
-     */
-    protected $longitude;
-    /**
-     * @var string|null
-     */
-    protected $postalCode;
-    /**
-     * @var float|string|null
-     */
-    protected $elevation;
-    /**
-     * @var string|float|null
-     */
-    protected $latitude;
-    /**
-     * @var string|PostalAddress|null
-     */
-    protected $address;
-    /**
-     * @param string|Country|null $addressCountry
-     */
-    public function setAddressCountry($addressCountry) : void
+    protected string|Country|null $addressCountry = null;
+    protected string|float|null $longitude = null;
+    protected ?string $postalCode = null;
+    protected float|string|null $elevation = null;
+    protected string|float|null $latitude = null;
+    protected string|PostalAddress|null $address = null;
+    public function setAddressCountry(string|Country|null $addressCountry) : void
     {
         $this->addressCountry = $addressCountry;
     }
-    /**
-     * @return string|Country|null
-     */
-    public function getAddressCountry()
+    public function getAddressCountry() : string|Country|null
     {
         return $this->addressCountry;
     }
-    /**
-     * @param string|float|null $longitude
-     */
-    public function setLongitude($longitude) : void
+    public function setLongitude(string|float|null $longitude) : void
     {
         $this->longitude = $longitude;
     }
-    /**
-     * @return string|float|null
-     */
-    public function getLongitude()
+    public function getLongitude() : string|float|null
     {
         return $this->longitude;
     }
-    /**
-     * @param string|null $postalCode
-     */
     public function setPostalCode(?string $postalCode) : void
     {
         $this->postalCode = $postalCode;
     }
-    /**
-     * @return string|null
-     */
     public function getPostalCode() : ?string
     {
         return $this->postalCode;
     }
-    /**
-     * @param float|string|null $elevation
-     */
-    public function setElevation($elevation) : void
+    public function setElevation(float|string|null $elevation) : void
     {
         $this->elevation = $elevation;
     }
-    /**
-     * @return float|string|null
-     */
-    public function getElevation()
+    public function getElevation() : float|string|null
     {
         return $this->elevation;
     }
-    /**
-     * @param string|float|null $latitude
-     */
-    public function setLatitude($latitude) : void
+    public function setLatitude(string|float|null $latitude) : void
     {
         $this->latitude = $latitude;
     }
-    /**
-     * @return string|float|null
-     */
-    public function getLatitude()
+    public function getLatitude() : string|float|null
     {
         return $this->latitude;
     }
-    /**
-     * @param string|PostalAddress|null $address
-     */
-    public function setAddress($address) : void
+    public function setAddress(string|PostalAddress|null $address) : void
     {
         $this->address = $address;
     }
-    /**
-     * @return string|PostalAddress|null
-     */
-    public function getAddress()
+    public function getAddress() : string|PostalAddress|null
     {
         return $this->address;
     }
@@ -124,3 +70,4 @@ class GeoCoordinates extends StructuredValue implements \JsonSerializable
         }));
     }
 }
+

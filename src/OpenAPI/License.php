@@ -4,44 +4,27 @@ declare(strict_types = 1);
 
 namespace PSX\Model\OpenAPI;
 
-/**
- * @Description("License information for the exposed API.")
- * @Required({"name"})
- */
+use PSX\Schema\Attribute\Description;
+use PSX\Schema\Attribute\Required;
+
+#[Description('License information for the exposed API.')]
+#[Required(array('name'))]
 class License implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $name;
-    /**
-     * @var string|null
-     */
-    protected $url;
-    /**
-     * @param string|null $name
-     */
+    protected ?string $name = null;
+    protected ?string $url = null;
     public function setName(?string $name) : void
     {
         $this->name = $name;
     }
-    /**
-     * @return string|null
-     */
     public function getName() : ?string
     {
         return $this->name;
     }
-    /**
-     * @param string|null $url
-     */
     public function setUrl(?string $url) : void
     {
         $this->url = $url;
     }
-    /**
-     * @return string|null
-     */
     public function getUrl() : ?string
     {
         return $this->url;
@@ -53,3 +36,4 @@ class License implements \JsonSerializable
         });
     }
 }
+

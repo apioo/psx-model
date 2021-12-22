@@ -4,64 +4,37 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
-* @Description("A suite in a hotel or other public accommodation, denotes a class of luxury accommodations, the key feature of which is multiple rooms (Source: Wikipedia, the free encyclopedia, see <a href=""http://en.wikipedia.org/wiki/Suite_(hotel)"">http://en.wikipedia.org/wiki/Suite_(hotel)</a>).
+use PSX\Schema\Attribute\Description;
+
+#[Description('A suite in a hotel or other public accommodation, denotes a class of luxury accommodations, the key feature of which is multiple rooms (Source: Wikipedia, the free encyclopedia, see <a href="http://en.wikipedia.org/wiki/Suite_(hotel)">http://en.wikipedia.org/wiki/Suite_(hotel)</a>).
 <br /><br />
-See also the <a href=""/docs/hotels.html"">dedicated document on the use of schema.org for marking up hotels and other forms of accommodations</a>.")
-*/
+See also the <a href="/docs/hotels.html">dedicated document on the use of schema.org for marking up hotels and other forms of accommodations</a>.')]
 class Suite extends Accommodation implements \JsonSerializable
 {
-    /**
-     * @var QuantitativeValue|null
-     */
-    protected $occupancy;
-    /**
-     * @var float|QuantitativeValue|null
-     */
-    protected $numberOfRooms;
-    /**
-     * @var string|BedDetails|BedType|null
-     */
-    protected $bed;
-    /**
-     * @param QuantitativeValue|null $occupancy
-     */
+    protected ?QuantitativeValue $occupancy = null;
+    protected float|QuantitativeValue|null $numberOfRooms = null;
+    protected string|BedDetails|BedType|null $bed = null;
     public function setOccupancy(?QuantitativeValue $occupancy) : void
     {
         $this->occupancy = $occupancy;
     }
-    /**
-     * @return QuantitativeValue|null
-     */
     public function getOccupancy() : ?QuantitativeValue
     {
         return $this->occupancy;
     }
-    /**
-     * @param float|QuantitativeValue|null $numberOfRooms
-     */
-    public function setNumberOfRooms($numberOfRooms) : void
+    public function setNumberOfRooms(float|QuantitativeValue|null $numberOfRooms) : void
     {
         $this->numberOfRooms = $numberOfRooms;
     }
-    /**
-     * @return float|QuantitativeValue|null
-     */
-    public function getNumberOfRooms()
+    public function getNumberOfRooms() : float|QuantitativeValue|null
     {
         return $this->numberOfRooms;
     }
-    /**
-     * @param string|BedDetails|BedType|null $bed
-     */
-    public function setBed($bed) : void
+    public function setBed(string|BedDetails|BedType|null $bed) : void
     {
         $this->bed = $bed;
     }
-    /**
-     * @return string|BedDetails|BedType|null
-     */
-    public function getBed()
+    public function getBed() : string|BedDetails|BedType|null
     {
         return $this->bed;
     }
@@ -72,3 +45,4 @@ class Suite extends Accommodation implements \JsonSerializable
         }));
     }
 }
+

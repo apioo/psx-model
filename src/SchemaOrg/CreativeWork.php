@@ -4,1429 +4,718 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("The most generic kind of creative work, including books, movies, photographs, software programs, etc.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('The most generic kind of creative work, including books, movies, photographs, software programs, etc.')]
 class CreativeWork extends Thing implements \JsonSerializable
 {
-    /**
-     * @var Audience|null
-     */
-    protected $audience;
-    /**
-     * @var Person|null
-     */
-    protected $editor;
-    /**
-     * @var \PSX\Uri\Uri|Product|CreativeWork|null
-     */
-    protected $isBasedOn;
-    /**
-     * @var string|null
-     */
-    protected $alternativeHeadline;
-    /**
-     * @var \PSX\DateTime\Date|null
-     */
-    protected $expires;
-    /**
-     * @var Place|null
-     */
-    protected $spatialCoverage;
-    /**
-     * @var Place|null
-     */
-    protected $contentLocation;
-    /**
-     * @var MediaObject|null
-     */
-    protected $encoding;
-    /**
-     * @var \PSX\Uri\Uri|CreativeWork|null
-     */
-    protected $publishingPrinciples;
-    /**
-     * @var Clip|VideoObject|null
-     */
-    protected $video;
-    /**
-     * @var \PSX\DateTime\Date|\DateTime|null
-     */
-    protected $datePublished;
-    /**
-     * @var string|null
-     */
-    protected $text;
-    /**
-     * @var Person|Organization|null
-     */
-    protected $sponsor;
-    /**
-     * @var ItemList|null
-     */
-    protected $accessModeSufficient;
-    /**
-     * @var int|string|null
-     */
-    protected $position;
-    /**
-     * @var float|string|null
-     */
-    protected $version;
-    /**
-     * @var \PSX\Uri\Uri|string|null
-     */
-    protected $encodingFormat;
-    /**
-     * @var Thing|null
-     */
-    protected $mentions;
-    /**
-     * @var \PSX\DateTime\Date|\DateTime|null
-     */
-    protected $dateModified;
-    /**
-     * @var \PSX\DateTime\Date|\DateTime|null
-     */
-    protected $dateCreated;
-    /**
-     * @var string|null
-     */
-    protected $keywords;
-    /**
-     * @var string|null
-     */
-    protected $learningResourceType;
-    /**
-     * @var string|null
-     */
-    protected $accessMode;
-    /**
-     * @var PublicationEvent|null
-     */
-    protected $publication;
-    /**
-     * @var \PSX\Uri\Uri|null
-     */
-    protected $discussionUrl;
-    /**
-     * @var string|null
-     */
-    protected $accessibilityAPI;
-    /**
-     * @var string|null
-     */
-    protected $typicalAgeRange;
-    /**
-     * @var Organization|Person|null
-     */
-    protected $provider;
-    /**
-     * @var Person|Organization|null
-     */
-    protected $producer;
-    /**
-     * @var MediaObject|null
-     */
-    protected $associatedMedia;
-    /**
-     * @var \PSX\Uri\Uri|CreativeWork|null
-     */
-    protected $isPartOf;
-    /**
-     * @var Person|null
-     */
-    protected $character;
-    /**
-     * @var bool|null
-     */
-    protected $isFamilyFriendly;
-    /**
-     * @var string|CreativeWork|null
-     */
-    protected $citation;
-    /**
-     * @var Place|null
-     */
-    protected $locationCreated;
-    /**
-     * @var int|null
-     */
-    protected $commentCount;
-    /**
-     * @var string|\DateTime|\PSX\Uri\Uri|null
-     */
-    protected $temporalCoverage;
-    /**
-     * @var Organization|Person|null
-     */
-    protected $publisher;
-    /**
-     * @var \PSX\Uri\Uri|string|Product|null
-     */
-    protected $material;
-    /**
-     * @var AggregateRating|null
-     */
-    protected $aggregateRating;
-    /**
-     * @var string|null
-     */
-    protected $accessibilityControl;
-    /**
-     * @var string|null
-     */
-    protected $interactivityType;
-    /**
-     * @var string|Language|null
-     */
-    protected $inLanguage;
-    /**
-     * @var string|null
-     */
-    protected $award;
-    /**
-     * @var \PSX\Uri\Uri|CreativeWork|null
-     */
-    protected $license;
-    /**
-     * @var Review|null
-     */
-    protected $review;
-    /**
-     * @var string|null
-     */
-    protected $educationalUse;
-    /**
-     * @var Organization|Person|null
-     */
-    protected $translator;
-    /**
-     * @var \PSX\Uri\Uri|string|null
-     */
-    protected $genre;
-    /**
-     * @var Comment|null
-     */
-    protected $comment;
-    /**
-     * @var Person|Organization|null
-     */
-    protected $author;
-    /**
-     * @var Clip|AudioObject|MusicRecording|null
-     */
-    protected $audio;
-    /**
-     * @var string|null
-     */
-    protected $accessibilitySummary;
-    /**
-     * @var Organization|null
-     */
-    protected $sourceOrganization;
-    /**
-     * @var string|Rating|null
-     */
-    protected $contentRating;
-    /**
-     * @var \DateTime|string|null
-     */
-    protected $temporal;
-    /**
-     * @var float|null
-     */
-    protected $copyrightYear;
-    /**
-     * @var Organization|Person|null
-     */
-    protected $creator;
-    /**
-     * @var Person|null
-     */
-    protected $accountablePerson;
-    /**
-     * @var bool|null
-     */
-    protected $isAccessibleForFree;
-    /**
-     * @var string|null
-     */
-    protected $accessibilityFeature;
-    /**
-     * @var PublicationEvent|null
-     */
-    protected $releasedEvent;
-    /**
-     * @var InteractionCounter|null
-     */
-    protected $interactionStatistic;
-    /**
-     * @var string|null
-     */
-    protected $headline;
-    /**
-     * @var Place|null
-     */
-    protected $spatial;
-    /**
-     * @var \PSX\Uri\Uri|string|null
-     */
-    protected $schemaVersion;
-    /**
-     * @var Person|Organization|null
-     */
-    protected $copyrightHolder;
-    /**
-     * @var string|null
-     */
-    protected $accessibilityHazard;
-    /**
-     * @var AlignmentObject|null
-     */
-    protected $educationalAlignment;
-    /**
-     * @var Duration|null
-     */
-    protected $timeRequired;
-    /**
-     * @var Organization|Person|null
-     */
-    protected $contributor;
-    /**
-     * @var \PSX\Uri\Uri|null
-     */
-    protected $thumbnailUrl;
-    /**
-     * @var CreativeWork|null
-     */
-    protected $containsSeason;
-    /**
-     * @var CreativeWork|null
-     */
-    protected $hasPart;
-    /**
-     * @var Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null
-     */
-    protected $itemOffered;
-    /**
-     * @var Offer|Demand|null
-     */
-    protected $offers;
-    /**
-     * @var Event|null
-     */
-    protected $recordedAt;
-    /**
-     * @var CreativeWork|null
-     */
-    protected $workExample;
-    /**
-     * @var CreativeWork|null
-     */
-    protected $exampleOfWork;
-    /**
-     * @param Audience|null $audience
-     */
+    protected ?Audience $audience = null;
+    protected ?Person $editor = null;
+    protected \PSX\Uri\Uri|Product|CreativeWork|null $isBasedOn = null;
+    protected ?string $alternativeHeadline = null;
+    protected ?\PSX\DateTime\Date $expires = null;
+    protected ?Place $spatialCoverage = null;
+    protected ?Place $contentLocation = null;
+    protected ?MediaObject $encoding = null;
+    protected \PSX\Uri\Uri|CreativeWork|null $publishingPrinciples = null;
+    protected Clip|VideoObject|null $video = null;
+    protected \PSX\DateTime\Date|\DateTime|null $datePublished = null;
+    protected ?string $text = null;
+    protected Person|Organization|null $sponsor = null;
+    protected ?ItemList $accessModeSufficient = null;
+    protected int|string|null $position = null;
+    protected float|string|null $version = null;
+    protected \PSX\Uri\Uri|string|null $encodingFormat = null;
+    protected ?Thing $mentions = null;
+    protected \PSX\DateTime\Date|\DateTime|null $dateModified = null;
+    protected \PSX\DateTime\Date|\DateTime|null $dateCreated = null;
+    protected ?string $keywords = null;
+    protected ?string $learningResourceType = null;
+    protected ?string $accessMode = null;
+    protected ?PublicationEvent $publication = null;
+    protected ?\PSX\Uri\Uri $discussionUrl = null;
+    protected ?string $accessibilityAPI = null;
+    protected ?string $typicalAgeRange = null;
+    protected Organization|Person|null $provider = null;
+    protected Person|Organization|null $producer = null;
+    protected ?MediaObject $associatedMedia = null;
+    protected \PSX\Uri\Uri|CreativeWork|null $isPartOf = null;
+    protected ?Person $character = null;
+    protected ?bool $isFamilyFriendly = null;
+    protected string|CreativeWork|null $citation = null;
+    protected ?Place $locationCreated = null;
+    protected ?int $commentCount = null;
+    protected string|\DateTime|\PSX\Uri\Uri|null $temporalCoverage = null;
+    protected Organization|Person|null $publisher = null;
+    protected \PSX\Uri\Uri|string|Product|null $material = null;
+    protected ?AggregateRating $aggregateRating = null;
+    protected ?string $accessibilityControl = null;
+    protected ?string $interactivityType = null;
+    protected string|Language|null $inLanguage = null;
+    protected ?string $award = null;
+    protected \PSX\Uri\Uri|CreativeWork|null $license = null;
+    protected ?Review $review = null;
+    protected ?string $educationalUse = null;
+    protected Organization|Person|null $translator = null;
+    protected \PSX\Uri\Uri|string|null $genre = null;
+    protected ?Comment $comment = null;
+    protected Person|Organization|null $author = null;
+    protected Clip|AudioObject|MusicRecording|null $audio = null;
+    protected ?string $accessibilitySummary = null;
+    protected ?Organization $sourceOrganization = null;
+    protected string|Rating|null $contentRating = null;
+    protected \DateTime|string|null $temporal = null;
+    protected ?float $copyrightYear = null;
+    protected Organization|Person|null $creator = null;
+    protected ?Person $accountablePerson = null;
+    protected ?bool $isAccessibleForFree = null;
+    protected ?string $accessibilityFeature = null;
+    protected ?PublicationEvent $releasedEvent = null;
+    protected ?InteractionCounter $interactionStatistic = null;
+    protected ?string $headline = null;
+    protected ?Place $spatial = null;
+    protected \PSX\Uri\Uri|string|null $schemaVersion = null;
+    protected Person|Organization|null $copyrightHolder = null;
+    protected ?string $accessibilityHazard = null;
+    protected ?AlignmentObject $educationalAlignment = null;
+    protected ?Duration $timeRequired = null;
+    protected Organization|Person|null $contributor = null;
+    protected ?\PSX\Uri\Uri $thumbnailUrl = null;
+    protected ?CreativeWork $containsSeason = null;
+    protected ?CreativeWork $hasPart = null;
+    protected Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered = null;
+    protected Offer|Demand|null $offers = null;
+    protected ?Event $recordedAt = null;
+    protected ?CreativeWork $workExample = null;
+    protected ?CreativeWork $exampleOfWork = null;
     public function setAudience(?Audience $audience) : void
     {
         $this->audience = $audience;
     }
-    /**
-     * @return Audience|null
-     */
     public function getAudience() : ?Audience
     {
         return $this->audience;
     }
-    /**
-     * @param Person|null $editor
-     */
     public function setEditor(?Person $editor) : void
     {
         $this->editor = $editor;
     }
-    /**
-     * @return Person|null
-     */
     public function getEditor() : ?Person
     {
         return $this->editor;
     }
-    /**
-     * @param \PSX\Uri\Uri|Product|CreativeWork|null $isBasedOn
-     */
-    public function setIsBasedOn($isBasedOn) : void
+    public function setIsBasedOn(\PSX\Uri\Uri|Product|CreativeWork|null $isBasedOn) : void
     {
         $this->isBasedOn = $isBasedOn;
     }
-    /**
-     * @return \PSX\Uri\Uri|Product|CreativeWork|null
-     */
-    public function getIsBasedOn()
+    public function getIsBasedOn() : \PSX\Uri\Uri|Product|CreativeWork|null
     {
         return $this->isBasedOn;
     }
-    /**
-     * @param string|null $alternativeHeadline
-     */
     public function setAlternativeHeadline(?string $alternativeHeadline) : void
     {
         $this->alternativeHeadline = $alternativeHeadline;
     }
-    /**
-     * @return string|null
-     */
     public function getAlternativeHeadline() : ?string
     {
         return $this->alternativeHeadline;
     }
-    /**
-     * @param \PSX\DateTime\Date|null $expires
-     */
     public function setExpires(?\PSX\DateTime\Date $expires) : void
     {
         $this->expires = $expires;
     }
-    /**
-     * @return \PSX\DateTime\Date|null
-     */
     public function getExpires() : ?\PSX\DateTime\Date
     {
         return $this->expires;
     }
-    /**
-     * @param Place|null $spatialCoverage
-     */
     public function setSpatialCoverage(?Place $spatialCoverage) : void
     {
         $this->spatialCoverage = $spatialCoverage;
     }
-    /**
-     * @return Place|null
-     */
     public function getSpatialCoverage() : ?Place
     {
         return $this->spatialCoverage;
     }
-    /**
-     * @param Place|null $contentLocation
-     */
     public function setContentLocation(?Place $contentLocation) : void
     {
         $this->contentLocation = $contentLocation;
     }
-    /**
-     * @return Place|null
-     */
     public function getContentLocation() : ?Place
     {
         return $this->contentLocation;
     }
-    /**
-     * @param MediaObject|null $encoding
-     */
     public function setEncoding(?MediaObject $encoding) : void
     {
         $this->encoding = $encoding;
     }
-    /**
-     * @return MediaObject|null
-     */
     public function getEncoding() : ?MediaObject
     {
         return $this->encoding;
     }
-    /**
-     * @param \PSX\Uri\Uri|CreativeWork|null $publishingPrinciples
-     */
-    public function setPublishingPrinciples($publishingPrinciples) : void
+    public function setPublishingPrinciples(\PSX\Uri\Uri|CreativeWork|null $publishingPrinciples) : void
     {
         $this->publishingPrinciples = $publishingPrinciples;
     }
-    /**
-     * @return \PSX\Uri\Uri|CreativeWork|null
-     */
-    public function getPublishingPrinciples()
+    public function getPublishingPrinciples() : \PSX\Uri\Uri|CreativeWork|null
     {
         return $this->publishingPrinciples;
     }
-    /**
-     * @param Clip|VideoObject|null $video
-     */
-    public function setVideo($video) : void
+    public function setVideo(Clip|VideoObject|null $video) : void
     {
         $this->video = $video;
     }
-    /**
-     * @return Clip|VideoObject|null
-     */
-    public function getVideo()
+    public function getVideo() : Clip|VideoObject|null
     {
         return $this->video;
     }
-    /**
-     * @param \PSX\DateTime\Date|\DateTime|null $datePublished
-     */
-    public function setDatePublished($datePublished) : void
+    public function setDatePublished(\PSX\DateTime\Date|\DateTime|null $datePublished) : void
     {
         $this->datePublished = $datePublished;
     }
-    /**
-     * @return \PSX\DateTime\Date|\DateTime|null
-     */
-    public function getDatePublished()
+    public function getDatePublished() : \PSX\DateTime\Date|\DateTime|null
     {
         return $this->datePublished;
     }
-    /**
-     * @param string|null $text
-     */
     public function setText(?string $text) : void
     {
         $this->text = $text;
     }
-    /**
-     * @return string|null
-     */
     public function getText() : ?string
     {
         return $this->text;
     }
-    /**
-     * @param Person|Organization|null $sponsor
-     */
-    public function setSponsor($sponsor) : void
+    public function setSponsor(Person|Organization|null $sponsor) : void
     {
         $this->sponsor = $sponsor;
     }
-    /**
-     * @return Person|Organization|null
-     */
-    public function getSponsor()
+    public function getSponsor() : Person|Organization|null
     {
         return $this->sponsor;
     }
-    /**
-     * @param ItemList|null $accessModeSufficient
-     */
     public function setAccessModeSufficient(?ItemList $accessModeSufficient) : void
     {
         $this->accessModeSufficient = $accessModeSufficient;
     }
-    /**
-     * @return ItemList|null
-     */
     public function getAccessModeSufficient() : ?ItemList
     {
         return $this->accessModeSufficient;
     }
-    /**
-     * @param int|string|null $position
-     */
-    public function setPosition($position) : void
+    public function setPosition(int|string|null $position) : void
     {
         $this->position = $position;
     }
-    /**
-     * @return int|string|null
-     */
-    public function getPosition()
+    public function getPosition() : int|string|null
     {
         return $this->position;
     }
-    /**
-     * @param float|string|null $version
-     */
-    public function setVersion($version) : void
+    public function setVersion(float|string|null $version) : void
     {
         $this->version = $version;
     }
-    /**
-     * @return float|string|null
-     */
-    public function getVersion()
+    public function getVersion() : float|string|null
     {
         return $this->version;
     }
-    /**
-     * @param \PSX\Uri\Uri|string|null $encodingFormat
-     */
-    public function setEncodingFormat($encodingFormat) : void
+    public function setEncodingFormat(\PSX\Uri\Uri|string|null $encodingFormat) : void
     {
         $this->encodingFormat = $encodingFormat;
     }
-    /**
-     * @return \PSX\Uri\Uri|string|null
-     */
-    public function getEncodingFormat()
+    public function getEncodingFormat() : \PSX\Uri\Uri|string|null
     {
         return $this->encodingFormat;
     }
-    /**
-     * @param Thing|null $mentions
-     */
     public function setMentions(?Thing $mentions) : void
     {
         $this->mentions = $mentions;
     }
-    /**
-     * @return Thing|null
-     */
     public function getMentions() : ?Thing
     {
         return $this->mentions;
     }
-    /**
-     * @param \PSX\DateTime\Date|\DateTime|null $dateModified
-     */
-    public function setDateModified($dateModified) : void
+    public function setDateModified(\PSX\DateTime\Date|\DateTime|null $dateModified) : void
     {
         $this->dateModified = $dateModified;
     }
-    /**
-     * @return \PSX\DateTime\Date|\DateTime|null
-     */
-    public function getDateModified()
+    public function getDateModified() : \PSX\DateTime\Date|\DateTime|null
     {
         return $this->dateModified;
     }
-    /**
-     * @param \PSX\DateTime\Date|\DateTime|null $dateCreated
-     */
-    public function setDateCreated($dateCreated) : void
+    public function setDateCreated(\PSX\DateTime\Date|\DateTime|null $dateCreated) : void
     {
         $this->dateCreated = $dateCreated;
     }
-    /**
-     * @return \PSX\DateTime\Date|\DateTime|null
-     */
-    public function getDateCreated()
+    public function getDateCreated() : \PSX\DateTime\Date|\DateTime|null
     {
         return $this->dateCreated;
     }
-    /**
-     * @param string|null $keywords
-     */
     public function setKeywords(?string $keywords) : void
     {
         $this->keywords = $keywords;
     }
-    /**
-     * @return string|null
-     */
     public function getKeywords() : ?string
     {
         return $this->keywords;
     }
-    /**
-     * @param string|null $learningResourceType
-     */
     public function setLearningResourceType(?string $learningResourceType) : void
     {
         $this->learningResourceType = $learningResourceType;
     }
-    /**
-     * @return string|null
-     */
     public function getLearningResourceType() : ?string
     {
         return $this->learningResourceType;
     }
-    /**
-     * @param string|null $accessMode
-     */
     public function setAccessMode(?string $accessMode) : void
     {
         $this->accessMode = $accessMode;
     }
-    /**
-     * @return string|null
-     */
     public function getAccessMode() : ?string
     {
         return $this->accessMode;
     }
-    /**
-     * @param PublicationEvent|null $publication
-     */
     public function setPublication(?PublicationEvent $publication) : void
     {
         $this->publication = $publication;
     }
-    /**
-     * @return PublicationEvent|null
-     */
     public function getPublication() : ?PublicationEvent
     {
         return $this->publication;
     }
-    /**
-     * @param \PSX\Uri\Uri|null $discussionUrl
-     */
     public function setDiscussionUrl(?\PSX\Uri\Uri $discussionUrl) : void
     {
         $this->discussionUrl = $discussionUrl;
     }
-    /**
-     * @return \PSX\Uri\Uri|null
-     */
     public function getDiscussionUrl() : ?\PSX\Uri\Uri
     {
         return $this->discussionUrl;
     }
-    /**
-     * @param string|null $accessibilityAPI
-     */
     public function setAccessibilityAPI(?string $accessibilityAPI) : void
     {
         $this->accessibilityAPI = $accessibilityAPI;
     }
-    /**
-     * @return string|null
-     */
     public function getAccessibilityAPI() : ?string
     {
         return $this->accessibilityAPI;
     }
-    /**
-     * @param string|null $typicalAgeRange
-     */
     public function setTypicalAgeRange(?string $typicalAgeRange) : void
     {
         $this->typicalAgeRange = $typicalAgeRange;
     }
-    /**
-     * @return string|null
-     */
     public function getTypicalAgeRange() : ?string
     {
         return $this->typicalAgeRange;
     }
-    /**
-     * @param Organization|Person|null $provider
-     */
-    public function setProvider($provider) : void
+    public function setProvider(Organization|Person|null $provider) : void
     {
         $this->provider = $provider;
     }
-    /**
-     * @return Organization|Person|null
-     */
-    public function getProvider()
+    public function getProvider() : Organization|Person|null
     {
         return $this->provider;
     }
-    /**
-     * @param Person|Organization|null $producer
-     */
-    public function setProducer($producer) : void
+    public function setProducer(Person|Organization|null $producer) : void
     {
         $this->producer = $producer;
     }
-    /**
-     * @return Person|Organization|null
-     */
-    public function getProducer()
+    public function getProducer() : Person|Organization|null
     {
         return $this->producer;
     }
-    /**
-     * @param MediaObject|null $associatedMedia
-     */
     public function setAssociatedMedia(?MediaObject $associatedMedia) : void
     {
         $this->associatedMedia = $associatedMedia;
     }
-    /**
-     * @return MediaObject|null
-     */
     public function getAssociatedMedia() : ?MediaObject
     {
         return $this->associatedMedia;
     }
-    /**
-     * @param \PSX\Uri\Uri|CreativeWork|null $isPartOf
-     */
-    public function setIsPartOf($isPartOf) : void
+    public function setIsPartOf(\PSX\Uri\Uri|CreativeWork|null $isPartOf) : void
     {
         $this->isPartOf = $isPartOf;
     }
-    /**
-     * @return \PSX\Uri\Uri|CreativeWork|null
-     */
-    public function getIsPartOf()
+    public function getIsPartOf() : \PSX\Uri\Uri|CreativeWork|null
     {
         return $this->isPartOf;
     }
-    /**
-     * @param Person|null $character
-     */
     public function setCharacter(?Person $character) : void
     {
         $this->character = $character;
     }
-    /**
-     * @return Person|null
-     */
     public function getCharacter() : ?Person
     {
         return $this->character;
     }
-    /**
-     * @param bool|null $isFamilyFriendly
-     */
     public function setIsFamilyFriendly(?bool $isFamilyFriendly) : void
     {
         $this->isFamilyFriendly = $isFamilyFriendly;
     }
-    /**
-     * @return bool|null
-     */
     public function getIsFamilyFriendly() : ?bool
     {
         return $this->isFamilyFriendly;
     }
-    /**
-     * @param string|CreativeWork|null $citation
-     */
-    public function setCitation($citation) : void
+    public function setCitation(string|CreativeWork|null $citation) : void
     {
         $this->citation = $citation;
     }
-    /**
-     * @return string|CreativeWork|null
-     */
-    public function getCitation()
+    public function getCitation() : string|CreativeWork|null
     {
         return $this->citation;
     }
-    /**
-     * @param Place|null $locationCreated
-     */
     public function setLocationCreated(?Place $locationCreated) : void
     {
         $this->locationCreated = $locationCreated;
     }
-    /**
-     * @return Place|null
-     */
     public function getLocationCreated() : ?Place
     {
         return $this->locationCreated;
     }
-    /**
-     * @param int|null $commentCount
-     */
     public function setCommentCount(?int $commentCount) : void
     {
         $this->commentCount = $commentCount;
     }
-    /**
-     * @return int|null
-     */
     public function getCommentCount() : ?int
     {
         return $this->commentCount;
     }
-    /**
-     * @param string|\DateTime|\PSX\Uri\Uri|null $temporalCoverage
-     */
-    public function setTemporalCoverage($temporalCoverage) : void
+    public function setTemporalCoverage(string|\DateTime|\PSX\Uri\Uri|null $temporalCoverage) : void
     {
         $this->temporalCoverage = $temporalCoverage;
     }
-    /**
-     * @return string|\DateTime|\PSX\Uri\Uri|null
-     */
-    public function getTemporalCoverage()
+    public function getTemporalCoverage() : string|\DateTime|\PSX\Uri\Uri|null
     {
         return $this->temporalCoverage;
     }
-    /**
-     * @param Organization|Person|null $publisher
-     */
-    public function setPublisher($publisher) : void
+    public function setPublisher(Organization|Person|null $publisher) : void
     {
         $this->publisher = $publisher;
     }
-    /**
-     * @return Organization|Person|null
-     */
-    public function getPublisher()
+    public function getPublisher() : Organization|Person|null
     {
         return $this->publisher;
     }
-    /**
-     * @param \PSX\Uri\Uri|string|Product|null $material
-     */
-    public function setMaterial($material) : void
+    public function setMaterial(\PSX\Uri\Uri|string|Product|null $material) : void
     {
         $this->material = $material;
     }
-    /**
-     * @return \PSX\Uri\Uri|string|Product|null
-     */
-    public function getMaterial()
+    public function getMaterial() : \PSX\Uri\Uri|string|Product|null
     {
         return $this->material;
     }
-    /**
-     * @param AggregateRating|null $aggregateRating
-     */
     public function setAggregateRating(?AggregateRating $aggregateRating) : void
     {
         $this->aggregateRating = $aggregateRating;
     }
-    /**
-     * @return AggregateRating|null
-     */
     public function getAggregateRating() : ?AggregateRating
     {
         return $this->aggregateRating;
     }
-    /**
-     * @param string|null $accessibilityControl
-     */
     public function setAccessibilityControl(?string $accessibilityControl) : void
     {
         $this->accessibilityControl = $accessibilityControl;
     }
-    /**
-     * @return string|null
-     */
     public function getAccessibilityControl() : ?string
     {
         return $this->accessibilityControl;
     }
-    /**
-     * @param string|null $interactivityType
-     */
     public function setInteractivityType(?string $interactivityType) : void
     {
         $this->interactivityType = $interactivityType;
     }
-    /**
-     * @return string|null
-     */
     public function getInteractivityType() : ?string
     {
         return $this->interactivityType;
     }
-    /**
-     * @param string|Language|null $inLanguage
-     */
-    public function setInLanguage($inLanguage) : void
+    public function setInLanguage(string|Language|null $inLanguage) : void
     {
         $this->inLanguage = $inLanguage;
     }
-    /**
-     * @return string|Language|null
-     */
-    public function getInLanguage()
+    public function getInLanguage() : string|Language|null
     {
         return $this->inLanguage;
     }
-    /**
-     * @param string|null $award
-     */
     public function setAward(?string $award) : void
     {
         $this->award = $award;
     }
-    /**
-     * @return string|null
-     */
     public function getAward() : ?string
     {
         return $this->award;
     }
-    /**
-     * @param \PSX\Uri\Uri|CreativeWork|null $license
-     */
-    public function setLicense($license) : void
+    public function setLicense(\PSX\Uri\Uri|CreativeWork|null $license) : void
     {
         $this->license = $license;
     }
-    /**
-     * @return \PSX\Uri\Uri|CreativeWork|null
-     */
-    public function getLicense()
+    public function getLicense() : \PSX\Uri\Uri|CreativeWork|null
     {
         return $this->license;
     }
-    /**
-     * @param Review|null $review
-     */
     public function setReview(?Review $review) : void
     {
         $this->review = $review;
     }
-    /**
-     * @return Review|null
-     */
     public function getReview() : ?Review
     {
         return $this->review;
     }
-    /**
-     * @param string|null $educationalUse
-     */
     public function setEducationalUse(?string $educationalUse) : void
     {
         $this->educationalUse = $educationalUse;
     }
-    /**
-     * @return string|null
-     */
     public function getEducationalUse() : ?string
     {
         return $this->educationalUse;
     }
-    /**
-     * @param Organization|Person|null $translator
-     */
-    public function setTranslator($translator) : void
+    public function setTranslator(Organization|Person|null $translator) : void
     {
         $this->translator = $translator;
     }
-    /**
-     * @return Organization|Person|null
-     */
-    public function getTranslator()
+    public function getTranslator() : Organization|Person|null
     {
         return $this->translator;
     }
-    /**
-     * @param \PSX\Uri\Uri|string|null $genre
-     */
-    public function setGenre($genre) : void
+    public function setGenre(\PSX\Uri\Uri|string|null $genre) : void
     {
         $this->genre = $genre;
     }
-    /**
-     * @return \PSX\Uri\Uri|string|null
-     */
-    public function getGenre()
+    public function getGenre() : \PSX\Uri\Uri|string|null
     {
         return $this->genre;
     }
-    /**
-     * @param Comment|null $comment
-     */
     public function setComment(?Comment $comment) : void
     {
         $this->comment = $comment;
     }
-    /**
-     * @return Comment|null
-     */
     public function getComment() : ?Comment
     {
         return $this->comment;
     }
-    /**
-     * @param Person|Organization|null $author
-     */
-    public function setAuthor($author) : void
+    public function setAuthor(Person|Organization|null $author) : void
     {
         $this->author = $author;
     }
-    /**
-     * @return Person|Organization|null
-     */
-    public function getAuthor()
+    public function getAuthor() : Person|Organization|null
     {
         return $this->author;
     }
-    /**
-     * @param Clip|AudioObject|MusicRecording|null $audio
-     */
-    public function setAudio($audio) : void
+    public function setAudio(Clip|AudioObject|MusicRecording|null $audio) : void
     {
         $this->audio = $audio;
     }
-    /**
-     * @return Clip|AudioObject|MusicRecording|null
-     */
-    public function getAudio()
+    public function getAudio() : Clip|AudioObject|MusicRecording|null
     {
         return $this->audio;
     }
-    /**
-     * @param string|null $accessibilitySummary
-     */
     public function setAccessibilitySummary(?string $accessibilitySummary) : void
     {
         $this->accessibilitySummary = $accessibilitySummary;
     }
-    /**
-     * @return string|null
-     */
     public function getAccessibilitySummary() : ?string
     {
         return $this->accessibilitySummary;
     }
-    /**
-     * @param Organization|null $sourceOrganization
-     */
     public function setSourceOrganization(?Organization $sourceOrganization) : void
     {
         $this->sourceOrganization = $sourceOrganization;
     }
-    /**
-     * @return Organization|null
-     */
     public function getSourceOrganization() : ?Organization
     {
         return $this->sourceOrganization;
     }
-    /**
-     * @param string|Rating|null $contentRating
-     */
-    public function setContentRating($contentRating) : void
+    public function setContentRating(string|Rating|null $contentRating) : void
     {
         $this->contentRating = $contentRating;
     }
-    /**
-     * @return string|Rating|null
-     */
-    public function getContentRating()
+    public function getContentRating() : string|Rating|null
     {
         return $this->contentRating;
     }
-    /**
-     * @param \DateTime|string|null $temporal
-     */
-    public function setTemporal($temporal) : void
+    public function setTemporal(\DateTime|string|null $temporal) : void
     {
         $this->temporal = $temporal;
     }
-    /**
-     * @return \DateTime|string|null
-     */
-    public function getTemporal()
+    public function getTemporal() : \DateTime|string|null
     {
         return $this->temporal;
     }
-    /**
-     * @param float|null $copyrightYear
-     */
     public function setCopyrightYear(?float $copyrightYear) : void
     {
         $this->copyrightYear = $copyrightYear;
     }
-    /**
-     * @return float|null
-     */
     public function getCopyrightYear() : ?float
     {
         return $this->copyrightYear;
     }
-    /**
-     * @param Organization|Person|null $creator
-     */
-    public function setCreator($creator) : void
+    public function setCreator(Organization|Person|null $creator) : void
     {
         $this->creator = $creator;
     }
-    /**
-     * @return Organization|Person|null
-     */
-    public function getCreator()
+    public function getCreator() : Organization|Person|null
     {
         return $this->creator;
     }
-    /**
-     * @param Person|null $accountablePerson
-     */
     public function setAccountablePerson(?Person $accountablePerson) : void
     {
         $this->accountablePerson = $accountablePerson;
     }
-    /**
-     * @return Person|null
-     */
     public function getAccountablePerson() : ?Person
     {
         return $this->accountablePerson;
     }
-    /**
-     * @param bool|null $isAccessibleForFree
-     */
     public function setIsAccessibleForFree(?bool $isAccessibleForFree) : void
     {
         $this->isAccessibleForFree = $isAccessibleForFree;
     }
-    /**
-     * @return bool|null
-     */
     public function getIsAccessibleForFree() : ?bool
     {
         return $this->isAccessibleForFree;
     }
-    /**
-     * @param string|null $accessibilityFeature
-     */
     public function setAccessibilityFeature(?string $accessibilityFeature) : void
     {
         $this->accessibilityFeature = $accessibilityFeature;
     }
-    /**
-     * @return string|null
-     */
     public function getAccessibilityFeature() : ?string
     {
         return $this->accessibilityFeature;
     }
-    /**
-     * @param PublicationEvent|null $releasedEvent
-     */
     public function setReleasedEvent(?PublicationEvent $releasedEvent) : void
     {
         $this->releasedEvent = $releasedEvent;
     }
-    /**
-     * @return PublicationEvent|null
-     */
     public function getReleasedEvent() : ?PublicationEvent
     {
         return $this->releasedEvent;
     }
-    /**
-     * @param InteractionCounter|null $interactionStatistic
-     */
     public function setInteractionStatistic(?InteractionCounter $interactionStatistic) : void
     {
         $this->interactionStatistic = $interactionStatistic;
     }
-    /**
-     * @return InteractionCounter|null
-     */
     public function getInteractionStatistic() : ?InteractionCounter
     {
         return $this->interactionStatistic;
     }
-    /**
-     * @param string|null $headline
-     */
     public function setHeadline(?string $headline) : void
     {
         $this->headline = $headline;
     }
-    /**
-     * @return string|null
-     */
     public function getHeadline() : ?string
     {
         return $this->headline;
     }
-    /**
-     * @param Place|null $spatial
-     */
     public function setSpatial(?Place $spatial) : void
     {
         $this->spatial = $spatial;
     }
-    /**
-     * @return Place|null
-     */
     public function getSpatial() : ?Place
     {
         return $this->spatial;
     }
-    /**
-     * @param \PSX\Uri\Uri|string|null $schemaVersion
-     */
-    public function setSchemaVersion($schemaVersion) : void
+    public function setSchemaVersion(\PSX\Uri\Uri|string|null $schemaVersion) : void
     {
         $this->schemaVersion = $schemaVersion;
     }
-    /**
-     * @return \PSX\Uri\Uri|string|null
-     */
-    public function getSchemaVersion()
+    public function getSchemaVersion() : \PSX\Uri\Uri|string|null
     {
         return $this->schemaVersion;
     }
-    /**
-     * @param Person|Organization|null $copyrightHolder
-     */
-    public function setCopyrightHolder($copyrightHolder) : void
+    public function setCopyrightHolder(Person|Organization|null $copyrightHolder) : void
     {
         $this->copyrightHolder = $copyrightHolder;
     }
-    /**
-     * @return Person|Organization|null
-     */
-    public function getCopyrightHolder()
+    public function getCopyrightHolder() : Person|Organization|null
     {
         return $this->copyrightHolder;
     }
-    /**
-     * @param string|null $accessibilityHazard
-     */
     public function setAccessibilityHazard(?string $accessibilityHazard) : void
     {
         $this->accessibilityHazard = $accessibilityHazard;
     }
-    /**
-     * @return string|null
-     */
     public function getAccessibilityHazard() : ?string
     {
         return $this->accessibilityHazard;
     }
-    /**
-     * @param AlignmentObject|null $educationalAlignment
-     */
     public function setEducationalAlignment(?AlignmentObject $educationalAlignment) : void
     {
         $this->educationalAlignment = $educationalAlignment;
     }
-    /**
-     * @return AlignmentObject|null
-     */
     public function getEducationalAlignment() : ?AlignmentObject
     {
         return $this->educationalAlignment;
     }
-    /**
-     * @param Duration|null $timeRequired
-     */
     public function setTimeRequired(?Duration $timeRequired) : void
     {
         $this->timeRequired = $timeRequired;
     }
-    /**
-     * @return Duration|null
-     */
     public function getTimeRequired() : ?Duration
     {
         return $this->timeRequired;
     }
-    /**
-     * @param Organization|Person|null $contributor
-     */
-    public function setContributor($contributor) : void
+    public function setContributor(Organization|Person|null $contributor) : void
     {
         $this->contributor = $contributor;
     }
-    /**
-     * @return Organization|Person|null
-     */
-    public function getContributor()
+    public function getContributor() : Organization|Person|null
     {
         return $this->contributor;
     }
-    /**
-     * @param \PSX\Uri\Uri|null $thumbnailUrl
-     */
     public function setThumbnailUrl(?\PSX\Uri\Uri $thumbnailUrl) : void
     {
         $this->thumbnailUrl = $thumbnailUrl;
     }
-    /**
-     * @return \PSX\Uri\Uri|null
-     */
     public function getThumbnailUrl() : ?\PSX\Uri\Uri
     {
         return $this->thumbnailUrl;
     }
-    /**
-     * @param CreativeWork|null $containsSeason
-     */
     public function setContainsSeason(?CreativeWork $containsSeason) : void
     {
         $this->containsSeason = $containsSeason;
     }
-    /**
-     * @return CreativeWork|null
-     */
     public function getContainsSeason() : ?CreativeWork
     {
         return $this->containsSeason;
     }
-    /**
-     * @param CreativeWork|null $hasPart
-     */
     public function setHasPart(?CreativeWork $hasPart) : void
     {
         $this->hasPart = $hasPart;
     }
-    /**
-     * @return CreativeWork|null
-     */
     public function getHasPart() : ?CreativeWork
     {
         return $this->hasPart;
     }
-    /**
-     * @param Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered
-     */
-    public function setItemOffered($itemOffered) : void
+    public function setItemOffered(Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered) : void
     {
         $this->itemOffered = $itemOffered;
     }
-    /**
-     * @return Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null
-     */
-    public function getItemOffered()
+    public function getItemOffered() : Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null
     {
         return $this->itemOffered;
     }
-    /**
-     * @param Offer|Demand|null $offers
-     */
-    public function setOffers($offers) : void
+    public function setOffers(Offer|Demand|null $offers) : void
     {
         $this->offers = $offers;
     }
-    /**
-     * @return Offer|Demand|null
-     */
-    public function getOffers()
+    public function getOffers() : Offer|Demand|null
     {
         return $this->offers;
     }
-    /**
-     * @param Event|null $recordedAt
-     */
     public function setRecordedAt(?Event $recordedAt) : void
     {
         $this->recordedAt = $recordedAt;
     }
-    /**
-     * @return Event|null
-     */
     public function getRecordedAt() : ?Event
     {
         return $this->recordedAt;
     }
-    /**
-     * @param CreativeWork|null $workExample
-     */
     public function setWorkExample(?CreativeWork $workExample) : void
     {
         $this->workExample = $workExample;
     }
-    /**
-     * @return CreativeWork|null
-     */
     public function getWorkExample() : ?CreativeWork
     {
         return $this->workExample;
     }
-    /**
-     * @param CreativeWork|null $exampleOfWork
-     */
     public function setExampleOfWork(?CreativeWork $exampleOfWork) : void
     {
         $this->exampleOfWork = $exampleOfWork;
     }
-    /**
-     * @return CreativeWork|null
-     */
     public function getExampleOfWork() : ?CreativeWork
     {
         return $this->exampleOfWork;
@@ -1438,3 +727,4 @@ class CreativeWork extends Thing implements \JsonSerializable
         }));
     }
 }
+

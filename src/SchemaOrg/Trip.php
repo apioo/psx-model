@@ -4,98 +4,53 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A trip or journey. An itinerary of visits to one or more places.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A trip or journey. An itinerary of visits to one or more places.')]
 class Trip extends Intangible implements \JsonSerializable
 {
-    /**
-     * @var Organization|Person|null
-     */
-    protected $provider;
-    /**
-     * @var \DateTime|\PSX\DateTime\Time|null
-     */
-    protected $departureTime;
-    /**
-     * @var \PSX\DateTime\Time|\DateTime|null
-     */
-    protected $arrivalTime;
-    /**
-     * @var Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null
-     */
-    protected $itemOffered;
-    /**
-     * @var Offer|Demand|null
-     */
-    protected $offers;
-    /**
-     * @param Organization|Person|null $provider
-     */
-    public function setProvider($provider) : void
+    protected Organization|Person|null $provider = null;
+    protected \DateTime|\PSX\DateTime\Time|null $departureTime = null;
+    protected \PSX\DateTime\Time|\DateTime|null $arrivalTime = null;
+    protected Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered = null;
+    protected Offer|Demand|null $offers = null;
+    public function setProvider(Organization|Person|null $provider) : void
     {
         $this->provider = $provider;
     }
-    /**
-     * @return Organization|Person|null
-     */
-    public function getProvider()
+    public function getProvider() : Organization|Person|null
     {
         return $this->provider;
     }
-    /**
-     * @param \DateTime|\PSX\DateTime\Time|null $departureTime
-     */
-    public function setDepartureTime($departureTime) : void
+    public function setDepartureTime(\DateTime|\PSX\DateTime\Time|null $departureTime) : void
     {
         $this->departureTime = $departureTime;
     }
-    /**
-     * @return \DateTime|\PSX\DateTime\Time|null
-     */
-    public function getDepartureTime()
+    public function getDepartureTime() : \DateTime|\PSX\DateTime\Time|null
     {
         return $this->departureTime;
     }
-    /**
-     * @param \PSX\DateTime\Time|\DateTime|null $arrivalTime
-     */
-    public function setArrivalTime($arrivalTime) : void
+    public function setArrivalTime(\PSX\DateTime\Time|\DateTime|null $arrivalTime) : void
     {
         $this->arrivalTime = $arrivalTime;
     }
-    /**
-     * @return \PSX\DateTime\Time|\DateTime|null
-     */
-    public function getArrivalTime()
+    public function getArrivalTime() : \PSX\DateTime\Time|\DateTime|null
     {
         return $this->arrivalTime;
     }
-    /**
-     * @param Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered
-     */
-    public function setItemOffered($itemOffered) : void
+    public function setItemOffered(Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered) : void
     {
         $this->itemOffered = $itemOffered;
     }
-    /**
-     * @return Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null
-     */
-    public function getItemOffered()
+    public function getItemOffered() : Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null
     {
         return $this->itemOffered;
     }
-    /**
-     * @param Offer|Demand|null $offers
-     */
-    public function setOffers($offers) : void
+    public function setOffers(Offer|Demand|null $offers) : void
     {
         $this->offers = $offers;
     }
-    /**
-     * @return Offer|Demand|null
-     */
-    public function getOffers()
+    public function getOffers() : Offer|Demand|null
     {
         return $this->offers;
     }
@@ -106,3 +61,4 @@ class Trip extends Intangible implements \JsonSerializable
         }));
     }
 }
+

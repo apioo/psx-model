@@ -4,169 +4,88 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("Instructions that explain how to achieve a result by performing a sequence of steps.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('Instructions that explain how to achieve a result by performing a sequence of steps.')]
 class HowTo extends CreativeWork implements \JsonSerializable
 {
-    /**
-     * @var string|QuantitativeValue|null
-     */
-    protected $yield;
-    /**
-     * @var string|MonetaryAmount|null
-     */
-    protected $estimatedCost;
-    /**
-     * @var Duration|null
-     */
-    protected $totalTime;
-    /**
-     * @var Duration|null
-     */
-    protected $cookTime;
-    /**
-     * @var Duration|null
-     */
-    protected $performTime;
-    /**
-     * @var string|HowToSupply|null
-     */
-    protected $supply;
-    /**
-     * @var string|HowToTool|null
-     */
-    protected $tool;
-    /**
-     * @var string|CreativeWork|HowToSection|null
-     */
-    protected $step;
-    /**
-     * @var Duration|null
-     */
-    protected $prepTime;
-    /**
-     * @param string|QuantitativeValue|null $yield
-     */
-    public function setYield($yield) : void
+    protected string|QuantitativeValue|null $yield = null;
+    protected string|MonetaryAmount|null $estimatedCost = null;
+    protected ?Duration $totalTime = null;
+    protected ?Duration $cookTime = null;
+    protected ?Duration $performTime = null;
+    protected string|HowToSupply|null $supply = null;
+    protected string|HowToTool|null $tool = null;
+    protected string|CreativeWork|HowToSection|null $step = null;
+    protected ?Duration $prepTime = null;
+    public function setYield(string|QuantitativeValue|null $yield) : void
     {
         $this->yield = $yield;
     }
-    /**
-     * @return string|QuantitativeValue|null
-     */
-    public function getYield()
+    public function getYield() : string|QuantitativeValue|null
     {
         return $this->yield;
     }
-    /**
-     * @param string|MonetaryAmount|null $estimatedCost
-     */
-    public function setEstimatedCost($estimatedCost) : void
+    public function setEstimatedCost(string|MonetaryAmount|null $estimatedCost) : void
     {
         $this->estimatedCost = $estimatedCost;
     }
-    /**
-     * @return string|MonetaryAmount|null
-     */
-    public function getEstimatedCost()
+    public function getEstimatedCost() : string|MonetaryAmount|null
     {
         return $this->estimatedCost;
     }
-    /**
-     * @param Duration|null $totalTime
-     */
     public function setTotalTime(?Duration $totalTime) : void
     {
         $this->totalTime = $totalTime;
     }
-    /**
-     * @return Duration|null
-     */
     public function getTotalTime() : ?Duration
     {
         return $this->totalTime;
     }
-    /**
-     * @param Duration|null $cookTime
-     */
     public function setCookTime(?Duration $cookTime) : void
     {
         $this->cookTime = $cookTime;
     }
-    /**
-     * @return Duration|null
-     */
     public function getCookTime() : ?Duration
     {
         return $this->cookTime;
     }
-    /**
-     * @param Duration|null $performTime
-     */
     public function setPerformTime(?Duration $performTime) : void
     {
         $this->performTime = $performTime;
     }
-    /**
-     * @return Duration|null
-     */
     public function getPerformTime() : ?Duration
     {
         return $this->performTime;
     }
-    /**
-     * @param string|HowToSupply|null $supply
-     */
-    public function setSupply($supply) : void
+    public function setSupply(string|HowToSupply|null $supply) : void
     {
         $this->supply = $supply;
     }
-    /**
-     * @return string|HowToSupply|null
-     */
-    public function getSupply()
+    public function getSupply() : string|HowToSupply|null
     {
         return $this->supply;
     }
-    /**
-     * @param string|HowToTool|null $tool
-     */
-    public function setTool($tool) : void
+    public function setTool(string|HowToTool|null $tool) : void
     {
         $this->tool = $tool;
     }
-    /**
-     * @return string|HowToTool|null
-     */
-    public function getTool()
+    public function getTool() : string|HowToTool|null
     {
         return $this->tool;
     }
-    /**
-     * @param string|CreativeWork|HowToSection|null $step
-     */
-    public function setStep($step) : void
+    public function setStep(string|CreativeWork|HowToSection|null $step) : void
     {
         $this->step = $step;
     }
-    /**
-     * @return string|CreativeWork|HowToSection|null
-     */
-    public function getStep()
+    public function getStep() : string|CreativeWork|HowToSection|null
     {
         return $this->step;
     }
-    /**
-     * @param Duration|null $prepTime
-     */
     public function setPrepTime(?Duration $prepTime) : void
     {
         $this->prepTime = $prepTime;
     }
-    /**
-     * @return Duration|null
-     */
     public function getPrepTime() : ?Duration
     {
         return $this->prepTime;
@@ -178,3 +97,4 @@ class HowTo extends CreativeWork implements \JsonSerializable
         }));
     }
 }
+

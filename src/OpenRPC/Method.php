@@ -4,75 +4,50 @@ declare(strict_types = 1);
 
 namespace PSX\Model\OpenRPC;
 
-/**
- * @Description("Describes a single API operation on a path.")
- * @Required({"name", "params", "result"})
- */
+use PSX\Schema\Attribute\Description;
+use PSX\Schema\Attribute\Enum;
+use PSX\Schema\Attribute\Required;
+
+#[Description('Describes a single API operation on a path.')]
+#[Required(array('name', 'params', 'result'))]
 class Method implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $name;
+    protected ?string $name = null;
     /**
      * @var array<\PSX\Model\OpenAPI\Tag>|null
      */
-    protected $tags;
-    /**
-     * @var string|null
-     */
-    protected $summary;
-    /**
-     * @var string|null
-     */
-    protected $description;
-    /**
-     * @var \PSX\Model\OpenAPI\ExternalDocs|null
-     */
-    protected $externalDocs;
+    protected ?array $tags = null;
+    protected ?string $summary = null;
+    protected ?string $description = null;
+    protected ?\PSX\Model\OpenAPI\ExternalDocs $externalDocs = null;
     /**
      * @var array<ContentDescriptor|\PSX\Model\OpenAPI\Reference>|null
      */
-    protected $params;
-    /**
-     * @var ContentDescriptor|\PSX\Model\OpenAPI\Reference|null
-     */
-    protected $result;
-    /**
-     * @var bool|null
-     */
-    protected $deprecated;
+    protected ?array $params = null;
+    protected ContentDescriptor|\PSX\Model\OpenAPI\Reference|null $result = null;
+    protected ?bool $deprecated = null;
     /**
      * @var array<\PSX\Model\OpenAPI\Server>|null
      */
-    protected $servers;
+    protected ?array $servers = null;
     /**
      * @var array<Error|\PSX\Model\OpenAPI\Reference>|null
      */
-    protected $errors;
+    protected ?array $errors = null;
     /**
      * @var array<Link|\PSX\Model\OpenAPI\Reference>|null
      */
-    protected $links;
-    /**
-     * @var string|null
-     * @Enum({"by-name", "by-position", "either"})
-     */
-    protected $paramStructure;
+    protected ?array $links = null;
+    #[Enum(array('by-name', 'by-position', 'either'))]
+    protected ?string $paramStructure = null;
     /**
      * @var array<ExamplePairingObject>|null
      */
-    protected $examples;
-    /**
-     * @param string|null $name
-     */
+    protected ?array $examples = null;
     public function setName(?string $name) : void
     {
         $this->name = $name;
     }
-    /**
-     * @return string|null
-     */
     public function getName() : ?string
     {
         return $this->name;
@@ -84,51 +59,30 @@ class Method implements \JsonSerializable
     {
         $this->tags = $tags;
     }
-    /**
-     * @return array<\PSX\Model\OpenAPI\Tag>|null
-     */
     public function getTags() : ?array
     {
         return $this->tags;
     }
-    /**
-     * @param string|null $summary
-     */
     public function setSummary(?string $summary) : void
     {
         $this->summary = $summary;
     }
-    /**
-     * @return string|null
-     */
     public function getSummary() : ?string
     {
         return $this->summary;
     }
-    /**
-     * @param string|null $description
-     */
     public function setDescription(?string $description) : void
     {
         $this->description = $description;
     }
-    /**
-     * @return string|null
-     */
     public function getDescription() : ?string
     {
         return $this->description;
     }
-    /**
-     * @param \PSX\Model\OpenAPI\ExternalDocs|null $externalDocs
-     */
     public function setExternalDocs(?\PSX\Model\OpenAPI\ExternalDocs $externalDocs) : void
     {
         $this->externalDocs = $externalDocs;
     }
-    /**
-     * @return \PSX\Model\OpenAPI\ExternalDocs|null
-     */
     public function getExternalDocs() : ?\PSX\Model\OpenAPI\ExternalDocs
     {
         return $this->externalDocs;
@@ -140,37 +94,22 @@ class Method implements \JsonSerializable
     {
         $this->params = $params;
     }
-    /**
-     * @return array<ContentDescriptor|\PSX\Model\OpenAPI\Reference>|null
-     */
     public function getParams() : ?array
     {
         return $this->params;
     }
-    /**
-     * @param ContentDescriptor|\PSX\Model\OpenAPI\Reference|null $result
-     */
-    public function setResult($result) : void
+    public function setResult(ContentDescriptor|\PSX\Model\OpenAPI\Reference|null $result) : void
     {
         $this->result = $result;
     }
-    /**
-     * @return ContentDescriptor|\PSX\Model\OpenAPI\Reference|null
-     */
-    public function getResult()
+    public function getResult() : ContentDescriptor|\PSX\Model\OpenAPI\Reference|null
     {
         return $this->result;
     }
-    /**
-     * @param bool|null $deprecated
-     */
     public function setDeprecated(?bool $deprecated) : void
     {
         $this->deprecated = $deprecated;
     }
-    /**
-     * @return bool|null
-     */
     public function getDeprecated() : ?bool
     {
         return $this->deprecated;
@@ -182,9 +121,6 @@ class Method implements \JsonSerializable
     {
         $this->servers = $servers;
     }
-    /**
-     * @return array<\PSX\Model\OpenAPI\Server>|null
-     */
     public function getServers() : ?array
     {
         return $this->servers;
@@ -196,9 +132,6 @@ class Method implements \JsonSerializable
     {
         $this->errors = $errors;
     }
-    /**
-     * @return array<Error|\PSX\Model\OpenAPI\Reference>|null
-     */
     public function getErrors() : ?array
     {
         return $this->errors;
@@ -210,23 +143,14 @@ class Method implements \JsonSerializable
     {
         $this->links = $links;
     }
-    /**
-     * @return array<Link|\PSX\Model\OpenAPI\Reference>|null
-     */
     public function getLinks() : ?array
     {
         return $this->links;
     }
-    /**
-     * @param string|null $paramStructure
-     */
     public function setParamStructure(?string $paramStructure) : void
     {
         $this->paramStructure = $paramStructure;
     }
-    /**
-     * @return string|null
-     */
     public function getParamStructure() : ?string
     {
         return $this->paramStructure;
@@ -238,9 +162,6 @@ class Method implements \JsonSerializable
     {
         $this->examples = $examples;
     }
-    /**
-     * @return array<ExamplePairingObject>|null
-     */
     public function getExamples() : ?array
     {
         return $this->examples;
@@ -252,3 +173,4 @@ class Method implements \JsonSerializable
         });
     }
 }
+

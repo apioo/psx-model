@@ -10,3 +10,4 @@ namespace PSX\Model\OpenAPI;
 class RequestBodies extends \PSX\Record\Record
 {
 }
+

@@ -4,277 +4,142 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A statement of the money due for goods or services; a bill.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A statement of the money due for goods or services; a bill.')]
 class Invoice extends Intangible implements \JsonSerializable
 {
-    /**
-     * @var string|PaymentStatusType|null
-     */
-    protected $paymentStatus;
-    /**
-     * @var Duration|null
-     */
-    protected $billingPeriod;
-    /**
-     * @var \PSX\DateTime\Date|null
-     */
-    protected $scheduledPaymentDate;
-    /**
-     * @var \PSX\Uri\Uri|Thing|string|null
-     */
-    protected $category;
-    /**
-     * @var Organization|Person|null
-     */
-    protected $provider;
-    /**
-     * @var string|null
-     */
-    protected $paymentMethodId;
-    /**
-     * @var Order|null
-     */
-    protected $referencesOrder;
-    /**
-     * @var MonetaryAmount|PriceSpecification|null
-     */
-    protected $minimumPaymentDue;
-    /**
-     * @var PriceSpecification|MonetaryAmount|null
-     */
-    protected $totalPaymentDue;
-    /**
-     * @var Organization|Person|null
-     */
-    protected $broker;
-    /**
-     * @var \DateTime|\PSX\DateTime\Date|null
-     */
-    protected $paymentDueDate;
-    /**
-     * @var string|null
-     */
-    protected $confirmationNumber;
-    /**
-     * @var string|null
-     */
-    protected $accountId;
-    /**
-     * @var Organization|Person|null
-     */
-    protected $customer;
-    /**
-     * @var PaymentMethod|null
-     */
-    protected $paymentMethod;
-    /**
-     * @param string|PaymentStatusType|null $paymentStatus
-     */
-    public function setPaymentStatus($paymentStatus) : void
+    protected string|PaymentStatusType|null $paymentStatus = null;
+    protected ?Duration $billingPeriod = null;
+    protected ?\PSX\DateTime\Date $scheduledPaymentDate = null;
+    protected \PSX\Uri\Uri|Thing|string|null $category = null;
+    protected Organization|Person|null $provider = null;
+    protected ?string $paymentMethodId = null;
+    protected ?Order $referencesOrder = null;
+    protected MonetaryAmount|PriceSpecification|null $minimumPaymentDue = null;
+    protected PriceSpecification|MonetaryAmount|null $totalPaymentDue = null;
+    protected Organization|Person|null $broker = null;
+    protected \DateTime|\PSX\DateTime\Date|null $paymentDueDate = null;
+    protected ?string $confirmationNumber = null;
+    protected ?string $accountId = null;
+    protected Organization|Person|null $customer = null;
+    protected ?PaymentMethod $paymentMethod = null;
+    public function setPaymentStatus(string|PaymentStatusType|null $paymentStatus) : void
     {
         $this->paymentStatus = $paymentStatus;
     }
-    /**
-     * @return string|PaymentStatusType|null
-     */
-    public function getPaymentStatus()
+    public function getPaymentStatus() : string|PaymentStatusType|null
     {
         return $this->paymentStatus;
     }
-    /**
-     * @param Duration|null $billingPeriod
-     */
     public function setBillingPeriod(?Duration $billingPeriod) : void
     {
         $this->billingPeriod = $billingPeriod;
     }
-    /**
-     * @return Duration|null
-     */
     public function getBillingPeriod() : ?Duration
     {
         return $this->billingPeriod;
     }
-    /**
-     * @param \PSX\DateTime\Date|null $scheduledPaymentDate
-     */
     public function setScheduledPaymentDate(?\PSX\DateTime\Date $scheduledPaymentDate) : void
     {
         $this->scheduledPaymentDate = $scheduledPaymentDate;
     }
-    /**
-     * @return \PSX\DateTime\Date|null
-     */
     public function getScheduledPaymentDate() : ?\PSX\DateTime\Date
     {
         return $this->scheduledPaymentDate;
     }
-    /**
-     * @param \PSX\Uri\Uri|Thing|string|null $category
-     */
-    public function setCategory($category) : void
+    public function setCategory(\PSX\Uri\Uri|Thing|string|null $category) : void
     {
         $this->category = $category;
     }
-    /**
-     * @return \PSX\Uri\Uri|Thing|string|null
-     */
-    public function getCategory()
+    public function getCategory() : \PSX\Uri\Uri|Thing|string|null
     {
         return $this->category;
     }
-    /**
-     * @param Organization|Person|null $provider
-     */
-    public function setProvider($provider) : void
+    public function setProvider(Organization|Person|null $provider) : void
     {
         $this->provider = $provider;
     }
-    /**
-     * @return Organization|Person|null
-     */
-    public function getProvider()
+    public function getProvider() : Organization|Person|null
     {
         return $this->provider;
     }
-    /**
-     * @param string|null $paymentMethodId
-     */
     public function setPaymentMethodId(?string $paymentMethodId) : void
     {
         $this->paymentMethodId = $paymentMethodId;
     }
-    /**
-     * @return string|null
-     */
     public function getPaymentMethodId() : ?string
     {
         return $this->paymentMethodId;
     }
-    /**
-     * @param Order|null $referencesOrder
-     */
     public function setReferencesOrder(?Order $referencesOrder) : void
     {
         $this->referencesOrder = $referencesOrder;
     }
-    /**
-     * @return Order|null
-     */
     public function getReferencesOrder() : ?Order
     {
         return $this->referencesOrder;
     }
-    /**
-     * @param MonetaryAmount|PriceSpecification|null $minimumPaymentDue
-     */
-    public function setMinimumPaymentDue($minimumPaymentDue) : void
+    public function setMinimumPaymentDue(MonetaryAmount|PriceSpecification|null $minimumPaymentDue) : void
     {
         $this->minimumPaymentDue = $minimumPaymentDue;
     }
-    /**
-     * @return MonetaryAmount|PriceSpecification|null
-     */
-    public function getMinimumPaymentDue()
+    public function getMinimumPaymentDue() : MonetaryAmount|PriceSpecification|null
     {
         return $this->minimumPaymentDue;
     }
-    /**
-     * @param PriceSpecification|MonetaryAmount|null $totalPaymentDue
-     */
-    public function setTotalPaymentDue($totalPaymentDue) : void
+    public function setTotalPaymentDue(PriceSpecification|MonetaryAmount|null $totalPaymentDue) : void
     {
         $this->totalPaymentDue = $totalPaymentDue;
     }
-    /**
-     * @return PriceSpecification|MonetaryAmount|null
-     */
-    public function getTotalPaymentDue()
+    public function getTotalPaymentDue() : PriceSpecification|MonetaryAmount|null
     {
         return $this->totalPaymentDue;
     }
-    /**
-     * @param Organization|Person|null $broker
-     */
-    public function setBroker($broker) : void
+    public function setBroker(Organization|Person|null $broker) : void
     {
         $this->broker = $broker;
     }
-    /**
-     * @return Organization|Person|null
-     */
-    public function getBroker()
+    public function getBroker() : Organization|Person|null
     {
         return $this->broker;
     }
-    /**
-     * @param \DateTime|\PSX\DateTime\Date|null $paymentDueDate
-     */
-    public function setPaymentDueDate($paymentDueDate) : void
+    public function setPaymentDueDate(\DateTime|\PSX\DateTime\Date|null $paymentDueDate) : void
     {
         $this->paymentDueDate = $paymentDueDate;
     }
-    /**
-     * @return \DateTime|\PSX\DateTime\Date|null
-     */
-    public function getPaymentDueDate()
+    public function getPaymentDueDate() : \DateTime|\PSX\DateTime\Date|null
     {
         return $this->paymentDueDate;
     }
-    /**
-     * @param string|null $confirmationNumber
-     */
     public function setConfirmationNumber(?string $confirmationNumber) : void
     {
         $this->confirmationNumber = $confirmationNumber;
     }
-    /**
-     * @return string|null
-     */
     public function getConfirmationNumber() : ?string
     {
         return $this->confirmationNumber;
     }
-    /**
-     * @param string|null $accountId
-     */
     public function setAccountId(?string $accountId) : void
     {
         $this->accountId = $accountId;
     }
-    /**
-     * @return string|null
-     */
     public function getAccountId() : ?string
     {
         return $this->accountId;
     }
-    /**
-     * @param Organization|Person|null $customer
-     */
-    public function setCustomer($customer) : void
+    public function setCustomer(Organization|Person|null $customer) : void
     {
         $this->customer = $customer;
     }
-    /**
-     * @return Organization|Person|null
-     */
-    public function getCustomer()
+    public function getCustomer() : Organization|Person|null
     {
         return $this->customer;
     }
-    /**
-     * @param PaymentMethod|null $paymentMethod
-     */
     public function setPaymentMethod(?PaymentMethod $paymentMethod) : void
     {
         $this->paymentMethod = $paymentMethod;
     }
-    /**
-     * @return PaymentMethod|null
-     */
     public function getPaymentMethod() : ?PaymentMethod
     {
         return $this->paymentMethod;
@@ -286,3 +151,4 @@ class Invoice extends Intangible implements \JsonSerializable
         }));
     }
 }
+

@@ -4,64 +4,37 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
-* @Description("A reservation to dine at a food-related business.<br/><br/>
+use PSX\Schema\Attribute\Description;
 
-Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.")
-*/
+#[Description('A reservation to dine at a food-related business.<br/><br/>
+
+Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.')]
 class FoodEstablishmentReservation extends Reservation implements \JsonSerializable
 {
-    /**
-     * @var \PSX\DateTime\Time|\DateTime|null
-     */
-    protected $startTime;
-    /**
-     * @var \PSX\DateTime\Time|\DateTime|null
-     */
-    protected $endTime;
-    /**
-     * @var int|QuantitativeValue|null
-     */
-    protected $partySize;
-    /**
-     * @param \PSX\DateTime\Time|\DateTime|null $startTime
-     */
-    public function setStartTime($startTime) : void
+    protected \PSX\DateTime\Time|\DateTime|null $startTime = null;
+    protected \PSX\DateTime\Time|\DateTime|null $endTime = null;
+    protected int|QuantitativeValue|null $partySize = null;
+    public function setStartTime(\PSX\DateTime\Time|\DateTime|null $startTime) : void
     {
         $this->startTime = $startTime;
     }
-    /**
-     * @return \PSX\DateTime\Time|\DateTime|null
-     */
-    public function getStartTime()
+    public function getStartTime() : \PSX\DateTime\Time|\DateTime|null
     {
         return $this->startTime;
     }
-    /**
-     * @param \PSX\DateTime\Time|\DateTime|null $endTime
-     */
-    public function setEndTime($endTime) : void
+    public function setEndTime(\PSX\DateTime\Time|\DateTime|null $endTime) : void
     {
         $this->endTime = $endTime;
     }
-    /**
-     * @return \PSX\DateTime\Time|\DateTime|null
-     */
-    public function getEndTime()
+    public function getEndTime() : \PSX\DateTime\Time|\DateTime|null
     {
         return $this->endTime;
     }
-    /**
-     * @param int|QuantitativeValue|null $partySize
-     */
-    public function setPartySize($partySize) : void
+    public function setPartySize(int|QuantitativeValue|null $partySize) : void
     {
         $this->partySize = $partySize;
     }
-    /**
-     * @return int|QuantitativeValue|null
-     */
-    public function getPartySize()
+    public function getPartySize() : int|QuantitativeValue|null
     {
         return $this->partySize;
     }
@@ -72,3 +45,4 @@ class FoodEstablishmentReservation extends Reservation implements \JsonSerializa
         }));
     }
 }
+

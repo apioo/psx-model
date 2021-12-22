@@ -4,62 +4,35 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("Event type: Sports event.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('Event type: Sports event.')]
 class SportsEvent extends Event implements \JsonSerializable
 {
-    /**
-     * @var Person|SportsTeam|null
-     */
-    protected $awayTeam;
-    /**
-     * @var SportsTeam|Person|null
-     */
-    protected $competitor;
-    /**
-     * @var SportsTeam|Person|null
-     */
-    protected $homeTeam;
-    /**
-     * @param Person|SportsTeam|null $awayTeam
-     */
-    public function setAwayTeam($awayTeam) : void
+    protected Person|SportsTeam|null $awayTeam = null;
+    protected SportsTeam|Person|null $competitor = null;
+    protected SportsTeam|Person|null $homeTeam = null;
+    public function setAwayTeam(Person|SportsTeam|null $awayTeam) : void
     {
         $this->awayTeam = $awayTeam;
     }
-    /**
-     * @return Person|SportsTeam|null
-     */
-    public function getAwayTeam()
+    public function getAwayTeam() : Person|SportsTeam|null
     {
         return $this->awayTeam;
     }
-    /**
-     * @param SportsTeam|Person|null $competitor
-     */
-    public function setCompetitor($competitor) : void
+    public function setCompetitor(SportsTeam|Person|null $competitor) : void
     {
         $this->competitor = $competitor;
     }
-    /**
-     * @return SportsTeam|Person|null
-     */
-    public function getCompetitor()
+    public function getCompetitor() : SportsTeam|Person|null
     {
         return $this->competitor;
     }
-    /**
-     * @param SportsTeam|Person|null $homeTeam
-     */
-    public function setHomeTeam($homeTeam) : void
+    public function setHomeTeam(SportsTeam|Person|null $homeTeam) : void
     {
         $this->homeTeam = $homeTeam;
     }
-    /**
-     * @return SportsTeam|Person|null
-     */
-    public function getHomeTeam()
+    public function getHomeTeam() : SportsTeam|Person|null
     {
         return $this->homeTeam;
     }
@@ -70,3 +43,4 @@ class SportsEvent extends Event implements \JsonSerializable
         }));
     }
 }
+

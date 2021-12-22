@@ -4,26 +4,17 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("An agent orders an object/product/service to be delivered/sent.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('An agent orders an object/product/service to be delivered/sent.')]
 class OrderAction extends TradeAction implements \JsonSerializable
 {
-    /**
-     * @var Thing|DeliveryMethod|null
-     */
-    protected $deliveryMethod;
-    /**
-     * @param Thing|DeliveryMethod|null $deliveryMethod
-     */
-    public function setDeliveryMethod($deliveryMethod) : void
+    protected Thing|DeliveryMethod|null $deliveryMethod = null;
+    public function setDeliveryMethod(Thing|DeliveryMethod|null $deliveryMethod) : void
     {
         $this->deliveryMethod = $deliveryMethod;
     }
-    /**
-     * @return Thing|DeliveryMethod|null
-     */
-    public function getDeliveryMethod()
+    public function getDeliveryMethod() : Thing|DeliveryMethod|null
     {
         return $this->deliveryMethod;
     }
@@ -34,3 +25,4 @@ class OrderAction extends TradeAction implements \JsonSerializable
         }));
     }
 }
+

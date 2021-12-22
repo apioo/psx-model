@@ -4,25 +4,16 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("An EducationalAudience.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('An EducationalAudience.')]
 class EducationalAudience extends Audience implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $educationalRole;
-    /**
-     * @param string|null $educationalRole
-     */
+    protected ?string $educationalRole = null;
     public function setEducationalRole(?string $educationalRole) : void
     {
         $this->educationalRole = $educationalRole;
     }
-    /**
-     * @return string|null
-     */
     public function getEducationalRole() : ?string
     {
         return $this->educationalRole;
@@ -34,3 +25,4 @@ class EducationalAudience extends Audience implements \JsonSerializable
         }));
     }
 }
+

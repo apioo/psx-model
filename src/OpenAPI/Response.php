@@ -4,81 +4,46 @@ declare(strict_types = 1);
 
 namespace PSX\Model\OpenAPI;
 
-/**
- * @Description("Describes a single response from an API Operation, including design-time, static  `links` to operations based on the response.")
- * @Required({"description"})
- */
+use PSX\Schema\Attribute\Description;
+use PSX\Schema\Attribute\Required;
+
+#[Description('Describes a single response from an API Operation, including design-time, static  `links` to operations based on the response.')]
+#[Required(array('description'))]
 class Response implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $description;
-    /**
-     * @var Header|Reference|null
-     */
-    protected $headers;
-    /**
-     * @var MediaTypes|null
-     */
-    protected $content;
-    /**
-     * @var Link|Reference|null
-     */
-    protected $links;
-    /**
-     * @param string|null $description
-     */
+    protected ?string $description = null;
+    protected Header|Reference|null $headers = null;
+    protected ?MediaTypes $content = null;
+    protected Link|Reference|null $links = null;
     public function setDescription(?string $description) : void
     {
         $this->description = $description;
     }
-    /**
-     * @return string|null
-     */
     public function getDescription() : ?string
     {
         return $this->description;
     }
-    /**
-     * @param Header|Reference|null $headers
-     */
-    public function setHeaders($headers) : void
+    public function setHeaders(Header|Reference|null $headers) : void
     {
         $this->headers = $headers;
     }
-    /**
-     * @return Header|Reference|null
-     */
-    public function getHeaders()
+    public function getHeaders() : Header|Reference|null
     {
         return $this->headers;
     }
-    /**
-     * @param MediaTypes|null $content
-     */
     public function setContent(?MediaTypes $content) : void
     {
         $this->content = $content;
     }
-    /**
-     * @return MediaTypes|null
-     */
     public function getContent() : ?MediaTypes
     {
         return $this->content;
     }
-    /**
-     * @param Link|Reference|null $links
-     */
-    public function setLinks($links) : void
+    public function setLinks(Link|Reference|null $links) : void
     {
         $this->links = $links;
     }
-    /**
-     * @return Link|Reference|null
-     */
-    public function getLinks()
+    public function getLinks() : Link|Reference|null
     {
         return $this->links;
     }
@@ -89,3 +54,4 @@ class Response implements \JsonSerializable
         });
     }
 }
+

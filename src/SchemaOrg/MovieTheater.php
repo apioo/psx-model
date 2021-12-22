@@ -4,25 +4,16 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A movie theater.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A movie theater.')]
 class MovieTheater extends CivicStructure implements \JsonSerializable
 {
-    /**
-     * @var float|null
-     */
-    protected $screenCount;
-    /**
-     * @param float|null $screenCount
-     */
+    protected ?float $screenCount = null;
     public function setScreenCount(?float $screenCount) : void
     {
         $this->screenCount = $screenCount;
     }
-    /**
-     * @return float|null
-     */
     public function getScreenCount() : ?float
     {
         return $this->screenCount;
@@ -34,3 +25,4 @@ class MovieTheater extends CivicStructure implements \JsonSerializable
         }));
     }
 }
+

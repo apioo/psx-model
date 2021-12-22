@@ -10,3 +10,4 @@ namespace PSX\Model\OpenAPI;
 class ServerVariables extends \PSX\Record\Record
 {
 }
+

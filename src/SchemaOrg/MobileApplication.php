@@ -4,25 +4,16 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A software application designed specifically to work well on a mobile device such as a telephone.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A software application designed specifically to work well on a mobile device such as a telephone.')]
 class MobileApplication extends SoftwareApplication implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $carrierRequirements;
-    /**
-     * @param string|null $carrierRequirements
-     */
+    protected ?string $carrierRequirements = null;
     public function setCarrierRequirements(?string $carrierRequirements) : void
     {
         $this->carrierRequirements = $carrierRequirements;
     }
-    /**
-     * @return string|null
-     */
     public function getCarrierRequirements() : ?string
     {
         return $this->carrierRequirements;
@@ -34,3 +25,4 @@ class MobileApplication extends SoftwareApplication implements \JsonSerializable
         }));
     }
 }
+

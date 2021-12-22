@@ -4,64 +4,37 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
-* @Description("Represents additional information about a relationship or property. For example a Role can be used to say that a 'member' role linking some SportsTeam to a player occurred during a particular time period. Or that a Person's 'actor' role in a Movie was for some particular characterName. Such properties can be attached to a Role entity, which is then associated with the main entities using ordinary properties like 'member' or 'actor'.<br/><br/>
+use PSX\Schema\Attribute\Description;
 
-See also <a href=""http://blog.schema.org/2014/06/introducing-role.html"">blog post</a>.")
-*/
+#[Description('Represents additional information about a relationship or property. For example a Role can be used to say that a \'member\' role linking some SportsTeam to a player occurred during a particular time period. Or that a Person\'s \'actor\' role in a Movie was for some particular characterName. Such properties can be attached to a Role entity, which is then associated with the main entities using ordinary properties like \'member\' or \'actor\'.<br/><br/>
+
+See also <a href="http://blog.schema.org/2014/06/introducing-role.html">blog post</a>.')]
 class Role extends Intangible implements \JsonSerializable
 {
-    /**
-     * @var \PSX\DateTime\Date|\DateTime|null
-     */
-    protected $endDate;
-    /**
-     * @var \DateTime|\PSX\DateTime\Date|null
-     */
-    protected $startDate;
-    /**
-     * @var string|\PSX\Uri\Uri|null
-     */
-    protected $roleName;
-    /**
-     * @param \PSX\DateTime\Date|\DateTime|null $endDate
-     */
-    public function setEndDate($endDate) : void
+    protected \PSX\DateTime\Date|\DateTime|null $endDate = null;
+    protected \DateTime|\PSX\DateTime\Date|null $startDate = null;
+    protected string|\PSX\Uri\Uri|null $roleName = null;
+    public function setEndDate(\PSX\DateTime\Date|\DateTime|null $endDate) : void
     {
         $this->endDate = $endDate;
     }
-    /**
-     * @return \PSX\DateTime\Date|\DateTime|null
-     */
-    public function getEndDate()
+    public function getEndDate() : \PSX\DateTime\Date|\DateTime|null
     {
         return $this->endDate;
     }
-    /**
-     * @param \DateTime|\PSX\DateTime\Date|null $startDate
-     */
-    public function setStartDate($startDate) : void
+    public function setStartDate(\DateTime|\PSX\DateTime\Date|null $startDate) : void
     {
         $this->startDate = $startDate;
     }
-    /**
-     * @return \DateTime|\PSX\DateTime\Date|null
-     */
-    public function getStartDate()
+    public function getStartDate() : \DateTime|\PSX\DateTime\Date|null
     {
         return $this->startDate;
     }
-    /**
-     * @param string|\PSX\Uri\Uri|null $roleName
-     */
-    public function setRoleName($roleName) : void
+    public function setRoleName(string|\PSX\Uri\Uri|null $roleName) : void
     {
         $this->roleName = $roleName;
     }
-    /**
-     * @return string|\PSX\Uri\Uri|null
-     */
-    public function getRoleName()
+    public function getRoleName() : string|\PSX\Uri\Uri|null
     {
         return $this->roleName;
     }
@@ -72,3 +45,4 @@ class Role extends Intangible implements \JsonSerializable
         }));
     }
 }
+

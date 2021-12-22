@@ -4,25 +4,16 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A statistical distribution of monetary amounts.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A statistical distribution of monetary amounts.')]
 class MonetaryAmountDistribution extends QuantitativeValueDistribution implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $currency;
-    /**
-     * @param string|null $currency
-     */
+    protected ?string $currency = null;
     public function setCurrency(?string $currency) : void
     {
         $this->currency = $currency;
     }
-    /**
-     * @return string|null
-     */
     public function getCurrency() : ?string
     {
         return $this->currency;
@@ -34,3 +25,4 @@ class MonetaryAmountDistribution extends QuantitativeValueDistribution implement
         }));
     }
 }
+

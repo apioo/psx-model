@@ -10,3 +10,4 @@ namespace PSX\Model\OpenAPI;
 class Parameters extends \PSX\Record\Record
 {
 }
+

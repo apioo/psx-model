@@ -4,8 +4,9 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
-* @Description("A card payment method of a particular brand or name.  Used to mark up a particular payment method and/or the financial product/service that supplies the card account.<br/><br/>
+use PSX\Schema\Attribute\Description;
+
+#[Description('A card payment method of a particular brand or name.  Used to mark up a particular payment method and/or the financial product/service that supplies the card account.<br/><br/>
 
 Commonly used values:<br/><br/>
 
@@ -17,8 +18,8 @@ Commonly used values:<br/><br/>
 <li>http://purl.org/goodrelations/v1#MasterCard</li>
 <li>http://purl.org/goodrelations/v1#VISA</li>
 </ul>
-")
-*/
+')]
 class CreditCard extends LoanOrCredit implements \JsonSerializable
 {
 }
+

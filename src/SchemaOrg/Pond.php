@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A pond.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A pond.')]
 class Pond extends BodyOfWater implements \JsonSerializable
 {
 }
+

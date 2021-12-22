@@ -10,3 +10,4 @@ namespace PSX\Model\OpenAPI;
 class Schemas extends \PSX\Record\Record
 {
 }
+

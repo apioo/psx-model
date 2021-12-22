@@ -4,71 +4,42 @@ declare(strict_types = 1);
 
 namespace PSX\Model\OpenAPI;
 
-/**
- * @Description("This is the root document object of the OpenAPI definition file.")
- * @Required({"openapi", "info", "paths"})
- */
+use PSX\Schema\Attribute\Description;
+use PSX\Schema\Attribute\Required;
+
+#[Description('This is the root document object of the OpenAPI definition file.')]
+#[Required(array('openapi', 'info', 'paths'))]
 class OpenAPI implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $openapi = '3.0.0';
-    /**
-     * @var Info|null
-     */
-    protected $info;
+    protected ?string $openapi = '3.0.0';
+    protected ?Info $info = null;
     /**
      * @var array<Server>|null
-     * @UniqueItems(true)
      */
-    protected $servers;
-    /**
-     * @var Paths|null
-     */
-    protected $paths;
-    /**
-     * @var Components|null
-     */
-    protected $components;
+    protected ?array $servers = null;
+    protected ?Paths $paths = null;
+    protected ?Components $components = null;
     /**
      * @var array<SecurityRequirement>|null
-     * @UniqueItems(true)
      */
-    protected $security;
+    protected ?array $security = null;
     /**
      * @var array<Tag>|null
-     * @UniqueItems(true)
      */
-    protected $tags;
-    /**
-     * @var ExternalDocs|null
-     */
-    protected $externalDocs;
-    /**
-     * @param string|null $openapi
-     */
+    protected ?array $tags = null;
+    protected ?ExternalDocs $externalDocs = null;
     public function setOpenapi(?string $openapi) : void
     {
         $this->openapi = $openapi;
     }
-    /**
-     * @return string|null
-     */
     public function getOpenapi() : ?string
     {
         return $this->openapi;
     }
-    /**
-     * @param Info|null $info
-     */
     public function setInfo(?Info $info) : void
     {
         $this->info = $info;
     }
-    /**
-     * @return Info|null
-     */
     public function getInfo() : ?Info
     {
         return $this->info;
@@ -80,37 +51,22 @@ class OpenAPI implements \JsonSerializable
     {
         $this->servers = $servers;
     }
-    /**
-     * @return array<Server>|null
-     */
     public function getServers() : ?array
     {
         return $this->servers;
     }
-    /**
-     * @param Paths|null $paths
-     */
     public function setPaths(?Paths $paths) : void
     {
         $this->paths = $paths;
     }
-    /**
-     * @return Paths|null
-     */
     public function getPaths() : ?Paths
     {
         return $this->paths;
     }
-    /**
-     * @param Components|null $components
-     */
     public function setComponents(?Components $components) : void
     {
         $this->components = $components;
     }
-    /**
-     * @return Components|null
-     */
     public function getComponents() : ?Components
     {
         return $this->components;
@@ -122,9 +78,6 @@ class OpenAPI implements \JsonSerializable
     {
         $this->security = $security;
     }
-    /**
-     * @return array<SecurityRequirement>|null
-     */
     public function getSecurity() : ?array
     {
         return $this->security;
@@ -136,23 +89,14 @@ class OpenAPI implements \JsonSerializable
     {
         $this->tags = $tags;
     }
-    /**
-     * @return array<Tag>|null
-     */
     public function getTags() : ?array
     {
         return $this->tags;
     }
-    /**
-     * @param ExternalDocs|null $externalDocs
-     */
     public function setExternalDocs(?ExternalDocs $externalDocs) : void
     {
         $this->externalDocs = $externalDocs;
     }
-    /**
-     * @return ExternalDocs|null
-     */
     public function getExternalDocs() : ?ExternalDocs
     {
         return $this->externalDocs;
@@ -164,3 +108,4 @@ class OpenAPI implements \JsonSerializable
         });
     }
 }
+

@@ -4,79 +4,43 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("Server that provides game interaction in a multiplayer game.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('Server that provides game interaction in a multiplayer game.')]
 class GameServer extends Intangible implements \JsonSerializable
 {
-    /**
-     * @var int|null
-     */
-    protected $playersOnline;
-    /**
-     * @var GameServerStatus|null
-     */
-    protected $serverStatus;
-    /**
-     * @var VideoGame|GameServer|null
-     */
-    protected $gameServer;
-    /**
-     * @var VideoGame|null
-     */
-    protected $game;
-    /**
-     * @param int|null $playersOnline
-     */
+    protected ?int $playersOnline = null;
+    protected ?GameServerStatus $serverStatus = null;
+    protected VideoGame|GameServer|null $gameServer = null;
+    protected ?VideoGame $game = null;
     public function setPlayersOnline(?int $playersOnline) : void
     {
         $this->playersOnline = $playersOnline;
     }
-    /**
-     * @return int|null
-     */
     public function getPlayersOnline() : ?int
     {
         return $this->playersOnline;
     }
-    /**
-     * @param GameServerStatus|null $serverStatus
-     */
     public function setServerStatus(?GameServerStatus $serverStatus) : void
     {
         $this->serverStatus = $serverStatus;
     }
-    /**
-     * @return GameServerStatus|null
-     */
     public function getServerStatus() : ?GameServerStatus
     {
         return $this->serverStatus;
     }
-    /**
-     * @param VideoGame|GameServer|null $gameServer
-     */
-    public function setGameServer($gameServer) : void
+    public function setGameServer(VideoGame|GameServer|null $gameServer) : void
     {
         $this->gameServer = $gameServer;
     }
-    /**
-     * @return VideoGame|GameServer|null
-     */
-    public function getGameServer()
+    public function getGameServer() : VideoGame|GameServer|null
     {
         return $this->gameServer;
     }
-    /**
-     * @param VideoGame|null $game
-     */
     public function setGame(?VideoGame $game) : void
     {
         $this->game = $game;
     }
-    /**
-     * @return VideoGame|null
-     */
     public function getGame() : ?VideoGame
     {
         return $this->game;
@@ -88,3 +52,4 @@ class GameServer extends Intangible implements \JsonSerializable
         }));
     }
 }
+

@@ -4,97 +4,52 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A rating is an evaluation on a numeric scale, such as 1 to 5 stars.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A rating is an evaluation on a numeric scale, such as 1 to 5 stars.')]
 class Rating extends Intangible implements \JsonSerializable
 {
-    /**
-     * @var string|float|null
-     */
-    protected $worstRating;
-    /**
-     * @var Person|Organization|null
-     */
-    protected $author;
-    /**
-     * @var string|float|null
-     */
-    protected $ratingValue;
-    /**
-     * @var string|float|null
-     */
-    protected $bestRating;
-    /**
-     * @var string|null
-     */
-    protected $reviewAspect;
-    /**
-     * @param string|float|null $worstRating
-     */
-    public function setWorstRating($worstRating) : void
+    protected string|float|null $worstRating = null;
+    protected Person|Organization|null $author = null;
+    protected string|float|null $ratingValue = null;
+    protected string|float|null $bestRating = null;
+    protected ?string $reviewAspect = null;
+    public function setWorstRating(string|float|null $worstRating) : void
     {
         $this->worstRating = $worstRating;
     }
-    /**
-     * @return string|float|null
-     */
-    public function getWorstRating()
+    public function getWorstRating() : string|float|null
     {
         return $this->worstRating;
     }
-    /**
-     * @param Person|Organization|null $author
-     */
-    public function setAuthor($author) : void
+    public function setAuthor(Person|Organization|null $author) : void
     {
         $this->author = $author;
     }
-    /**
-     * @return Person|Organization|null
-     */
-    public function getAuthor()
+    public function getAuthor() : Person|Organization|null
     {
         return $this->author;
     }
-    /**
-     * @param string|float|null $ratingValue
-     */
-    public function setRatingValue($ratingValue) : void
+    public function setRatingValue(string|float|null $ratingValue) : void
     {
         $this->ratingValue = $ratingValue;
     }
-    /**
-     * @return string|float|null
-     */
-    public function getRatingValue()
+    public function getRatingValue() : string|float|null
     {
         return $this->ratingValue;
     }
-    /**
-     * @param string|float|null $bestRating
-     */
-    public function setBestRating($bestRating) : void
+    public function setBestRating(string|float|null $bestRating) : void
     {
         $this->bestRating = $bestRating;
     }
-    /**
-     * @return string|float|null
-     */
-    public function getBestRating()
+    public function getBestRating() : string|float|null
     {
         return $this->bestRating;
     }
-    /**
-     * @param string|null $reviewAspect
-     */
     public function setReviewAspect(?string $reviewAspect) : void
     {
         $this->reviewAspect = $reviewAspect;
     }
-    /**
-     * @return string|null
-     */
     public function getReviewAspect() : ?string
     {
         return $this->reviewAspect;
@@ -106,3 +61,4 @@ class Rating extends Intangible implements \JsonSerializable
         }));
     }
 }
+

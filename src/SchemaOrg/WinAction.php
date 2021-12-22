@@ -4,25 +4,16 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("The act of achieving victory in a competitive activity.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('The act of achieving victory in a competitive activity.')]
 class WinAction extends AchieveAction implements \JsonSerializable
 {
-    /**
-     * @var Person|null
-     */
-    protected $loser;
-    /**
-     * @param Person|null $loser
-     */
+    protected ?Person $loser = null;
     public function setLoser(?Person $loser) : void
     {
         $this->loser = $loser;
     }
-    /**
-     * @return Person|null
-     */
     public function getLoser() : ?Person
     {
         return $this->loser;
@@ -34,3 +25,4 @@ class WinAction extends AchieveAction implements \JsonSerializable
         }));
     }
 }
+

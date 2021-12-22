@@ -4,134 +4,71 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A work of art that is primarily visual in character.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A work of art that is primarily visual in character.')]
 class VisualArtwork extends CreativeWork implements \JsonSerializable
 {
-    /**
-     * @var QuantitativeValue|Distance|null
-     */
-    protected $width;
-    /**
-     * @var \PSX\Uri\Uri|string|null
-     */
-    protected $artform;
-    /**
-     * @var string|\PSX\Uri\Uri|null
-     */
-    protected $artworkSurface;
-    /**
-     * @var Distance|QuantitativeValue|null
-     */
-    protected $height;
-    /**
-     * @var string|\PSX\Uri\Uri|null
-     */
-    protected $artMedium;
-    /**
-     * @var int|string|null
-     */
-    protected $artEdition;
-    /**
-     * @var Distance|QuantitativeValue|null
-     */
-    protected $depth;
-    /**
-     * @param QuantitativeValue|Distance|null $width
-     */
-    public function setWidth($width) : void
+    protected QuantitativeValue|Distance|null $width = null;
+    protected \PSX\Uri\Uri|string|null $artform = null;
+    protected string|\PSX\Uri\Uri|null $artworkSurface = null;
+    protected Distance|QuantitativeValue|null $height = null;
+    protected string|\PSX\Uri\Uri|null $artMedium = null;
+    protected int|string|null $artEdition = null;
+    protected Distance|QuantitativeValue|null $depth = null;
+    public function setWidth(QuantitativeValue|Distance|null $width) : void
     {
         $this->width = $width;
     }
-    /**
-     * @return QuantitativeValue|Distance|null
-     */
-    public function getWidth()
+    public function getWidth() : QuantitativeValue|Distance|null
     {
         return $this->width;
     }
-    /**
-     * @param \PSX\Uri\Uri|string|null $artform
-     */
-    public function setArtform($artform) : void
+    public function setArtform(\PSX\Uri\Uri|string|null $artform) : void
     {
         $this->artform = $artform;
     }
-    /**
-     * @return \PSX\Uri\Uri|string|null
-     */
-    public function getArtform()
+    public function getArtform() : \PSX\Uri\Uri|string|null
     {
         return $this->artform;
     }
-    /**
-     * @param string|\PSX\Uri\Uri|null $artworkSurface
-     */
-    public function setArtworkSurface($artworkSurface) : void
+    public function setArtworkSurface(string|\PSX\Uri\Uri|null $artworkSurface) : void
     {
         $this->artworkSurface = $artworkSurface;
     }
-    /**
-     * @return string|\PSX\Uri\Uri|null
-     */
-    public function getArtworkSurface()
+    public function getArtworkSurface() : string|\PSX\Uri\Uri|null
     {
         return $this->artworkSurface;
     }
-    /**
-     * @param Distance|QuantitativeValue|null $height
-     */
-    public function setHeight($height) : void
+    public function setHeight(Distance|QuantitativeValue|null $height) : void
     {
         $this->height = $height;
     }
-    /**
-     * @return Distance|QuantitativeValue|null
-     */
-    public function getHeight()
+    public function getHeight() : Distance|QuantitativeValue|null
     {
         return $this->height;
     }
-    /**
-     * @param string|\PSX\Uri\Uri|null $artMedium
-     */
-    public function setArtMedium($artMedium) : void
+    public function setArtMedium(string|\PSX\Uri\Uri|null $artMedium) : void
     {
         $this->artMedium = $artMedium;
     }
-    /**
-     * @return string|\PSX\Uri\Uri|null
-     */
-    public function getArtMedium()
+    public function getArtMedium() : string|\PSX\Uri\Uri|null
     {
         return $this->artMedium;
     }
-    /**
-     * @param int|string|null $artEdition
-     */
-    public function setArtEdition($artEdition) : void
+    public function setArtEdition(int|string|null $artEdition) : void
     {
         $this->artEdition = $artEdition;
     }
-    /**
-     * @return int|string|null
-     */
-    public function getArtEdition()
+    public function getArtEdition() : int|string|null
     {
         return $this->artEdition;
     }
-    /**
-     * @param Distance|QuantitativeValue|null $depth
-     */
-    public function setDepth($depth) : void
+    public function setDepth(Distance|QuantitativeValue|null $depth) : void
     {
         $this->depth = $depth;
     }
-    /**
-     * @return Distance|QuantitativeValue|null
-     */
-    public function getDepth()
+    public function getDepth() : Distance|QuantitativeValue|null
     {
         return $this->depth;
     }
@@ -142,3 +79,4 @@ class VisualArtwork extends CreativeWork implements \JsonSerializable
         }));
     }
 }
+

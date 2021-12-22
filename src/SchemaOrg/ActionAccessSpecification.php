@@ -4,116 +4,62 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A set of requirements that a must be fulfilled in order to perform an Action.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A set of requirements that a must be fulfilled in order to perform an Action.')]
 class ActionAccessSpecification extends Intangible implements \JsonSerializable
 {
-    /**
-     * @var string|GeoShape|Place|null
-     */
-    protected $eligibleRegion;
-    /**
-     * @var Offer|null
-     */
-    protected $expectsAcceptanceOf;
-    /**
-     * @var \PSX\Uri\Uri|Thing|string|null
-     */
-    protected $category;
-    /**
-     * @var \DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null
-     */
-    protected $availabilityStarts;
-    /**
-     * @var \DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null
-     */
-    protected $availabilityEnds;
-    /**
-     * @var bool|MediaSubscription|null
-     */
-    protected $requiresSubscription;
-    /**
-     * @param string|GeoShape|Place|null $eligibleRegion
-     */
-    public function setEligibleRegion($eligibleRegion) : void
+    protected string|GeoShape|Place|null $eligibleRegion = null;
+    protected ?Offer $expectsAcceptanceOf = null;
+    protected \PSX\Uri\Uri|Thing|string|null $category = null;
+    protected \DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null $availabilityStarts = null;
+    protected \DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null $availabilityEnds = null;
+    protected bool|MediaSubscription|null $requiresSubscription = null;
+    public function setEligibleRegion(string|GeoShape|Place|null $eligibleRegion) : void
     {
         $this->eligibleRegion = $eligibleRegion;
     }
-    /**
-     * @return string|GeoShape|Place|null
-     */
-    public function getEligibleRegion()
+    public function getEligibleRegion() : string|GeoShape|Place|null
     {
         return $this->eligibleRegion;
     }
-    /**
-     * @param Offer|null $expectsAcceptanceOf
-     */
     public function setExpectsAcceptanceOf(?Offer $expectsAcceptanceOf) : void
     {
         $this->expectsAcceptanceOf = $expectsAcceptanceOf;
     }
-    /**
-     * @return Offer|null
-     */
     public function getExpectsAcceptanceOf() : ?Offer
     {
         return $this->expectsAcceptanceOf;
     }
-    /**
-     * @param \PSX\Uri\Uri|Thing|string|null $category
-     */
-    public function setCategory($category) : void
+    public function setCategory(\PSX\Uri\Uri|Thing|string|null $category) : void
     {
         $this->category = $category;
     }
-    /**
-     * @return \PSX\Uri\Uri|Thing|string|null
-     */
-    public function getCategory()
+    public function getCategory() : \PSX\Uri\Uri|Thing|string|null
     {
         return $this->category;
     }
-    /**
-     * @param \DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null $availabilityStarts
-     */
-    public function setAvailabilityStarts($availabilityStarts) : void
+    public function setAvailabilityStarts(\DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null $availabilityStarts) : void
     {
         $this->availabilityStarts = $availabilityStarts;
     }
-    /**
-     * @return \DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null
-     */
-    public function getAvailabilityStarts()
+    public function getAvailabilityStarts() : \DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null
     {
         return $this->availabilityStarts;
     }
-    /**
-     * @param \DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null $availabilityEnds
-     */
-    public function setAvailabilityEnds($availabilityEnds) : void
+    public function setAvailabilityEnds(\DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null $availabilityEnds) : void
     {
         $this->availabilityEnds = $availabilityEnds;
     }
-    /**
-     * @return \DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null
-     */
-    public function getAvailabilityEnds()
+    public function getAvailabilityEnds() : \DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null
     {
         return $this->availabilityEnds;
     }
-    /**
-     * @param bool|MediaSubscription|null $requiresSubscription
-     */
-    public function setRequiresSubscription($requiresSubscription) : void
+    public function setRequiresSubscription(bool|MediaSubscription|null $requiresSubscription) : void
     {
         $this->requiresSubscription = $requiresSubscription;
     }
-    /**
-     * @return bool|MediaSubscription|null
-     */
-    public function getRequiresSubscription()
+    public function getRequiresSubscription() : bool|MediaSubscription|null
     {
         return $this->requiresSubscription;
     }
@@ -124,3 +70,4 @@ class ActionAccessSpecification extends Intangible implements \JsonSerializable
         }));
     }
 }
+

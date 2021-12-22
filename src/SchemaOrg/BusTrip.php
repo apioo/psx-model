@@ -4,80 +4,44 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A trip on a commercial bus line.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A trip on a commercial bus line.')]
 class BusTrip extends Trip implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $busName;
-    /**
-     * @var BusStation|BusStop|null
-     */
-    protected $arrivalBusStop;
-    /**
-     * @var string|null
-     */
-    protected $busNumber;
-    /**
-     * @var BusStop|BusStation|null
-     */
-    protected $departureBusStop;
-    /**
-     * @param string|null $busName
-     */
+    protected ?string $busName = null;
+    protected BusStation|BusStop|null $arrivalBusStop = null;
+    protected ?string $busNumber = null;
+    protected BusStop|BusStation|null $departureBusStop = null;
     public function setBusName(?string $busName) : void
     {
         $this->busName = $busName;
     }
-    /**
-     * @return string|null
-     */
     public function getBusName() : ?string
     {
         return $this->busName;
     }
-    /**
-     * @param BusStation|BusStop|null $arrivalBusStop
-     */
-    public function setArrivalBusStop($arrivalBusStop) : void
+    public function setArrivalBusStop(BusStation|BusStop|null $arrivalBusStop) : void
     {
         $this->arrivalBusStop = $arrivalBusStop;
     }
-    /**
-     * @return BusStation|BusStop|null
-     */
-    public function getArrivalBusStop()
+    public function getArrivalBusStop() : BusStation|BusStop|null
     {
         return $this->arrivalBusStop;
     }
-    /**
-     * @param string|null $busNumber
-     */
     public function setBusNumber(?string $busNumber) : void
     {
         $this->busNumber = $busNumber;
     }
-    /**
-     * @return string|null
-     */
     public function getBusNumber() : ?string
     {
         return $this->busNumber;
     }
-    /**
-     * @param BusStop|BusStation|null $departureBusStop
-     */
-    public function setDepartureBusStop($departureBusStop) : void
+    public function setDepartureBusStop(BusStop|BusStation|null $departureBusStop) : void
     {
         $this->departureBusStop = $departureBusStop;
     }
-    /**
-     * @return BusStop|BusStation|null
-     */
-    public function getDepartureBusStop()
+    public function getDepartureBusStop() : BusStop|BusStation|null
     {
         return $this->departureBusStop;
     }
@@ -88,3 +52,4 @@ class BusTrip extends Trip implements \JsonSerializable
         }));
     }
 }
+

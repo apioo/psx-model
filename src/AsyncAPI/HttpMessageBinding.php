@@ -7,38 +7,20 @@ namespace PSX\Model\AsyncAPI;
 
 class HttpMessageBinding implements \JsonSerializable
 {
-    /**
-     * @var mixed|null
-     */
-    protected $headers;
-    /**
-     * @var string|null
-     */
-    protected $bindingVersion;
-    /**
-     * @param mixed|null $headers
-     */
-    public function setHeaders($headers) : void
+    protected ?mixed $headers = null;
+    protected ?string $bindingVersion = null;
+    public function setHeaders(?mixed $headers) : void
     {
         $this->headers = $headers;
     }
-    /**
-     * @return mixed|null
-     */
-    public function getHeaders()
+    public function getHeaders() : ?mixed
     {
         return $this->headers;
     }
-    /**
-     * @param string|null $bindingVersion
-     */
     public function setBindingVersion(?string $bindingVersion) : void
     {
         $this->bindingVersion = $bindingVersion;
     }
-    /**
-     * @return string|null
-     */
     public function getBindingVersion() : ?string
     {
         return $this->bindingVersion;
@@ -50,3 +32,4 @@ class HttpMessageBinding implements \JsonSerializable
         });
     }
 }
+

@@ -4,64 +4,38 @@ declare(strict_types = 1);
 
 namespace PSX\Model\AsyncAPI;
 
-/**
- * @Description("This is the root document object for the API specification. It combines resource listing and API declaration together into one document.")
- * @Required({"asyncapi", "info", "channels"})
- */
+use PSX\Schema\Attribute\Description;
+use PSX\Schema\Attribute\Required;
+
+#[Description('This is the root document object for the API specification. It combines resource listing and API declaration together into one document.')]
+#[Required(array('asyncapi', 'info', 'channels'))]
 class AsyncAPI implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $asyncapi = '3.0.0';
-    /**
-     * @var \PSX\Model\OpenAPI\Info|null
-     */
-    protected $info;
+    protected ?string $asyncapi = '3.0.0';
+    protected ?\PSX\Model\OpenAPI\Info $info = null;
     /**
      * @var array<\PSX\Model\OpenAPI\Server>|null
      */
-    protected $servers;
-    /**
-     * @var Channels|null
-     */
-    protected $channels;
-    /**
-     * @var Components|null
-     */
-    protected $components;
+    protected ?array $servers = null;
+    protected ?Channels $channels = null;
+    protected ?Components $components = null;
     /**
      * @var array<\PSX\Model\OpenAPI\Tag>|null
      */
-    protected $tags;
-    /**
-     * @var \PSX\Model\OpenAPI\ExternalDocs|null
-     */
-    protected $externalDocs;
-    /**
-     * @param string|null $asyncapi
-     */
+    protected ?array $tags = null;
+    protected ?\PSX\Model\OpenAPI\ExternalDocs $externalDocs = null;
     public function setAsyncapi(?string $asyncapi) : void
     {
         $this->asyncapi = $asyncapi;
     }
-    /**
-     * @return string|null
-     */
     public function getAsyncapi() : ?string
     {
         return $this->asyncapi;
     }
-    /**
-     * @param \PSX\Model\OpenAPI\Info|null $info
-     */
     public function setInfo(?\PSX\Model\OpenAPI\Info $info) : void
     {
         $this->info = $info;
     }
-    /**
-     * @return \PSX\Model\OpenAPI\Info|null
-     */
     public function getInfo() : ?\PSX\Model\OpenAPI\Info
     {
         return $this->info;
@@ -73,37 +47,22 @@ class AsyncAPI implements \JsonSerializable
     {
         $this->servers = $servers;
     }
-    /**
-     * @return array<\PSX\Model\OpenAPI\Server>|null
-     */
     public function getServers() : ?array
     {
         return $this->servers;
     }
-    /**
-     * @param Channels|null $channels
-     */
     public function setChannels(?Channels $channels) : void
     {
         $this->channels = $channels;
     }
-    /**
-     * @return Channels|null
-     */
     public function getChannels() : ?Channels
     {
         return $this->channels;
     }
-    /**
-     * @param Components|null $components
-     */
     public function setComponents(?Components $components) : void
     {
         $this->components = $components;
     }
-    /**
-     * @return Components|null
-     */
     public function getComponents() : ?Components
     {
         return $this->components;
@@ -115,23 +74,14 @@ class AsyncAPI implements \JsonSerializable
     {
         $this->tags = $tags;
     }
-    /**
-     * @return array<\PSX\Model\OpenAPI\Tag>|null
-     */
     public function getTags() : ?array
     {
         return $this->tags;
     }
-    /**
-     * @param \PSX\Model\OpenAPI\ExternalDocs|null $externalDocs
-     */
     public function setExternalDocs(?\PSX\Model\OpenAPI\ExternalDocs $externalDocs) : void
     {
         $this->externalDocs = $externalDocs;
     }
-    /**
-     * @return \PSX\Model\OpenAPI\ExternalDocs|null
-     */
     public function getExternalDocs() : ?\PSX\Model\OpenAPI\ExternalDocs
     {
         return $this->externalDocs;
@@ -143,3 +93,4 @@ class AsyncAPI implements \JsonSerializable
         });
     }
 }
+

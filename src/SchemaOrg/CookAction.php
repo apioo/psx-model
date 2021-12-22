@@ -4,61 +4,34 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("The act of producing/preparing food.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('The act of producing/preparing food.')]
 class CookAction extends CreateAction implements \JsonSerializable
 {
-    /**
-     * @var Place|FoodEstablishment|null
-     */
-    protected $foodEstablishment;
-    /**
-     * @var Recipe|null
-     */
-    protected $recipe;
-    /**
-     * @var FoodEvent|null
-     */
-    protected $foodEvent;
-    /**
-     * @param Place|FoodEstablishment|null $foodEstablishment
-     */
-    public function setFoodEstablishment($foodEstablishment) : void
+    protected Place|FoodEstablishment|null $foodEstablishment = null;
+    protected ?Recipe $recipe = null;
+    protected ?FoodEvent $foodEvent = null;
+    public function setFoodEstablishment(Place|FoodEstablishment|null $foodEstablishment) : void
     {
         $this->foodEstablishment = $foodEstablishment;
     }
-    /**
-     * @return Place|FoodEstablishment|null
-     */
-    public function getFoodEstablishment()
+    public function getFoodEstablishment() : Place|FoodEstablishment|null
     {
         return $this->foodEstablishment;
     }
-    /**
-     * @param Recipe|null $recipe
-     */
     public function setRecipe(?Recipe $recipe) : void
     {
         $this->recipe = $recipe;
     }
-    /**
-     * @return Recipe|null
-     */
     public function getRecipe() : ?Recipe
     {
         return $this->recipe;
     }
-    /**
-     * @param FoodEvent|null $foodEvent
-     */
     public function setFoodEvent(?FoodEvent $foodEvent) : void
     {
         $this->foodEvent = $foodEvent;
     }
-    /**
-     * @return FoodEvent|null
-     */
     public function getFoodEvent() : ?FoodEvent
     {
         return $this->foodEvent;
@@ -70,3 +43,4 @@ class CookAction extends CreateAction implements \JsonSerializable
         }));
     }
 }
+

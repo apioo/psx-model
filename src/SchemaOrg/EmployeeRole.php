@@ -4,43 +4,25 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A subclass of OrganizationRole used to describe employee relationships.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A subclass of OrganizationRole used to describe employee relationships.')]
 class EmployeeRole extends OrganizationRole implements \JsonSerializable
 {
-    /**
-     * @var float|PriceSpecification|MonetaryAmount|null
-     */
-    protected $baseSalary;
-    /**
-     * @var string|null
-     */
-    protected $salaryCurrency;
-    /**
-     * @param float|PriceSpecification|MonetaryAmount|null $baseSalary
-     */
-    public function setBaseSalary($baseSalary) : void
+    protected float|PriceSpecification|MonetaryAmount|null $baseSalary = null;
+    protected ?string $salaryCurrency = null;
+    public function setBaseSalary(float|PriceSpecification|MonetaryAmount|null $baseSalary) : void
     {
         $this->baseSalary = $baseSalary;
     }
-    /**
-     * @return float|PriceSpecification|MonetaryAmount|null
-     */
-    public function getBaseSalary()
+    public function getBaseSalary() : float|PriceSpecification|MonetaryAmount|null
     {
         return $this->baseSalary;
     }
-    /**
-     * @param string|null $salaryCurrency
-     */
     public function setSalaryCurrency(?string $salaryCurrency) : void
     {
         $this->salaryCurrency = $salaryCurrency;
     }
-    /**
-     * @return string|null
-     */
     public function getSalaryCurrency() : ?string
     {
         return $this->salaryCurrency;
@@ -52,3 +34,4 @@ class EmployeeRole extends OrganizationRole implements \JsonSerializable
         }));
     }
 }
+

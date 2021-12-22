@@ -4,63 +4,37 @@ declare(strict_types = 1);
 
 namespace PSX\Model\OpenRPC;
 
-/**
- * @Description("Defines an application level error.")
- * @Required({"code", "message"})
- */
+use PSX\Schema\Attribute\Description;
+use PSX\Schema\Attribute\Required;
+
+#[Description('Defines an application level error.')]
+#[Required(array('code', 'message'))]
 class Error implements \JsonSerializable
 {
-    /**
-     * @var int|null
-     */
-    protected $code;
-    /**
-     * @var string|null
-     */
-    protected $message;
-    /**
-     * @var mixed|null
-     */
-    protected $data;
-    /**
-     * @param int|null $code
-     */
+    protected ?int $code = null;
+    protected ?string $message = null;
+    protected ?mixed $data = null;
     public function setCode(?int $code) : void
     {
         $this->code = $code;
     }
-    /**
-     * @return int|null
-     */
     public function getCode() : ?int
     {
         return $this->code;
     }
-    /**
-     * @param string|null $message
-     */
     public function setMessage(?string $message) : void
     {
         $this->message = $message;
     }
-    /**
-     * @return string|null
-     */
     public function getMessage() : ?string
     {
         return $this->message;
     }
-    /**
-     * @param mixed|null $data
-     */
-    public function setData($data) : void
+    public function setData(?mixed $data) : void
     {
         $this->data = $data;
     }
-    /**
-     * @return mixed|null
-     */
-    public function getData()
+    public function getData() : ?mixed
     {
         return $this->data;
     }
@@ -71,3 +45,4 @@ class Error implements \JsonSerializable
         });
     }
 }
+

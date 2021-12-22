@@ -4,118 +4,64 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
-* @Description("A reservation for lodging at a hotel, motel, inn, etc.<br/><br/>
+use PSX\Schema\Attribute\Description;
 
-Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.")
-*/
+#[Description('A reservation for lodging at a hotel, motel, inn, etc.<br/><br/>
+
+Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.')]
 class LodgingReservation extends Reservation implements \JsonSerializable
 {
-    /**
-     * @var int|QuantitativeValue|null
-     */
-    protected $numAdults;
-    /**
-     * @var string|QualitativeValue|null
-     */
-    protected $lodgingUnitType;
-    /**
-     * @var int|QuantitativeValue|null
-     */
-    protected $numChildren;
-    /**
-     * @var string|null
-     */
-    protected $lodgingUnitDescription;
-    /**
-     * @var \DateTime|\PSX\DateTime\Time|null
-     */
-    protected $checkoutTime;
-    /**
-     * @var \DateTime|\PSX\DateTime\Time|null
-     */
-    protected $checkinTime;
-    /**
-     * @param int|QuantitativeValue|null $numAdults
-     */
-    public function setNumAdults($numAdults) : void
+    protected int|QuantitativeValue|null $numAdults = null;
+    protected string|QualitativeValue|null $lodgingUnitType = null;
+    protected int|QuantitativeValue|null $numChildren = null;
+    protected ?string $lodgingUnitDescription = null;
+    protected \DateTime|\PSX\DateTime\Time|null $checkoutTime = null;
+    protected \DateTime|\PSX\DateTime\Time|null $checkinTime = null;
+    public function setNumAdults(int|QuantitativeValue|null $numAdults) : void
     {
         $this->numAdults = $numAdults;
     }
-    /**
-     * @return int|QuantitativeValue|null
-     */
-    public function getNumAdults()
+    public function getNumAdults() : int|QuantitativeValue|null
     {
         return $this->numAdults;
     }
-    /**
-     * @param string|QualitativeValue|null $lodgingUnitType
-     */
-    public function setLodgingUnitType($lodgingUnitType) : void
+    public function setLodgingUnitType(string|QualitativeValue|null $lodgingUnitType) : void
     {
         $this->lodgingUnitType = $lodgingUnitType;
     }
-    /**
-     * @return string|QualitativeValue|null
-     */
-    public function getLodgingUnitType()
+    public function getLodgingUnitType() : string|QualitativeValue|null
     {
         return $this->lodgingUnitType;
     }
-    /**
-     * @param int|QuantitativeValue|null $numChildren
-     */
-    public function setNumChildren($numChildren) : void
+    public function setNumChildren(int|QuantitativeValue|null $numChildren) : void
     {
         $this->numChildren = $numChildren;
     }
-    /**
-     * @return int|QuantitativeValue|null
-     */
-    public function getNumChildren()
+    public function getNumChildren() : int|QuantitativeValue|null
     {
         return $this->numChildren;
     }
-    /**
-     * @param string|null $lodgingUnitDescription
-     */
     public function setLodgingUnitDescription(?string $lodgingUnitDescription) : void
     {
         $this->lodgingUnitDescription = $lodgingUnitDescription;
     }
-    /**
-     * @return string|null
-     */
     public function getLodgingUnitDescription() : ?string
     {
         return $this->lodgingUnitDescription;
     }
-    /**
-     * @param \DateTime|\PSX\DateTime\Time|null $checkoutTime
-     */
-    public function setCheckoutTime($checkoutTime) : void
+    public function setCheckoutTime(\DateTime|\PSX\DateTime\Time|null $checkoutTime) : void
     {
         $this->checkoutTime = $checkoutTime;
     }
-    /**
-     * @return \DateTime|\PSX\DateTime\Time|null
-     */
-    public function getCheckoutTime()
+    public function getCheckoutTime() : \DateTime|\PSX\DateTime\Time|null
     {
         return $this->checkoutTime;
     }
-    /**
-     * @param \DateTime|\PSX\DateTime\Time|null $checkinTime
-     */
-    public function setCheckinTime($checkinTime) : void
+    public function setCheckinTime(\DateTime|\PSX\DateTime\Time|null $checkinTime) : void
     {
         $this->checkinTime = $checkinTime;
     }
-    /**
-     * @return \DateTime|\PSX\DateTime\Time|null
-     */
-    public function getCheckinTime()
+    public function getCheckinTime() : \DateTime|\PSX\DateTime\Time|null
     {
         return $this->checkinTime;
     }
@@ -126,3 +72,4 @@ class LodgingReservation extends Reservation implements \JsonSerializable
         }));
     }
 }
+

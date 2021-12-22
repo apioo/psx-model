@@ -4,46 +4,28 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
-* @Description("A hotel room is a single room in a hotel.
+use PSX\Schema\Attribute\Description;
+
+#[Description('A hotel room is a single room in a hotel.
 <br /><br />
-See also the <a href=""/docs/hotels.html"">dedicated document on the use of schema.org for marking up hotels and other forms of accommodations</a>.")
-*/
+See also the <a href="/docs/hotels.html">dedicated document on the use of schema.org for marking up hotels and other forms of accommodations</a>.')]
 class HotelRoom extends Room implements \JsonSerializable
 {
-    /**
-     * @var QuantitativeValue|null
-     */
-    protected $occupancy;
-    /**
-     * @var string|BedDetails|BedType|null
-     */
-    protected $bed;
-    /**
-     * @param QuantitativeValue|null $occupancy
-     */
+    protected ?QuantitativeValue $occupancy = null;
+    protected string|BedDetails|BedType|null $bed = null;
     public function setOccupancy(?QuantitativeValue $occupancy) : void
     {
         $this->occupancy = $occupancy;
     }
-    /**
-     * @return QuantitativeValue|null
-     */
     public function getOccupancy() : ?QuantitativeValue
     {
         return $this->occupancy;
     }
-    /**
-     * @param string|BedDetails|BedType|null $bed
-     */
-    public function setBed($bed) : void
+    public function setBed(string|BedDetails|BedType|null $bed) : void
     {
         $this->bed = $bed;
     }
-    /**
-     * @return string|BedDetails|BedType|null
-     */
-    public function getBed()
+    public function getBed() : string|BedDetails|BedType|null
     {
         return $this->bed;
     }
@@ -54,3 +36,4 @@ class HotelRoom extends Room implements \JsonSerializable
         }));
     }
 }
+

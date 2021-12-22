@@ -4,97 +4,52 @@ declare(strict_types = 1);
 
 namespace PSX\Model\OpenAPI;
 
-/**
- * @Description("A single encoding definition applied to a single schema property.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A single encoding definition applied to a single schema property.')]
 class Encoding implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $contentType;
-    /**
-     * @var Headers|null
-     */
-    protected $headers;
-    /**
-     * @var string|null
-     */
-    protected $style;
-    /**
-     * @var bool|null
-     */
-    protected $explode;
-    /**
-     * @var bool|null
-     */
-    protected $allowReserved;
-    /**
-     * @param string|null $contentType
-     */
+    protected ?string $contentType = null;
+    protected ?Headers $headers = null;
+    protected ?string $style = null;
+    protected ?bool $explode = null;
+    protected ?bool $allowReserved = null;
     public function setContentType(?string $contentType) : void
     {
         $this->contentType = $contentType;
     }
-    /**
-     * @return string|null
-     */
     public function getContentType() : ?string
     {
         return $this->contentType;
     }
-    /**
-     * @param Headers|null $headers
-     */
     public function setHeaders(?Headers $headers) : void
     {
         $this->headers = $headers;
     }
-    /**
-     * @return Headers|null
-     */
     public function getHeaders() : ?Headers
     {
         return $this->headers;
     }
-    /**
-     * @param string|null $style
-     */
     public function setStyle(?string $style) : void
     {
         $this->style = $style;
     }
-    /**
-     * @return string|null
-     */
     public function getStyle() : ?string
     {
         return $this->style;
     }
-    /**
-     * @param bool|null $explode
-     */
     public function setExplode(?bool $explode) : void
     {
         $this->explode = $explode;
     }
-    /**
-     * @return bool|null
-     */
     public function getExplode() : ?bool
     {
         return $this->explode;
     }
-    /**
-     * @param bool|null $allowReserved
-     */
     public function setAllowReserved(?bool $allowReserved) : void
     {
         $this->allowReserved = $allowReserved;
     }
-    /**
-     * @return bool|null
-     */
     public function getAllowReserved() : ?bool
     {
         return $this->allowReserved;
@@ -106,3 +61,4 @@ class Encoding implements \JsonSerializable
         });
     }
 }
+

@@ -10,3 +10,4 @@ namespace PSX\Model\OpenRPC;
 class ExamplePairingObjects extends \PSX\Record\Record
 {
 }
+

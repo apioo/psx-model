@@ -4,25 +4,16 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A service provided by a government organization, e.g. food stamps, veterans benefits, etc.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A service provided by a government organization, e.g. food stamps, veterans benefits, etc.')]
 class GovernmentService extends Service implements \JsonSerializable
 {
-    /**
-     * @var Organization|null
-     */
-    protected $serviceOperator;
-    /**
-     * @param Organization|null $serviceOperator
-     */
+    protected ?Organization $serviceOperator = null;
     public function setServiceOperator(?Organization $serviceOperator) : void
     {
         $this->serviceOperator = $serviceOperator;
     }
-    /**
-     * @return Organization|null
-     */
     public function getServiceOperator() : ?Organization
     {
         return $this->serviceOperator;
@@ -34,3 +25,4 @@ class GovernmentService extends Service implements \JsonSerializable
         }));
     }
 }
+

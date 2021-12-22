@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("The act of marrying a person.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('The act of marrying a person.')]
 class MarryAction extends InteractAction implements \JsonSerializable
 {
 }
+

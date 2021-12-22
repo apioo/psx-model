@@ -7,38 +7,20 @@ namespace PSX\Model\Atom;
 
 class Text implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $type;
-    /**
-     * @var string|null
-     */
-    protected $content;
-    /**
-     * @param string|null $type
-     */
+    protected ?string $type = null;
+    protected ?string $content = null;
     public function setType(?string $type) : void
     {
         $this->type = $type;
     }
-    /**
-     * @return string|null
-     */
     public function getType() : ?string
     {
         return $this->type;
     }
-    /**
-     * @param string|null $content
-     */
     public function setContent(?string $content) : void
     {
         $this->content = $content;
     }
-    /**
-     * @return string|null
-     */
     public function getContent() : ?string
     {
         return $this->content;
@@ -50,3 +32,4 @@ class Text implements \JsonSerializable
         });
     }
 }
+

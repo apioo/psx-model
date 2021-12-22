@@ -4,79 +4,43 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A brand is a name used by an organization or business person for labeling a product, product group, or similar.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A brand is a name used by an organization or business person for labeling a product, product group, or similar.')]
 class Brand extends Intangible implements \JsonSerializable
 {
-    /**
-     * @var AggregateRating|null
-     */
-    protected $aggregateRating;
-    /**
-     * @var Review|null
-     */
-    protected $review;
-    /**
-     * @var \PSX\Uri\Uri|ImageObject|null
-     */
-    protected $logo;
-    /**
-     * @var string|null
-     */
-    protected $slogan;
-    /**
-     * @param AggregateRating|null $aggregateRating
-     */
+    protected ?AggregateRating $aggregateRating = null;
+    protected ?Review $review = null;
+    protected \PSX\Uri\Uri|ImageObject|null $logo = null;
+    protected ?string $slogan = null;
     public function setAggregateRating(?AggregateRating $aggregateRating) : void
     {
         $this->aggregateRating = $aggregateRating;
     }
-    /**
-     * @return AggregateRating|null
-     */
     public function getAggregateRating() : ?AggregateRating
     {
         return $this->aggregateRating;
     }
-    /**
-     * @param Review|null $review
-     */
     public function setReview(?Review $review) : void
     {
         $this->review = $review;
     }
-    /**
-     * @return Review|null
-     */
     public function getReview() : ?Review
     {
         return $this->review;
     }
-    /**
-     * @param \PSX\Uri\Uri|ImageObject|null $logo
-     */
-    public function setLogo($logo) : void
+    public function setLogo(\PSX\Uri\Uri|ImageObject|null $logo) : void
     {
         $this->logo = $logo;
     }
-    /**
-     * @return \PSX\Uri\Uri|ImageObject|null
-     */
-    public function getLogo()
+    public function getLogo() : \PSX\Uri\Uri|ImageObject|null
     {
         return $this->logo;
     }
-    /**
-     * @param string|null $slogan
-     */
     public function setSlogan(?string $slogan) : void
     {
         $this->slogan = $slogan;
     }
-    /**
-     * @return string|null
-     */
     public function getSlogan() : ?string
     {
         return $this->slogan;
@@ -88,3 +52,4 @@ class Brand extends Intangible implements \JsonSerializable
         }));
     }
 }
+

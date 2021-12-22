@@ -4,25 +4,16 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A placeholder for multiple similar products of the same kind.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A placeholder for multiple similar products of the same kind.')]
 class SomeProducts extends Product implements \JsonSerializable
 {
-    /**
-     * @var QuantitativeValue|null
-     */
-    protected $inventoryLevel;
-    /**
-     * @param QuantitativeValue|null $inventoryLevel
-     */
+    protected ?QuantitativeValue $inventoryLevel = null;
     public function setInventoryLevel(?QuantitativeValue $inventoryLevel) : void
     {
         $this->inventoryLevel = $inventoryLevel;
     }
-    /**
-     * @return QuantitativeValue|null
-     */
     public function getInventoryLevel() : ?QuantitativeValue
     {
         return $this->inventoryLevel;
@@ -34,3 +25,4 @@ class SomeProducts extends Product implements \JsonSerializable
         }));
     }
 }
+

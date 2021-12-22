@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A jewelry store.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A jewelry store.')]
 class JewelryStore extends Store implements \JsonSerializable
 {
 }
+

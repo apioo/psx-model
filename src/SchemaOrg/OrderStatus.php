@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("Enumerated status values for Order.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('Enumerated status values for Order.')]
 class OrderStatus extends Enumeration implements \JsonSerializable
 {
 }
+

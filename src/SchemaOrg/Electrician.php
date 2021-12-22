@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("An electrician.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('An electrician.')]
 class Electrician extends HomeAndConstructionBusiness implements \JsonSerializable
 {
 }
+

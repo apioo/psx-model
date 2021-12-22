@@ -7,72 +7,36 @@ namespace PSX\Model\AsyncAPI;
 
 class Operation implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $operationId;
-    /**
-     * @var string|null
-     */
-    protected $summary;
-    /**
-     * @var string|null
-     */
-    protected $description;
+    protected ?string $operationId = null;
+    protected ?string $summary = null;
+    protected ?string $description = null;
     /**
      * @var array<\PSX\Model\OpenAPI\Tag>|null
      */
-    protected $tags;
-    /**
-     * @var \PSX\Model\OpenAPI\ExternalDocs|null
-     */
-    protected $externalDocs;
-    /**
-     * @var OperationBindings|null
-     */
-    protected $bindings;
-    /**
-     * @var Message|null
-     */
-    protected $message;
-    /**
-     * @param string|null $operationId
-     */
+    protected ?array $tags = null;
+    protected ?\PSX\Model\OpenAPI\ExternalDocs $externalDocs = null;
+    protected ?OperationBindings $bindings = null;
+    protected ?Message $message = null;
     public function setOperationId(?string $operationId) : void
     {
         $this->operationId = $operationId;
     }
-    /**
-     * @return string|null
-     */
     public function getOperationId() : ?string
     {
         return $this->operationId;
     }
-    /**
-     * @param string|null $summary
-     */
     public function setSummary(?string $summary) : void
     {
         $this->summary = $summary;
     }
-    /**
-     * @return string|null
-     */
     public function getSummary() : ?string
     {
         return $this->summary;
     }
-    /**
-     * @param string|null $description
-     */
     public function setDescription(?string $description) : void
     {
         $this->description = $description;
     }
-    /**
-     * @return string|null
-     */
     public function getDescription() : ?string
     {
         return $this->description;
@@ -84,51 +48,30 @@ class Operation implements \JsonSerializable
     {
         $this->tags = $tags;
     }
-    /**
-     * @return array<\PSX\Model\OpenAPI\Tag>|null
-     */
     public function getTags() : ?array
     {
         return $this->tags;
     }
-    /**
-     * @param \PSX\Model\OpenAPI\ExternalDocs|null $externalDocs
-     */
     public function setExternalDocs(?\PSX\Model\OpenAPI\ExternalDocs $externalDocs) : void
     {
         $this->externalDocs = $externalDocs;
     }
-    /**
-     * @return \PSX\Model\OpenAPI\ExternalDocs|null
-     */
     public function getExternalDocs() : ?\PSX\Model\OpenAPI\ExternalDocs
     {
         return $this->externalDocs;
     }
-    /**
-     * @param OperationBindings|null $bindings
-     */
     public function setBindings(?OperationBindings $bindings) : void
     {
         $this->bindings = $bindings;
     }
-    /**
-     * @return OperationBindings|null
-     */
     public function getBindings() : ?OperationBindings
     {
         return $this->bindings;
     }
-    /**
-     * @param Message|null $message
-     */
     public function setMessage(?Message $message) : void
     {
         $this->message = $message;
     }
-    /**
-     * @return Message|null
-     */
     public function getMessage() : ?Message
     {
         return $this->message;
@@ -140,3 +83,4 @@ class Operation implements \JsonSerializable
         });
     }
 }
+

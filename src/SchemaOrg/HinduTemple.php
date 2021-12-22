@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A Hindu temple.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A Hindu temple.')]
 class HinduTemple extends PlaceOfWorship implements \JsonSerializable
 {
 }
+

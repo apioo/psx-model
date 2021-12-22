@@ -4,26 +4,17 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("The act of generating a comment about a subject.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('The act of generating a comment about a subject.')]
 class CommentAction extends CommunicateAction implements \JsonSerializable
 {
-    /**
-     * @var Thing|Comment|null
-     */
-    protected $resultComment;
-    /**
-     * @param Thing|Comment|null $resultComment
-     */
-    public function setResultComment($resultComment) : void
+    protected Thing|Comment|null $resultComment = null;
+    public function setResultComment(Thing|Comment|null $resultComment) : void
     {
         $this->resultComment = $resultComment;
     }
-    /**
-     * @return Thing|Comment|null
-     */
-    public function getResultComment()
+    public function getResultComment() : Thing|Comment|null
     {
         return $this->resultComment;
     }
@@ -34,3 +25,4 @@ class CommentAction extends CommunicateAction implements \JsonSerializable
         }));
     }
 }
+

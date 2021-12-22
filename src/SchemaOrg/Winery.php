@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A winery.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A winery.')]
 class Winery extends FoodEstablishment implements \JsonSerializable
 {
 }
+

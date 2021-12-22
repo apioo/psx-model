@@ -4,170 +4,89 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A direction indicating a single action to do in the instructions for how to achieve a result.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A direction indicating a single action to do in the instructions for how to achieve a result.')]
 class HowToDirection extends ListItem implements \JsonSerializable
 {
-    /**
-     * @var Duration|null
-     */
-    protected $totalTime;
-    /**
-     * @var Duration|null
-     */
-    protected $cookTime;
-    /**
-     * @var Duration|null
-     */
-    protected $performTime;
-    /**
-     * @var \PSX\Uri\Uri|MediaObject|null
-     */
-    protected $afterMedia;
-    /**
-     * @var string|HowToSupply|null
-     */
-    protected $supply;
-    /**
-     * @var string|HowToTool|null
-     */
-    protected $tool;
-    /**
-     * @var Duration|null
-     */
-    protected $prepTime;
-    /**
-     * @var \PSX\Uri\Uri|MediaObject|null
-     */
-    protected $beforeMedia;
-    /**
-     * @var \PSX\Uri\Uri|MediaObject|null
-     */
-    protected $duringMedia;
-    /**
-     * @param Duration|null $totalTime
-     */
+    protected ?Duration $totalTime = null;
+    protected ?Duration $cookTime = null;
+    protected ?Duration $performTime = null;
+    protected \PSX\Uri\Uri|MediaObject|null $afterMedia = null;
+    protected string|HowToSupply|null $supply = null;
+    protected string|HowToTool|null $tool = null;
+    protected ?Duration $prepTime = null;
+    protected \PSX\Uri\Uri|MediaObject|null $beforeMedia = null;
+    protected \PSX\Uri\Uri|MediaObject|null $duringMedia = null;
     public function setTotalTime(?Duration $totalTime) : void
     {
         $this->totalTime = $totalTime;
     }
-    /**
-     * @return Duration|null
-     */
     public function getTotalTime() : ?Duration
     {
         return $this->totalTime;
     }
-    /**
-     * @param Duration|null $cookTime
-     */
     public function setCookTime(?Duration $cookTime) : void
     {
         $this->cookTime = $cookTime;
     }
-    /**
-     * @return Duration|null
-     */
     public function getCookTime() : ?Duration
     {
         return $this->cookTime;
     }
-    /**
-     * @param Duration|null $performTime
-     */
     public function setPerformTime(?Duration $performTime) : void
     {
         $this->performTime = $performTime;
     }
-    /**
-     * @return Duration|null
-     */
     public function getPerformTime() : ?Duration
     {
         return $this->performTime;
     }
-    /**
-     * @param \PSX\Uri\Uri|MediaObject|null $afterMedia
-     */
-    public function setAfterMedia($afterMedia) : void
+    public function setAfterMedia(\PSX\Uri\Uri|MediaObject|null $afterMedia) : void
     {
         $this->afterMedia = $afterMedia;
     }
-    /**
-     * @return \PSX\Uri\Uri|MediaObject|null
-     */
-    public function getAfterMedia()
+    public function getAfterMedia() : \PSX\Uri\Uri|MediaObject|null
     {
         return $this->afterMedia;
     }
-    /**
-     * @param string|HowToSupply|null $supply
-     */
-    public function setSupply($supply) : void
+    public function setSupply(string|HowToSupply|null $supply) : void
     {
         $this->supply = $supply;
     }
-    /**
-     * @return string|HowToSupply|null
-     */
-    public function getSupply()
+    public function getSupply() : string|HowToSupply|null
     {
         return $this->supply;
     }
-    /**
-     * @param string|HowToTool|null $tool
-     */
-    public function setTool($tool) : void
+    public function setTool(string|HowToTool|null $tool) : void
     {
         $this->tool = $tool;
     }
-    /**
-     * @return string|HowToTool|null
-     */
-    public function getTool()
+    public function getTool() : string|HowToTool|null
     {
         return $this->tool;
     }
-    /**
-     * @param Duration|null $prepTime
-     */
     public function setPrepTime(?Duration $prepTime) : void
     {
         $this->prepTime = $prepTime;
     }
-    /**
-     * @return Duration|null
-     */
     public function getPrepTime() : ?Duration
     {
         return $this->prepTime;
     }
-    /**
-     * @param \PSX\Uri\Uri|MediaObject|null $beforeMedia
-     */
-    public function setBeforeMedia($beforeMedia) : void
+    public function setBeforeMedia(\PSX\Uri\Uri|MediaObject|null $beforeMedia) : void
     {
         $this->beforeMedia = $beforeMedia;
     }
-    /**
-     * @return \PSX\Uri\Uri|MediaObject|null
-     */
-    public function getBeforeMedia()
+    public function getBeforeMedia() : \PSX\Uri\Uri|MediaObject|null
     {
         return $this->beforeMedia;
     }
-    /**
-     * @param \PSX\Uri\Uri|MediaObject|null $duringMedia
-     */
-    public function setDuringMedia($duringMedia) : void
+    public function setDuringMedia(\PSX\Uri\Uri|MediaObject|null $duringMedia) : void
     {
         $this->duringMedia = $duringMedia;
     }
-    /**
-     * @return \PSX\Uri\Uri|MediaObject|null
-     */
-    public function getDuringMedia()
+    public function getDuringMedia() : \PSX\Uri\Uri|MediaObject|null
     {
         return $this->duringMedia;
     }
@@ -178,3 +97,4 @@ class HowToDirection extends ListItem implements \JsonSerializable
         }));
     }
 }
+

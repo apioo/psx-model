@@ -4,151 +4,79 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A video file.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A video file.')]
 class VideoObject extends MediaObject implements \JsonSerializable
 {
-    /**
-     * @var ImageObject|null
-     */
-    protected $thumbnail;
-    /**
-     * @var string|null
-     */
-    protected $videoFrameSize;
-    /**
-     * @var Person|MusicGroup|null
-     */
-    protected $musicBy;
-    /**
-     * @var Person|null
-     */
-    protected $actor;
-    /**
-     * @var string|null
-     */
-    protected $videoQuality;
-    /**
-     * @var string|MediaObject|null
-     */
-    protected $caption;
-    /**
-     * @var Person|null
-     */
-    protected $director;
-    /**
-     * @var string|null
-     */
-    protected $transcript;
-    /**
-     * @param ImageObject|null $thumbnail
-     */
+    protected ?ImageObject $thumbnail = null;
+    protected ?string $videoFrameSize = null;
+    protected Person|MusicGroup|null $musicBy = null;
+    protected ?Person $actor = null;
+    protected ?string $videoQuality = null;
+    protected string|MediaObject|null $caption = null;
+    protected ?Person $director = null;
+    protected ?string $transcript = null;
     public function setThumbnail(?ImageObject $thumbnail) : void
     {
         $this->thumbnail = $thumbnail;
     }
-    /**
-     * @return ImageObject|null
-     */
     public function getThumbnail() : ?ImageObject
     {
         return $this->thumbnail;
     }
-    /**
-     * @param string|null $videoFrameSize
-     */
     public function setVideoFrameSize(?string $videoFrameSize) : void
     {
         $this->videoFrameSize = $videoFrameSize;
     }
-    /**
-     * @return string|null
-     */
     public function getVideoFrameSize() : ?string
     {
         return $this->videoFrameSize;
     }
-    /**
-     * @param Person|MusicGroup|null $musicBy
-     */
-    public function setMusicBy($musicBy) : void
+    public function setMusicBy(Person|MusicGroup|null $musicBy) : void
     {
         $this->musicBy = $musicBy;
     }
-    /**
-     * @return Person|MusicGroup|null
-     */
-    public function getMusicBy()
+    public function getMusicBy() : Person|MusicGroup|null
     {
         return $this->musicBy;
     }
-    /**
-     * @param Person|null $actor
-     */
     public function setActor(?Person $actor) : void
     {
         $this->actor = $actor;
     }
-    /**
-     * @return Person|null
-     */
     public function getActor() : ?Person
     {
         return $this->actor;
     }
-    /**
-     * @param string|null $videoQuality
-     */
     public function setVideoQuality(?string $videoQuality) : void
     {
         $this->videoQuality = $videoQuality;
     }
-    /**
-     * @return string|null
-     */
     public function getVideoQuality() : ?string
     {
         return $this->videoQuality;
     }
-    /**
-     * @param string|MediaObject|null $caption
-     */
-    public function setCaption($caption) : void
+    public function setCaption(string|MediaObject|null $caption) : void
     {
         $this->caption = $caption;
     }
-    /**
-     * @return string|MediaObject|null
-     */
-    public function getCaption()
+    public function getCaption() : string|MediaObject|null
     {
         return $this->caption;
     }
-    /**
-     * @param Person|null $director
-     */
     public function setDirector(?Person $director) : void
     {
         $this->director = $director;
     }
-    /**
-     * @return Person|null
-     */
     public function getDirector() : ?Person
     {
         return $this->director;
     }
-    /**
-     * @param string|null $transcript
-     */
     public function setTranscript(?string $transcript) : void
     {
         $this->transcript = $transcript;
     }
-    /**
-     * @return string|null
-     */
     public function getTranscript() : ?string
     {
         return $this->transcript;
@@ -160,3 +88,4 @@ class VideoObject extends MediaObject implements \JsonSerializable
         }));
     }
 }
+

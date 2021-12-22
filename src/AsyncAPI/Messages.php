@@ -10,3 +10,4 @@ namespace PSX\Model\AsyncAPI;
 class Messages extends \PSX\Record\Record
 {
 }
+

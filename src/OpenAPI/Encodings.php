@@ -10,3 +10,4 @@ namespace PSX\Model\OpenAPI;
 class Encodings extends \PSX\Record\Record
 {
 }
+

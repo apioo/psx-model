@@ -4,386 +4,197 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A service provided by an organization, e.g. delivery service, print services, etc.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A service provided by an organization, e.g. delivery service, print services, etc.')]
 class Service extends Intangible implements \JsonSerializable
 {
-    /**
-     * @var Audience|null
-     */
-    protected $audience;
-    /**
-     * @var ServiceChannel|null
-     */
-    protected $availableChannel;
-    /**
-     * @var string|Place|GeoShape|null
-     */
-    protected $areaServed;
-    /**
-     * @var \PSX\Uri\Uri|Thing|string|null
-     */
-    protected $category;
-    /**
-     * @var Organization|Person|null
-     */
-    protected $provider;
-    /**
-     * @var AggregateRating|null
-     */
-    protected $aggregateRating;
-    /**
-     * @var string|null
-     */
-    protected $award;
-    /**
-     * @var Review|null
-     */
-    protected $review;
-    /**
-     * @var string|null
-     */
-    protected $serviceType;
-    /**
-     * @var Organization|Person|null
-     */
-    protected $broker;
-    /**
-     * @var Service|Product|null
-     */
-    protected $isSimilarTo;
-    /**
-     * @var OpeningHoursSpecification|null
-     */
-    protected $hoursAvailable;
-    /**
-     * @var Service|Product|null
-     */
-    protected $isRelatedTo;
-    /**
-     * @var string|null
-     */
-    protected $providerMobility;
-    /**
-     * @var \PSX\Uri\Uri|ImageObject|null
-     */
-    protected $logo;
-    /**
-     * @var Organization|Brand|null
-     */
-    protected $brand;
-    /**
-     * @var OfferCatalog|null
-     */
-    protected $hasOfferCatalog;
-    /**
-     * @var Thing|null
-     */
-    protected $serviceOutput;
-    /**
-     * @var string|null
-     */
-    protected $slogan;
-    /**
-     * @var Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null
-     */
-    protected $itemOffered;
-    /**
-     * @var Offer|Demand|null
-     */
-    protected $offers;
-    /**
-     * @param Audience|null $audience
-     */
+    protected ?Audience $audience = null;
+    protected ?ServiceChannel $availableChannel = null;
+    protected string|Place|GeoShape|null $areaServed = null;
+    protected \PSX\Uri\Uri|Thing|string|null $category = null;
+    protected Organization|Person|null $provider = null;
+    protected ?AggregateRating $aggregateRating = null;
+    protected ?string $award = null;
+    protected ?Review $review = null;
+    protected ?string $serviceType = null;
+    protected Organization|Person|null $broker = null;
+    protected Service|Product|null $isSimilarTo = null;
+    protected ?OpeningHoursSpecification $hoursAvailable = null;
+    protected Service|Product|null $isRelatedTo = null;
+    protected ?string $providerMobility = null;
+    protected \PSX\Uri\Uri|ImageObject|null $logo = null;
+    protected Organization|Brand|null $brand = null;
+    protected ?OfferCatalog $hasOfferCatalog = null;
+    protected ?Thing $serviceOutput = null;
+    protected ?string $slogan = null;
+    protected Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered = null;
+    protected Offer|Demand|null $offers = null;
     public function setAudience(?Audience $audience) : void
     {
         $this->audience = $audience;
     }
-    /**
-     * @return Audience|null
-     */
     public function getAudience() : ?Audience
     {
         return $this->audience;
     }
-    /**
-     * @param ServiceChannel|null $availableChannel
-     */
     public function setAvailableChannel(?ServiceChannel $availableChannel) : void
     {
         $this->availableChannel = $availableChannel;
     }
-    /**
-     * @return ServiceChannel|null
-     */
     public function getAvailableChannel() : ?ServiceChannel
     {
         return $this->availableChannel;
     }
-    /**
-     * @param string|Place|GeoShape|null $areaServed
-     */
-    public function setAreaServed($areaServed) : void
+    public function setAreaServed(string|Place|GeoShape|null $areaServed) : void
     {
         $this->areaServed = $areaServed;
     }
-    /**
-     * @return string|Place|GeoShape|null
-     */
-    public function getAreaServed()
+    public function getAreaServed() : string|Place|GeoShape|null
     {
         return $this->areaServed;
     }
-    /**
-     * @param \PSX\Uri\Uri|Thing|string|null $category
-     */
-    public function setCategory($category) : void
+    public function setCategory(\PSX\Uri\Uri|Thing|string|null $category) : void
     {
         $this->category = $category;
     }
-    /**
-     * @return \PSX\Uri\Uri|Thing|string|null
-     */
-    public function getCategory()
+    public function getCategory() : \PSX\Uri\Uri|Thing|string|null
     {
         return $this->category;
     }
-    /**
-     * @param Organization|Person|null $provider
-     */
-    public function setProvider($provider) : void
+    public function setProvider(Organization|Person|null $provider) : void
     {
         $this->provider = $provider;
     }
-    /**
-     * @return Organization|Person|null
-     */
-    public function getProvider()
+    public function getProvider() : Organization|Person|null
     {
         return $this->provider;
     }
-    /**
-     * @param AggregateRating|null $aggregateRating
-     */
     public function setAggregateRating(?AggregateRating $aggregateRating) : void
     {
         $this->aggregateRating = $aggregateRating;
     }
-    /**
-     * @return AggregateRating|null
-     */
     public function getAggregateRating() : ?AggregateRating
     {
         return $this->aggregateRating;
     }
-    /**
-     * @param string|null $award
-     */
     public function setAward(?string $award) : void
     {
         $this->award = $award;
     }
-    /**
-     * @return string|null
-     */
     public function getAward() : ?string
     {
         return $this->award;
     }
-    /**
-     * @param Review|null $review
-     */
     public function setReview(?Review $review) : void
     {
         $this->review = $review;
     }
-    /**
-     * @return Review|null
-     */
     public function getReview() : ?Review
     {
         return $this->review;
     }
-    /**
-     * @param string|null $serviceType
-     */
     public function setServiceType(?string $serviceType) : void
     {
         $this->serviceType = $serviceType;
     }
-    /**
-     * @return string|null
-     */
     public function getServiceType() : ?string
     {
         return $this->serviceType;
     }
-    /**
-     * @param Organization|Person|null $broker
-     */
-    public function setBroker($broker) : void
+    public function setBroker(Organization|Person|null $broker) : void
     {
         $this->broker = $broker;
     }
-    /**
-     * @return Organization|Person|null
-     */
-    public function getBroker()
+    public function getBroker() : Organization|Person|null
     {
         return $this->broker;
     }
-    /**
-     * @param Service|Product|null $isSimilarTo
-     */
-    public function setIsSimilarTo($isSimilarTo) : void
+    public function setIsSimilarTo(Service|Product|null $isSimilarTo) : void
     {
         $this->isSimilarTo = $isSimilarTo;
     }
-    /**
-     * @return Service|Product|null
-     */
-    public function getIsSimilarTo()
+    public function getIsSimilarTo() : Service|Product|null
     {
         return $this->isSimilarTo;
     }
-    /**
-     * @param OpeningHoursSpecification|null $hoursAvailable
-     */
     public function setHoursAvailable(?OpeningHoursSpecification $hoursAvailable) : void
     {
         $this->hoursAvailable = $hoursAvailable;
     }
-    /**
-     * @return OpeningHoursSpecification|null
-     */
     public function getHoursAvailable() : ?OpeningHoursSpecification
     {
         return $this->hoursAvailable;
     }
-    /**
-     * @param Service|Product|null $isRelatedTo
-     */
-    public function setIsRelatedTo($isRelatedTo) : void
+    public function setIsRelatedTo(Service|Product|null $isRelatedTo) : void
     {
         $this->isRelatedTo = $isRelatedTo;
     }
-    /**
-     * @return Service|Product|null
-     */
-    public function getIsRelatedTo()
+    public function getIsRelatedTo() : Service|Product|null
     {
         return $this->isRelatedTo;
     }
-    /**
-     * @param string|null $providerMobility
-     */
     public function setProviderMobility(?string $providerMobility) : void
     {
         $this->providerMobility = $providerMobility;
     }
-    /**
-     * @return string|null
-     */
     public function getProviderMobility() : ?string
     {
         return $this->providerMobility;
     }
-    /**
-     * @param \PSX\Uri\Uri|ImageObject|null $logo
-     */
-    public function setLogo($logo) : void
+    public function setLogo(\PSX\Uri\Uri|ImageObject|null $logo) : void
     {
         $this->logo = $logo;
     }
-    /**
-     * @return \PSX\Uri\Uri|ImageObject|null
-     */
-    public function getLogo()
+    public function getLogo() : \PSX\Uri\Uri|ImageObject|null
     {
         return $this->logo;
     }
-    /**
-     * @param Organization|Brand|null $brand
-     */
-    public function setBrand($brand) : void
+    public function setBrand(Organization|Brand|null $brand) : void
     {
         $this->brand = $brand;
     }
-    /**
-     * @return Organization|Brand|null
-     */
-    public function getBrand()
+    public function getBrand() : Organization|Brand|null
     {
         return $this->brand;
     }
-    /**
-     * @param OfferCatalog|null $hasOfferCatalog
-     */
     public function setHasOfferCatalog(?OfferCatalog $hasOfferCatalog) : void
     {
         $this->hasOfferCatalog = $hasOfferCatalog;
     }
-    /**
-     * @return OfferCatalog|null
-     */
     public function getHasOfferCatalog() : ?OfferCatalog
     {
         return $this->hasOfferCatalog;
     }
-    /**
-     * @param Thing|null $serviceOutput
-     */
     public function setServiceOutput(?Thing $serviceOutput) : void
     {
         $this->serviceOutput = $serviceOutput;
     }
-    /**
-     * @return Thing|null
-     */
     public function getServiceOutput() : ?Thing
     {
         return $this->serviceOutput;
     }
-    /**
-     * @param string|null $slogan
-     */
     public function setSlogan(?string $slogan) : void
     {
         $this->slogan = $slogan;
     }
-    /**
-     * @return string|null
-     */
     public function getSlogan() : ?string
     {
         return $this->slogan;
     }
-    /**
-     * @param Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered
-     */
-    public function setItemOffered($itemOffered) : void
+    public function setItemOffered(Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered) : void
     {
         $this->itemOffered = $itemOffered;
     }
-    /**
-     * @return Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null
-     */
-    public function getItemOffered()
+    public function getItemOffered() : Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null
     {
         return $this->itemOffered;
     }
-    /**
-     * @param Offer|Demand|null $offers
-     */
-    public function setOffers($offers) : void
+    public function setOffers(Offer|Demand|null $offers) : void
     {
         $this->offers = $offers;
     }
-    /**
-     * @return Offer|Demand|null
-     */
-    public function getOffers()
+    public function getOffers() : Offer|Demand|null
     {
         return $this->offers;
     }
@@ -394,3 +205,4 @@ class Service extends Intangible implements \JsonSerializable
         }));
     }
 }
+

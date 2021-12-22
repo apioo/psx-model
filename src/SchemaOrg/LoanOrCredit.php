@@ -4,80 +4,44 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A financial product for the loaning of an amount of money under agreed terms and charges.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A financial product for the loaning of an amount of money under agreed terms and charges.')]
 class LoanOrCredit extends FinancialProduct implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $currency;
-    /**
-     * @var Thing|string|null
-     */
-    protected $requiredCollateral;
-    /**
-     * @var float|MonetaryAmount|null
-     */
-    protected $amount;
-    /**
-     * @var QuantitativeValue|Duration|null
-     */
-    protected $duration;
-    /**
-     * @param string|null $currency
-     */
+    protected ?string $currency = null;
+    protected Thing|string|null $requiredCollateral = null;
+    protected float|MonetaryAmount|null $amount = null;
+    protected QuantitativeValue|Duration|null $duration = null;
     public function setCurrency(?string $currency) : void
     {
         $this->currency = $currency;
     }
-    /**
-     * @return string|null
-     */
     public function getCurrency() : ?string
     {
         return $this->currency;
     }
-    /**
-     * @param Thing|string|null $requiredCollateral
-     */
-    public function setRequiredCollateral($requiredCollateral) : void
+    public function setRequiredCollateral(Thing|string|null $requiredCollateral) : void
     {
         $this->requiredCollateral = $requiredCollateral;
     }
-    /**
-     * @return Thing|string|null
-     */
-    public function getRequiredCollateral()
+    public function getRequiredCollateral() : Thing|string|null
     {
         return $this->requiredCollateral;
     }
-    /**
-     * @param float|MonetaryAmount|null $amount
-     */
-    public function setAmount($amount) : void
+    public function setAmount(float|MonetaryAmount|null $amount) : void
     {
         $this->amount = $amount;
     }
-    /**
-     * @return float|MonetaryAmount|null
-     */
-    public function getAmount()
+    public function getAmount() : float|MonetaryAmount|null
     {
         return $this->amount;
     }
-    /**
-     * @param QuantitativeValue|Duration|null $duration
-     */
-    public function setDuration($duration) : void
+    public function setDuration(QuantitativeValue|Duration|null $duration) : void
     {
         $this->duration = $duration;
     }
-    /**
-     * @return QuantitativeValue|Duration|null
-     */
-    public function getDuration()
+    public function getDuration() : QuantitativeValue|Duration|null
     {
         return $this->duration;
     }
@@ -88,3 +52,4 @@ class LoanOrCredit extends FinancialProduct implements \JsonSerializable
         }));
     }
 }
+

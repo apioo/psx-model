@@ -4,25 +4,16 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("The act of managing by changing/editing the state of the object.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('The act of managing by changing/editing the state of the object.')]
 class UpdateAction extends Action implements \JsonSerializable
 {
-    /**
-     * @var Thing|null
-     */
-    protected $targetCollection;
-    /**
-     * @param Thing|null $targetCollection
-     */
+    protected ?Thing $targetCollection = null;
     public function setTargetCollection(?Thing $targetCollection) : void
     {
         $this->targetCollection = $targetCollection;
     }
-    /**
-     * @return Thing|null
-     */
     public function getTargetCollection() : ?Thing
     {
         return $this->targetCollection;
@@ -34,3 +25,4 @@ class UpdateAction extends Action implements \JsonSerializable
         }));
     }
 }
+

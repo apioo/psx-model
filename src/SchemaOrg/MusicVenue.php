@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A music venue.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A music venue.')]
 class MusicVenue extends CivicStructure implements \JsonSerializable
 {
 }
+

@@ -10,3 +10,4 @@ namespace PSX\Model\OpenAPI;
 class MediaTypes extends \PSX\Record\Record
 {
 }
+

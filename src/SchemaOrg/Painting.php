@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A painting.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A painting.')]
 class Painting extends CreativeWork implements \JsonSerializable
 {
 }
+

@@ -7,56 +7,29 @@ namespace PSX\Model\ActivityStream;
 
 class Position implements \JsonSerializable
 {
-    /**
-     * @var float|null
-     */
-    protected $altitude;
-    /**
-     * @var float|null
-     */
-    protected $latitude;
-    /**
-     * @var float|null
-     */
-    protected $longitude;
-    /**
-     * @param float|null $altitude
-     */
+    protected ?float $altitude = null;
+    protected ?float $latitude = null;
+    protected ?float $longitude = null;
     public function setAltitude(?float $altitude) : void
     {
         $this->altitude = $altitude;
     }
-    /**
-     * @return float|null
-     */
     public function getAltitude() : ?float
     {
         return $this->altitude;
     }
-    /**
-     * @param float|null $latitude
-     */
     public function setLatitude(?float $latitude) : void
     {
         $this->latitude = $latitude;
     }
-    /**
-     * @return float|null
-     */
     public function getLatitude() : ?float
     {
         return $this->latitude;
     }
-    /**
-     * @param float|null $longitude
-     */
     public function setLongitude(?float $longitude) : void
     {
         $this->longitude = $longitude;
     }
-    /**
-     * @return float|null
-     */
     public function getLongitude() : ?float
     {
         return $this->longitude;
@@ -68,3 +41,4 @@ class Position implements \JsonSerializable
         });
     }
 }
+

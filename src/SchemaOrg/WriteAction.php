@@ -4,26 +4,17 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("The act of authoring written creative content.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('The act of authoring written creative content.')]
 class WriteAction extends CreateAction implements \JsonSerializable
 {
-    /**
-     * @var string|Language|null
-     */
-    protected $inLanguage;
-    /**
-     * @param string|Language|null $inLanguage
-     */
-    public function setInLanguage($inLanguage) : void
+    protected string|Language|null $inLanguage = null;
+    public function setInLanguage(string|Language|null $inLanguage) : void
     {
         $this->inLanguage = $inLanguage;
     }
-    /**
-     * @return string|Language|null
-     */
-    public function getInLanguage()
+    public function getInLanguage() : string|Language|null
     {
         return $this->inLanguage;
     }
@@ -34,3 +25,4 @@ class WriteAction extends CreateAction implements \JsonSerializable
         }));
     }
 }
+

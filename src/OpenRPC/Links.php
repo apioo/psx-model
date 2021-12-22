@@ -10,3 +10,4 @@ namespace PSX\Model\OpenRPC;
 class Links extends \PSX\Record\Record
 {
 }
+

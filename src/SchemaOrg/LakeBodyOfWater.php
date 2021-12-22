@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A lake (for example, Lake Pontrachain).")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A lake (for example, Lake Pontrachain).')]
 class LakeBodyOfWater extends BodyOfWater implements \JsonSerializable
 {
 }
+

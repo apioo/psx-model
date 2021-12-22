@@ -4,26 +4,17 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("The act of expressing a preference from a set of options or a large or unbounded set of choices/options.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('The act of expressing a preference from a set of options or a large or unbounded set of choices/options.')]
 class ChooseAction extends AssessAction implements \JsonSerializable
 {
-    /**
-     * @var Thing|string|null
-     */
-    protected $actionOption;
-    /**
-     * @param Thing|string|null $actionOption
-     */
-    public function setActionOption($actionOption) : void
+    protected Thing|string|null $actionOption = null;
+    public function setActionOption(Thing|string|null $actionOption) : void
     {
         $this->actionOption = $actionOption;
     }
-    /**
-     * @return Thing|string|null
-     */
-    public function getActionOption()
+    public function getActionOption() : Thing|string|null
     {
         return $this->actionOption;
     }
@@ -34,3 +25,4 @@ class ChooseAction extends AssessAction implements \JsonSerializable
         }));
     }
 }
+

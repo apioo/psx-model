@@ -4,25 +4,16 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("Organization: A business corporation.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('Organization: A business corporation.')]
 class Corporation extends Organization implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $tickerSymbol;
-    /**
-     * @param string|null $tickerSymbol
-     */
+    protected ?string $tickerSymbol = null;
     public function setTickerSymbol(?string $tickerSymbol) : void
     {
         $this->tickerSymbol = $tickerSymbol;
     }
-    /**
-     * @return string|null
-     */
     public function getTickerSymbol() : ?string
     {
         return $this->tickerSymbol;
@@ -34,3 +25,4 @@ class Corporation extends Organization implements \JsonSerializable
         }));
     }
 }
+

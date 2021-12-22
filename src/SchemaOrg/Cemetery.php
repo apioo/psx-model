@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A graveyard.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A graveyard.')]
 class Cemetery extends CivicStructure implements \JsonSerializable
 {
 }
+

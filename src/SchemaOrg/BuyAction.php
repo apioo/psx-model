@@ -4,26 +4,17 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("The act of giving money to a seller in exchange for goods or services rendered. An agent buys an object, product, or service from a seller for a price. Reciprocal of SellAction.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('The act of giving money to a seller in exchange for goods or services rendered. An agent buys an object, product, or service from a seller for a price. Reciprocal of SellAction.')]
 class BuyAction extends TradeAction implements \JsonSerializable
 {
-    /**
-     * @var Organization|Person|null
-     */
-    protected $seller;
-    /**
-     * @param Organization|Person|null $seller
-     */
-    public function setSeller($seller) : void
+    protected Organization|Person|null $seller = null;
+    public function setSeller(Organization|Person|null $seller) : void
     {
         $this->seller = $seller;
     }
-    /**
-     * @return Organization|Person|null
-     */
-    public function getSeller()
+    public function getSeller() : Organization|Person|null
     {
         return $this->seller;
     }
@@ -34,3 +25,4 @@ class BuyAction extends TradeAction implements \JsonSerializable
         }));
     }
 }
+

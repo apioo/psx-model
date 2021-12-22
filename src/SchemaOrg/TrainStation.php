@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A train station.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A train station.')]
 class TrainStation extends CivicStructure implements \JsonSerializable
 {
 }
+

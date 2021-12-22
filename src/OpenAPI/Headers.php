@@ -10,3 +10,4 @@ namespace PSX\Model\OpenAPI;
 class Headers extends \PSX\Record\Record
 {
 }
+

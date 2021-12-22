@@ -4,79 +4,43 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A food-related business.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A food-related business.')]
 class FoodEstablishment extends LocalBusiness implements \JsonSerializable
 {
-    /**
-     * @var string|\PSX\Uri\Uri|Menu|null
-     */
-    protected $hasMenu;
-    /**
-     * @var \PSX\Uri\Uri|string|bool|null
-     */
-    protected $acceptsReservations;
-    /**
-     * @var Rating|null
-     */
-    protected $starRating;
-    /**
-     * @var string|null
-     */
-    protected $servesCuisine;
-    /**
-     * @param string|\PSX\Uri\Uri|Menu|null $hasMenu
-     */
-    public function setHasMenu($hasMenu) : void
+    protected string|\PSX\Uri\Uri|Menu|null $hasMenu = null;
+    protected \PSX\Uri\Uri|string|bool|null $acceptsReservations = null;
+    protected ?Rating $starRating = null;
+    protected ?string $servesCuisine = null;
+    public function setHasMenu(string|\PSX\Uri\Uri|Menu|null $hasMenu) : void
     {
         $this->hasMenu = $hasMenu;
     }
-    /**
-     * @return string|\PSX\Uri\Uri|Menu|null
-     */
-    public function getHasMenu()
+    public function getHasMenu() : string|\PSX\Uri\Uri|Menu|null
     {
         return $this->hasMenu;
     }
-    /**
-     * @param \PSX\Uri\Uri|string|bool|null $acceptsReservations
-     */
-    public function setAcceptsReservations($acceptsReservations) : void
+    public function setAcceptsReservations(\PSX\Uri\Uri|string|bool|null $acceptsReservations) : void
     {
         $this->acceptsReservations = $acceptsReservations;
     }
-    /**
-     * @return \PSX\Uri\Uri|string|bool|null
-     */
-    public function getAcceptsReservations()
+    public function getAcceptsReservations() : \PSX\Uri\Uri|string|bool|null
     {
         return $this->acceptsReservations;
     }
-    /**
-     * @param Rating|null $starRating
-     */
     public function setStarRating(?Rating $starRating) : void
     {
         $this->starRating = $starRating;
     }
-    /**
-     * @return Rating|null
-     */
     public function getStarRating() : ?Rating
     {
         return $this->starRating;
     }
-    /**
-     * @param string|null $servesCuisine
-     */
     public function setServesCuisine(?string $servesCuisine) : void
     {
         $this->servesCuisine = $servesCuisine;
     }
-    /**
-     * @return string|null
-     */
     public function getServesCuisine() : ?string
     {
         return $this->servesCuisine;
@@ -88,3 +52,4 @@ class FoodEstablishment extends LocalBusiness implements \JsonSerializable
         }));
     }
 }
+

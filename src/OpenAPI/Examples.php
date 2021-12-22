@@ -10,3 +10,4 @@ namespace PSX\Model\OpenAPI;
 class Examples extends \PSX\Record\Record
 {
 }
+

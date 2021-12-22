@@ -4,135 +4,72 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
-* @Description("An article, such as a news article or piece of investigative report. Newspapers and magazines have articles of many different types and this is intended to cover them all.<br/><br/>
+use PSX\Schema\Attribute\Description;
 
-See also <a href=""http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html"">blog post</a>.")
-*/
+#[Description('An article, such as a news article or piece of investigative report. Newspapers and magazines have articles of many different types and this is intended to cover them all.<br/><br/>
+
+See also <a href="http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html">blog post</a>.')]
 class Article extends CreativeWork implements \JsonSerializable
 {
-    /**
-     * @var string|int|null
-     */
-    protected $pageStart;
-    /**
-     * @var string|null
-     */
-    protected $articleBody;
-    /**
-     * @var string|null
-     */
-    protected $pagination;
-    /**
-     * @var string|int|null
-     */
-    protected $pageEnd;
-    /**
-     * @var \PSX\Uri\Uri|SpeakableSpecification|null
-     */
-    protected $speakable;
-    /**
-     * @var int|null
-     */
-    protected $wordCount;
-    /**
-     * @var string|null
-     */
-    protected $articleSection;
-    /**
-     * @param string|int|null $pageStart
-     */
-    public function setPageStart($pageStart) : void
+    protected string|int|null $pageStart = null;
+    protected ?string $articleBody = null;
+    protected ?string $pagination = null;
+    protected string|int|null $pageEnd = null;
+    protected \PSX\Uri\Uri|SpeakableSpecification|null $speakable = null;
+    protected ?int $wordCount = null;
+    protected ?string $articleSection = null;
+    public function setPageStart(string|int|null $pageStart) : void
     {
         $this->pageStart = $pageStart;
     }
-    /**
-     * @return string|int|null
-     */
-    public function getPageStart()
+    public function getPageStart() : string|int|null
     {
         return $this->pageStart;
     }
-    /**
-     * @param string|null $articleBody
-     */
     public function setArticleBody(?string $articleBody) : void
     {
         $this->articleBody = $articleBody;
     }
-    /**
-     * @return string|null
-     */
     public function getArticleBody() : ?string
     {
         return $this->articleBody;
     }
-    /**
-     * @param string|null $pagination
-     */
     public function setPagination(?string $pagination) : void
     {
         $this->pagination = $pagination;
     }
-    /**
-     * @return string|null
-     */
     public function getPagination() : ?string
     {
         return $this->pagination;
     }
-    /**
-     * @param string|int|null $pageEnd
-     */
-    public function setPageEnd($pageEnd) : void
+    public function setPageEnd(string|int|null $pageEnd) : void
     {
         $this->pageEnd = $pageEnd;
     }
-    /**
-     * @return string|int|null
-     */
-    public function getPageEnd()
+    public function getPageEnd() : string|int|null
     {
         return $this->pageEnd;
     }
-    /**
-     * @param \PSX\Uri\Uri|SpeakableSpecification|null $speakable
-     */
-    public function setSpeakable($speakable) : void
+    public function setSpeakable(\PSX\Uri\Uri|SpeakableSpecification|null $speakable) : void
     {
         $this->speakable = $speakable;
     }
-    /**
-     * @return \PSX\Uri\Uri|SpeakableSpecification|null
-     */
-    public function getSpeakable()
+    public function getSpeakable() : \PSX\Uri\Uri|SpeakableSpecification|null
     {
         return $this->speakable;
     }
-    /**
-     * @param int|null $wordCount
-     */
     public function setWordCount(?int $wordCount) : void
     {
         $this->wordCount = $wordCount;
     }
-    /**
-     * @return int|null
-     */
     public function getWordCount() : ?int
     {
         return $this->wordCount;
     }
-    /**
-     * @param string|null $articleSection
-     */
     public function setArticleSection(?string $articleSection) : void
     {
         $this->articleSection = $articleSection;
     }
-    /**
-     * @return string|null
-     */
     public function getArticleSection() : ?string
     {
         return $this->articleSection;
@@ -144,3 +81,4 @@ class Article extends CreativeWork implements \JsonSerializable
         }));
     }
 }
+

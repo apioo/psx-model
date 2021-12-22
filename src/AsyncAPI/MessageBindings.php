@@ -7,20 +7,11 @@ namespace PSX\Model\AsyncAPI;
 
 class MessageBindings implements \JsonSerializable
 {
-    /**
-     * @var HttpMessageBinding|null
-     */
-    protected $http;
-    /**
-     * @param HttpMessageBinding|null $http
-     */
+    protected ?HttpMessageBinding $http = null;
     public function setHttp(?HttpMessageBinding $http) : void
     {
         $this->http = $http;
     }
-    /**
-     * @return HttpMessageBinding|null
-     */
     public function getHttp() : ?HttpMessageBinding
     {
         return $this->http;
@@ -32,3 +23,4 @@ class MessageBindings implements \JsonSerializable
         });
     }
 }
+

@@ -4,9 +4,10 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A police station.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A police station.')]
 class PoliceStation extends EmergencyService implements \JsonSerializable
 {
 }
+

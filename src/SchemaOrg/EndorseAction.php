@@ -4,26 +4,17 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("An agent approves/certifies/likes/supports/sanction an object.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('An agent approves/certifies/likes/supports/sanction an object.')]
 class EndorseAction extends ReactAction implements \JsonSerializable
 {
-    /**
-     * @var Person|Organization|null
-     */
-    protected $endorsee;
-    /**
-     * @param Person|Organization|null $endorsee
-     */
-    public function setEndorsee($endorsee) : void
+    protected Person|Organization|null $endorsee = null;
+    public function setEndorsee(Person|Organization|null $endorsee) : void
     {
         $this->endorsee = $endorsee;
     }
-    /**
-     * @return Person|Organization|null
-     */
-    public function getEndorsee()
+    public function getEndorsee() : Person|Organization|null
     {
         return $this->endorsee;
     }
@@ -34,3 +25,4 @@ class EndorseAction extends ReactAction implements \JsonSerializable
         }));
     }
 }
+

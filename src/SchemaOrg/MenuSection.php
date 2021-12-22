@@ -4,43 +4,25 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A sub-grouping of food or drink items in a menu. E.g. courses (such as 'Dinner', 'Breakfast', etc.), specific type of dishes (such as 'Meat', 'Vegan', 'Drinks', etc.), or some other classification made by the menu provider.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A sub-grouping of food or drink items in a menu. E.g. courses (such as \'Dinner\', \'Breakfast\', etc.), specific type of dishes (such as \'Meat\', \'Vegan\', \'Drinks\', etc.), or some other classification made by the menu provider.')]
 class MenuSection extends CreativeWork implements \JsonSerializable
 {
-    /**
-     * @var MenuSection|null
-     */
-    protected $hasMenuSection;
-    /**
-     * @var MenuItem|null
-     */
-    protected $hasMenuItem;
-    /**
-     * @param MenuSection|null $hasMenuSection
-     */
+    protected ?MenuSection $hasMenuSection = null;
+    protected ?MenuItem $hasMenuItem = null;
     public function setHasMenuSection(?MenuSection $hasMenuSection) : void
     {
         $this->hasMenuSection = $hasMenuSection;
     }
-    /**
-     * @return MenuSection|null
-     */
     public function getHasMenuSection() : ?MenuSection
     {
         return $this->hasMenuSection;
     }
-    /**
-     * @param MenuItem|null $hasMenuItem
-     */
     public function setHasMenuItem(?MenuItem $hasMenuItem) : void
     {
         $this->hasMenuItem = $hasMenuItem;
     }
-    /**
-     * @return MenuItem|null
-     */
     public function getHasMenuItem() : ?MenuItem
     {
         return $this->hasMenuItem;
@@ -52,3 +34,4 @@ class MenuSection extends CreativeWork implements \JsonSerializable
         }));
     }
 }
+

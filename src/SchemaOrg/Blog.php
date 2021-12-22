@@ -4,43 +4,25 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("A blog.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('A blog.')]
 class Blog extends CreativeWork implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    protected $issn;
-    /**
-     * @var BlogPosting|null
-     */
-    protected $blogPost;
-    /**
-     * @param string|null $issn
-     */
+    protected ?string $issn = null;
+    protected ?BlogPosting $blogPost = null;
     public function setIssn(?string $issn) : void
     {
         $this->issn = $issn;
     }
-    /**
-     * @return string|null
-     */
     public function getIssn() : ?string
     {
         return $this->issn;
     }
-    /**
-     * @param BlogPosting|null $blogPost
-     */
     public function setBlogPost(?BlogPosting $blogPost) : void
     {
         $this->blogPost = $blogPost;
     }
-    /**
-     * @return BlogPosting|null
-     */
     public function getBlogPost() : ?BlogPosting
     {
         return $this->blogPost;
@@ -52,3 +34,4 @@ class Blog extends CreativeWork implements \JsonSerializable
         }));
     }
 }
+

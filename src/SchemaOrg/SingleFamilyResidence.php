@@ -4,44 +4,26 @@ declare(strict_types = 1);
 
 namespace PSX\Model\SchemaOrg;
 
-/**
- * @Description("Residence type: Single-family home.")
- */
+use PSX\Schema\Attribute\Description;
+
+#[Description('Residence type: Single-family home.')]
 class SingleFamilyResidence extends House implements \JsonSerializable
 {
-    /**
-     * @var QuantitativeValue|null
-     */
-    protected $occupancy;
-    /**
-     * @var float|QuantitativeValue|null
-     */
-    protected $numberOfRooms;
-    /**
-     * @param QuantitativeValue|null $occupancy
-     */
+    protected ?QuantitativeValue $occupancy = null;
+    protected float|QuantitativeValue|null $numberOfRooms = null;
     public function setOccupancy(?QuantitativeValue $occupancy) : void
     {
         $this->occupancy = $occupancy;
     }
-    /**
-     * @return QuantitativeValue|null
-     */
     public function getOccupancy() : ?QuantitativeValue
     {
         return $this->occupancy;
     }
-    /**
-     * @param float|QuantitativeValue|null $numberOfRooms
-     */
-    public function setNumberOfRooms($numberOfRooms) : void
+    public function setNumberOfRooms(float|QuantitativeValue|null $numberOfRooms) : void
     {
         $this->numberOfRooms = $numberOfRooms;
     }
-    /**
-     * @return float|QuantitativeValue|null
-     */
-    public function getNumberOfRooms()
+    public function getNumberOfRooms() : float|QuantitativeValue|null
     {
         return $this->numberOfRooms;
     }
@@ -52,3 +34,4 @@ class SingleFamilyResidence extends House implements \JsonSerializable
         }));
     }
 }
+
