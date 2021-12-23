@@ -13,7 +13,7 @@ class Error implements \JsonSerializable
 {
     protected ?int $code = null;
     protected ?string $message = null;
-    protected ?mixed $data = null;
+    protected mixed $data = null;
     public function setCode(?int $code) : void
     {
         $this->code = $code;
@@ -30,11 +30,11 @@ class Error implements \JsonSerializable
     {
         return $this->message;
     }
-    public function setData(?mixed $data) : void
+    public function setData(mixed $data) : void
     {
         $this->data = $data;
     }
-    public function getData() : ?mixed
+    public function getData() : mixed
     {
         return $this->data;
     }

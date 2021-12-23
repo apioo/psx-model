@@ -16,8 +16,8 @@ class Header implements \JsonSerializable
     protected ?string $style = null;
     protected ?bool $explode = null;
     protected ?bool $allowReserved = null;
-    protected ?mixed $schema = null;
-    protected ?mixed $example = null;
+    protected mixed $schema = null;
+    protected mixed $example = null;
     protected ?Examples $examples = null;
     protected ?MediaTypes $content = null;
     public function setDescription(?string $description) : void
@@ -76,19 +76,19 @@ class Header implements \JsonSerializable
     {
         return $this->allowReserved;
     }
-    public function setSchema(?mixed $schema) : void
+    public function setSchema(mixed $schema) : void
     {
         $this->schema = $schema;
     }
-    public function getSchema() : ?mixed
+    public function getSchema() : mixed
     {
         return $this->schema;
     }
-    public function setExample(?mixed $example) : void
+    public function setExample(mixed $example) : void
     {
         $this->example = $example;
     }
-    public function getExample() : ?mixed
+    public function getExample() : mixed
     {
         return $this->example;
     }

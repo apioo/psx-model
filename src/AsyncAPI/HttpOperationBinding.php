@@ -12,7 +12,7 @@ class HttpOperationBinding implements \JsonSerializable
     protected ?string $type = null;
     #[Enum(array('GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS', 'CONNECT', 'TRACE'))]
     protected ?string $method = null;
-    protected ?mixed $query = null;
+    protected mixed $query = null;
     protected ?string $bindingVersion = null;
     public function setType(?string $type) : void
     {
@@ -30,11 +30,11 @@ class HttpOperationBinding implements \JsonSerializable
     {
         return $this->method;
     }
-    public function setQuery(?mixed $query) : void
+    public function setQuery(mixed $query) : void
     {
         $this->query = $query;
     }
-    public function getQuery() : ?mixed
+    public function getQuery() : mixed
     {
         return $this->query;
     }

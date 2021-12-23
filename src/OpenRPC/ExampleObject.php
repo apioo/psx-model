@@ -12,7 +12,7 @@ class ExampleObject implements \JsonSerializable
     protected ?string $name = null;
     protected ?string $summary = null;
     protected ?string $description = null;
-    protected ?mixed $value = null;
+    protected mixed $value = null;
     protected ?string $externalValue = null;
     public function setName(?string $name) : void
     {
@@ -38,11 +38,11 @@ class ExampleObject implements \JsonSerializable
     {
         return $this->description;
     }
-    public function setValue(?mixed $value) : void
+    public function setValue(mixed $value) : void
     {
         $this->value = $value;
     }
-    public function getValue() : ?mixed
+    public function getValue() : mixed
     {
         return $this->value;
     }

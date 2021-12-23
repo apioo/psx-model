@@ -9,23 +9,23 @@ use PSX\Schema\Attribute\Description;
 #[Description('Each Media Type Object provides schema and examples for the media type identified by its key.')]
 class MediaType implements \JsonSerializable
 {
-    protected ?mixed $schema = null;
-    protected ?mixed $example = null;
+    protected mixed $schema = null;
+    protected mixed $example = null;
     protected ?Examples $examples = null;
     protected ?Encodings $encoding = null;
-    public function setSchema(?mixed $schema) : void
+    public function setSchema(mixed $schema) : void
     {
         $this->schema = $schema;
     }
-    public function getSchema() : ?mixed
+    public function getSchema() : mixed
     {
         return $this->schema;
     }
-    public function setExample(?mixed $example) : void
+    public function setExample(mixed $example) : void
     {
         $this->example = $example;
     }
-    public function getExample() : ?mixed
+    public function getExample() : mixed
     {
         return $this->example;
     }

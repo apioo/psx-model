@@ -13,7 +13,7 @@ class ContentDescriptor implements \JsonSerializable
     protected ?string $summary = null;
     protected ?string $description = null;
     protected ?bool $required = null;
-    protected ?mixed $schema = null;
+    protected mixed $schema = null;
     protected ?bool $deprecated = null;
     public function setName(?string $name) : void
     {
@@ -47,11 +47,11 @@ class ContentDescriptor implements \JsonSerializable
     {
         return $this->required;
     }
-    public function setSchema(?mixed $schema) : void
+    public function setSchema(mixed $schema) : void
     {
         $this->schema = $schema;
     }
-    public function getSchema() : ?mixed
+    public function getSchema() : mixed
     {
         return $this->schema;
     }

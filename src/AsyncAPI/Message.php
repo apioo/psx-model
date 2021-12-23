@@ -7,8 +7,8 @@ namespace PSX\Model\AsyncAPI;
 
 class Message implements \JsonSerializable
 {
-    protected ?mixed $headers = null;
-    protected ?mixed $payload = null;
+    protected mixed $headers = null;
+    protected mixed $payload = null;
     protected ?string $correlationId = null;
     protected ?string $schemaFormat = null;
     protected ?string $contentType = null;
@@ -22,19 +22,19 @@ class Message implements \JsonSerializable
     protected ?array $tags = null;
     protected ?\PSX\Model\OpenAPI\ExternalDocs $externalDocs = null;
     protected ?MessageBindings $bindings = null;
-    public function setHeaders(?mixed $headers) : void
+    public function setHeaders(mixed $headers) : void
     {
         $this->headers = $headers;
     }
-    public function getHeaders() : ?mixed
+    public function getHeaders() : mixed
     {
         return $this->headers;
     }
-    public function setPayload(?mixed $payload) : void
+    public function setPayload(mixed $payload) : void
     {
         $this->payload = $payload;
     }
-    public function getPayload() : ?mixed
+    public function getPayload() : mixed
     {
         return $this->payload;
     }
