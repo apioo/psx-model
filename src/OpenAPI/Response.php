@@ -12,7 +12,7 @@ use PSX\Schema\Attribute\Required;
 class Response implements \JsonSerializable
 {
     protected ?string $description = null;
-    protected Header|Reference|null $headers = null;
+    protected ?Headers $headers = null;
     protected ?MediaTypes $content = null;
     protected Link|Reference|null $links = null;
     public function setDescription(?string $description) : void
@@ -23,11 +23,11 @@ class Response implements \JsonSerializable
     {
         return $this->description;
     }
-    public function setHeaders(Header|Reference|null $headers) : void
+    public function setHeaders(?Headers $headers) : void
     {
         $this->headers = $headers;
     }
-    public function getHeaders() : Header|Reference|null
+    public function getHeaders() : ?Headers
     {
         return $this->headers;
     }

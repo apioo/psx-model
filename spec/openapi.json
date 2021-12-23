@@ -631,14 +631,7 @@
           "type": "string"
         },
         "headers": {
-          "oneOf": [
-            {
-              "$ref": "Header"
-            },
-            {
-              "$ref": "Reference"
-            }
-          ]
+          "$ref": "Headers"
         },
         "content": {
           "$ref": "MediaTypes"
