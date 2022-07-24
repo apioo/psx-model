@@ -81,7 +81,6 @@ class CreativeWork extends Thing implements \JsonSerializable
     protected ?Duration $timeRequired = null;
     protected Organization|Person|null $contributor = null;
     protected ?\PSX\Uri\Uri $thumbnailUrl = null;
-    protected ?Thing $about = null;
     protected ?CreativeWork $containsSeason = null;
     protected ?CreativeWork $hasPart = null;
     protected Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered = null;
@@ -664,14 +663,6 @@ class CreativeWork extends Thing implements \JsonSerializable
     public function getThumbnailUrl() : ?\PSX\Uri\Uri
     {
         return $this->thumbnailUrl;
-    }
-    public function setAbout(?Thing $about) : void
-    {
-        $this->about = $about;
-    }
-    public function getAbout() : ?Thing
-    {
-        return $this->about;
     }
     public function setContainsSeason(?CreativeWork $containsSeason) : void
     {

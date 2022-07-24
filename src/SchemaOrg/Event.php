@@ -36,7 +36,6 @@ class Event extends Thing implements \JsonSerializable
     protected ?\PSX\DateTime\Date $previousStartDate = null;
     protected ?Duration $duration = null;
     protected Organization|Person|null $contributor = null;
-    protected ?Thing $about = null;
     protected ?Event $superEvent = null;
     protected Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered = null;
     protected Offer|Demand|null $offers = null;
@@ -256,14 +255,6 @@ class Event extends Thing implements \JsonSerializable
     public function getContributor() : Organization|Person|null
     {
         return $this->contributor;
-    }
-    public function setAbout(?Thing $about) : void
-    {
-        $this->about = $about;
-    }
-    public function getAbout() : ?Thing
-    {
-        return $this->about;
     }
     public function setSuperEvent(?Event $superEvent) : void
     {
