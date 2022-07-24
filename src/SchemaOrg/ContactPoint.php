@@ -90,7 +90,7 @@ class ContactPoint extends StructuredValue implements \JsonSerializable
     {
         return $this->hoursAvailable;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('telephone' => $this->telephone, 'contactOption' => $this->contactOption, 'availableLanguage' => $this->availableLanguage, 'productSupported' => $this->productSupported, 'areaServed' => $this->areaServed, 'contactType' => $this->contactType, 'email' => $this->email, 'faxNumber' => $this->faxNumber, 'hoursAvailable' => $this->hoursAvailable), static function ($value) : bool {
             return $value !== null;

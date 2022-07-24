@@ -27,7 +27,7 @@ class JoinAction extends InteractAction implements \JsonSerializable
     {
         return $this->event;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('event' => $this->event), static function ($value) : bool {
             return $value !== null;

@@ -38,7 +38,7 @@ class Role extends Intangible implements \JsonSerializable
     {
         return $this->roleName;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('endDate' => $this->endDate, 'startDate' => $this->startDate, 'roleName' => $this->roleName), static function ($value) : bool {
             return $value !== null;

@@ -45,7 +45,7 @@ class Course extends CreativeWork implements \JsonSerializable
     {
         return $this->hasCourseInstance;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('courseCode' => $this->courseCode, 'coursePrerequisites' => $this->coursePrerequisites, 'educationalCredentialAwarded' => $this->educationalCredentialAwarded, 'hasCourseInstance' => $this->hasCourseInstance), static function ($value) : bool {
             return $value !== null;

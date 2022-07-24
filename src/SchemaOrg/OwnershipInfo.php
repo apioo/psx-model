@@ -45,7 +45,7 @@ class OwnershipInfo extends StructuredValue implements \JsonSerializable
     {
         return $this->ownedThrough;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('typeOfGood' => $this->typeOfGood, 'acquiredFrom' => $this->acquiredFrom, 'ownedFrom' => $this->ownedFrom, 'ownedThrough' => $this->ownedThrough), static function ($value) : bool {
             return $value !== null;

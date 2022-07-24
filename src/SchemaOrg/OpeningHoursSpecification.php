@@ -58,7 +58,7 @@ class OpeningHoursSpecification extends StructuredValue implements \JsonSerializ
     {
         return $this->validFrom;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('closes' => $this->closes, 'dayOfWeek' => $this->dayOfWeek, 'opens' => $this->opens, 'validThrough' => $this->validThrough, 'validFrom' => $this->validFrom), static function ($value) : bool {
             return $value !== null;

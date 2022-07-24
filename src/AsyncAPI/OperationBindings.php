@@ -16,7 +16,7 @@ class OperationBindings implements \JsonSerializable
     {
         return $this->http;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('http' => $this->http), static function ($value) : bool {
             return $value !== null;

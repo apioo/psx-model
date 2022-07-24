@@ -74,7 +74,7 @@ class PropertyValue extends StructuredValue implements \JsonSerializable
     {
         return $this->unitText;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('maxValue' => $this->maxValue, 'valueReference' => $this->valueReference, 'propertyID' => $this->propertyID, 'minValue' => $this->minValue, 'value' => $this->value, 'unitCode' => $this->unitCode, 'unitText' => $this->unitText), static function ($value) : bool {
             return $value !== null;

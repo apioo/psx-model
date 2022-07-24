@@ -18,7 +18,7 @@ class Corporation extends Organization implements \JsonSerializable
     {
         return $this->tickerSymbol;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('tickerSymbol' => $this->tickerSymbol), static function ($value) : bool {
             return $value !== null;

@@ -45,7 +45,7 @@ class APIReference extends TechArticle implements \JsonSerializable
     {
         return $this->executableLibraryName;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('targetPlatform' => $this->targetPlatform, 'programmingModel' => $this->programmingModel, 'assemblyVersion' => $this->assemblyVersion, 'executableLibraryName' => $this->executableLibraryName), static function ($value) : bool {
             return $value !== null;

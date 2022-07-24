@@ -47,7 +47,7 @@ class PublicationIssue extends CreativeWork implements \JsonSerializable
     {
         return $this->issueNumber;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('pageStart' => $this->pageStart, 'pagination' => $this->pagination, 'pageEnd' => $this->pageEnd, 'issueNumber' => $this->issueNumber), static function ($value) : bool {
             return $value !== null;

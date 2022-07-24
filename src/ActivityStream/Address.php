@@ -61,7 +61,7 @@ class Address implements \JsonSerializable
     {
         return $this->country;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('formatted' => $this->formatted, 'streetAddress' => $this->streetAddress, 'locality' => $this->locality, 'region' => $this->region, 'postalCode' => $this->postalCode, 'country' => $this->country), static function ($value) : bool {
             return $value !== null;

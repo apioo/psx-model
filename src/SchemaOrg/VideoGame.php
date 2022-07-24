@@ -90,7 +90,7 @@ class VideoGame extends SoftwareApplication implements \JsonSerializable
     {
         return $this->gameServer;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('trailer' => $this->trailer, 'gamePlatform' => $this->gamePlatform, 'musicBy' => $this->musicBy, 'actor' => $this->actor, 'gameTip' => $this->gameTip, 'cheatCode' => $this->cheatCode, 'director' => $this->director, 'playMode' => $this->playMode, 'gameServer' => $this->gameServer), static function ($value) : bool {
             return $value !== null;

@@ -36,7 +36,7 @@ class ProductModel extends Product implements \JsonSerializable
     {
         return $this->isVariantOf;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('predecessorOf' => $this->predecessorOf, 'successorOf' => $this->successorOf, 'isVariantOf' => $this->isVariantOf), static function ($value) : bool {
             return $value !== null;

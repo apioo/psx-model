@@ -36,7 +36,7 @@ class RsvpAction extends InformAction implements \JsonSerializable
     {
         return $this->additionalNumberOfGuests;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('comment' => $this->comment, 'rsvpResponse' => $this->rsvpResponse, 'additionalNumberOfGuests' => $this->additionalNumberOfGuests), static function ($value) : bool {
             return $value !== null;

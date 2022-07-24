@@ -99,7 +99,7 @@ class CreativeWorkSeason extends CreativeWork implements \JsonSerializable
     {
         return $this->numberOfEpisodes;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('endDate' => $this->endDate, 'trailer' => $this->trailer, 'startDate' => $this->startDate, 'partOfSeries' => $this->partOfSeries, 'actor' => $this->actor, 'seasonNumber' => $this->seasonNumber, 'productionCompany' => $this->productionCompany, 'episode' => $this->episode, 'director' => $this->director, 'numberOfEpisodes' => $this->numberOfEpisodes), static function ($value) : bool {
             return $value !== null;

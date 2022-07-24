@@ -34,7 +34,7 @@ class Enclosure implements \JsonSerializable
     {
         return $this->type;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('url' => $this->url, 'length' => $this->length, 'type' => $this->type), static function ($value) : bool {
             return $value !== null;

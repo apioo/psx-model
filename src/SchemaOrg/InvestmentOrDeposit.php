@@ -18,7 +18,7 @@ class InvestmentOrDeposit extends FinancialProduct implements \JsonSerializable
     {
         return $this->amount;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('amount' => $this->amount), static function ($value) : bool {
             return $value !== null;

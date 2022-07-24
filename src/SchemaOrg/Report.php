@@ -18,7 +18,7 @@ class Report extends Article implements \JsonSerializable
     {
         return $this->reportNumber;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('reportNumber' => $this->reportNumber), static function ($value) : bool {
             return $value !== null;

@@ -45,7 +45,7 @@ class ImageObject extends MediaObject implements \JsonSerializable
     {
         return $this->caption;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('representativeOfPage' => $this->representativeOfPage, 'thumbnail' => $this->thumbnail, 'exifData' => $this->exifData, 'caption' => $this->caption), static function ($value) : bool {
             return $value !== null;

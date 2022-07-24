@@ -72,7 +72,7 @@ class Movie extends CreativeWork implements \JsonSerializable
     {
         return $this->duration;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('trailer' => $this->trailer, 'musicBy' => $this->musicBy, 'actor' => $this->actor, 'productionCompany' => $this->productionCompany, 'countryOfOrigin' => $this->countryOfOrigin, 'director' => $this->director, 'duration' => $this->duration), static function ($value) : bool {
             return $value !== null;

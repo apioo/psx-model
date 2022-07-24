@@ -61,7 +61,7 @@ class Link implements \JsonSerializable
     {
         return $this->length;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('href' => $this->href, 'rel' => $this->rel, 'type' => $this->type, 'hreflang' => $this->hreflang, 'title' => $this->title, 'length' => $this->length), static function ($value) : bool {
             return $value !== null;

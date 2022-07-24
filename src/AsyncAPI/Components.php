@@ -27,7 +27,7 @@ class Components implements \JsonSerializable
     {
         return $this->messages;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('schemas' => $this->schemas, 'messages' => $this->messages), static function ($value) : bool {
             return $value !== null;

@@ -27,7 +27,7 @@ class SpeakableSpecification extends Intangible implements \JsonSerializable
     {
         return $this->xpath;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('cssSelector' => $this->cssSelector, 'xpath' => $this->xpath), static function ($value) : bool {
             return $value !== null;

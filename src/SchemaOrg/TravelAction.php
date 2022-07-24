@@ -18,7 +18,7 @@ class TravelAction extends MoveAction implements \JsonSerializable
     {
         return $this->distance;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('distance' => $this->distance), static function ($value) : bool {
             return $value !== null;

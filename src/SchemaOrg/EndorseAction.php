@@ -18,7 +18,7 @@ class EndorseAction extends ReactAction implements \JsonSerializable
     {
         return $this->endorsee;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('endorsee' => $this->endorsee), static function ($value) : bool {
             return $value !== null;

@@ -27,7 +27,7 @@ class PublicationEvent extends Event implements \JsonSerializable
     {
         return $this->isAccessibleForFree;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('publishedOn' => $this->publishedOn, 'isAccessibleForFree' => $this->isAccessibleForFree), static function ($value) : bool {
             return $value !== null;

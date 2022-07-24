@@ -90,7 +90,7 @@ class WebPage extends CreativeWork implements \JsonSerializable
     {
         return $this->mainContentOfPage;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('significantLink' => $this->significantLink, 'breadcrumb' => $this->breadcrumb, 'lastReviewed' => $this->lastReviewed, 'specialty' => $this->specialty, 'primaryImageOfPage' => $this->primaryImageOfPage, 'speakable' => $this->speakable, 'reviewedBy' => $this->reviewedBy, 'relatedLink' => $this->relatedLink, 'mainContentOfPage' => $this->mainContentOfPage), static function ($value) : bool {
             return $value !== null;

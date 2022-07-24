@@ -60,7 +60,7 @@ class ExamplePairingObject implements \JsonSerializable
     {
         return $this->result;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('name' => $this->name, 'description' => $this->description, 'summary' => $this->summary, 'params' => $this->params, 'result' => $this->result), static function ($value) : bool {
             return $value !== null;

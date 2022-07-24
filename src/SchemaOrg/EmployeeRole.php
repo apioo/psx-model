@@ -27,7 +27,7 @@ class EmployeeRole extends OrganizationRole implements \JsonSerializable
     {
         return $this->salaryCurrency;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('baseSalary' => $this->baseSalary, 'salaryCurrency' => $this->salaryCurrency), static function ($value) : bool {
             return $value !== null;

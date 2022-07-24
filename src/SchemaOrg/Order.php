@@ -189,7 +189,7 @@ class Order extends Intangible implements \JsonSerializable
     {
         return $this->orderedItem;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('orderDelivery' => $this->orderDelivery, 'discountCode' => $this->discountCode, 'seller' => $this->seller, 'paymentMethodId' => $this->paymentMethodId, 'broker' => $this->broker, 'paymentDueDate' => $this->paymentDueDate, 'confirmationNumber' => $this->confirmationNumber, 'acceptedOffer' => $this->acceptedOffer, 'customer' => $this->customer, 'discountCurrency' => $this->discountCurrency, 'paymentUrl' => $this->paymentUrl, 'orderNumber' => $this->orderNumber, 'isGift' => $this->isGift, 'orderStatus' => $this->orderStatus, 'discount' => $this->discount, 'paymentMethod' => $this->paymentMethod, 'partOfInvoice' => $this->partOfInvoice, 'orderDate' => $this->orderDate, 'billingAddress' => $this->billingAddress, 'orderedItem' => $this->orderedItem), static function ($value) : bool {
             return $value !== null;

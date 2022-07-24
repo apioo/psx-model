@@ -56,7 +56,7 @@ class AlignmentObject extends Intangible implements \JsonSerializable
     {
         return $this->educationalFramework;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('alignmentType' => $this->alignmentType, 'targetDescription' => $this->targetDescription, 'targetUrl' => $this->targetUrl, 'targetName' => $this->targetName, 'educationalFramework' => $this->educationalFramework), static function ($value) : bool {
             return $value !== null;

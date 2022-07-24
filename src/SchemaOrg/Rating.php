@@ -54,7 +54,7 @@ class Rating extends Intangible implements \JsonSerializable
     {
         return $this->reviewAspect;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('worstRating' => $this->worstRating, 'author' => $this->author, 'ratingValue' => $this->ratingValue, 'bestRating' => $this->bestRating, 'reviewAspect' => $this->reviewAspect), static function ($value) : bool {
             return $value !== null;

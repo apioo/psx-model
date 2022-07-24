@@ -63,7 +63,7 @@ class BroadcastChannel extends Intangible implements \JsonSerializable
     {
         return $this->providesBroadcastService;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('broadcastServiceTier' => $this->broadcastServiceTier, 'inBroadcastLineup' => $this->inBroadcastLineup, 'genre' => $this->genre, 'broadcastChannelId' => $this->broadcastChannelId, 'broadcastFrequency' => $this->broadcastFrequency, 'providesBroadcastService' => $this->providesBroadcastService), static function ($value) : bool {
             return $value !== null;

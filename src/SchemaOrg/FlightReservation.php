@@ -47,7 +47,7 @@ class FlightReservation extends Reservation implements \JsonSerializable
     {
         return $this->passengerPriorityStatus;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('boardingGroup' => $this->boardingGroup, 'passengerSequenceNumber' => $this->passengerSequenceNumber, 'securityScreening' => $this->securityScreening, 'passengerPriorityStatus' => $this->passengerPriorityStatus), static function ($value) : bool {
             return $value !== null;

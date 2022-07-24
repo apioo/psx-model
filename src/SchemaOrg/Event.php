@@ -36,6 +36,7 @@ class Event extends Thing implements \JsonSerializable
     protected ?\PSX\DateTime\Date $previousStartDate = null;
     protected ?Duration $duration = null;
     protected Organization|Person|null $contributor = null;
+    protected ?Thing $about = null;
     protected ?Event $superEvent = null;
     protected Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered = null;
     protected Offer|Demand|null $offers = null;
@@ -256,6 +257,14 @@ class Event extends Thing implements \JsonSerializable
     {
         return $this->contributor;
     }
+    public function setAbout(?Thing $about) : void
+    {
+        $this->about = $about;
+    }
+    public function getAbout() : ?Thing
+    {
+        return $this->about;
+    }
     public function setSuperEvent(?Event $superEvent) : void
     {
         $this->superEvent = $superEvent;
@@ -288,7 +297,7 @@ class Event extends Thing implements \JsonSerializable
     {
         return $this->recordedAt;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('audience' => $this->audience, 'endDate' => $this->endDate, 'remainingAttendeeCapacity' => $this->remainingAttendeeCapacity, 'sponsor' => $this->sponsor, 'startDate' => $this->startDate, 'location' => $this->location, 'performer' => $this->performer, 'typicalAgeRange' => $this->typicalAgeRange, 'actor' => $this->actor, 'workFeatured' => $this->workFeatured, 'aggregateRating' => $this->aggregateRating, 'inLanguage' => $this->inLanguage, 'review' => $this->review, 'doorTime' => $this->doorTime, 'translator' => $this->translator, 'eventStatus' => $this->eventStatus, 'maximumAttendeeCapacity' => $this->maximumAttendeeCapacity, 'attendee' => $this->attendee, 'organizer' => $this->organizer, 'isAccessibleForFree' => $this->isAccessibleForFree, 'workPerformed' => $this->workPerformed, 'director' => $this->director, 'subEvent' => $this->subEvent, 'composer' => $this->composer, 'previousStartDate' => $this->previousStartDate, 'duration' => $this->duration, 'contributor' => $this->contributor, 'about' => $this->about, 'superEvent' => $this->superEvent, 'itemOffered' => $this->itemOffered, 'offers' => $this->offers, 'recordedAt' => $this->recordedAt), static function ($value) : bool {
             return $value !== null;

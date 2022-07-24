@@ -63,7 +63,7 @@ class GeoCoordinates extends StructuredValue implements \JsonSerializable
     {
         return $this->address;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('addressCountry' => $this->addressCountry, 'longitude' => $this->longitude, 'postalCode' => $this->postalCode, 'elevation' => $this->elevation, 'latitude' => $this->latitude, 'address' => $this->address), static function ($value) : bool {
             return $value !== null;

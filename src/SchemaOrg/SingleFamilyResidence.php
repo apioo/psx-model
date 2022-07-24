@@ -27,7 +27,7 @@ class SingleFamilyResidence extends House implements \JsonSerializable
     {
         return $this->numberOfRooms;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('occupancy' => $this->occupancy, 'numberOfRooms' => $this->numberOfRooms), static function ($value) : bool {
             return $value !== null;

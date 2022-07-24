@@ -81,7 +81,7 @@ class LodgingBusiness extends LocalBusiness implements \JsonSerializable
     {
         return $this->checkinTime;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('audience' => $this->audience, 'availableLanguage' => $this->availableLanguage, 'numberOfRooms' => $this->numberOfRooms, 'amenityFeature' => $this->amenityFeature, 'starRating' => $this->starRating, 'petsAllowed' => $this->petsAllowed, 'checkoutTime' => $this->checkoutTime, 'checkinTime' => $this->checkinTime), static function ($value) : bool {
             return $value !== null;

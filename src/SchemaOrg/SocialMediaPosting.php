@@ -18,7 +18,7 @@ class SocialMediaPosting extends Article implements \JsonSerializable
     {
         return $this->sharedContent;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('sharedContent' => $this->sharedContent), static function ($value) : bool {
             return $value !== null;

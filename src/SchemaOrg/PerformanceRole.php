@@ -18,7 +18,7 @@ class PerformanceRole extends Role implements \JsonSerializable
     {
         return $this->characterName;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('characterName' => $this->characterName), static function ($value) : bool {
             return $value !== null;

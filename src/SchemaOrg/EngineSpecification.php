@@ -18,7 +18,7 @@ class EngineSpecification extends StructuredValue implements \JsonSerializable
     {
         return $this->fuelType;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('fuelType' => $this->fuelType), static function ($value) : bool {
             return $value !== null;

@@ -36,7 +36,7 @@ class Dataset extends CreativeWork implements \JsonSerializable
     {
         return $this->distribution;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('issn' => $this->issn, 'includedInDataCatalog' => $this->includedInDataCatalog, 'distribution' => $this->distribution), static function ($value) : bool {
             return $value !== null;

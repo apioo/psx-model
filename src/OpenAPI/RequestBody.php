@@ -38,7 +38,7 @@ class RequestBody implements \JsonSerializable
     {
         return $this->required;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('description' => $this->description, 'content' => $this->content, 'required' => $this->required), static function ($value) : bool {
             return $value !== null;

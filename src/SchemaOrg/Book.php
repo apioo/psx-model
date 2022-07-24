@@ -54,7 +54,7 @@ class Book extends CreativeWork implements \JsonSerializable
     {
         return $this->numberOfPages;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('illustrator' => $this->illustrator, 'bookFormat' => $this->bookFormat, 'isbn' => $this->isbn, 'bookEdition' => $this->bookEdition, 'numberOfPages' => $this->numberOfPages), static function ($value) : bool {
             return $value !== null;

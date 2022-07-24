@@ -54,7 +54,7 @@ class Occupation extends Intangible implements \JsonSerializable
     {
         return $this->responsibilities;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('experienceRequirements' => $this->experienceRequirements, 'estimatedSalary' => $this->estimatedSalary, 'skills' => $this->skills, 'occupationLocation' => $this->occupationLocation, 'responsibilities' => $this->responsibilities), static function ($value) : bool {
             return $value !== null;

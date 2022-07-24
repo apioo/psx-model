@@ -90,7 +90,7 @@ class BroadcastService extends Service implements \JsonSerializable
     {
         return $this->providesBroadcastService;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('broadcastDisplayName' => $this->broadcastDisplayName, 'inLanguage' => $this->inLanguage, 'broadcastAffiliateOf' => $this->broadcastAffiliateOf, 'broadcastTimezone' => $this->broadcastTimezone, 'parentService' => $this->parentService, 'videoFormat' => $this->videoFormat, 'broadcaster' => $this->broadcaster, 'broadcastFrequency' => $this->broadcastFrequency, 'providesBroadcastService' => $this->providesBroadcastService), static function ($value) : bool {
             return $value !== null;

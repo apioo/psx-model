@@ -27,7 +27,7 @@ class TouristAttraction extends Place implements \JsonSerializable
     {
         return $this->touristType;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('availableLanguage' => $this->availableLanguage, 'touristType' => $this->touristType), static function ($value) : bool {
             return $value !== null;

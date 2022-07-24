@@ -45,7 +45,7 @@ class Review extends CreativeWork implements \JsonSerializable
     {
         return $this->reviewAspect;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('itemReviewed' => $this->itemReviewed, 'reviewBody' => $this->reviewBody, 'reviewRating' => $this->reviewRating, 'reviewAspect' => $this->reviewAspect), static function ($value) : bool {
             return $value !== null;

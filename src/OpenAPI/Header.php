@@ -108,7 +108,7 @@ class Header implements \JsonSerializable
     {
         return $this->content;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('description' => $this->description, 'required' => $this->required, 'deprecated' => $this->deprecated, 'allowEmptyValue' => $this->allowEmptyValue, 'style' => $this->style, 'explode' => $this->explode, 'allowReserved' => $this->allowReserved, 'schema' => $this->schema, 'example' => $this->example, 'examples' => $this->examples, 'content' => $this->content), static function ($value) : bool {
             return $value !== null;

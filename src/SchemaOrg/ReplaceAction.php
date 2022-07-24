@@ -27,7 +27,7 @@ class ReplaceAction extends UpdateAction implements \JsonSerializable
     {
         return $this->replacer;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('replacee' => $this->replacee, 'replacer' => $this->replacer), static function ($value) : bool {
             return $value !== null;

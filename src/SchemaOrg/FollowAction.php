@@ -29,7 +29,7 @@ class FollowAction extends InteractAction implements \JsonSerializable
     {
         return $this->followee;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('followee' => $this->followee), static function ($value) : bool {
             return $value !== null;

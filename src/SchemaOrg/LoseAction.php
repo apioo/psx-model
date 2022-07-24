@@ -18,7 +18,7 @@ class LoseAction extends AchieveAction implements \JsonSerializable
     {
         return $this->winner;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('winner' => $this->winner), static function ($value) : bool {
             return $value !== null;

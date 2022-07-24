@@ -45,7 +45,7 @@ class Seat extends Intangible implements \JsonSerializable
     {
         return $this->seatNumber;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('seatingType' => $this->seatingType, 'seatRow' => $this->seatRow, 'seatSection' => $this->seatSection, 'seatNumber' => $this->seatNumber), static function ($value) : bool {
             return $value !== null;

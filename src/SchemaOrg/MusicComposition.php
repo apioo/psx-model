@@ -99,7 +99,7 @@ class MusicComposition extends CreativeWork implements \JsonSerializable
     {
         return $this->recordingOf;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('iswcCode' => $this->iswcCode, 'includedComposition' => $this->includedComposition, 'lyricist' => $this->lyricist, 'musicArrangement' => $this->musicArrangement, 'firstPerformance' => $this->firstPerformance, 'lyrics' => $this->lyrics, 'composer' => $this->composer, 'musicalKey' => $this->musicalKey, 'musicCompositionForm' => $this->musicCompositionForm, 'recordingOf' => $this->recordingOf), static function ($value) : bool {
             return $value !== null;

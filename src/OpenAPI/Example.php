@@ -34,7 +34,7 @@ class Example implements \JsonSerializable
     {
         return $this->externalValue;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('summary' => $this->summary, 'description' => $this->description, 'externalValue' => $this->externalValue), static function ($value) : bool {
             return $value !== null;

@@ -117,7 +117,7 @@ class NutritionInformation extends StructuredValue implements \JsonSerializable
     {
         return $this->sugarContent;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('proteinContent' => $this->proteinContent, 'calories' => $this->calories, 'sodiumContent' => $this->sodiumContent, 'cholesterolContent' => $this->cholesterolContent, 'carbohydrateContent' => $this->carbohydrateContent, 'saturatedFatContent' => $this->saturatedFatContent, 'fatContent' => $this->fatContent, 'unsaturatedFatContent' => $this->unsaturatedFatContent, 'transFatContent' => $this->transFatContent, 'servingSize' => $this->servingSize, 'fiberContent' => $this->fiberContent, 'sugarContent' => $this->sugarContent), static function ($value) : bool {
             return $value !== null;

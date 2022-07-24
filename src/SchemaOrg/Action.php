@@ -128,7 +128,7 @@ class Action extends Thing implements \JsonSerializable
     {
         return $this->error;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('object' => $this->object, 'deliveryMethod' => $this->deliveryMethod, 'instrument' => $this->instrument, 'location' => $this->location, 'target' => $this->target, 'participant' => $this->participant, 'agent' => $this->agent, 'resultComment' => $this->resultComment, 'result' => $this->result, 'startTime' => $this->startTime, 'endTime' => $this->endTime, 'actionStatus' => $this->actionStatus, 'error' => $this->error), static function ($value) : bool {
             return $value !== null;

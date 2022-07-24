@@ -18,7 +18,7 @@ class ReservationPackage extends Reservation implements \JsonSerializable
     {
         return $this->subReservation;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('subReservation' => $this->subReservation), static function ($value) : bool {
             return $value !== null;

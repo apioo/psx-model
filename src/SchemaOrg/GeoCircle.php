@@ -29,7 +29,7 @@ class GeoCircle extends GeoShape implements \JsonSerializable
     {
         return $this->geoRadius;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('geoMidpoint' => $this->geoMidpoint, 'geoRadius' => $this->geoRadius), static function ($value) : bool {
             return $value !== null;

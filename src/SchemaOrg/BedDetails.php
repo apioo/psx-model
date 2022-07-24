@@ -27,7 +27,7 @@ class BedDetails extends Intangible implements \JsonSerializable
     {
         return $this->numberOfBeds;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('typeOfBed' => $this->typeOfBed, 'numberOfBeds' => $this->numberOfBeds), static function ($value) : bool {
             return $value !== null;

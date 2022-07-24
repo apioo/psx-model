@@ -63,7 +63,7 @@ class ContentDescriptor implements \JsonSerializable
     {
         return $this->deprecated;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('name' => $this->name, 'summary' => $this->summary, 'description' => $this->description, 'required' => $this->required, 'schema' => $this->schema, 'deprecated' => $this->deprecated), static function ($value) : bool {
             return $value !== null;

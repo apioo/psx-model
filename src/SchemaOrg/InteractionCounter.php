@@ -36,7 +36,7 @@ class InteractionCounter extends StructuredValue implements \JsonSerializable
     {
         return $this->interactionType;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('userInteractionCount' => $this->userInteractionCount, 'interactionService' => $this->interactionService, 'interactionType' => $this->interactionType), static function ($value) : bool {
             return $value !== null;

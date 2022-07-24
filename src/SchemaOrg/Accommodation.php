@@ -57,7 +57,7 @@ class Accommodation extends Place implements \JsonSerializable
     {
         return $this->petsAllowed;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('floorSize' => $this->floorSize, 'numberOfRooms' => $this->numberOfRooms, 'amenityFeature' => $this->amenityFeature, 'permittedUsage' => $this->permittedUsage, 'petsAllowed' => $this->petsAllowed), static function ($value) : bool {
             return $value !== null;

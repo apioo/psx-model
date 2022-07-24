@@ -86,7 +86,7 @@ class AsyncAPI implements \JsonSerializable
     {
         return $this->externalDocs;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('asyncapi' => $this->asyncapi, 'info' => $this->info, 'servers' => $this->servers, 'channels' => $this->channels, 'components' => $this->components, 'tags' => $this->tags, 'externalDocs' => $this->externalDocs), static function ($value) : bool {
             return $value !== null;

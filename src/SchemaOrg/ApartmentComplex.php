@@ -18,7 +18,7 @@ class ApartmentComplex extends Residence implements \JsonSerializable
     {
         return $this->petsAllowed;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('petsAllowed' => $this->petsAllowed), static function ($value) : bool {
             return $value !== null;

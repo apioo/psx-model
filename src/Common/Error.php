@@ -52,7 +52,7 @@ class Error implements \JsonSerializable
     {
         return $this->context;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('success' => $this->success, 'title' => $this->title, 'message' => $this->message, 'trace' => $this->trace, 'context' => $this->context), static function ($value) : bool {
             return $value !== null;

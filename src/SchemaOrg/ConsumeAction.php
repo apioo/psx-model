@@ -27,7 +27,7 @@ class ConsumeAction extends Action implements \JsonSerializable
     {
         return $this->expectsAcceptanceOf;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('actionAccessibilityRequirement' => $this->actionAccessibilityRequirement, 'expectsAcceptanceOf' => $this->expectsAcceptanceOf), static function ($value) : bool {
             return $value !== null;

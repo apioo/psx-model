@@ -18,7 +18,7 @@ class UpdateAction extends Action implements \JsonSerializable
     {
         return $this->targetCollection;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('targetCollection' => $this->targetCollection), static function ($value) : bool {
             return $value !== null;

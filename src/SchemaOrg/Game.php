@@ -54,7 +54,7 @@ class Game extends CreativeWork implements \JsonSerializable
     {
         return $this->gameItem;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('gameLocation' => $this->gameLocation, 'quest' => $this->quest, 'characterAttribute' => $this->characterAttribute, 'numberOfPlayers' => $this->numberOfPlayers, 'gameItem' => $this->gameItem), static function ($value) : bool {
             return $value !== null;

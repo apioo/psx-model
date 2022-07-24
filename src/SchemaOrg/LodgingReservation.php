@@ -65,7 +65,7 @@ class LodgingReservation extends Reservation implements \JsonSerializable
     {
         return $this->checkinTime;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('numAdults' => $this->numAdults, 'lodgingUnitType' => $this->lodgingUnitType, 'numChildren' => $this->numChildren, 'lodgingUnitDescription' => $this->lodgingUnitDescription, 'checkoutTime' => $this->checkoutTime, 'checkinTime' => $this->checkinTime), static function ($value) : bool {
             return $value !== null;

@@ -18,7 +18,7 @@ class GovernmentService extends Service implements \JsonSerializable
     {
         return $this->serviceOperator;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('serviceOperator' => $this->serviceOperator), static function ($value) : bool {
             return $value !== null;

@@ -45,7 +45,7 @@ class LocalBusiness extends Organization implements \JsonSerializable
     {
         return $this->paymentAccepted;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('currenciesAccepted' => $this->currenciesAccepted, 'openingHours' => $this->openingHours, 'priceRange' => $this->priceRange, 'paymentAccepted' => $this->paymentAccepted), static function ($value) : bool {
             return $value !== null;

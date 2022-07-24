@@ -25,7 +25,7 @@ class ReplyAction extends CommunicateAction implements \JsonSerializable
     {
         return $this->resultComment;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('resultComment' => $this->resultComment), static function ($value) : bool {
             return $value !== null;

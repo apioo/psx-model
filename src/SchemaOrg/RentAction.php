@@ -27,7 +27,7 @@ class RentAction extends TradeAction implements \JsonSerializable
     {
         return $this->realEstateAgent;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('participant' => $this->participant, 'realEstateAgent' => $this->realEstateAgent), static function ($value) : bool {
             return $value !== null;

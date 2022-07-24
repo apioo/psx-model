@@ -12,6 +12,7 @@ class CommunicateAction extends InteractAction implements \JsonSerializable
     protected Person|ContactPoint|Organization|Audience|null $ccRecipient = null;
     protected Organization|ContactPoint|Person|Audience|null $recipient = null;
     protected string|Language|null $inLanguage = null;
+    protected ?Thing $about = null;
     public function setCcRecipient(Person|ContactPoint|Organization|Audience|null $ccRecipient) : void
     {
         $this->ccRecipient = $ccRecipient;
@@ -36,7 +37,15 @@ class CommunicateAction extends InteractAction implements \JsonSerializable
     {
         return $this->inLanguage;
     }
-    public function jsonSerialize()
+    public function setAbout(?Thing $about) : void
+    {
+        $this->about = $about;
+    }
+    public function getAbout() : ?Thing
+    {
+        return $this->about;
+    }
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('ccRecipient' => $this->ccRecipient, 'recipient' => $this->recipient, 'inLanguage' => $this->inLanguage, 'about' => $this->about), static function ($value) : bool {
             return $value !== null;

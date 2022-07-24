@@ -36,7 +36,7 @@ class BusinessAudience extends Audience implements \JsonSerializable
     {
         return $this->yearlyRevenue;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('numberOfEmployees' => $this->numberOfEmployees, 'yearsInOperation' => $this->yearsInOperation, 'yearlyRevenue' => $this->yearlyRevenue), static function ($value) : bool {
             return $value !== null;

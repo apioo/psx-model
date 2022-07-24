@@ -35,7 +35,7 @@ class ReceiveAction extends TransferAction implements \JsonSerializable
     {
         return $this->sender;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('deliveryMethod' => $this->deliveryMethod, 'sender' => $this->sender), static function ($value) : bool {
             return $value !== null;

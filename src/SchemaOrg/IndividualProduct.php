@@ -27,7 +27,7 @@ class IndividualProduct extends Product implements \JsonSerializable
     {
         return $this->serialNumber;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('vehicleIdentificationNumber' => $this->vehicleIdentificationNumber, 'serialNumber' => $this->serialNumber), static function ($value) : bool {
             return $value !== null;

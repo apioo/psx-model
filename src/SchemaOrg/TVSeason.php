@@ -18,7 +18,7 @@ class TVSeason extends CreativeWorkSeason implements \JsonSerializable
     {
         return $this->countryOfOrigin;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('countryOfOrigin' => $this->countryOfOrigin), static function ($value) : bool {
             return $value !== null;

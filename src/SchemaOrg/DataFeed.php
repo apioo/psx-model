@@ -18,7 +18,7 @@ class DataFeed extends Dataset implements \JsonSerializable
     {
         return $this->dataFeedElement;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('dataFeedElement' => $this->dataFeedElement), static function ($value) : bool {
             return $value !== null;

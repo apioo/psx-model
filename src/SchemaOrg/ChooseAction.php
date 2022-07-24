@@ -18,7 +18,7 @@ class ChooseAction extends AssessAction implements \JsonSerializable
     {
         return $this->actionOption;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('actionOption' => $this->actionOption), static function ($value) : bool {
             return $value !== null;

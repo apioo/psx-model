@@ -315,7 +315,7 @@ class Product extends Thing implements \JsonSerializable
     {
         return $this->offers;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('audience' => $this->audience, 'itemCondition' => $this->itemCondition, 'identifier' => $this->identifier, 'width' => $this->width, 'model' => $this->model, 'category' => $this->category, 'mpn' => $this->mpn, 'material' => $this->material, 'aggregateRating' => $this->aggregateRating, 'isConsumableFor' => $this->isConsumableFor, 'gtin8' => $this->gtin8, 'height' => $this->height, 'award' => $this->award, 'review' => $this->review, 'sku' => $this->sku, 'isSimilarTo' => $this->isSimilarTo, 'gtin12' => $this->gtin12, 'gtin14' => $this->gtin14, 'manufacturer' => $this->manufacturer, 'isAccessoryOrSparePartFor' => $this->isAccessoryOrSparePartFor, 'isRelatedTo' => $this->isRelatedTo, 'logo' => $this->logo, 'brand' => $this->brand, 'additionalProperty' => $this->additionalProperty, 'productID' => $this->productID, 'purchaseDate' => $this->purchaseDate, 'color' => $this->color, 'depth' => $this->depth, 'slogan' => $this->slogan, 'productionDate' => $this->productionDate, 'weight' => $this->weight, 'releaseDate' => $this->releaseDate, 'itemOffered' => $this->itemOffered, 'offers' => $this->offers), static function ($value) : bool {
             return $value !== null;

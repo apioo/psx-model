@@ -34,7 +34,7 @@ class Generator implements \JsonSerializable
     {
         return $this->version;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('text' => $this->text, 'uri' => $this->uri, 'version' => $this->version), static function ($value) : bool {
             return $value !== null;

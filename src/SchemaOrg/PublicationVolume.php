@@ -47,7 +47,7 @@ class PublicationVolume extends CreativeWork implements \JsonSerializable
     {
         return $this->volumeNumber;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('pageStart' => $this->pageStart, 'pagination' => $this->pagination, 'pageEnd' => $this->pageEnd, 'volumeNumber' => $this->volumeNumber), static function ($value) : bool {
             return $value !== null;

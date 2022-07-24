@@ -18,7 +18,7 @@ class CompoundPriceSpecification extends PriceSpecification implements \JsonSeri
     {
         return $this->priceComponent;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('priceComponent' => $this->priceComponent), static function ($value) : bool {
             return $value !== null;

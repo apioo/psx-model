@@ -25,7 +25,7 @@ class SearchAction extends Action implements \JsonSerializable
     {
         return $this->query;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('query' => $this->query), static function ($value) : bool {
             return $value !== null;

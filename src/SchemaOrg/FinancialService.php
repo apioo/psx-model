@@ -18,7 +18,7 @@ class FinancialService extends LocalBusiness implements \JsonSerializable
     {
         return $this->feesAndCommissionsSpecification;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('feesAndCommissionsSpecification' => $this->feesAndCommissionsSpecification), static function ($value) : bool {
             return $value !== null;

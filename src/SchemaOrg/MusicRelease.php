@@ -63,7 +63,7 @@ class MusicRelease extends MusicPlaylist implements \JsonSerializable
     {
         return $this->releaseOf;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('recordLabel' => $this->recordLabel, 'musicReleaseFormat' => $this->musicReleaseFormat, 'catalogNumber' => $this->catalogNumber, 'creditedTo' => $this->creditedTo, 'duration' => $this->duration, 'releaseOf' => $this->releaseOf), static function ($value) : bool {
             return $value !== null;

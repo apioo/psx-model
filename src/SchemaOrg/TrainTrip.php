@@ -63,7 +63,7 @@ class TrainTrip extends Trip implements \JsonSerializable
     {
         return $this->arrivalPlatform;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('departureStation' => $this->departureStation, 'trainNumber' => $this->trainNumber, 'departurePlatform' => $this->departurePlatform, 'trainName' => $this->trainName, 'arrivalStation' => $this->arrivalStation, 'arrivalPlatform' => $this->arrivalPlatform), static function ($value) : bool {
             return $value !== null;

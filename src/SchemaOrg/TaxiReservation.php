@@ -38,7 +38,7 @@ class TaxiReservation extends Reservation implements \JsonSerializable
     {
         return $this->pickupLocation;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('pickupTime' => $this->pickupTime, 'partySize' => $this->partySize, 'pickupLocation' => $this->pickupLocation), static function ($value) : bool {
             return $value !== null;

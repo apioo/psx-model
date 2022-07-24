@@ -72,7 +72,7 @@ class VisualArtwork extends CreativeWork implements \JsonSerializable
     {
         return $this->depth;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('width' => $this->width, 'artform' => $this->artform, 'artworkSurface' => $this->artworkSurface, 'height' => $this->height, 'artMedium' => $this->artMedium, 'artEdition' => $this->artEdition, 'depth' => $this->depth), static function ($value) : bool {
             return $value !== null;

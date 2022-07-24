@@ -54,7 +54,7 @@ class MenuItem extends Intangible implements \JsonSerializable
     {
         return $this->offers;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('menuAddOn' => $this->menuAddOn, 'nutrition' => $this->nutrition, 'suitableForDiet' => $this->suitableForDiet, 'itemOffered' => $this->itemOffered, 'offers' => $this->offers), static function ($value) : bool {
             return $value !== null;

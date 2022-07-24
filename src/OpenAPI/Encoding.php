@@ -54,7 +54,7 @@ class Encoding implements \JsonSerializable
     {
         return $this->allowReserved;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('contentType' => $this->contentType, 'headers' => $this->headers, 'style' => $this->style, 'explode' => $this->explode, 'allowReserved' => $this->allowReserved), static function ($value) : bool {
             return $value !== null;

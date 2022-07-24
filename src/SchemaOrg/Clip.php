@@ -72,7 +72,7 @@ class Clip extends CreativeWork implements \JsonSerializable
     {
         return $this->director;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('position' => $this->position, 'musicBy' => $this->musicBy, 'partOfSeries' => $this->partOfSeries, 'actor' => $this->actor, 'partOfSeason' => $this->partOfSeason, 'partOfEpisode' => $this->partOfEpisode, 'director' => $this->director), static function ($value) : bool {
             return $value !== null;

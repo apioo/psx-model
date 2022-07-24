@@ -54,7 +54,7 @@ class UserComments extends UserInteraction implements \JsonSerializable
     {
         return $this->replyToUrl;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('discusses' => $this->discusses, 'commentTime' => $this->commentTime, 'creator' => $this->creator, 'commentText' => $this->commentText, 'replyToUrl' => $this->replyToUrl), static function ($value) : bool {
             return $value !== null;

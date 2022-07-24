@@ -143,7 +143,7 @@ class Operation implements \JsonSerializable
     {
         return $this->servers;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('tags' => $this->tags, 'summary' => $this->summary, 'description' => $this->description, 'externalDocs' => $this->externalDocs, 'operationId' => $this->operationId, 'parameters' => $this->parameters, 'requestBody' => $this->requestBody, 'responses' => $this->responses, 'callbacks' => $this->callbacks, 'deprecated' => $this->deprecated, 'security' => $this->security, 'servers' => $this->servers), static function ($value) : bool {
             return $value !== null;

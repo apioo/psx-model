@@ -121,7 +121,7 @@ class Message implements \JsonSerializable
     {
         return $this->bindings;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('headers' => $this->headers, 'payload' => $this->payload, 'correlationId' => $this->correlationId, 'schemaFormat' => $this->schemaFormat, 'contentType' => $this->contentType, 'name' => $this->name, 'title' => $this->title, 'summary' => $this->summary, 'description' => $this->description, 'tags' => $this->tags, 'externalDocs' => $this->externalDocs, 'bindings' => $this->bindings), static function ($value) : bool {
             return $value !== null;

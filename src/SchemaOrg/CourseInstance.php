@@ -27,7 +27,7 @@ class CourseInstance extends Event implements \JsonSerializable
     {
         return $this->courseMode;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('instructor' => $this->instructor, 'courseMode' => $this->courseMode), static function ($value) : bool {
             return $value !== null;

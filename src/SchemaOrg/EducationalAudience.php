@@ -18,7 +18,7 @@ class EducationalAudience extends Audience implements \JsonSerializable
     {
         return $this->educationalRole;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('educationalRole' => $this->educationalRole), static function ($value) : bool {
             return $value !== null;

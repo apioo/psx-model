@@ -166,7 +166,7 @@ class Method implements \JsonSerializable
     {
         return $this->examples;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('name' => $this->name, 'tags' => $this->tags, 'summary' => $this->summary, 'description' => $this->description, 'externalDocs' => $this->externalDocs, 'params' => $this->params, 'result' => $this->result, 'deprecated' => $this->deprecated, 'servers' => $this->servers, 'errors' => $this->errors, 'links' => $this->links, 'paramStructure' => $this->paramStructure, 'examples' => $this->examples), static function ($value) : bool {
             return $value !== null;

@@ -36,7 +36,7 @@ class CookAction extends CreateAction implements \JsonSerializable
     {
         return $this->foodEvent;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('foodEstablishment' => $this->foodEstablishment, 'recipe' => $this->recipe, 'foodEvent' => $this->foodEvent), static function ($value) : bool {
             return $value !== null;

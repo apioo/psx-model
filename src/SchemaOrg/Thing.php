@@ -135,7 +135,7 @@ class Thing implements \JsonSerializable
     {
         return $this->subjectOf;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('identifier' => $this->identifier, 'additionalType' => $this->additionalType, 'name' => $this->name, 'alternateName' => $this->alternateName, 'disambiguatingDescription' => $this->disambiguatingDescription, 'description' => $this->description, 'logo' => $this->logo, 'image' => $this->image, 'url' => $this->url, 'potentialAction' => $this->potentialAction, 'sameAs' => $this->sameAs, 'about' => $this->about, 'mainEntityOfPage' => $this->mainEntityOfPage, 'subjectOf' => $this->subjectOf), static function ($value) : bool {
             return $value !== null;

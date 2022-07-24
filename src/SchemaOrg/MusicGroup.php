@@ -36,7 +36,7 @@ class MusicGroup extends PerformingGroup implements \JsonSerializable
     {
         return $this->genre;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('track' => $this->track, 'album' => $this->album, 'genre' => $this->genre), static function ($value) : bool {
             return $value !== null;

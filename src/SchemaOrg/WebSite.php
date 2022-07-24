@@ -18,7 +18,7 @@ class WebSite extends CreativeWork implements \JsonSerializable
     {
         return $this->issn;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('issn' => $this->issn), static function ($value) : bool {
             return $value !== null;

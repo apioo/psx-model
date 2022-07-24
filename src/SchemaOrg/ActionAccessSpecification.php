@@ -63,7 +63,7 @@ class ActionAccessSpecification extends Intangible implements \JsonSerializable
     {
         return $this->requiresSubscription;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('eligibleRegion' => $this->eligibleRegion, 'expectsAcceptanceOf' => $this->expectsAcceptanceOf, 'category' => $this->category, 'availabilityStarts' => $this->availabilityStarts, 'availabilityEnds' => $this->availabilityEnds, 'requiresSubscription' => $this->requiresSubscription), static function ($value) : bool {
             return $value !== null;

@@ -45,7 +45,7 @@ class GameServer extends Intangible implements \JsonSerializable
     {
         return $this->game;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('playersOnline' => $this->playersOnline, 'serverStatus' => $this->serverStatus, 'gameServer' => $this->gameServer, 'game' => $this->game), static function ($value) : bool {
             return $value !== null;

@@ -18,7 +18,7 @@ class MobileApplication extends SoftwareApplication implements \JsonSerializable
     {
         return $this->carrierRequirements;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('carrierRequirements' => $this->carrierRequirements), static function ($value) : bool {
             return $value !== null;

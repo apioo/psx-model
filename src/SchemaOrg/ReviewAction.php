@@ -18,7 +18,7 @@ class ReviewAction extends AssessAction implements \JsonSerializable
     {
         return $this->resultReview;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('resultReview' => $this->resultReview), static function ($value) : bool {
             return $value !== null;

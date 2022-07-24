@@ -90,7 +90,7 @@ class Components implements \JsonSerializable
     {
         return $this->callbacks;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('schemas' => $this->schemas, 'responses' => $this->responses, 'parameters' => $this->parameters, 'examples' => $this->examples, 'requestBodies' => $this->requestBodies, 'headers' => $this->headers, 'securitySchemes' => $this->securitySchemes, 'links' => $this->links, 'callbacks' => $this->callbacks), static function ($value) : bool {
             return $value !== null;

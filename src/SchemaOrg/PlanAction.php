@@ -18,7 +18,7 @@ class PlanAction extends OrganizeAction implements \JsonSerializable
     {
         return $this->scheduledTime;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('scheduledTime' => $this->scheduledTime), static function ($value) : bool {
             return $value !== null;

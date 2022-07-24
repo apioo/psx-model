@@ -27,7 +27,7 @@ class SportsTeam extends SportsOrganization implements \JsonSerializable
     {
         return $this->coach;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('athlete' => $this->athlete, 'coach' => $this->coach), static function ($value) : bool {
             return $value !== null;

@@ -77,7 +77,7 @@ class OpenRPC implements \JsonSerializable
     {
         return $this->externalDocs;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('openrpc' => $this->openrpc, 'info' => $this->info, 'servers' => $this->servers, 'methods' => $this->methods, 'components' => $this->components, 'externalDocs' => $this->externalDocs), static function ($value) : bool {
             return $value !== null;

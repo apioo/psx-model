@@ -35,7 +35,7 @@ class PlayAction extends Action implements \JsonSerializable
     {
         return $this->event;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('audience' => $this->audience, 'event' => $this->event), static function ($value) : bool {
             return $value !== null;

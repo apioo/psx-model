@@ -45,7 +45,7 @@ class MediaType implements \JsonSerializable
     {
         return $this->encoding;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('schema' => $this->schema, 'example' => $this->example, 'examples' => $this->examples, 'encoding' => $this->encoding), static function ($value) : bool {
             return $value !== null;

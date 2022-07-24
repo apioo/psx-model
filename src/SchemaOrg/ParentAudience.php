@@ -27,7 +27,7 @@ class ParentAudience extends PeopleAudience implements \JsonSerializable
     {
         return $this->childMinAge;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('childMaxAge' => $this->childMaxAge, 'childMinAge' => $this->childMinAge), static function ($value) : bool {
             return $value !== null;

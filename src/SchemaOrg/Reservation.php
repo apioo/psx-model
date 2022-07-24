@@ -119,7 +119,7 @@ class Reservation extends Intangible implements \JsonSerializable
     {
         return $this->programMembershipUsed;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('reservationFor' => $this->reservationFor, 'provider' => $this->provider, 'priceCurrency' => $this->priceCurrency, 'reservationId' => $this->reservationId, 'broker' => $this->broker, 'underName' => $this->underName, 'totalPrice' => $this->totalPrice, 'modifiedTime' => $this->modifiedTime, 'reservationStatus' => $this->reservationStatus, 'bookingTime' => $this->bookingTime, 'reservedTicket' => $this->reservedTicket, 'programMembershipUsed' => $this->programMembershipUsed), static function ($value) : bool {
             return $value !== null;

@@ -25,7 +25,7 @@ class HttpMessageBinding implements \JsonSerializable
     {
         return $this->bindingVersion;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('headers' => $this->headers, 'bindingVersion' => $this->bindingVersion), static function ($value) : bool {
             return $value !== null;

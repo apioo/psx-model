@@ -81,6 +81,7 @@ class CreativeWork extends Thing implements \JsonSerializable
     protected ?Duration $timeRequired = null;
     protected Organization|Person|null $contributor = null;
     protected ?\PSX\Uri\Uri $thumbnailUrl = null;
+    protected ?Thing $about = null;
     protected ?CreativeWork $containsSeason = null;
     protected ?CreativeWork $hasPart = null;
     protected Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered = null;
@@ -664,6 +665,14 @@ class CreativeWork extends Thing implements \JsonSerializable
     {
         return $this->thumbnailUrl;
     }
+    public function setAbout(?Thing $about) : void
+    {
+        $this->about = $about;
+    }
+    public function getAbout() : ?Thing
+    {
+        return $this->about;
+    }
     public function setContainsSeason(?CreativeWork $containsSeason) : void
     {
         $this->containsSeason = $containsSeason;
@@ -720,7 +729,7 @@ class CreativeWork extends Thing implements \JsonSerializable
     {
         return $this->exampleOfWork;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('audience' => $this->audience, 'editor' => $this->editor, 'isBasedOn' => $this->isBasedOn, 'alternativeHeadline' => $this->alternativeHeadline, 'expires' => $this->expires, 'spatialCoverage' => $this->spatialCoverage, 'contentLocation' => $this->contentLocation, 'encoding' => $this->encoding, 'publishingPrinciples' => $this->publishingPrinciples, 'video' => $this->video, 'datePublished' => $this->datePublished, 'text' => $this->text, 'sponsor' => $this->sponsor, 'accessModeSufficient' => $this->accessModeSufficient, 'position' => $this->position, 'version' => $this->version, 'encodingFormat' => $this->encodingFormat, 'mentions' => $this->mentions, 'dateModified' => $this->dateModified, 'dateCreated' => $this->dateCreated, 'keywords' => $this->keywords, 'learningResourceType' => $this->learningResourceType, 'accessMode' => $this->accessMode, 'publication' => $this->publication, 'discussionUrl' => $this->discussionUrl, 'accessibilityAPI' => $this->accessibilityAPI, 'typicalAgeRange' => $this->typicalAgeRange, 'provider' => $this->provider, 'producer' => $this->producer, 'associatedMedia' => $this->associatedMedia, 'isPartOf' => $this->isPartOf, 'character' => $this->character, 'isFamilyFriendly' => $this->isFamilyFriendly, 'citation' => $this->citation, 'locationCreated' => $this->locationCreated, 'commentCount' => $this->commentCount, 'temporalCoverage' => $this->temporalCoverage, 'publisher' => $this->publisher, 'material' => $this->material, 'aggregateRating' => $this->aggregateRating, 'accessibilityControl' => $this->accessibilityControl, 'interactivityType' => $this->interactivityType, 'inLanguage' => $this->inLanguage, 'award' => $this->award, 'license' => $this->license, 'review' => $this->review, 'educationalUse' => $this->educationalUse, 'translator' => $this->translator, 'genre' => $this->genre, 'comment' => $this->comment, 'author' => $this->author, 'audio' => $this->audio, 'accessibilitySummary' => $this->accessibilitySummary, 'sourceOrganization' => $this->sourceOrganization, 'contentRating' => $this->contentRating, 'temporal' => $this->temporal, 'copyrightYear' => $this->copyrightYear, 'creator' => $this->creator, 'accountablePerson' => $this->accountablePerson, 'isAccessibleForFree' => $this->isAccessibleForFree, 'accessibilityFeature' => $this->accessibilityFeature, 'releasedEvent' => $this->releasedEvent, 'interactionStatistic' => $this->interactionStatistic, 'headline' => $this->headline, 'spatial' => $this->spatial, 'schemaVersion' => $this->schemaVersion, 'copyrightHolder' => $this->copyrightHolder, 'accessibilityHazard' => $this->accessibilityHazard, 'educationalAlignment' => $this->educationalAlignment, 'timeRequired' => $this->timeRequired, 'contributor' => $this->contributor, 'thumbnailUrl' => $this->thumbnailUrl, 'about' => $this->about, 'containsSeason' => $this->containsSeason, 'hasPart' => $this->hasPart, 'itemOffered' => $this->itemOffered, 'offers' => $this->offers, 'recordedAt' => $this->recordedAt, 'workExample' => $this->workExample, 'exampleOfWork' => $this->exampleOfWork), static function ($value) : bool {
             return $value !== null;

@@ -46,7 +46,7 @@ class HttpOperationBinding implements \JsonSerializable
     {
         return $this->bindingVersion;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('type' => $this->type, 'method' => $this->method, 'query' => $this->query, 'bindingVersion' => $this->bindingVersion), static function ($value) : bool {
             return $value !== null;

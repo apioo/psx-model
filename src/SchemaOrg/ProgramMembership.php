@@ -45,7 +45,7 @@ class ProgramMembership extends Intangible implements \JsonSerializable
     {
         return $this->programName;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('member' => $this->member, 'membershipNumber' => $this->membershipNumber, 'hostingOrganization' => $this->hostingOrganization, 'programName' => $this->programName), static function ($value) : bool {
             return $value !== null;

@@ -81,7 +81,7 @@ class GeoShape extends StructuredValue implements \JsonSerializable
     {
         return $this->circle;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('polygon' => $this->polygon, 'addressCountry' => $this->addressCountry, 'postalCode' => $this->postalCode, 'box' => $this->box, 'elevation' => $this->elevation, 'line' => $this->line, 'address' => $this->address, 'circle' => $this->circle), static function ($value) : bool {
             return $value !== null;

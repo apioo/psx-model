@@ -18,7 +18,7 @@ class BroadcastFrequencySpecification extends Intangible implements \JsonSeriali
     {
         return $this->broadcastFrequencyValue;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('broadcastFrequencyValue' => $this->broadcastFrequencyValue), static function ($value) : bool {
             return $value !== null;

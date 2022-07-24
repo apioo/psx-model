@@ -43,7 +43,7 @@ class MediaLink implements \JsonSerializable
     {
         return $this->width;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('duration' => $this->duration, 'height' => $this->height, 'url' => $this->url, 'width' => $this->width), static function ($value) : bool {
             return $value !== null;

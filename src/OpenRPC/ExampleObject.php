@@ -54,7 +54,7 @@ class ExampleObject implements \JsonSerializable
     {
         return $this->externalValue;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('name' => $this->name, 'summary' => $this->summary, 'description' => $this->description, 'value' => $this->value, 'externalValue' => $this->externalValue), static function ($value) : bool {
             return $value !== null;

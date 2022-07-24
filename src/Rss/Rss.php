@@ -190,7 +190,7 @@ class Rss implements \JsonSerializable
     {
         return $this->item;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('title' => $this->title, 'link' => $this->link, 'description' => $this->description, 'language' => $this->language, 'copyright' => $this->copyright, 'managingEditor' => $this->managingEditor, 'webMaster' => $this->webMaster, 'generator' => $this->generator, 'docs' => $this->docs, 'ttl' => $this->ttl, 'image' => $this->image, 'rating' => $this->rating, 'skipHours' => $this->skipHours, 'skipDays' => $this->skipDays, 'category' => $this->category, 'pubDate' => $this->pubDate, 'lastBuildDate' => $this->lastBuildDate, 'cloud' => $this->cloud, 'item' => $this->item), static function ($value) : bool {
             return $value !== null;

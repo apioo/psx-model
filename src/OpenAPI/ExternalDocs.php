@@ -29,7 +29,7 @@ class ExternalDocs implements \JsonSerializable
     {
         return $this->url;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('description' => $this->description, 'url' => $this->url), static function ($value) : bool {
             return $value !== null;

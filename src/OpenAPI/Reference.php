@@ -22,7 +22,7 @@ class Reference implements \JsonSerializable
     {
         return $this->ref;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('$ref' => $this->ref), static function ($value) : bool {
             return $value !== null;

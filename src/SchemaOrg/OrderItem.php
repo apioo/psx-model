@@ -54,7 +54,7 @@ class OrderItem extends Intangible implements \JsonSerializable
     {
         return $this->orderedItem;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('orderDelivery' => $this->orderDelivery, 'orderItemStatus' => $this->orderItemStatus, 'orderQuantity' => $this->orderQuantity, 'orderItemNumber' => $this->orderItemNumber, 'orderedItem' => $this->orderedItem), static function ($value) : bool {
             return $value !== null;

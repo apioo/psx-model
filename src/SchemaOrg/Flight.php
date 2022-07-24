@@ -135,7 +135,7 @@ class Flight extends Trip implements \JsonSerializable
     {
         return $this->mealService;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('departureGate' => $this->departureGate, 'flightDistance' => $this->flightDistance, 'estimatedFlightDuration' => $this->estimatedFlightDuration, 'boardingPolicy' => $this->boardingPolicy, 'aircraft' => $this->aircraft, 'seller' => $this->seller, 'arrivalGate' => $this->arrivalGate, 'arrivalTerminal' => $this->arrivalTerminal, 'arrivalAirport' => $this->arrivalAirport, 'flightNumber' => $this->flightNumber, 'webCheckinTime' => $this->webCheckinTime, 'departureAirport' => $this->departureAirport, 'departureTerminal' => $this->departureTerminal, 'mealService' => $this->mealService), static function ($value) : bool {
             return $value !== null;

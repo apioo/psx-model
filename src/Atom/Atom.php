@@ -154,7 +154,7 @@ class Atom implements \JsonSerializable
     {
         return $this->entry;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('author' => $this->author, 'category' => $this->category, 'contributor' => $this->contributor, 'generator' => $this->generator, 'icon' => $this->icon, 'logo' => $this->logo, 'id' => $this->id, 'link' => $this->link, 'rights' => $this->rights, 'subTitle' => $this->subTitle, 'title' => $this->title, 'updated' => $this->updated, 'entry' => $this->entry), static function ($value) : bool {
             return $value !== null;

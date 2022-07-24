@@ -72,7 +72,7 @@ class Components implements \JsonSerializable
     {
         return $this->tags;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('contentDescriptors' => $this->contentDescriptors, 'schemas' => $this->schemas, 'examples' => $this->examples, 'links' => $this->links, 'errors' => $this->errors, 'examplePairingObjects' => $this->examplePairingObjects, 'tags' => $this->tags), static function ($value) : bool {
             return $value !== null;

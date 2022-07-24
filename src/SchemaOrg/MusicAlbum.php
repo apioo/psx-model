@@ -45,7 +45,7 @@ class MusicAlbum extends MusicPlaylist implements \JsonSerializable
     {
         return $this->releaseOf;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('albumProductionType' => $this->albumProductionType, 'byArtist' => $this->byArtist, 'albumReleaseType' => $this->albumReleaseType, 'releaseOf' => $this->releaseOf), static function ($value) : bool {
             return $value !== null;

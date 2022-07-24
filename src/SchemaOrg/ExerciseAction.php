@@ -81,7 +81,7 @@ class ExerciseAction extends PlayAction implements \JsonSerializable
     {
         return $this->sportsEvent;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('exerciseCourse' => $this->exerciseCourse, 'sportsTeam' => $this->sportsTeam, 'sportsActivityLocation' => $this->sportsActivityLocation, 'fromLocation' => $this->fromLocation, 'distance' => $this->distance, 'toLocation' => $this->toLocation, 'opponent' => $this->opponent, 'sportsEvent' => $this->sportsEvent), static function ($value) : bool {
             return $value !== null;

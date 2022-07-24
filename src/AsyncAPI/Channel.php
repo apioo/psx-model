@@ -43,7 +43,7 @@ class Channel implements \JsonSerializable
     {
         return $this->parameters;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('description' => $this->description, 'subscribe' => $this->subscribe, 'publish' => $this->publish, 'parameters' => $this->parameters), static function ($value) : bool {
             return $value !== null;

@@ -36,7 +36,7 @@ class ItemList extends Intangible implements \JsonSerializable
     {
         return $this->itemListOrder;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('itemListElement' => $this->itemListElement, 'numberOfItems' => $this->numberOfItems, 'itemListOrder' => $this->itemListOrder), static function ($value) : bool {
             return $value !== null;

@@ -45,7 +45,7 @@ class Brand extends Intangible implements \JsonSerializable
     {
         return $this->slogan;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('aggregateRating' => $this->aggregateRating, 'review' => $this->review, 'logo' => $this->logo, 'slogan' => $this->slogan), static function ($value) : bool {
             return $value !== null;

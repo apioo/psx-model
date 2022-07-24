@@ -36,7 +36,7 @@ class Contact implements \JsonSerializable
     {
         return $this->email;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('name' => $this->name, 'url' => $this->url, 'email' => $this->email), static function ($value) : bool {
             return $value !== null;

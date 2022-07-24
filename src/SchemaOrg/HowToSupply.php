@@ -18,7 +18,7 @@ class HowToSupply extends HowToItem implements \JsonSerializable
     {
         return $this->estimatedCost;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('estimatedCost' => $this->estimatedCost), static function ($value) : bool {
             return $value !== null;

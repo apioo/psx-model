@@ -18,7 +18,7 @@ class WriteAction extends CreateAction implements \JsonSerializable
     {
         return $this->inLanguage;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('inLanguage' => $this->inLanguage), static function ($value) : bool {
             return $value !== null;

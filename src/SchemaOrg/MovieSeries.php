@@ -54,7 +54,7 @@ class MovieSeries extends CreativeWorkSeries implements \JsonSerializable
     {
         return $this->director;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('trailer' => $this->trailer, 'musicBy' => $this->musicBy, 'actor' => $this->actor, 'productionCompany' => $this->productionCompany, 'director' => $this->director), static function ($value) : bool {
             return $value !== null;

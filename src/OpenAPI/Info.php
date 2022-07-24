@@ -65,7 +65,7 @@ class Info implements \JsonSerializable
     {
         return $this->version;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('title' => $this->title, 'description' => $this->description, 'termsOfService' => $this->termsOfService, 'contact' => $this->contact, 'license' => $this->license, 'version' => $this->version), static function ($value) : bool {
             return $value !== null;

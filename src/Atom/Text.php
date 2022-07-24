@@ -25,7 +25,7 @@ class Text implements \JsonSerializable
     {
         return $this->content;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('type' => $this->type, 'content' => $this->content), static function ($value) : bool {
             return $value !== null;

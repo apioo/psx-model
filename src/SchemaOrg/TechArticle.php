@@ -27,7 +27,7 @@ class TechArticle extends Article implements \JsonSerializable
     {
         return $this->proficiencyLevel;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('dependencies' => $this->dependencies, 'proficiencyLevel' => $this->proficiencyLevel), static function ($value) : bool {
             return $value !== null;

@@ -18,7 +18,7 @@ class OrderAction extends TradeAction implements \JsonSerializable
     {
         return $this->deliveryMethod;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('deliveryMethod' => $this->deliveryMethod), static function ($value) : bool {
             return $value !== null;

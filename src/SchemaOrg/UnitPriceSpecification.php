@@ -54,7 +54,7 @@ class UnitPriceSpecification extends PriceSpecification implements \JsonSerializ
     {
         return $this->billingIncrement;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('referenceQuantity' => $this->referenceQuantity, 'unitCode' => $this->unitCode, 'unitText' => $this->unitText, 'priceType' => $this->priceType, 'billingIncrement' => $this->billingIncrement), static function ($value) : bool {
             return $value !== null;

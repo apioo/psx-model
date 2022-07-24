@@ -45,7 +45,7 @@ class Question extends CreativeWork implements \JsonSerializable
     {
         return $this->answerCount;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('upvoteCount' => $this->upvoteCount, 'suggestedAnswer' => $this->suggestedAnswer, 'downvoteCount' => $this->downvoteCount, 'answerCount' => $this->answerCount), static function ($value) : bool {
             return $value !== null;

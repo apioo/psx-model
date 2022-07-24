@@ -18,7 +18,7 @@ class SellAction extends TradeAction implements \JsonSerializable
     {
         return $this->buyer;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('buyer' => $this->buyer), static function ($value) : bool {
             return $value !== null;

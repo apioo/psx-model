@@ -18,7 +18,7 @@ class VoteAction extends ChooseAction implements \JsonSerializable
     {
         return $this->candidate;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('candidate' => $this->candidate), static function ($value) : bool {
             return $value !== null;

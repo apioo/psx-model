@@ -74,7 +74,7 @@ class Article extends CreativeWork implements \JsonSerializable
     {
         return $this->articleSection;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('pageStart' => $this->pageStart, 'articleBody' => $this->articleBody, 'pagination' => $this->pagination, 'pageEnd' => $this->pageEnd, 'speakable' => $this->speakable, 'wordCount' => $this->wordCount, 'articleSection' => $this->articleSection), static function ($value) : bool {
             return $value !== null;

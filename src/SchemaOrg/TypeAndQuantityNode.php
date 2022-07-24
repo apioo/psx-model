@@ -54,7 +54,7 @@ class TypeAndQuantityNode extends StructuredValue implements \JsonSerializable
     {
         return $this->amountOfThisGood;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('typeOfGood' => $this->typeOfGood, 'unitCode' => $this->unitCode, 'unitText' => $this->unitText, 'businessFunction' => $this->businessFunction, 'amountOfThisGood' => $this->amountOfThisGood), static function ($value) : bool {
             return $value !== null;

@@ -18,7 +18,7 @@ class DataCatalog extends CreativeWork implements \JsonSerializable
     {
         return $this->dataset;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('dataset' => $this->dataset), static function ($value) : bool {
             return $value !== null;

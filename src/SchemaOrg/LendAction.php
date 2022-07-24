@@ -25,7 +25,7 @@ class LendAction extends TransferAction implements \JsonSerializable
     {
         return $this->borrower;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('borrower' => $this->borrower), static function ($value) : bool {
             return $value !== null;

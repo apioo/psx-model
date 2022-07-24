@@ -52,7 +52,7 @@ class Cloud implements \JsonSerializable
     {
         return $this->protocol;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('domain' => $this->domain, 'port' => $this->port, 'path' => $this->path, 'registerProcedure' => $this->registerProcedure, 'protocol' => $this->protocol), static function ($value) : bool {
             return $value !== null;

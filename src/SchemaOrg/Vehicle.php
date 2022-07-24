@@ -225,7 +225,7 @@ class Vehicle extends Product implements \JsonSerializable
     {
         return $this->numberOfAirbags;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('steeringPosition' => $this->steeringPosition, 'vehicleConfiguration' => $this->vehicleConfiguration, 'cargoVolume' => $this->cargoVolume, 'mileageFromOdometer' => $this->mileageFromOdometer, 'vehicleTransmission' => $this->vehicleTransmission, 'numberOfAxles' => $this->numberOfAxles, 'knownVehicleDamages' => $this->knownVehicleDamages, 'numberOfDoors' => $this->numberOfDoors, 'vehicleModelDate' => $this->vehicleModelDate, 'dateVehicleFirstRegistered' => $this->dateVehicleFirstRegistered, 'numberOfPreviousOwners' => $this->numberOfPreviousOwners, 'vehicleIdentificationNumber' => $this->vehicleIdentificationNumber, 'vehicleEngine' => $this->vehicleEngine, 'driveWheelConfiguration' => $this->driveWheelConfiguration, 'fuelType' => $this->fuelType, 'vehicleInteriorColor' => $this->vehicleInteriorColor, 'vehicleSeatingCapacity' => $this->vehicleSeatingCapacity, 'purchaseDate' => $this->purchaseDate, 'vehicleInteriorType' => $this->vehicleInteriorType, 'productionDate' => $this->productionDate, 'fuelEfficiency' => $this->fuelEfficiency, 'fuelConsumption' => $this->fuelConsumption, 'numberOfForwardGears' => $this->numberOfForwardGears, 'numberOfAirbags' => $this->numberOfAirbags), static function ($value) : bool {
             return $value !== null;

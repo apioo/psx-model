@@ -27,7 +27,7 @@ class Menu extends CreativeWork implements \JsonSerializable
     {
         return $this->hasMenuItem;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('hasMenuSection' => $this->hasMenuSection, 'hasMenuItem' => $this->hasMenuItem), static function ($value) : bool {
             return $value !== null;

@@ -38,7 +38,7 @@ class FoodEstablishmentReservation extends Reservation implements \JsonSerializa
     {
         return $this->partySize;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('startTime' => $this->startTime, 'endTime' => $this->endTime, 'partySize' => $this->partySize), static function ($value) : bool {
             return $value !== null;

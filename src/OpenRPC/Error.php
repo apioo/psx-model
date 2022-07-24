@@ -38,7 +38,7 @@ class Error implements \JsonSerializable
     {
         return $this->data;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_filter(array('code' => $this->code, 'message' => $this->message, 'data' => $this->data), static function ($value) : bool {
             return $value !== null;

@@ -56,7 +56,7 @@ class NewsArticle extends Article implements \JsonSerializable
     {
         return $this->printEdition;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('printPage' => $this->printPage, 'printSection' => $this->printSection, 'printColumn' => $this->printColumn, 'dateline' => $this->dateline, 'printEdition' => $this->printEdition), static function ($value) : bool {
             return $value !== null;

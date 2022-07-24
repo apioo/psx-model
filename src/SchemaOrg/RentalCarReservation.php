@@ -47,7 +47,7 @@ class RentalCarReservation extends Reservation implements \JsonSerializable
     {
         return $this->dropoffLocation;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('dropoffTime' => $this->dropoffTime, 'pickupTime' => $this->pickupTime, 'pickupLocation' => $this->pickupLocation, 'dropoffLocation' => $this->dropoffLocation), static function ($value) : bool {
             return $value !== null;

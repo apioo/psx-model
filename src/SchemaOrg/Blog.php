@@ -27,7 +27,7 @@ class Blog extends CreativeWork implements \JsonSerializable
     {
         return $this->blogPost;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('issn' => $this->issn, 'blogPost' => $this->blogPost), static function ($value) : bool {
             return $value !== null;

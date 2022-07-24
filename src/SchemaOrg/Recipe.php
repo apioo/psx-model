@@ -90,7 +90,7 @@ class Recipe extends HowTo implements \JsonSerializable
     {
         return $this->suitableForDiet;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('yield' => $this->yield, 'recipeCategory' => $this->recipeCategory, 'cookTime' => $this->cookTime, 'recipeIngredient' => $this->recipeIngredient, 'recipeInstructions' => $this->recipeInstructions, 'cookingMethod' => $this->cookingMethod, 'recipeCuisine' => $this->recipeCuisine, 'nutrition' => $this->nutrition, 'suitableForDiet' => $this->suitableForDiet), static function ($value) : bool {
             return $value !== null;

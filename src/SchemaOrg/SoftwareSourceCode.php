@@ -54,7 +54,7 @@ class SoftwareSourceCode extends CreativeWork implements \JsonSerializable
     {
         return $this->programmingLanguage;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('codeRepository' => $this->codeRepository, 'codeSampleType' => $this->codeSampleType, 'runtimePlatform' => $this->runtimePlatform, 'targetProduct' => $this->targetProduct, 'programmingLanguage' => $this->programmingLanguage), static function ($value) : bool {
             return $value !== null;

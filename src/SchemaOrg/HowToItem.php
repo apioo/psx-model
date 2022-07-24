@@ -18,7 +18,7 @@ class HowToItem extends ListItem implements \JsonSerializable
     {
         return $this->requiredQuantity;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('requiredQuantity' => $this->requiredQuantity), static function ($value) : bool {
             return $value !== null;

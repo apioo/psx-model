@@ -45,7 +45,7 @@ class DatedMoneySpecification extends StructuredValue implements \JsonSerializab
     {
         return $this->amount;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('endDate' => $this->endDate, 'startDate' => $this->startDate, 'currency' => $this->currency, 'amount' => $this->amount), static function ($value) : bool {
             return $value !== null;

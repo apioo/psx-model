@@ -36,7 +36,7 @@ class BroadcastEvent extends PublicationEvent implements \JsonSerializable
     {
         return $this->isLiveBroadcast;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('broadcastOfEvent' => $this->broadcastOfEvent, 'videoFormat' => $this->videoFormat, 'isLiveBroadcast' => $this->isLiveBroadcast), static function ($value) : bool {
             return $value !== null;

@@ -27,7 +27,7 @@ class AuthorizeAction extends AllocateAction implements \JsonSerializable
     {
         return $this->recipient;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('ccRecipient' => $this->ccRecipient, 'recipient' => $this->recipient), static function ($value) : bool {
             return $value !== null;

@@ -36,7 +36,7 @@ class SportsEvent extends Event implements \JsonSerializable
     {
         return $this->homeTeam;
     }
-    public function jsonSerialize()
+    public function jsonSerialize() : object
     {
         return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('awayTeam' => $this->awayTeam, 'competitor' => $this->competitor, 'homeTeam' => $this->homeTeam), static function ($value) : bool {
             return $value !== null;
