@@ -32,7 +32,6 @@ use PSX\Model\OpenRPC\ExampleObject;
 use PSX\Model\OpenRPC\ExamplePairingObject;
 use PSX\Model\OpenRPC\Method;
 use PSX\Model\OpenRPC\OpenRPC;
-use PSX\Schema\Parser\Popo\Dumper;
 
 /**
  * OpenRPCTest
@@ -120,8 +119,7 @@ class OpenRPCTest extends TestCase
         $openRPC->setMethods($methods);
         $openRPC->setComponents($components);
 
-        $dumper = new Dumper();
-        $actual = json_encode($dumper->dump($openRPC), JSON_PRETTY_PRINT);
+        $actual = json_encode($openRPC, JSON_PRETTY_PRINT);
         $expect = file_get_contents(__DIR__ . '/resources/openrpc.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);

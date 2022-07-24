@@ -21,9 +21,9 @@
 namespace PSX\Model\Tests\ActivityStream;
 
 use PHPUnit\Framework\TestCase;
+use PSX\DateTime\DateTime;
 use PSX\Model\ActivityStream\Activity;
 use PSX\Model\ActivityStream\ObjectType;
-use PSX\Schema\Parser\Popo\Dumper;
 
 /**
  * ActivityStreamTest
@@ -54,14 +54,13 @@ class ActivityStreamTest extends TestCase
         $target->setDisplayName('Martin\'s Blog');
 
         $activity = new Activity();
-        $activity->setPublished(new \DateTime('2016-12-15T21:54:00'));
+        $activity->setPublished(new DateTime('2016-12-15T21:54:00'));
         $activity->setActor($actor);
         $activity->setVerb('post');
         $activity->setObject($object);
         $activity->setTarget($target);
 
-        $dumper = new Dumper();
-        $actual = json_encode($dumper->dump($activity), JSON_PRETTY_PRINT);
+        $actual = json_encode($activity, JSON_PRETTY_PRINT);
         $expect = file_get_contents(__DIR__ . '/resource/activity_stream.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);

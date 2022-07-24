@@ -22,7 +22,6 @@ namespace PSX\Model\Tests\ActivityStream;
 
 use PHPUnit\Framework\TestCase;
 use PSX\Model\ActivityStream\Address;
-use PSX\Schema\Parser\Popo\Dumper;
 
 /**
  * AddressTest
@@ -43,8 +42,7 @@ class AddressTest extends TestCase
         $address->setPostalCode('11111');
         $address->setCountry('US');
 
-        $dumper = new Dumper();
-        $actual = json_encode($dumper->dump($address), JSON_PRETTY_PRINT);
+        $actual = json_encode($address, JSON_PRETTY_PRINT);
         $expect = file_get_contents(__DIR__ . '/resource/address.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);

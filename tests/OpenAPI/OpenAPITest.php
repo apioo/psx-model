@@ -46,7 +46,6 @@ use PSX\Model\OpenAPI\SecuritySchemes;
 use PSX\Model\OpenAPI\Server;
 use PSX\Model\OpenAPI\Tag;
 use PSX\Record\Record;
-use PSX\Schema\Parser\Popo\Dumper;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -229,8 +228,7 @@ class OpenAPITest extends TestCase
         $openAPI->setComponents($components);
         $openAPI->setTags($tags);
 
-        $dumper = new Dumper();
-        $actual = json_encode($dumper->dump($openAPI), JSON_PRETTY_PRINT);
+        $actual = json_encode($openAPI, JSON_PRETTY_PRINT);
         $expect = file_get_contents(__DIR__ . '/resources/openapi.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);
@@ -284,8 +282,7 @@ class OpenAPITest extends TestCase
         $openAPI->setPaths($paths);
         $openAPI->setComponents($components);
 
-        $dumper = new Dumper();
-        $actual = json_encode($dumper->dump($openAPI), JSON_PRETTY_PRINT);
+        $actual = json_encode($openAPI, JSON_PRETTY_PRINT);
         $expect = file_get_contents(__DIR__ . '/resources/openapi_security.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);

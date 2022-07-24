@@ -21,6 +21,7 @@
 namespace PSX\Model\Tests\Atom;
 
 use PHPUnit\Framework\TestCase;
+use PSX\DateTime\DateTime;
 use PSX\Model\Atom\Atom;
 use PSX\Model\Atom\Category;
 use PSX\Model\Atom\Entry;
@@ -28,7 +29,6 @@ use PSX\Model\Atom\Generator;
 use PSX\Model\Atom\Link;
 use PSX\Model\Atom\Person;
 use PSX\Model\Atom\Text;
-use PSX\Schema\Parser\Popo\Dumper;
 
 /**
  * AtomTest
@@ -70,8 +70,8 @@ class AtomTest extends TestCase
         $entry->setId('http://localhost.com#1');
         $entry->setRights('foo');
         $entry->setTitle('Star City');
-        $entry->setPublished(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT'));
-        $entry->setUpdated(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT'));
+        $entry->setPublished(DateTime::fromDateTime(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT')));
+        $entry->setUpdated(DateTime::fromDateTime(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT')));
         $entry->setLink([$link]);
         $entry->setSummary($text);
 
@@ -90,13 +90,12 @@ class AtomTest extends TestCase
         $atom->setId('http://localhost.com#1');
         $atom->setRights('foo');
         $atom->setTitle('Foo has bar');
-        $atom->setUpdated(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT'));
+        $atom->setUpdated(DateTime::fromDateTime(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT')));
         $atom->setLink([$link]);
         $atom->setSubTitle($text);
         $atom->setEntry([$entry]);
 
-        $dumper = new Dumper();
-        $actual = json_encode($dumper->dump($atom), JSON_PRETTY_PRINT);
+        $actual = json_encode($atom, JSON_PRETTY_PRINT);
         $expect = file_get_contents(__DIR__ . '/resource/atom.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);

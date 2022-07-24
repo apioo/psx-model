@@ -32,7 +32,6 @@ use PSX\Model\AsyncAPI\OperationBindings;
 use PSX\Model\AsyncAPI\Schemas;
 use PSX\Model\OpenAPI\Info;
 use PSX\Record\Record;
-use PSX\Schema\Parser\Popo\Dumper;
 
 /**
  * AsyncAPITest
@@ -91,8 +90,7 @@ class AsyncAPITest extends TestCase
 
         $asyncAPI->setComponents($components);
         
-        $dumper = new Dumper();
-        $actual = json_encode($dumper->dump($asyncAPI), JSON_PRETTY_PRINT);
+        $actual = json_encode($asyncAPI, JSON_PRETTY_PRINT);
         $expect = file_get_contents(__DIR__ . '/resources/asyncapi.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);

@@ -21,10 +21,10 @@
 namespace PSX\Model\Tests\ActivityStream;
 
 use PHPUnit\Framework\TestCase;
+use PSX\DateTime\DateTime;
 use PSX\Model\ActivityStream\Activity;
 use PSX\Model\ActivityStream\Collection;
 use PSX\Model\ActivityStream\ObjectType;
-use PSX\Schema\Parser\Popo\Dumper;
 
 /**
  * ActivityTest
@@ -58,13 +58,12 @@ class ActivityTest extends TestCase
 
         $activity = new Activity();
         $activity->setVerb('post');
-        $activity->setPublished(new \DateTime('2011-02-10T15:04:55Z'));
+        $activity->setPublished(new DateTime('2011-02-10T15:04:55Z'));
         $activity->setActor($actor);
         $activity->setObject($object);
         $activity->setTarget($target);
 
-        $dumper = new Dumper();
-        $actual = json_encode($dumper->dump($activity), JSON_PRETTY_PRINT);
+        $actual = json_encode($activity, JSON_PRETTY_PRINT);
         $expect = file_get_contents(__DIR__ . '/resource/activity.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);
@@ -101,7 +100,7 @@ class ActivityTest extends TestCase
         $activity = new Activity();
         $activity->setVerb('post');
         $activity->setDisplayName('Martin posted a new video to his album.');
-        $activity->setPublished(new \DateTime('2011-02-10T15:04:55Z'));
+        $activity->setPublished(new DateTime('2011-02-10T15:04:55Z'));
         $activity->setGenerator($generator);
         $activity->setProvider($provider);
         $activity->setActor($actor);
@@ -112,8 +111,7 @@ class ActivityTest extends TestCase
         $collection->setTotalItems(1);
         $collection->setItems([$activity]);
 
-        $dumper = new Dumper();
-        $actual = json_encode($dumper->dump($collection), JSON_PRETTY_PRINT);
+        $actual = json_encode($collection, JSON_PRETTY_PRINT);
         $expect = file_get_contents(__DIR__ . '/resource/activity_complex.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);

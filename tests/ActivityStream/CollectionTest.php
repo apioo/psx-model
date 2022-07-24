@@ -21,9 +21,9 @@
 namespace PSX\Model\Tests\ActivityStream;
 
 use PHPUnit\Framework\TestCase;
+use PSX\DateTime\DateTime;
 use PSX\Model\ActivityStream\Activity;
 use PSX\Model\ActivityStream\Collection;
-use PSX\Schema\Parser\Popo\Dumper;
 
 /**
  * CollectionTest
@@ -40,14 +40,14 @@ class CollectionTest extends TestCase
 
         $item = new Activity();
         $item->setContent('This was my first comment');
-        $item->setUpdated(new \DateTime('2011-11-21T15:13:59+00:00'));
+        $item->setUpdated(new DateTime('2011-11-21T15:13:59+00:00'));
         $item->setId('f8f0e93f-e462-4ede-92cc-f6e8a1b7eb36');
 
         $items[] = $item;
 
         $item = new Activity();
         $item->setContent('This was another comment');
-        $item->setUpdated(new \DateTime('2011-11-21T15:14:06+00:00'));
+        $item->setUpdated(new DateTime('2011-11-21T15:14:06+00:00'));
         $item->setId('5369ea82-d791-46cb-a87a-3696ff90d8f3');
 
         $items[] = $item;
@@ -56,8 +56,7 @@ class CollectionTest extends TestCase
         $collection->setItems($items);
         $collection->setTotalItems(4);
 
-        $dumper = new Dumper();
-        $actual = json_encode($dumper->dump($collection), JSON_PRETTY_PRINT);
+        $actual = json_encode($collection, JSON_PRETTY_PRINT);
         $expect = file_get_contents(__DIR__ . '/resource/collection.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);

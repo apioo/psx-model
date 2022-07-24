@@ -22,7 +22,6 @@ namespace PSX\Model\Tests\ActivityStream;
 
 use PHPUnit\Framework\TestCase;
 use PSX\Model\ActivityStream\Position;
-use PSX\Schema\Parser\Popo\Dumper;
 
 /**
  * PositionTest
@@ -40,8 +39,7 @@ class PositionTest extends TestCase
         $position->setLongitude(-127.23);
         $position->setAltitude(100.05);
 
-        $dumper = new Dumper();
-        $actual = json_encode($dumper->dump($position), JSON_PRETTY_PRINT);
+        $actual = json_encode($position, JSON_PRETTY_PRINT);
         $expect = file_get_contents(__DIR__ . '/resource/position.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);

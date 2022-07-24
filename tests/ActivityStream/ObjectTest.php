@@ -21,8 +21,8 @@
 namespace PSX\Model\Tests\ActivityStream;
 
 use PHPUnit\Framework\TestCase;
+use PSX\DateTime\DateTime;
 use PSX\Model\ActivityStream\ObjectType;
-use PSX\Schema\Parser\Popo\Dumper;
 
 /**
  * ObjectTest
@@ -47,12 +47,11 @@ class ObjectTest extends TestCase
         $object->setAuthor($laura);
         $object->setContent('foobar');
         $object->setImage('http://localhost.com/image.png');
-        $object->setPublished(new \DateTime('2012-12-12T12:00:00Z'));
+        $object->setPublished(new DateTime('2012-12-12T12:00:00Z'));
         $object->setSummary('foobar');
-        $object->setUpdated(new \DateTime('2012-12-12T12:00:00Z'));
+        $object->setUpdated(new DateTime('2012-12-12T12:00:00Z'));
 
-        $dumper = new Dumper();
-        $actual = json_encode($dumper->dump($object), JSON_PRETTY_PRINT);
+        $actual = json_encode($object, JSON_PRETTY_PRINT);
         $expect = file_get_contents(__DIR__ . '/resource/object.json');
 
         $this->assertJsonStringEqualsJsonString($expect, $actual, $actual);
