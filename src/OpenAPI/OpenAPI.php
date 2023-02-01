@@ -7,17 +7,19 @@ namespace PSX\Model\OpenAPI;
 use PSX\Schema\Attribute\Description;
 use PSX\Schema\Attribute\Required;
 
-#[Description('This is the root document object of the OpenAPI definition file.')]
+#[Description('This is the root object of the OpenAPI document.')]
 #[Required(array('openapi', 'info', 'paths'))]
 class OpenAPI implements \JsonSerializable
 {
-    protected ?string $openapi = '3.0.0';
+    protected ?string $openapi = '3.1.0';
     protected ?Info $info = null;
+    protected ?string $jsonSchemaDialect = null;
     /**
      * @var array<Server>|null
      */
     protected ?array $servers = null;
     protected ?Paths $paths = null;
+    protected ?Webhooks $webhooks = null;
     protected ?Components $components = null;
     /**
      * @var array<SecurityRequirement>|null
@@ -44,6 +46,14 @@ class OpenAPI implements \JsonSerializable
     {
         return $this->info;
     }
+    public function setJsonSchemaDialect(?string $jsonSchemaDialect) : void
+    {
+        $this->jsonSchemaDialect = $jsonSchemaDialect;
+    }
+    public function getJsonSchemaDialect() : ?string
+    {
+        return $this->jsonSchemaDialect;
+    }
     /**
      * @param array<Server>|null $servers
      */
@@ -62,6 +72,14 @@ class OpenAPI implements \JsonSerializable
     public function getPaths() : ?Paths
     {
         return $this->paths;
+    }
+    public function setWebhooks(?Webhooks $webhooks) : void
+    {
+        $this->webhooks = $webhooks;
+    }
+    public function getWebhooks() : ?Webhooks
+    {
+        return $this->webhooks;
     }
     public function setComponents(?Components $components) : void
     {
@@ -103,7 +121,7 @@ class OpenAPI implements \JsonSerializable
     }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('openapi' => $this->openapi, 'info' => $this->info, 'servers' => $this->servers, 'paths' => $this->paths, 'components' => $this->components, 'security' => $this->security, 'tags' => $this->tags, 'externalDocs' => $this->externalDocs), static function ($value) : bool {
+        return (object) array_filter(array('openapi' => $this->openapi, 'info' => $this->info, 'jsonSchemaDialect' => $this->jsonSchemaDialect, 'servers' => $this->servers, 'paths' => $this->paths, 'webhooks' => $this->webhooks, 'components' => $this->components, 'security' => $this->security, 'tags' => $this->tags, 'externalDocs' => $this->externalDocs), static function ($value) : bool {
             return $value !== null;
         });
     }

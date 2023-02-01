@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\OpenAPI;
 
 /**
- * @extends \PSX\Record\Record<Callback|Reference>
+ * @extends \PSX\Record\Record<Callback>
  */
 class Callbacks extends \PSX\Record\Record
 {

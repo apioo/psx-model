@@ -10,14 +10,13 @@
     "Callbacks": {
       "type": "object",
       "additionalProperties": {
-        "oneOf": [
-          {
-            "$ref": "Callback"
-          },
-          {
-            "$ref": "Reference"
-          }
-        ]
+        "$ref": "Callback"
+      }
+    },
+    "Webhooks": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "PathItem"
       }
     },
     "Components": {
@@ -166,21 +165,17 @@
     "Headers": {
       "type": "object",
       "additionalProperties": {
-        "oneOf": [
-          {
-            "$ref": "Header"
-          },
-          {
-            "$ref": "Reference"
-          }
-        ]
+        "$ref": "Header"
       }
     },
     "Info": {
-      "description": "The object provides metadata about the API. The metadata can be used by the clients if needed, and can be presented in editing or documentation generation tools for convenience.",
+      "description": "The object provides metadata about the API. The metadata MAY be used by the clients if needed, and MAY be presented in editing or documentation generation tools for convenience.",
       "type": "object",
       "properties": {
         "title": {
+          "type": "string"
+        },
+        "summary": {
           "type": "string"
         },
         "description": {
@@ -209,6 +204,9 @@
       "type": "object",
       "properties": {
         "name": {
+          "type": "string"
+        },
+        "identifier": {
           "type": "string"
         },
         "url": {
@@ -240,14 +238,7 @@
     "Links": {
       "type": "object",
       "additionalProperties": {
-        "oneOf": [
-          {
-            "$ref": "Link"
-          },
-          {
-            "$ref": "Reference"
-          }
-        ]
+        "$ref": "Link"
       }
     },
     "MediaType": {
@@ -309,25 +300,30 @@
       }
     },
     "OpenAPI": {
-      "description": "This is the root document object of the OpenAPI definition file.",
+      "description": "This is the root object of the OpenAPI document.",
       "type": "object",
       "properties": {
         "openapi": {
-          "const": "3.0.0",
+          "const": "3.1.0",
           "type": "string"
         },
         "info": {
           "$ref": "Info"
         },
+        "jsonSchemaDialect": {
+          "type": "string"
+        },
         "servers": {
           "type": "array",
           "items": {
             "$ref": "Server"
-          },
-          "uniqueItems": true
+          }
         },
         "paths": {
           "$ref": "Paths"
+        },
+        "webhooks": {
+          "$ref": "Webhooks"
         },
         "components": {
           "$ref": "Components"
@@ -336,15 +332,13 @@
           "type": "array",
           "items": {
             "$ref": "SecurityRequirement"
-          },
-          "uniqueItems": true
+          }
         },
         "tags": {
           "type": "array",
           "items": {
             "$ref": "Tag"
-          },
-          "uniqueItems": true
+          }
         },
         "externalDocs": {
           "$ref": "ExternalDocs"
@@ -364,8 +358,7 @@
           "type": "array",
           "items": {
             "type": "string"
-          },
-          "uniqueItems": true
+          }
         },
         "summary": {
           "type": "string"
@@ -382,39 +375,17 @@
         "parameters": {
           "type": "array",
           "items": {
-            "oneOf": [
-              {
-                "$ref": "Parameter"
-              },
-              {
-                "$ref": "Reference"
-              }
-            ]
-          },
-          "uniqueItems": true
+            "$ref": "Parameter"
+          }
         },
         "requestBody": {
-          "oneOf": [
-            {
-              "$ref": "RequestBody"
-            },
-            {
-              "$ref": "Reference"
-            }
-          ]
+          "$ref": "RequestBody"
         },
         "responses": {
           "$ref": "Responses"
         },
         "callbacks": {
-          "oneOf": [
-            {
-              "$ref": "Callback"
-            },
-            {
-              "$ref": "Reference"
-            }
-          ]
+          "$ref": "Callbacks"
         },
         "deprecated": {
           "type": "boolean"
@@ -423,15 +394,13 @@
           "type": "array",
           "items": {
             "$ref": "SecurityRequirement"
-          },
-          "uniqueItems": true
+          }
         },
         "servers": {
           "type": "array",
           "items": {
             "$ref": "Server"
-          },
-          "uniqueItems": true
+          }
         }
       },
       "required": [
@@ -441,14 +410,7 @@
     "Parameters": {
       "type": "object",
       "additionalProperties": {
-        "oneOf": [
-          {
-            "$ref": "Parameter"
-          },
-          {
-            "$ref": "Reference"
-          }
-        ]
+        "$ref": "Parameter"
       }
     },
     "Parameter": {
@@ -503,14 +465,7 @@
     "Examples": {
       "type": "object",
       "additionalProperties": {
-        "oneOf": [
-          {
-            "$ref": "Example"
-          },
-          {
-            "$ref": "Reference"
-          }
-        ]
+        "$ref": "Example"
       }
     },
     "PathItem": {
@@ -554,27 +509,18 @@
           "type": "array",
           "items": {
             "$ref": "Server"
-          },
-          "uniqueItems": true
+          }
         },
         "parameters": {
           "type": "array",
           "items": {
-            "oneOf": [
-              {
-                "$ref": "Parameter"
-              },
-              {
-                "$ref": "Reference"
-              }
-            ]
-          },
-          "uniqueItems": true
+            "$ref": "Parameter"
+          }
         }
       }
     },
     "Paths": {
-      "description": "Holds the relative paths to the individual endpoints and their operations. The path is appended to the URL from the `Server Object` in order to construct the full URL.  The Paths MAY be empty, due to ACL constraints.",
+      "description": "Holds the relative paths to the individual endpoints and their operations. The path is appended to the URL from the Server Object in order to construct the full URL. The Paths MAY be empty, due to Access Control List (ACL) constraints.",
       "type": "object",
       "additionalProperties": {
         "$ref": "PathItem"
@@ -613,14 +559,7 @@
     "RequestBodies": {
       "type": "object",
       "additionalProperties": {
-        "oneOf": [
-          {
-            "$ref": "RequestBody"
-          },
-          {
-            "$ref": "Reference"
-          }
-        ]
+        "$ref": "RequestBody"
       }
     },
     "Response": {
@@ -637,14 +576,7 @@
           "$ref": "MediaTypes"
         },
         "links": {
-          "oneOf": [
-            {
-              "$ref": "Link"
-            },
-            {
-              "$ref": "Reference"
-            }
-          ]
+          "$ref": "Link"
         }
       },
       "required": [
@@ -655,14 +587,7 @@
       "description": "A container for the expected responses of an operation. The container maps a HTTP response code to the expected response.  The documentation is not necessarily expected to cover all possible HTTP response codes because they may not be known in advance. However, documentation is expected to cover a successful operation response and any known errors.  The `default` MAY be used as a default response object for all HTTP codes  that are not covered individually by the specification.  The `Responses Object` MUST contain at least one response code, and it  SHOULD be the response for a successful operation call.",
       "type": "object",
       "additionalProperties": {
-        "oneOf": [
-          {
-            "$ref": "Response"
-          },
-          {
-            "$ref": "Reference"
-          }
-        ]
+        "$ref": "Response"
       }
     },
     "SecurityRequirement": {
@@ -678,14 +603,7 @@
     "SecuritySchemes": {
       "type": "object",
       "additionalProperties": {
-        "oneOf": [
-          {
-            "$ref": "SecurityScheme"
-          },
-          {
-            "$ref": "Reference"
-          }
-        ]
+        "$ref": "SecurityScheme"
       }
     },
     "Server": {
@@ -714,8 +632,7 @@
           "type": "array",
           "items": {
             "type": "string"
-          },
-          "uniqueItems": true
+          }
         },
         "default": {
           "type": "string"

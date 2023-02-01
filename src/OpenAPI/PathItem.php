@@ -27,7 +27,7 @@ class PathItem implements \JsonSerializable
      */
     protected ?array $servers = null;
     /**
-     * @var array<Parameter|Reference>|null
+     * @var array<Parameter>|null
      */
     protected ?array $parameters = null;
     public function setRef(?string $ref) : void
@@ -130,7 +130,7 @@ class PathItem implements \JsonSerializable
         return $this->servers;
     }
     /**
-     * @param array<Parameter|Reference>|null $parameters
+     * @param array<Parameter>|null $parameters
      */
     public function setParameters(?array $parameters) : void
     {

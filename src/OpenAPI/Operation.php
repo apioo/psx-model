@@ -20,12 +20,12 @@ class Operation implements \JsonSerializable
     protected ?ExternalDocs $externalDocs = null;
     protected ?string $operationId = null;
     /**
-     * @var array<Parameter|Reference>|null
+     * @var array<Parameter>|null
      */
     protected ?array $parameters = null;
-    protected RequestBody|Reference|null $requestBody = null;
+    protected ?RequestBody $requestBody = null;
     protected ?Responses $responses = null;
-    protected Callback|Reference|null $callbacks = null;
+    protected ?Callbacks $callbacks = null;
     protected ?bool $deprecated = null;
     /**
      * @var array<SecurityRequirement>|null
@@ -79,7 +79,7 @@ class Operation implements \JsonSerializable
         return $this->operationId;
     }
     /**
-     * @param array<Parameter|Reference>|null $parameters
+     * @param array<Parameter>|null $parameters
      */
     public function setParameters(?array $parameters) : void
     {
@@ -89,11 +89,11 @@ class Operation implements \JsonSerializable
     {
         return $this->parameters;
     }
-    public function setRequestBody(RequestBody|Reference|null $requestBody) : void
+    public function setRequestBody(?RequestBody $requestBody) : void
     {
         $this->requestBody = $requestBody;
     }
-    public function getRequestBody() : RequestBody|Reference|null
+    public function getRequestBody() : ?RequestBody
     {
         return $this->requestBody;
     }
@@ -105,11 +105,11 @@ class Operation implements \JsonSerializable
     {
         return $this->responses;
     }
-    public function setCallbacks(Callback|Reference|null $callbacks) : void
+    public function setCallbacks(?Callbacks $callbacks) : void
     {
         $this->callbacks = $callbacks;
     }
-    public function getCallbacks() : Callback|Reference|null
+    public function getCallbacks() : ?Callbacks
     {
         return $this->callbacks;
     }

@@ -14,7 +14,7 @@ class Response implements \JsonSerializable
     protected ?string $description = null;
     protected ?Headers $headers = null;
     protected ?MediaTypes $content = null;
-    protected Link|Reference|null $links = null;
+    protected ?Link $links = null;
     public function setDescription(?string $description) : void
     {
         $this->description = $description;
@@ -39,11 +39,11 @@ class Response implements \JsonSerializable
     {
         return $this->content;
     }
-    public function setLinks(Link|Reference|null $links) : void
+    public function setLinks(?Link $links) : void
     {
         $this->links = $links;
     }
-    public function getLinks() : Link|Reference|null
+    public function getLinks() : ?Link
     {
         return $this->links;
     }
