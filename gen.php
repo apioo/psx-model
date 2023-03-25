@@ -8,7 +8,7 @@ $specs = [
     'OpenAPI' => 'openapi.json',
     'OpenRPC' => 'openrpc.json',
     'Rss' => 'rss.json',
-    'SchemaOrg' => 'schema_org.json',
+    //'SchemaOrg' => 'schema_org.json',
 ];
 
 foreach ($specs as $name => $spec) {
