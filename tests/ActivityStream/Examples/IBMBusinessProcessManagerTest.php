@@ -21,7 +21,7 @@
 namespace PSX\Model\Tests\ActivityStream\Examples;
 
 use PHPUnit\Framework\TestCase;
-use PSX\DateTime\DateTime;
+use PSX\DateTime\LocalDateTime;
 use PSX\Model\ActivityStream\Activity;
 use PSX\Model\ActivityStream\Collection;
 use PSX\Model\ActivityStream\ObjectType;
@@ -48,7 +48,7 @@ class IBMBusinessProcessManagerTest extends TestCase
         $item->setAuthor($author);
         $item->setContent('tagging Internal TW Admin user user');
         $item->setObjectType('COMMENT');
-        $item->setPublished(new DateTime('2012-01-09T16:18:44+00:00'));
+        $item->setPublished(LocalDateTime::parse('2012-01-09T16:18:44+00:00'));
 
         $replies = new Collection();
         $replies->setItems([$item]);
@@ -67,7 +67,7 @@ class IBMBusinessProcessManagerTest extends TestCase
         $activity->setActor($actor);
         $activity->setContent('Internal TW Admin user completed the task titled Task: Submit requisition and associated with the Submit job requisition activity.');
         $activity->setObject($object);
-        $activity->setPublished(new DateTime('2012-01-09T09:58:00+00:00'));
+        $activity->setPublished(LocalDateTime::parse('2012-01-09T09:58:00+00:00'));
         $activity->setVerb('POST');
 
         $collection = new Collection();

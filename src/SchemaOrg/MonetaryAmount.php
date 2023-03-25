@@ -13,8 +13,8 @@ class MonetaryAmount extends StructuredValue implements \JsonSerializable
     protected ?string $currency = null;
     protected ?float $minValue = null;
     protected float|string|bool|StructuredValue|null $value = null;
-    protected \PSX\DateTime\Date|\DateTime|null $validThrough = null;
-    protected \PSX\DateTime\Date|\DateTime|null $validFrom = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validThrough = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validFrom = null;
     public function setMaxValue(?float $maxValue) : void
     {
         $this->maxValue = $maxValue;
@@ -47,19 +47,19 @@ class MonetaryAmount extends StructuredValue implements \JsonSerializable
     {
         return $this->value;
     }
-    public function setValidThrough(\PSX\DateTime\Date|\DateTime|null $validThrough) : void
+    public function setValidThrough(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validThrough) : void
     {
         $this->validThrough = $validThrough;
     }
-    public function getValidThrough() : \PSX\DateTime\Date|\DateTime|null
+    public function getValidThrough() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->validThrough;
     }
-    public function setValidFrom(\PSX\DateTime\Date|\DateTime|null $validFrom) : void
+    public function setValidFrom(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validFrom) : void
     {
         $this->validFrom = $validFrom;
     }
-    public function getValidFrom() : \PSX\DateTime\Date|\DateTime|null
+    public function getValidFrom() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->validFrom;
     }

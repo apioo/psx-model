@@ -13,16 +13,16 @@ The place is <strong>open</strong> if the <a class="localLink" href="http://sche
 If the value for the <a class="localLink" href="http://schema.org/closes">closes</a> property is less than the value for the <a class="localLink" href="http://schema.org/opens">opens</a> property then the hour range is assumed to span over the next day.')]
 class OpeningHoursSpecification extends StructuredValue implements \JsonSerializable
 {
-    protected ?\PSX\DateTime\Time $closes = null;
+    protected ?\PSX\DateTime\LocalTime $closes = null;
     protected ?DayOfWeek $dayOfWeek = null;
-    protected ?\PSX\DateTime\Time $opens = null;
-    protected \PSX\DateTime\Date|\DateTime|null $validThrough = null;
-    protected \PSX\DateTime\Date|\DateTime|null $validFrom = null;
-    public function setCloses(?\PSX\DateTime\Time $closes) : void
+    protected ?\PSX\DateTime\LocalTime $opens = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validThrough = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validFrom = null;
+    public function setCloses(?\PSX\DateTime\LocalTime $closes) : void
     {
         $this->closes = $closes;
     }
-    public function getCloses() : ?\PSX\DateTime\Time
+    public function getCloses() : ?\PSX\DateTime\LocalTime
     {
         return $this->closes;
     }
@@ -34,27 +34,27 @@ class OpeningHoursSpecification extends StructuredValue implements \JsonSerializ
     {
         return $this->dayOfWeek;
     }
-    public function setOpens(?\PSX\DateTime\Time $opens) : void
+    public function setOpens(?\PSX\DateTime\LocalTime $opens) : void
     {
         $this->opens = $opens;
     }
-    public function getOpens() : ?\PSX\DateTime\Time
+    public function getOpens() : ?\PSX\DateTime\LocalTime
     {
         return $this->opens;
     }
-    public function setValidThrough(\PSX\DateTime\Date|\DateTime|null $validThrough) : void
+    public function setValidThrough(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validThrough) : void
     {
         $this->validThrough = $validThrough;
     }
-    public function getValidThrough() : \PSX\DateTime\Date|\DateTime|null
+    public function getValidThrough() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->validThrough;
     }
-    public function setValidFrom(\PSX\DateTime\Date|\DateTime|null $validFrom) : void
+    public function setValidFrom(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validFrom) : void
     {
         $this->validFrom = $validFrom;
     }
-    public function getValidFrom() : \PSX\DateTime\Date|\DateTime|null
+    public function getValidFrom() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->validFrom;
     }

@@ -11,7 +11,7 @@ class WebPage extends CreativeWork implements \JsonSerializable
 {
     protected ?\PSX\Uri\Uri $significantLink = null;
     protected string|BreadcrumbList|null $breadcrumb = null;
-    protected ?\PSX\DateTime\Date $lastReviewed = null;
+    protected ?\PSX\DateTime\LocalDate $lastReviewed = null;
     protected ?Specialty $specialty = null;
     protected ?ImageObject $primaryImageOfPage = null;
     protected \PSX\Uri\Uri|SpeakableSpecification|null $speakable = null;
@@ -34,11 +34,11 @@ class WebPage extends CreativeWork implements \JsonSerializable
     {
         return $this->breadcrumb;
     }
-    public function setLastReviewed(?\PSX\DateTime\Date $lastReviewed) : void
+    public function setLastReviewed(?\PSX\DateTime\LocalDate $lastReviewed) : void
     {
         $this->lastReviewed = $lastReviewed;
     }
-    public function getLastReviewed() : ?\PSX\DateTime\Date
+    public function getLastReviewed() : ?\PSX\DateTime\LocalDate
     {
         return $this->lastReviewed;
     }

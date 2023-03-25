@@ -5,15 +5,20 @@ declare(strict_types = 1);
 namespace PSX\Model\SchemaOrg;
 
 use PSX\Schema\Attribute\Description;
+use PSX\Schema\Attribute\Key;
 
 #[Description('A statistical distribution of values.')]
 class QuantitativeValueDistribution extends StructuredValue implements \JsonSerializable
 {
     protected ?float $median = null;
-    protected ?float $percentile25 = null;
-    protected ?float $percentile75 = null;
-    protected ?float $percentile10 = null;
-    protected ?float $percentile90 = null;
+    #[Key('percentile25')]
+    protected ?float $percentile = null;
+    #[Key('percentile75')]
+    protected ?float $percentile = null;
+    #[Key('percentile10')]
+    protected ?float $percentile = null;
+    #[Key('percentile90')]
+    protected ?float $percentile = null;
     protected ?Duration $duration = null;
     public function setMedian(?float $median) : void
     {
@@ -23,37 +28,37 @@ class QuantitativeValueDistribution extends StructuredValue implements \JsonSeri
     {
         return $this->median;
     }
-    public function setPercentile25(?float $percentile25) : void
+    public function setPercentile(?float $percentile) : void
     {
-        $this->percentile25 = $percentile25;
+        $this->percentile = $percentile;
     }
-    public function getPercentile25() : ?float
+    public function getPercentile() : ?float
     {
-        return $this->percentile25;
+        return $this->percentile;
     }
-    public function setPercentile75(?float $percentile75) : void
+    public function setPercentile(?float $percentile) : void
     {
-        $this->percentile75 = $percentile75;
+        $this->percentile = $percentile;
     }
-    public function getPercentile75() : ?float
+    public function getPercentile() : ?float
     {
-        return $this->percentile75;
+        return $this->percentile;
     }
-    public function setPercentile10(?float $percentile10) : void
+    public function setPercentile(?float $percentile) : void
     {
-        $this->percentile10 = $percentile10;
+        $this->percentile = $percentile;
     }
-    public function getPercentile10() : ?float
+    public function getPercentile() : ?float
     {
-        return $this->percentile10;
+        return $this->percentile;
     }
-    public function setPercentile90(?float $percentile90) : void
+    public function setPercentile(?float $percentile) : void
     {
-        $this->percentile90 = $percentile90;
+        $this->percentile = $percentile;
     }
-    public function getPercentile90() : ?float
+    public function getPercentile() : ?float
     {
-        return $this->percentile90;
+        return $this->percentile;
     }
     public function setDuration(?Duration $duration) : void
     {
@@ -65,7 +70,7 @@ class QuantitativeValueDistribution extends StructuredValue implements \JsonSeri
     }
     public function jsonSerialize() : object
     {
-        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('median' => $this->median, 'percentile25' => $this->percentile25, 'percentile75' => $this->percentile75, 'percentile10' => $this->percentile10, 'percentile90' => $this->percentile90, 'duration' => $this->duration), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('median' => $this->median, 'percentile90' => $this->percentile, 'duration' => $this->duration), static function ($value) : bool {
             return $value !== null;
         }));
     }

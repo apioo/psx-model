@@ -9,23 +9,23 @@ use PSX\Schema\Attribute\Description;
 #[Description('A single item within a larger data feed.')]
 class DataFeedItem extends Intangible implements \JsonSerializable
 {
-    protected \PSX\DateTime\Date|\DateTime|null $dateModified = null;
-    protected \PSX\DateTime\Date|\DateTime|null $dateCreated = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $dateModified = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $dateCreated = null;
     protected ?Thing $item = null;
-    protected \DateTime|\PSX\DateTime\Date|null $dateDeleted = null;
-    public function setDateModified(\PSX\DateTime\Date|\DateTime|null $dateModified) : void
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $dateDeleted = null;
+    public function setDateModified(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $dateModified) : void
     {
         $this->dateModified = $dateModified;
     }
-    public function getDateModified() : \PSX\DateTime\Date|\DateTime|null
+    public function getDateModified() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->dateModified;
     }
-    public function setDateCreated(\PSX\DateTime\Date|\DateTime|null $dateCreated) : void
+    public function setDateCreated(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $dateCreated) : void
     {
         $this->dateCreated = $dateCreated;
     }
-    public function getDateCreated() : \PSX\DateTime\Date|\DateTime|null
+    public function getDateCreated() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->dateCreated;
     }
@@ -37,11 +37,11 @@ class DataFeedItem extends Intangible implements \JsonSerializable
     {
         return $this->item;
     }
-    public function setDateDeleted(\DateTime|\PSX\DateTime\Date|null $dateDeleted) : void
+    public function setDateDeleted(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $dateDeleted) : void
     {
         $this->dateDeleted = $dateDeleted;
     }
-    public function getDateDeleted() : \DateTime|\PSX\DateTime\Date|null
+    public function getDateDeleted() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null
     {
         return $this->dateDeleted;
     }

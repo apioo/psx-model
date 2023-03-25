@@ -11,22 +11,22 @@ use PSX\Schema\Attribute\Description;
 Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.')]
 class FoodEstablishmentReservation extends Reservation implements \JsonSerializable
 {
-    protected \PSX\DateTime\Time|\DateTime|null $startTime = null;
-    protected \PSX\DateTime\Time|\DateTime|null $endTime = null;
+    protected \PSX\DateTime\LocalTime|\PSX\DateTime\LocalDateTime|null $startTime = null;
+    protected \PSX\DateTime\LocalTime|\PSX\DateTime\LocalDateTime|null $endTime = null;
     protected int|QuantitativeValue|null $partySize = null;
-    public function setStartTime(\PSX\DateTime\Time|\DateTime|null $startTime) : void
+    public function setStartTime(\PSX\DateTime\LocalTime|\PSX\DateTime\LocalDateTime|null $startTime) : void
     {
         $this->startTime = $startTime;
     }
-    public function getStartTime() : \PSX\DateTime\Time|\DateTime|null
+    public function getStartTime() : \PSX\DateTime\LocalTime|\PSX\DateTime\LocalDateTime|null
     {
         return $this->startTime;
     }
-    public function setEndTime(\PSX\DateTime\Time|\DateTime|null $endTime) : void
+    public function setEndTime(\PSX\DateTime\LocalTime|\PSX\DateTime\LocalDateTime|null $endTime) : void
     {
         $this->endTime = $endTime;
     }
-    public function getEndTime() : \PSX\DateTime\Time|\DateTime|null
+    public function getEndTime() : \PSX\DateTime\LocalTime|\PSX\DateTime\LocalDateTime|null
     {
         return $this->endTime;
     }

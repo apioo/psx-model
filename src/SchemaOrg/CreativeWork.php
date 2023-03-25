@@ -13,13 +13,13 @@ class CreativeWork extends Thing implements \JsonSerializable
     protected ?Person $editor = null;
     protected \PSX\Uri\Uri|Product|CreativeWork|null $isBasedOn = null;
     protected ?string $alternativeHeadline = null;
-    protected ?\PSX\DateTime\Date $expires = null;
+    protected ?\PSX\DateTime\LocalDate $expires = null;
     protected ?Place $spatialCoverage = null;
     protected ?Place $contentLocation = null;
     protected ?MediaObject $encoding = null;
     protected \PSX\Uri\Uri|CreativeWork|null $publishingPrinciples = null;
     protected Clip|VideoObject|null $video = null;
-    protected \PSX\DateTime\Date|\DateTime|null $datePublished = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $datePublished = null;
     protected ?string $text = null;
     protected Person|Organization|null $sponsor = null;
     protected ?ItemList $accessModeSufficient = null;
@@ -27,8 +27,8 @@ class CreativeWork extends Thing implements \JsonSerializable
     protected float|string|null $version = null;
     protected \PSX\Uri\Uri|string|null $encodingFormat = null;
     protected ?Thing $mentions = null;
-    protected \PSX\DateTime\Date|\DateTime|null $dateModified = null;
-    protected \PSX\DateTime\Date|\DateTime|null $dateCreated = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $dateModified = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $dateCreated = null;
     protected ?string $keywords = null;
     protected ?string $learningResourceType = null;
     protected ?string $accessMode = null;
@@ -45,7 +45,7 @@ class CreativeWork extends Thing implements \JsonSerializable
     protected string|CreativeWork|null $citation = null;
     protected ?Place $locationCreated = null;
     protected ?int $commentCount = null;
-    protected string|\DateTime|\PSX\Uri\Uri|null $temporalCoverage = null;
+    protected string|\PSX\DateTime\LocalDateTime|\PSX\Uri\Uri|null $temporalCoverage = null;
     protected Organization|Person|null $publisher = null;
     protected \PSX\Uri\Uri|string|Product|null $material = null;
     protected ?AggregateRating $aggregateRating = null;
@@ -64,7 +64,7 @@ class CreativeWork extends Thing implements \JsonSerializable
     protected ?string $accessibilitySummary = null;
     protected ?Organization $sourceOrganization = null;
     protected string|Rating|null $contentRating = null;
-    protected \DateTime|string|null $temporal = null;
+    protected \PSX\DateTime\LocalDateTime|string|null $temporal = null;
     protected ?float $copyrightYear = null;
     protected Organization|Person|null $creator = null;
     protected ?Person $accountablePerson = null;
@@ -81,6 +81,7 @@ class CreativeWork extends Thing implements \JsonSerializable
     protected ?Duration $timeRequired = null;
     protected Organization|Person|null $contributor = null;
     protected ?\PSX\Uri\Uri $thumbnailUrl = null;
+    protected ?Thing $about = null;
     protected ?CreativeWork $containsSeason = null;
     protected ?CreativeWork $hasPart = null;
     protected Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered = null;
@@ -120,11 +121,11 @@ class CreativeWork extends Thing implements \JsonSerializable
     {
         return $this->alternativeHeadline;
     }
-    public function setExpires(?\PSX\DateTime\Date $expires) : void
+    public function setExpires(?\PSX\DateTime\LocalDate $expires) : void
     {
         $this->expires = $expires;
     }
-    public function getExpires() : ?\PSX\DateTime\Date
+    public function getExpires() : ?\PSX\DateTime\LocalDate
     {
         return $this->expires;
     }
@@ -168,11 +169,11 @@ class CreativeWork extends Thing implements \JsonSerializable
     {
         return $this->video;
     }
-    public function setDatePublished(\PSX\DateTime\Date|\DateTime|null $datePublished) : void
+    public function setDatePublished(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $datePublished) : void
     {
         $this->datePublished = $datePublished;
     }
-    public function getDatePublished() : \PSX\DateTime\Date|\DateTime|null
+    public function getDatePublished() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->datePublished;
     }
@@ -232,19 +233,19 @@ class CreativeWork extends Thing implements \JsonSerializable
     {
         return $this->mentions;
     }
-    public function setDateModified(\PSX\DateTime\Date|\DateTime|null $dateModified) : void
+    public function setDateModified(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $dateModified) : void
     {
         $this->dateModified = $dateModified;
     }
-    public function getDateModified() : \PSX\DateTime\Date|\DateTime|null
+    public function getDateModified() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->dateModified;
     }
-    public function setDateCreated(\PSX\DateTime\Date|\DateTime|null $dateCreated) : void
+    public function setDateCreated(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $dateCreated) : void
     {
         $this->dateCreated = $dateCreated;
     }
-    public function getDateCreated() : \PSX\DateTime\Date|\DateTime|null
+    public function getDateCreated() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->dateCreated;
     }
@@ -376,11 +377,11 @@ class CreativeWork extends Thing implements \JsonSerializable
     {
         return $this->commentCount;
     }
-    public function setTemporalCoverage(string|\DateTime|\PSX\Uri\Uri|null $temporalCoverage) : void
+    public function setTemporalCoverage(string|\PSX\DateTime\LocalDateTime|\PSX\Uri\Uri|null $temporalCoverage) : void
     {
         $this->temporalCoverage = $temporalCoverage;
     }
-    public function getTemporalCoverage() : string|\DateTime|\PSX\Uri\Uri|null
+    public function getTemporalCoverage() : string|\PSX\DateTime\LocalDateTime|\PSX\Uri\Uri|null
     {
         return $this->temporalCoverage;
     }
@@ -528,11 +529,11 @@ class CreativeWork extends Thing implements \JsonSerializable
     {
         return $this->contentRating;
     }
-    public function setTemporal(\DateTime|string|null $temporal) : void
+    public function setTemporal(\PSX\DateTime\LocalDateTime|string|null $temporal) : void
     {
         $this->temporal = $temporal;
     }
-    public function getTemporal() : \DateTime|string|null
+    public function getTemporal() : \PSX\DateTime\LocalDateTime|string|null
     {
         return $this->temporal;
     }
@@ -663,6 +664,14 @@ class CreativeWork extends Thing implements \JsonSerializable
     public function getThumbnailUrl() : ?\PSX\Uri\Uri
     {
         return $this->thumbnailUrl;
+    }
+    public function setAbout(?Thing $about) : void
+    {
+        $this->about = $about;
+    }
+    public function getAbout() : ?Thing
+    {
+        return $this->about;
     }
     public function setContainsSeason(?CreativeWork $containsSeason) : void
     {

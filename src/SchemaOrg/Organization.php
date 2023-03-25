@@ -5,13 +5,14 @@ declare(strict_types = 1);
 namespace PSX\Model\SchemaOrg;
 
 use PSX\Schema\Attribute\Description;
+use PSX\Schema\Attribute\Key;
 
 #[Description('An organization such as a school, NGO, corporation, club, etc.')]
 class Organization extends Thing implements \JsonSerializable
 {
     protected OwnershipInfo|Product|null $owns = null;
     protected ?string $telephone = null;
-    protected ?\PSX\DateTime\Date $foundingDate = null;
+    protected ?\PSX\DateTime\LocalDate $foundingDate = null;
     protected ?string $naics = null;
     protected Person|Organization|null $member = null;
     protected \PSX\Uri\Uri|CreativeWork|null $publishingPrinciples = null;
@@ -34,10 +35,11 @@ class Organization extends Thing implements \JsonSerializable
     protected ?string $email = null;
     protected ?string $faxNumber = null;
     protected ?Review $review = null;
-    protected ?string $isicV4 = null;
+    #[Key('isicV4')]
+    protected ?string $isicV = null;
     protected ?string $globalLocationNumber = null;
     protected ?string $vatID = null;
-    protected ?\PSX\DateTime\Date $dissolutionDate = null;
+    protected ?\PSX\DateTime\LocalDate $dissolutionDate = null;
     protected ?ContactPoint $contactPoint = null;
     protected ProgramMembership|Organization|null $memberOf = null;
     protected \PSX\Uri\Uri|ImageObject|null $logo = null;
@@ -68,11 +70,11 @@ class Organization extends Thing implements \JsonSerializable
     {
         return $this->telephone;
     }
-    public function setFoundingDate(?\PSX\DateTime\Date $foundingDate) : void
+    public function setFoundingDate(?\PSX\DateTime\LocalDate $foundingDate) : void
     {
         $this->foundingDate = $foundingDate;
     }
-    public function getFoundingDate() : ?\PSX\DateTime\Date
+    public function getFoundingDate() : ?\PSX\DateTime\LocalDate
     {
         return $this->foundingDate;
     }
@@ -252,13 +254,13 @@ class Organization extends Thing implements \JsonSerializable
     {
         return $this->review;
     }
-    public function setIsicV4(?string $isicV4) : void
+    public function setIsicV(?string $isicV) : void
     {
-        $this->isicV4 = $isicV4;
+        $this->isicV = $isicV;
     }
-    public function getIsicV4() : ?string
+    public function getIsicV() : ?string
     {
-        return $this->isicV4;
+        return $this->isicV;
     }
     public function setGlobalLocationNumber(?string $globalLocationNumber) : void
     {
@@ -276,11 +278,11 @@ class Organization extends Thing implements \JsonSerializable
     {
         return $this->vatID;
     }
-    public function setDissolutionDate(?\PSX\DateTime\Date $dissolutionDate) : void
+    public function setDissolutionDate(?\PSX\DateTime\LocalDate $dissolutionDate) : void
     {
         $this->dissolutionDate = $dissolutionDate;
     }
-    public function getDissolutionDate() : ?\PSX\DateTime\Date
+    public function getDissolutionDate() : ?\PSX\DateTime\LocalDate
     {
         return $this->dissolutionDate;
     }
@@ -398,7 +400,7 @@ class Organization extends Thing implements \JsonSerializable
     }
     public function jsonSerialize() : object
     {
-        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('owns' => $this->owns, 'telephone' => $this->telephone, 'foundingDate' => $this->foundingDate, 'naics' => $this->naics, 'member' => $this->member, 'publishingPrinciples' => $this->publishingPrinciples, 'hasPOS' => $this->hasPOS, 'sponsor' => $this->sponsor, 'location' => $this->location, 'founder' => $this->founder, 'legalName' => $this->legalName, 'event' => $this->event, 'areaServed' => $this->areaServed, 'foundingLocation' => $this->foundingLocation, 'leiCode' => $this->leiCode, 'numberOfEmployees' => $this->numberOfEmployees, 'seeks' => $this->seeks, 'duns' => $this->duns, 'aggregateRating' => $this->aggregateRating, 'department' => $this->department, 'taxID' => $this->taxID, 'award' => $this->award, 'email' => $this->email, 'faxNumber' => $this->faxNumber, 'review' => $this->review, 'isicV4' => $this->isicV4, 'globalLocationNumber' => $this->globalLocationNumber, 'vatID' => $this->vatID, 'dissolutionDate' => $this->dissolutionDate, 'contactPoint' => $this->contactPoint, 'memberOf' => $this->memberOf, 'logo' => $this->logo, 'brand' => $this->brand, 'hasOfferCatalog' => $this->hasOfferCatalog, 'address' => $this->address, 'employee' => $this->employee, 'interactionStatistic' => $this->interactionStatistic, 'slogan' => $this->slogan, 'parentOrganization' => $this->parentOrganization, 'makesOffer' => $this->makesOffer, 'alumniOf' => $this->alumniOf, 'alumni' => $this->alumni, 'subOrganization' => $this->subOrganization), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('owns' => $this->owns, 'telephone' => $this->telephone, 'foundingDate' => $this->foundingDate, 'naics' => $this->naics, 'member' => $this->member, 'publishingPrinciples' => $this->publishingPrinciples, 'hasPOS' => $this->hasPOS, 'sponsor' => $this->sponsor, 'location' => $this->location, 'founder' => $this->founder, 'legalName' => $this->legalName, 'event' => $this->event, 'areaServed' => $this->areaServed, 'foundingLocation' => $this->foundingLocation, 'leiCode' => $this->leiCode, 'numberOfEmployees' => $this->numberOfEmployees, 'seeks' => $this->seeks, 'duns' => $this->duns, 'aggregateRating' => $this->aggregateRating, 'department' => $this->department, 'taxID' => $this->taxID, 'award' => $this->award, 'email' => $this->email, 'faxNumber' => $this->faxNumber, 'review' => $this->review, 'isicV4' => $this->isicV, 'globalLocationNumber' => $this->globalLocationNumber, 'vatID' => $this->vatID, 'dissolutionDate' => $this->dissolutionDate, 'contactPoint' => $this->contactPoint, 'memberOf' => $this->memberOf, 'logo' => $this->logo, 'brand' => $this->brand, 'hasOfferCatalog' => $this->hasOfferCatalog, 'address' => $this->address, 'employee' => $this->employee, 'interactionStatistic' => $this->interactionStatistic, 'slogan' => $this->slogan, 'parentOrganization' => $this->parentOrganization, 'makesOffer' => $this->makesOffer, 'alumniOf' => $this->alumniOf, 'alumni' => $this->alumni, 'subOrganization' => $this->subOrganization), static function ($value) : bool {
             return $value !== null;
         }));
     }

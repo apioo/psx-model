@@ -9,20 +9,20 @@ use PSX\Schema\Attribute\Description;
 #[Description('A single message from a sender to one or more organizations or people.')]
 class Message extends CreativeWork implements \JsonSerializable
 {
-    protected \DateTime|\PSX\DateTime\Date|null $dateRead = null;
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $dateRead = null;
     protected Person|ContactPoint|Organization|Audience|null $ccRecipient = null;
     protected Organization|ContactPoint|Person|Audience|null $recipient = null;
     protected ?CreativeWork $messageAttachment = null;
-    protected ?\DateTime $dateSent = null;
+    protected ?\PSX\DateTime\LocalDateTime $dateSent = null;
     protected Organization|Person|ContactPoint|null $bccRecipient = null;
     protected Person|Audience|Organization|null $sender = null;
     protected Person|Organization|ContactPoint|Audience|null $toRecipient = null;
-    protected ?\DateTime $dateReceived = null;
-    public function setDateRead(\DateTime|\PSX\DateTime\Date|null $dateRead) : void
+    protected ?\PSX\DateTime\LocalDateTime $dateReceived = null;
+    public function setDateRead(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $dateRead) : void
     {
         $this->dateRead = $dateRead;
     }
-    public function getDateRead() : \DateTime|\PSX\DateTime\Date|null
+    public function getDateRead() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null
     {
         return $this->dateRead;
     }
@@ -50,11 +50,11 @@ class Message extends CreativeWork implements \JsonSerializable
     {
         return $this->messageAttachment;
     }
-    public function setDateSent(?\DateTime $dateSent) : void
+    public function setDateSent(?\PSX\DateTime\LocalDateTime $dateSent) : void
     {
         $this->dateSent = $dateSent;
     }
-    public function getDateSent() : ?\DateTime
+    public function getDateSent() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->dateSent;
     }
@@ -82,11 +82,11 @@ class Message extends CreativeWork implements \JsonSerializable
     {
         return $this->toRecipient;
     }
-    public function setDateReceived(?\DateTime $dateReceived) : void
+    public function setDateReceived(?\PSX\DateTime\LocalDateTime $dateReceived) : void
     {
         $this->dateReceived = $dateReceived;
     }
-    public function getDateReceived() : ?\DateTime
+    public function getDateReceived() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->dateReceived;
     }

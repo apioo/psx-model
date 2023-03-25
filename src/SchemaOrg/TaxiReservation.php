@@ -11,14 +11,14 @@ use PSX\Schema\Attribute\Description;
 Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations. For offers of tickets, use <a class="localLink" href="http://schema.org/Offer">Offer</a>.')]
 class TaxiReservation extends Reservation implements \JsonSerializable
 {
-    protected ?\DateTime $pickupTime = null;
+    protected ?\PSX\DateTime\LocalDateTime $pickupTime = null;
     protected int|QuantitativeValue|null $partySize = null;
     protected ?Place $pickupLocation = null;
-    public function setPickupTime(?\DateTime $pickupTime) : void
+    public function setPickupTime(?\PSX\DateTime\LocalDateTime $pickupTime) : void
     {
         $this->pickupTime = $pickupTime;
     }
-    public function getPickupTime() : ?\DateTime
+    public function getPickupTime() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->pickupTime;
     }

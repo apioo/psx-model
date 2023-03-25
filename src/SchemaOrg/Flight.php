@@ -19,7 +19,7 @@ class Flight extends Trip implements \JsonSerializable
     protected ?string $arrivalTerminal = null;
     protected ?Airport $arrivalAirport = null;
     protected ?string $flightNumber = null;
-    protected ?\DateTime $webCheckinTime = null;
+    protected ?\PSX\DateTime\LocalDateTime $webCheckinTime = null;
     protected ?Airport $departureAirport = null;
     protected ?string $departureTerminal = null;
     protected ?string $mealService = null;
@@ -103,11 +103,11 @@ class Flight extends Trip implements \JsonSerializable
     {
         return $this->flightNumber;
     }
-    public function setWebCheckinTime(?\DateTime $webCheckinTime) : void
+    public function setWebCheckinTime(?\PSX\DateTime\LocalDateTime $webCheckinTime) : void
     {
         $this->webCheckinTime = $webCheckinTime;
     }
-    public function getWebCheckinTime() : ?\DateTime
+    public function getWebCheckinTime() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->webCheckinTime;
     }

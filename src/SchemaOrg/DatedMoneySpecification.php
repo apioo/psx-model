@@ -9,23 +9,23 @@ use PSX\Schema\Attribute\Description;
 #[Description('A DatedMoneySpecification represents monetary values with optional start and end dates. For example, this could represent an employee\'s salary over a specific period of time. <strong>Note:</strong> This type has been superseded by <a class="localLink" href="http://schema.org/MonetaryAmount">MonetaryAmount</a> use of that type is recommended')]
 class DatedMoneySpecification extends StructuredValue implements \JsonSerializable
 {
-    protected \PSX\DateTime\Date|\DateTime|null $endDate = null;
-    protected \DateTime|\PSX\DateTime\Date|null $startDate = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $endDate = null;
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $startDate = null;
     protected ?string $currency = null;
     protected float|MonetaryAmount|null $amount = null;
-    public function setEndDate(\PSX\DateTime\Date|\DateTime|null $endDate) : void
+    public function setEndDate(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $endDate) : void
     {
         $this->endDate = $endDate;
     }
-    public function getEndDate() : \PSX\DateTime\Date|\DateTime|null
+    public function getEndDate() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->endDate;
     }
-    public function setStartDate(\DateTime|\PSX\DateTime\Date|null $startDate) : void
+    public function setStartDate(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $startDate) : void
     {
         $this->startDate = $startDate;
     }
-    public function getStartDate() : \DateTime|\PSX\DateTime\Date|null
+    public function getStartDate() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null
     {
         return $this->startDate;
     }

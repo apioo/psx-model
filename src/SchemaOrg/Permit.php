@@ -12,9 +12,9 @@ class Permit extends Intangible implements \JsonSerializable
     protected ?Audience $permitAudience = null;
     protected ?Service $issuedThrough = null;
     protected ?Duration $validFor = null;
-    protected ?\PSX\DateTime\Date $validUntil = null;
+    protected ?\PSX\DateTime\LocalDate $validUntil = null;
     protected ?AdministrativeArea $validIn = null;
-    protected \PSX\DateTime\Date|\DateTime|null $validFrom = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validFrom = null;
     protected ?Organization $issuedBy = null;
     public function setPermitAudience(?Audience $permitAudience) : void
     {
@@ -40,11 +40,11 @@ class Permit extends Intangible implements \JsonSerializable
     {
         return $this->validFor;
     }
-    public function setValidUntil(?\PSX\DateTime\Date $validUntil) : void
+    public function setValidUntil(?\PSX\DateTime\LocalDate $validUntil) : void
     {
         $this->validUntil = $validUntil;
     }
-    public function getValidUntil() : ?\PSX\DateTime\Date
+    public function getValidUntil() : ?\PSX\DateTime\LocalDate
     {
         return $this->validUntil;
     }
@@ -56,11 +56,11 @@ class Permit extends Intangible implements \JsonSerializable
     {
         return $this->validIn;
     }
-    public function setValidFrom(\PSX\DateTime\Date|\DateTime|null $validFrom) : void
+    public function setValidFrom(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validFrom) : void
     {
         $this->validFrom = $validFrom;
     }
-    public function getValidFrom() : \PSX\DateTime\Date|\DateTime|null
+    public function getValidFrom() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->validFrom;
     }

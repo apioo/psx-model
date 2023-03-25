@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\SchemaOrg;
 
 use PSX\Schema\Attribute\Description;
+use PSX\Schema\Attribute\Key;
 
 #[Description('A demand entity represents the public, not necessarily binding, not necessarily exclusive, announcement by an organization or person to seek a certain type of goods or services. For describing demand using this type, the very same properties used for Offer apply.')]
 class Demand extends Intangible implements \JsonSerializable
@@ -24,17 +25,20 @@ class Demand extends Intangible implements \JsonSerializable
     protected ?DeliveryMethod $availableDeliveryMethod = null;
     protected Organization|Person|null $seller = null;
     protected ?string $mpn = null;
-    protected \DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null $availabilityStarts = null;
-    protected ?string $gtin8 = null;
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|\PSX\DateTime\LocalDate|null $availabilityStarts = null;
+    #[Key('gtin8')]
+    protected ?string $gtin = null;
     protected ?QuantitativeValue $eligibleQuantity = null;
     protected ?string $sku = null;
-    protected \PSX\DateTime\Date|\DateTime|null $validThrough = null;
-    protected \DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null $availabilityEnds = null;
-    protected \PSX\DateTime\Date|\DateTime|null $validFrom = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validThrough = null;
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|\PSX\DateTime\LocalDate|null $availabilityEnds = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validFrom = null;
     protected ?string $vehicleIdentificationNumber = null;
     protected ?string $serialNumber = null;
-    protected ?string $gtin12 = null;
-    protected ?string $gtin14 = null;
+    #[Key('gtin12')]
+    protected ?string $gtin = null;
+    #[Key('gtin14')]
+    protected ?string $gtin = null;
     protected ?BusinessFunction $businessFunction = null;
     protected ?QuantitativeValue $eligibleDuration = null;
     protected ?ItemAvailability $availability = null;
@@ -160,21 +164,21 @@ class Demand extends Intangible implements \JsonSerializable
     {
         return $this->mpn;
     }
-    public function setAvailabilityStarts(\DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null $availabilityStarts) : void
+    public function setAvailabilityStarts(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|\PSX\DateTime\LocalDate|null $availabilityStarts) : void
     {
         $this->availabilityStarts = $availabilityStarts;
     }
-    public function getAvailabilityStarts() : \DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null
+    public function getAvailabilityStarts() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|\PSX\DateTime\LocalDate|null
     {
         return $this->availabilityStarts;
     }
-    public function setGtin8(?string $gtin8) : void
+    public function setGtin(?string $gtin) : void
     {
-        $this->gtin8 = $gtin8;
+        $this->gtin = $gtin;
     }
-    public function getGtin8() : ?string
+    public function getGtin() : ?string
     {
-        return $this->gtin8;
+        return $this->gtin;
     }
     public function setEligibleQuantity(?QuantitativeValue $eligibleQuantity) : void
     {
@@ -192,27 +196,27 @@ class Demand extends Intangible implements \JsonSerializable
     {
         return $this->sku;
     }
-    public function setValidThrough(\PSX\DateTime\Date|\DateTime|null $validThrough) : void
+    public function setValidThrough(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validThrough) : void
     {
         $this->validThrough = $validThrough;
     }
-    public function getValidThrough() : \PSX\DateTime\Date|\DateTime|null
+    public function getValidThrough() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->validThrough;
     }
-    public function setAvailabilityEnds(\DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null $availabilityEnds) : void
+    public function setAvailabilityEnds(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|\PSX\DateTime\LocalDate|null $availabilityEnds) : void
     {
         $this->availabilityEnds = $availabilityEnds;
     }
-    public function getAvailabilityEnds() : \DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null
+    public function getAvailabilityEnds() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|\PSX\DateTime\LocalDate|null
     {
         return $this->availabilityEnds;
     }
-    public function setValidFrom(\PSX\DateTime\Date|\DateTime|null $validFrom) : void
+    public function setValidFrom(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validFrom) : void
     {
         $this->validFrom = $validFrom;
     }
-    public function getValidFrom() : \PSX\DateTime\Date|\DateTime|null
+    public function getValidFrom() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->validFrom;
     }
@@ -232,21 +236,21 @@ class Demand extends Intangible implements \JsonSerializable
     {
         return $this->serialNumber;
     }
-    public function setGtin12(?string $gtin12) : void
+    public function setGtin(?string $gtin) : void
     {
-        $this->gtin12 = $gtin12;
+        $this->gtin = $gtin;
     }
-    public function getGtin12() : ?string
+    public function getGtin() : ?string
     {
-        return $this->gtin12;
+        return $this->gtin;
     }
-    public function setGtin14(?string $gtin14) : void
+    public function setGtin(?string $gtin) : void
     {
-        $this->gtin14 = $gtin14;
+        $this->gtin = $gtin;
     }
-    public function getGtin14() : ?string
+    public function getGtin() : ?string
     {
-        return $this->gtin14;
+        return $this->gtin;
     }
     public function setBusinessFunction(?BusinessFunction $businessFunction) : void
     {
@@ -290,7 +294,7 @@ class Demand extends Intangible implements \JsonSerializable
     }
     public function jsonSerialize() : object
     {
-        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('eligibleTransactionVolume' => $this->eligibleTransactionVolume, 'itemCondition' => $this->itemCondition, 'identifier' => $this->identifier, 'eligibleCustomerType' => $this->eligibleCustomerType, 'acceptedPaymentMethod' => $this->acceptedPaymentMethod, 'warranty' => $this->warranty, 'advanceBookingRequirement' => $this->advanceBookingRequirement, 'inventoryLevel' => $this->inventoryLevel, 'priceSpecification' => $this->priceSpecification, 'includesObject' => $this->includesObject, 'areaServed' => $this->areaServed, 'eligibleRegion' => $this->eligibleRegion, 'availableDeliveryMethod' => $this->availableDeliveryMethod, 'seller' => $this->seller, 'mpn' => $this->mpn, 'availabilityStarts' => $this->availabilityStarts, 'gtin8' => $this->gtin8, 'eligibleQuantity' => $this->eligibleQuantity, 'sku' => $this->sku, 'validThrough' => $this->validThrough, 'availabilityEnds' => $this->availabilityEnds, 'validFrom' => $this->validFrom, 'vehicleIdentificationNumber' => $this->vehicleIdentificationNumber, 'serialNumber' => $this->serialNumber, 'gtin12' => $this->gtin12, 'gtin14' => $this->gtin14, 'businessFunction' => $this->businessFunction, 'eligibleDuration' => $this->eligibleDuration, 'availability' => $this->availability, 'deliveryLeadTime' => $this->deliveryLeadTime, 'itemOffered' => $this->itemOffered), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('eligibleTransactionVolume' => $this->eligibleTransactionVolume, 'itemCondition' => $this->itemCondition, 'identifier' => $this->identifier, 'eligibleCustomerType' => $this->eligibleCustomerType, 'acceptedPaymentMethod' => $this->acceptedPaymentMethod, 'warranty' => $this->warranty, 'advanceBookingRequirement' => $this->advanceBookingRequirement, 'inventoryLevel' => $this->inventoryLevel, 'priceSpecification' => $this->priceSpecification, 'includesObject' => $this->includesObject, 'areaServed' => $this->areaServed, 'eligibleRegion' => $this->eligibleRegion, 'availableDeliveryMethod' => $this->availableDeliveryMethod, 'seller' => $this->seller, 'mpn' => $this->mpn, 'availabilityStarts' => $this->availabilityStarts, 'gtin14' => $this->gtin, 'eligibleQuantity' => $this->eligibleQuantity, 'sku' => $this->sku, 'validThrough' => $this->validThrough, 'availabilityEnds' => $this->availabilityEnds, 'validFrom' => $this->validFrom, 'vehicleIdentificationNumber' => $this->vehicleIdentificationNumber, 'serialNumber' => $this->serialNumber, 'businessFunction' => $this->businessFunction, 'eligibleDuration' => $this->eligibleDuration, 'availability' => $this->availability, 'deliveryLeadTime' => $this->deliveryLeadTime, 'itemOffered' => $this->itemOffered), static function ($value) : bool {
             return $value !== null;
         }));
     }

@@ -12,8 +12,8 @@ class ActionAccessSpecification extends Intangible implements \JsonSerializable
     protected string|GeoShape|Place|null $eligibleRegion = null;
     protected ?Offer $expectsAcceptanceOf = null;
     protected \PSX\Uri\Uri|Thing|string|null $category = null;
-    protected \DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null $availabilityStarts = null;
-    protected \DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null $availabilityEnds = null;
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|\PSX\DateTime\LocalDate|null $availabilityStarts = null;
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|\PSX\DateTime\LocalDate|null $availabilityEnds = null;
     protected bool|MediaSubscription|null $requiresSubscription = null;
     public function setEligibleRegion(string|GeoShape|Place|null $eligibleRegion) : void
     {
@@ -39,19 +39,19 @@ class ActionAccessSpecification extends Intangible implements \JsonSerializable
     {
         return $this->category;
     }
-    public function setAvailabilityStarts(\DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null $availabilityStarts) : void
+    public function setAvailabilityStarts(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|\PSX\DateTime\LocalDate|null $availabilityStarts) : void
     {
         $this->availabilityStarts = $availabilityStarts;
     }
-    public function getAvailabilityStarts() : \DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null
+    public function getAvailabilityStarts() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|\PSX\DateTime\LocalDate|null
     {
         return $this->availabilityStarts;
     }
-    public function setAvailabilityEnds(\DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null $availabilityEnds) : void
+    public function setAvailabilityEnds(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|\PSX\DateTime\LocalDate|null $availabilityEnds) : void
     {
         $this->availabilityEnds = $availabilityEnds;
     }
-    public function getAvailabilityEnds() : \DateTime|\PSX\DateTime\Time|\PSX\DateTime\Date|null
+    public function getAvailabilityEnds() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|\PSX\DateTime\LocalDate|null
     {
         return $this->availabilityEnds;
     }

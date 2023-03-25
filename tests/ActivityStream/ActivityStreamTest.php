@@ -21,7 +21,7 @@
 namespace PSX\Model\Tests\ActivityStream;
 
 use PHPUnit\Framework\TestCase;
-use PSX\DateTime\DateTime;
+use PSX\DateTime\LocalDateTime;
 use PSX\Model\ActivityStream\Activity;
 use PSX\Model\ActivityStream\ObjectType;
 
@@ -54,7 +54,7 @@ class ActivityStreamTest extends TestCase
         $target->setDisplayName('Martin\'s Blog');
 
         $activity = new Activity();
-        $activity->setPublished(new DateTime('2016-12-15T21:54:00'));
+        $activity->setPublished(LocalDateTime::parse('2016-12-15T21:54:00'));
         $activity->setActor($actor);
         $activity->setVerb('post');
         $activity->setObject($object);

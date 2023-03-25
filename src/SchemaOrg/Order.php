@@ -14,7 +14,7 @@ class Order extends Intangible implements \JsonSerializable
     protected Organization|Person|null $seller = null;
     protected ?string $paymentMethodId = null;
     protected Organization|Person|null $broker = null;
-    protected \DateTime|\PSX\DateTime\Date|null $paymentDueDate = null;
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $paymentDueDate = null;
     protected ?string $confirmationNumber = null;
     protected ?Offer $acceptedOffer = null;
     protected Organization|Person|null $customer = null;
@@ -26,7 +26,7 @@ class Order extends Intangible implements \JsonSerializable
     protected string|float|null $discount = null;
     protected ?PaymentMethod $paymentMethod = null;
     protected ?Invoice $partOfInvoice = null;
-    protected \DateTime|\PSX\DateTime\Date|null $orderDate = null;
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $orderDate = null;
     protected ?PostalAddress $billingAddress = null;
     protected Product|Service|OrderItem|null $orderedItem = null;
     public function setOrderDelivery(?ParcelDelivery $orderDelivery) : void
@@ -69,11 +69,11 @@ class Order extends Intangible implements \JsonSerializable
     {
         return $this->broker;
     }
-    public function setPaymentDueDate(\DateTime|\PSX\DateTime\Date|null $paymentDueDate) : void
+    public function setPaymentDueDate(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $paymentDueDate) : void
     {
         $this->paymentDueDate = $paymentDueDate;
     }
-    public function getPaymentDueDate() : \DateTime|\PSX\DateTime\Date|null
+    public function getPaymentDueDate() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null
     {
         return $this->paymentDueDate;
     }
@@ -165,11 +165,11 @@ class Order extends Intangible implements \JsonSerializable
     {
         return $this->partOfInvoice;
     }
-    public function setOrderDate(\DateTime|\PSX\DateTime\Date|null $orderDate) : void
+    public function setOrderDate(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $orderDate) : void
     {
         $this->orderDate = $orderDate;
     }
-    public function getOrderDate() : \DateTime|\PSX\DateTime\Date|null
+    public function getOrderDate() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null
     {
         return $this->orderDate;
     }

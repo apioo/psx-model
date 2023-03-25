@@ -11,23 +11,23 @@ use PSX\Schema\Attribute\Description;
 Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.')]
 class RentalCarReservation extends Reservation implements \JsonSerializable
 {
-    protected ?\DateTime $dropoffTime = null;
-    protected ?\DateTime $pickupTime = null;
+    protected ?\PSX\DateTime\LocalDateTime $dropoffTime = null;
+    protected ?\PSX\DateTime\LocalDateTime $pickupTime = null;
     protected ?Place $pickupLocation = null;
     protected ?Place $dropoffLocation = null;
-    public function setDropoffTime(?\DateTime $dropoffTime) : void
+    public function setDropoffTime(?\PSX\DateTime\LocalDateTime $dropoffTime) : void
     {
         $this->dropoffTime = $dropoffTime;
     }
-    public function getDropoffTime() : ?\DateTime
+    public function getDropoffTime() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->dropoffTime;
     }
-    public function setPickupTime(?\DateTime $pickupTime) : void
+    public function setPickupTime(?\PSX\DateTime\LocalDateTime $pickupTime) : void
     {
         $this->pickupTime = $pickupTime;
     }
-    public function getPickupTime() : ?\DateTime
+    public function getPickupTime() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->pickupTime;
     }

@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\SchemaOrg;
 
 use PSX\Schema\Attribute\Description;
+use PSX\Schema\Attribute\Key;
 
 #[Description('Any offered product or service. For example: a pair of shoes; a concert ticket; the rental of a car; a haircut; or an episode of a TV show streamed online.')]
 class Product extends Thing implements \JsonSerializable
@@ -19,14 +20,17 @@ class Product extends Thing implements \JsonSerializable
     protected \PSX\Uri\Uri|string|Product|null $material = null;
     protected ?AggregateRating $aggregateRating = null;
     protected ?Product $isConsumableFor = null;
-    protected ?string $gtin8 = null;
+    #[Key('gtin8')]
+    protected ?string $gtin = null;
     protected Distance|QuantitativeValue|null $height = null;
     protected ?string $award = null;
     protected ?Review $review = null;
     protected ?string $sku = null;
     protected Service|Product|null $isSimilarTo = null;
-    protected ?string $gtin12 = null;
-    protected ?string $gtin14 = null;
+    #[Key('gtin12')]
+    protected ?string $gtin = null;
+    #[Key('gtin14')]
+    protected ?string $gtin = null;
     protected ?Organization $manufacturer = null;
     protected ?Product $isAccessoryOrSparePartFor = null;
     protected Service|Product|null $isRelatedTo = null;
@@ -34,13 +38,13 @@ class Product extends Thing implements \JsonSerializable
     protected Organization|Brand|null $brand = null;
     protected ?PropertyValue $additionalProperty = null;
     protected ?string $productID = null;
-    protected ?\PSX\DateTime\Date $purchaseDate = null;
+    protected ?\PSX\DateTime\LocalDate $purchaseDate = null;
     protected ?string $color = null;
     protected Distance|QuantitativeValue|null $depth = null;
     protected ?string $slogan = null;
-    protected ?\PSX\DateTime\Date $productionDate = null;
+    protected ?\PSX\DateTime\LocalDate $productionDate = null;
     protected ?QuantitativeValue $weight = null;
-    protected ?\PSX\DateTime\Date $releaseDate = null;
+    protected ?\PSX\DateTime\LocalDate $releaseDate = null;
     protected Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered = null;
     protected Offer|Demand|null $offers = null;
     public function setAudience(?Audience $audience) : void
@@ -123,13 +127,13 @@ class Product extends Thing implements \JsonSerializable
     {
         return $this->isConsumableFor;
     }
-    public function setGtin8(?string $gtin8) : void
+    public function setGtin(?string $gtin) : void
     {
-        $this->gtin8 = $gtin8;
+        $this->gtin = $gtin;
     }
-    public function getGtin8() : ?string
+    public function getGtin() : ?string
     {
-        return $this->gtin8;
+        return $this->gtin;
     }
     public function setHeight(Distance|QuantitativeValue|null $height) : void
     {
@@ -171,21 +175,21 @@ class Product extends Thing implements \JsonSerializable
     {
         return $this->isSimilarTo;
     }
-    public function setGtin12(?string $gtin12) : void
+    public function setGtin(?string $gtin) : void
     {
-        $this->gtin12 = $gtin12;
+        $this->gtin = $gtin;
     }
-    public function getGtin12() : ?string
+    public function getGtin() : ?string
     {
-        return $this->gtin12;
+        return $this->gtin;
     }
-    public function setGtin14(?string $gtin14) : void
+    public function setGtin(?string $gtin) : void
     {
-        $this->gtin14 = $gtin14;
+        $this->gtin = $gtin;
     }
-    public function getGtin14() : ?string
+    public function getGtin() : ?string
     {
-        return $this->gtin14;
+        return $this->gtin;
     }
     public function setManufacturer(?Organization $manufacturer) : void
     {
@@ -243,11 +247,11 @@ class Product extends Thing implements \JsonSerializable
     {
         return $this->productID;
     }
-    public function setPurchaseDate(?\PSX\DateTime\Date $purchaseDate) : void
+    public function setPurchaseDate(?\PSX\DateTime\LocalDate $purchaseDate) : void
     {
         $this->purchaseDate = $purchaseDate;
     }
-    public function getPurchaseDate() : ?\PSX\DateTime\Date
+    public function getPurchaseDate() : ?\PSX\DateTime\LocalDate
     {
         return $this->purchaseDate;
     }
@@ -275,11 +279,11 @@ class Product extends Thing implements \JsonSerializable
     {
         return $this->slogan;
     }
-    public function setProductionDate(?\PSX\DateTime\Date $productionDate) : void
+    public function setProductionDate(?\PSX\DateTime\LocalDate $productionDate) : void
     {
         $this->productionDate = $productionDate;
     }
-    public function getProductionDate() : ?\PSX\DateTime\Date
+    public function getProductionDate() : ?\PSX\DateTime\LocalDate
     {
         return $this->productionDate;
     }
@@ -291,11 +295,11 @@ class Product extends Thing implements \JsonSerializable
     {
         return $this->weight;
     }
-    public function setReleaseDate(?\PSX\DateTime\Date $releaseDate) : void
+    public function setReleaseDate(?\PSX\DateTime\LocalDate $releaseDate) : void
     {
         $this->releaseDate = $releaseDate;
     }
-    public function getReleaseDate() : ?\PSX\DateTime\Date
+    public function getReleaseDate() : ?\PSX\DateTime\LocalDate
     {
         return $this->releaseDate;
     }
@@ -317,7 +321,7 @@ class Product extends Thing implements \JsonSerializable
     }
     public function jsonSerialize() : object
     {
-        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('audience' => $this->audience, 'itemCondition' => $this->itemCondition, 'identifier' => $this->identifier, 'width' => $this->width, 'model' => $this->model, 'category' => $this->category, 'mpn' => $this->mpn, 'material' => $this->material, 'aggregateRating' => $this->aggregateRating, 'isConsumableFor' => $this->isConsumableFor, 'gtin8' => $this->gtin8, 'height' => $this->height, 'award' => $this->award, 'review' => $this->review, 'sku' => $this->sku, 'isSimilarTo' => $this->isSimilarTo, 'gtin12' => $this->gtin12, 'gtin14' => $this->gtin14, 'manufacturer' => $this->manufacturer, 'isAccessoryOrSparePartFor' => $this->isAccessoryOrSparePartFor, 'isRelatedTo' => $this->isRelatedTo, 'logo' => $this->logo, 'brand' => $this->brand, 'additionalProperty' => $this->additionalProperty, 'productID' => $this->productID, 'purchaseDate' => $this->purchaseDate, 'color' => $this->color, 'depth' => $this->depth, 'slogan' => $this->slogan, 'productionDate' => $this->productionDate, 'weight' => $this->weight, 'releaseDate' => $this->releaseDate, 'itemOffered' => $this->itemOffered, 'offers' => $this->offers), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('audience' => $this->audience, 'itemCondition' => $this->itemCondition, 'identifier' => $this->identifier, 'width' => $this->width, 'model' => $this->model, 'category' => $this->category, 'mpn' => $this->mpn, 'material' => $this->material, 'aggregateRating' => $this->aggregateRating, 'isConsumableFor' => $this->isConsumableFor, 'gtin14' => $this->gtin, 'height' => $this->height, 'award' => $this->award, 'review' => $this->review, 'sku' => $this->sku, 'isSimilarTo' => $this->isSimilarTo, 'manufacturer' => $this->manufacturer, 'isAccessoryOrSparePartFor' => $this->isAccessoryOrSparePartFor, 'isRelatedTo' => $this->isRelatedTo, 'logo' => $this->logo, 'brand' => $this->brand, 'additionalProperty' => $this->additionalProperty, 'productID' => $this->productID, 'purchaseDate' => $this->purchaseDate, 'color' => $this->color, 'depth' => $this->depth, 'slogan' => $this->slogan, 'productionDate' => $this->productionDate, 'weight' => $this->weight, 'releaseDate' => $this->releaseDate, 'itemOffered' => $this->itemOffered, 'offers' => $this->offers), static function ($value) : bool {
             return $value !== null;
         }));
     }

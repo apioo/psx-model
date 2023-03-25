@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\SchemaOrg;
 
 use PSX\Schema\Attribute\Description;
+use PSX\Schema\Attribute\Key;
 
 #[Description('Entities that have a somewhat fixed, physical extension.')]
 class Place extends Thing implements \JsonSerializable
@@ -25,7 +26,8 @@ class Place extends Thing implements \JsonSerializable
     protected GeoCoordinates|GeoShape|null $geo = null;
     protected ?string $faxNumber = null;
     protected ?Review $review = null;
-    protected ?string $isicV4 = null;
+    #[Key('isicV4')]
+    protected ?string $isicV = null;
     protected Photograph|ImageObject|null $photo = null;
     protected ?Place $geoDisjoint = null;
     protected ?int $maximumAttendeeCapacity = null;
@@ -173,13 +175,13 @@ class Place extends Thing implements \JsonSerializable
     {
         return $this->review;
     }
-    public function setIsicV4(?string $isicV4) : void
+    public function setIsicV(?string $isicV) : void
     {
-        $this->isicV4 = $isicV4;
+        $this->isicV = $isicV;
     }
-    public function getIsicV4() : ?string
+    public function getIsicV() : ?string
     {
-        return $this->isicV4;
+        return $this->isicV;
     }
     public function setPhoto(Photograph|ImageObject|null $photo) : void
     {
@@ -335,7 +337,7 @@ class Place extends Thing implements \JsonSerializable
     }
     public function jsonSerialize() : object
     {
-        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('telephone' => $this->telephone, 'geoContains' => $this->geoContains, 'longitude' => $this->longitude, 'event' => $this->event, 'geoWithin' => $this->geoWithin, 'hasMap' => $this->hasMap, 'amenityFeature' => $this->amenityFeature, 'geoEquals' => $this->geoEquals, 'geoCrosses' => $this->geoCrosses, 'geoOverlaps' => $this->geoOverlaps, 'geoCoveredBy' => $this->geoCoveredBy, 'containedInPlace' => $this->containedInPlace, 'aggregateRating' => $this->aggregateRating, 'geo' => $this->geo, 'faxNumber' => $this->faxNumber, 'review' => $this->review, 'isicV4' => $this->isicV4, 'photo' => $this->photo, 'geoDisjoint' => $this->geoDisjoint, 'maximumAttendeeCapacity' => $this->maximumAttendeeCapacity, 'globalLocationNumber' => $this->globalLocationNumber, 'specialOpeningHoursSpecification' => $this->specialOpeningHoursSpecification, 'publicAccess' => $this->publicAccess, 'geoCovers' => $this->geoCovers, 'logo' => $this->logo, 'latitude' => $this->latitude, 'isAccessibleForFree' => $this->isAccessibleForFree, 'additionalProperty' => $this->additionalProperty, 'address' => $this->address, 'geoIntersects' => $this->geoIntersects, 'slogan' => $this->slogan, 'geoTouches' => $this->geoTouches, 'branchCode' => $this->branchCode, 'smokingAllowed' => $this->smokingAllowed, 'openingHoursSpecification' => $this->openingHoursSpecification, 'containsPlace' => $this->containsPlace), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('telephone' => $this->telephone, 'geoContains' => $this->geoContains, 'longitude' => $this->longitude, 'event' => $this->event, 'geoWithin' => $this->geoWithin, 'hasMap' => $this->hasMap, 'amenityFeature' => $this->amenityFeature, 'geoEquals' => $this->geoEquals, 'geoCrosses' => $this->geoCrosses, 'geoOverlaps' => $this->geoOverlaps, 'geoCoveredBy' => $this->geoCoveredBy, 'containedInPlace' => $this->containedInPlace, 'aggregateRating' => $this->aggregateRating, 'geo' => $this->geo, 'faxNumber' => $this->faxNumber, 'review' => $this->review, 'isicV4' => $this->isicV, 'photo' => $this->photo, 'geoDisjoint' => $this->geoDisjoint, 'maximumAttendeeCapacity' => $this->maximumAttendeeCapacity, 'globalLocationNumber' => $this->globalLocationNumber, 'specialOpeningHoursSpecification' => $this->specialOpeningHoursSpecification, 'publicAccess' => $this->publicAccess, 'geoCovers' => $this->geoCovers, 'logo' => $this->logo, 'latitude' => $this->latitude, 'isAccessibleForFree' => $this->isAccessibleForFree, 'additionalProperty' => $this->additionalProperty, 'address' => $this->address, 'geoIntersects' => $this->geoIntersects, 'slogan' => $this->slogan, 'geoTouches' => $this->geoTouches, 'branchCode' => $this->branchCode, 'smokingAllowed' => $this->smokingAllowed, 'openingHoursSpecification' => $this->openingHoursSpecification, 'containsPlace' => $this->containsPlace), static function ($value) : bool {
             return $value !== null;
         }));
     }

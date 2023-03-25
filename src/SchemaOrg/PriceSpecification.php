@@ -14,8 +14,8 @@ class PriceSpecification extends StructuredValue implements \JsonSerializable
     protected ?string $priceCurrency = null;
     protected ?bool $valueAddedTaxIncluded = null;
     protected ?QuantitativeValue $eligibleQuantity = null;
-    protected \PSX\DateTime\Date|\DateTime|null $validThrough = null;
-    protected \PSX\DateTime\Date|\DateTime|null $validFrom = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validThrough = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validFrom = null;
     protected ?float $minPrice = null;
     protected ?float $maxPrice = null;
     public function setEligibleTransactionVolume(?PriceSpecification $eligibleTransactionVolume) : void
@@ -58,19 +58,19 @@ class PriceSpecification extends StructuredValue implements \JsonSerializable
     {
         return $this->eligibleQuantity;
     }
-    public function setValidThrough(\PSX\DateTime\Date|\DateTime|null $validThrough) : void
+    public function setValidThrough(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validThrough) : void
     {
         $this->validThrough = $validThrough;
     }
-    public function getValidThrough() : \PSX\DateTime\Date|\DateTime|null
+    public function getValidThrough() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->validThrough;
     }
-    public function setValidFrom(\PSX\DateTime\Date|\DateTime|null $validFrom) : void
+    public function setValidFrom(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validFrom) : void
     {
         $this->validFrom = $validFrom;
     }
-    public function getValidFrom() : \PSX\DateTime\Date|\DateTime|null
+    public function getValidFrom() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->validFrom;
     }

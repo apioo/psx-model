@@ -25,8 +25,8 @@ class Rss implements \JsonSerializable
      * @var array<Category>|null
      */
     protected ?array $category = null;
-    protected ?\DateTime $pubDate = null;
-    protected ?\DateTime $lastBuildDate = null;
+    protected ?\PSX\DateTime\LocalDateTime $pubDate = null;
+    protected ?\PSX\DateTime\LocalDateTime $lastBuildDate = null;
     protected ?Cloud $cloud = null;
     /**
      * @var array<Item>|null
@@ -155,19 +155,19 @@ class Rss implements \JsonSerializable
     {
         return $this->category;
     }
-    public function setPubDate(?\DateTime $pubDate) : void
+    public function setPubDate(?\PSX\DateTime\LocalDateTime $pubDate) : void
     {
         $this->pubDate = $pubDate;
     }
-    public function getPubDate() : ?\DateTime
+    public function getPubDate() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->pubDate;
     }
-    public function setLastBuildDate(?\DateTime $lastBuildDate) : void
+    public function setLastBuildDate(?\PSX\DateTime\LocalDateTime $lastBuildDate) : void
     {
         $this->lastBuildDate = $lastBuildDate;
     }
-    public function getLastBuildDate() : ?\DateTime
+    public function getLastBuildDate() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->lastBuildDate;
     }

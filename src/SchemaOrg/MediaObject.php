@@ -15,14 +15,14 @@ class MediaObject extends CreativeWork implements \JsonSerializable
     protected ?NewsArticle $associatedArticle = null;
     protected Distance|QuantitativeValue|null $height = null;
     protected ?Organization $productionCompany = null;
-    protected \PSX\DateTime\Time|\DateTime|null $startTime = null;
-    protected \PSX\DateTime\Time|\DateTime|null $endTime = null;
+    protected \PSX\DateTime\LocalTime|\PSX\DateTime\LocalDateTime|null $startTime = null;
+    protected \PSX\DateTime\LocalTime|\PSX\DateTime\LocalDateTime|null $endTime = null;
     protected bool|MediaSubscription|null $requiresSubscription = null;
     protected ?string $playerType = null;
     protected ?string $contentSize = null;
     protected ?string $bitrate = null;
     protected ?\PSX\Uri\Uri $embedUrl = null;
-    protected ?\PSX\DateTime\Date $uploadDate = null;
+    protected ?\PSX\DateTime\LocalDate $uploadDate = null;
     protected ?Duration $duration = null;
     protected ?Place $regionsAllowed = null;
     protected ?CreativeWork $encodesCreativeWork = null;
@@ -74,19 +74,19 @@ class MediaObject extends CreativeWork implements \JsonSerializable
     {
         return $this->productionCompany;
     }
-    public function setStartTime(\PSX\DateTime\Time|\DateTime|null $startTime) : void
+    public function setStartTime(\PSX\DateTime\LocalTime|\PSX\DateTime\LocalDateTime|null $startTime) : void
     {
         $this->startTime = $startTime;
     }
-    public function getStartTime() : \PSX\DateTime\Time|\DateTime|null
+    public function getStartTime() : \PSX\DateTime\LocalTime|\PSX\DateTime\LocalDateTime|null
     {
         return $this->startTime;
     }
-    public function setEndTime(\PSX\DateTime\Time|\DateTime|null $endTime) : void
+    public function setEndTime(\PSX\DateTime\LocalTime|\PSX\DateTime\LocalDateTime|null $endTime) : void
     {
         $this->endTime = $endTime;
     }
-    public function getEndTime() : \PSX\DateTime\Time|\DateTime|null
+    public function getEndTime() : \PSX\DateTime\LocalTime|\PSX\DateTime\LocalDateTime|null
     {
         return $this->endTime;
     }
@@ -130,11 +130,11 @@ class MediaObject extends CreativeWork implements \JsonSerializable
     {
         return $this->embedUrl;
     }
-    public function setUploadDate(?\PSX\DateTime\Date $uploadDate) : void
+    public function setUploadDate(?\PSX\DateTime\LocalDate $uploadDate) : void
     {
         $this->uploadDate = $uploadDate;
     }
-    public function getUploadDate() : ?\PSX\DateTime\Date
+    public function getUploadDate() : ?\PSX\DateTime\LocalDate
     {
         return $this->uploadDate;
     }

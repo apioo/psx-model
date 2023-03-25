@@ -12,12 +12,12 @@ class ParcelDelivery extends Intangible implements \JsonSerializable
     protected ?DeliveryEvent $deliveryStatus = null;
     protected Organization|Person|null $provider = null;
     protected ?PostalAddress $deliveryAddress = null;
-    protected \PSX\DateTime\Date|\DateTime|null $expectedArrivalUntil = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $expectedArrivalUntil = null;
     protected ?\PSX\Uri\Uri $trackingUrl = null;
     protected ?string $trackingNumber = null;
     protected ?PostalAddress $originAddress = null;
     protected ?Product $itemShipped = null;
-    protected \DateTime|\PSX\DateTime\Date|null $expectedArrivalFrom = null;
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $expectedArrivalFrom = null;
     protected ?DeliveryMethod $hasDeliveryMethod = null;
     protected ?Order $partOfOrder = null;
     public function setDeliveryStatus(?DeliveryEvent $deliveryStatus) : void
@@ -44,11 +44,11 @@ class ParcelDelivery extends Intangible implements \JsonSerializable
     {
         return $this->deliveryAddress;
     }
-    public function setExpectedArrivalUntil(\PSX\DateTime\Date|\DateTime|null $expectedArrivalUntil) : void
+    public function setExpectedArrivalUntil(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $expectedArrivalUntil) : void
     {
         $this->expectedArrivalUntil = $expectedArrivalUntil;
     }
-    public function getExpectedArrivalUntil() : \PSX\DateTime\Date|\DateTime|null
+    public function getExpectedArrivalUntil() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->expectedArrivalUntil;
     }
@@ -84,11 +84,11 @@ class ParcelDelivery extends Intangible implements \JsonSerializable
     {
         return $this->itemShipped;
     }
-    public function setExpectedArrivalFrom(\DateTime|\PSX\DateTime\Date|null $expectedArrivalFrom) : void
+    public function setExpectedArrivalFrom(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $expectedArrivalFrom) : void
     {
         $this->expectedArrivalFrom = $expectedArrivalFrom;
     }
-    public function getExpectedArrivalFrom() : \DateTime|\PSX\DateTime\Date|null
+    public function getExpectedArrivalFrom() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null
     {
         return $this->expectedArrivalFrom;
     }

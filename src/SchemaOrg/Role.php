@@ -11,22 +11,22 @@ use PSX\Schema\Attribute\Description;
 See also <a href="http://blog.schema.org/2014/06/introducing-role.html">blog post</a>.')]
 class Role extends Intangible implements \JsonSerializable
 {
-    protected \PSX\DateTime\Date|\DateTime|null $endDate = null;
-    protected \DateTime|\PSX\DateTime\Date|null $startDate = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $endDate = null;
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $startDate = null;
     protected string|\PSX\Uri\Uri|null $roleName = null;
-    public function setEndDate(\PSX\DateTime\Date|\DateTime|null $endDate) : void
+    public function setEndDate(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $endDate) : void
     {
         $this->endDate = $endDate;
     }
-    public function getEndDate() : \PSX\DateTime\Date|\DateTime|null
+    public function getEndDate() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->endDate;
     }
-    public function setStartDate(\DateTime|\PSX\DateTime\Date|null $startDate) : void
+    public function setStartDate(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $startDate) : void
     {
         $this->startDate = $startDate;
     }
-    public function getStartDate() : \DateTime|\PSX\DateTime\Date|null
+    public function getStartDate() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null
     {
         return $this->startDate;
     }

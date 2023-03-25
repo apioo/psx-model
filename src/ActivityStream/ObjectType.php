@@ -21,9 +21,9 @@ class ObjectType implements \JsonSerializable
     protected ?string $id = null;
     protected ?string $image = null;
     protected ?string $objectType = null;
-    protected ?\DateTime $published = null;
+    protected ?\PSX\DateTime\LocalDateTime $published = null;
     protected ?string $summary = null;
-    protected ?\DateTime $updated = null;
+    protected ?\PSX\DateTime\LocalDateTime $updated = null;
     /**
      * @var array<string>|null
      */
@@ -99,11 +99,11 @@ class ObjectType implements \JsonSerializable
     {
         return $this->objectType;
     }
-    public function setPublished(?\DateTime $published) : void
+    public function setPublished(?\PSX\DateTime\LocalDateTime $published) : void
     {
         $this->published = $published;
     }
-    public function getPublished() : ?\DateTime
+    public function getPublished() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->published;
     }
@@ -115,11 +115,11 @@ class ObjectType implements \JsonSerializable
     {
         return $this->summary;
     }
-    public function setUpdated(?\DateTime $updated) : void
+    public function setUpdated(?\PSX\DateTime\LocalDateTime $updated) : void
     {
         $this->updated = $updated;
     }
-    public function getUpdated() : ?\DateTime
+    public function getUpdated() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->updated;
     }

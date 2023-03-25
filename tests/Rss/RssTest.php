@@ -21,7 +21,7 @@
 namespace PSX\Model\Tests\Atom;
 
 use PHPUnit\Framework\TestCase;
-use PSX\DateTime\DateTime;
+use PSX\DateTime\LocalDateTime;
 use PSX\Model\Rss\Category;
 use PSX\Model\Rss\Cloud;
 use PSX\Model\Rss\Enclosure;
@@ -61,7 +61,7 @@ class RssTest extends TestCase
         $item->setComments('http://localhost.com#comments');
         $item->setEnclosure($enclosure);
         $item->setGuid('http://liftoff.msfc.nasa.gov/2003/06/03.html#item573');
-        $item->setPubDate(DateTime::fromDateTime(new \DateTime('Tue, 03 Jun 2003 09:39:21 GMT')));
+        $item->setPubDate(LocalDateTime::from(new \DateTime('Tue, 03 Jun 2003 09:39:21 GMT')));
         $item->setSource($source);
 
         $cloud = new Cloud();
@@ -87,8 +87,8 @@ class RssTest extends TestCase
         $rss->setSkipHours(20);
         $rss->setSkipDays('Tuesday');
         $rss->setCategory([$category]);
-        $rss->setPubDate(DateTime::fromDateTime(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT')));
-        $rss->setLastBuildDate(DateTime::fromDateTime(new \DateTime('Tue, 10 Jun 2003 09:41:01 GMT')));
+        $rss->setPubDate(LocalDateTime::from(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT')));
+        $rss->setLastBuildDate(LocalDateTime::from(new \DateTime('Tue, 10 Jun 2003 09:41:01 GMT')));
         $rss->setCloud($cloud);
         $rss->setItem([$item]);
 

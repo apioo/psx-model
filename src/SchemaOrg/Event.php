@@ -10,10 +10,10 @@ use PSX\Schema\Attribute\Description;
 class Event extends Thing implements \JsonSerializable
 {
     protected ?Audience $audience = null;
-    protected \PSX\DateTime\Date|\DateTime|null $endDate = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $endDate = null;
     protected ?int $remainingAttendeeCapacity = null;
     protected Person|Organization|null $sponsor = null;
-    protected \DateTime|\PSX\DateTime\Date|null $startDate = null;
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $startDate = null;
     protected string|PostalAddress|Place|null $location = null;
     protected Person|Organization|null $performer = null;
     protected ?string $typicalAgeRange = null;
@@ -22,7 +22,7 @@ class Event extends Thing implements \JsonSerializable
     protected ?AggregateRating $aggregateRating = null;
     protected string|Language|null $inLanguage = null;
     protected ?Review $review = null;
-    protected \DateTime|\PSX\DateTime\Time|null $doorTime = null;
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|null $doorTime = null;
     protected Organization|Person|null $translator = null;
     protected ?EventStatusType $eventStatus = null;
     protected ?int $maximumAttendeeCapacity = null;
@@ -33,9 +33,10 @@ class Event extends Thing implements \JsonSerializable
     protected ?Person $director = null;
     protected ?Event $subEvent = null;
     protected Organization|Person|null $composer = null;
-    protected ?\PSX\DateTime\Date $previousStartDate = null;
+    protected ?\PSX\DateTime\LocalDate $previousStartDate = null;
     protected ?Duration $duration = null;
     protected Organization|Person|null $contributor = null;
+    protected ?Thing $about = null;
     protected ?Event $superEvent = null;
     protected Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered = null;
     protected Offer|Demand|null $offers = null;
@@ -48,11 +49,11 @@ class Event extends Thing implements \JsonSerializable
     {
         return $this->audience;
     }
-    public function setEndDate(\PSX\DateTime\Date|\DateTime|null $endDate) : void
+    public function setEndDate(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $endDate) : void
     {
         $this->endDate = $endDate;
     }
-    public function getEndDate() : \PSX\DateTime\Date|\DateTime|null
+    public function getEndDate() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->endDate;
     }
@@ -72,11 +73,11 @@ class Event extends Thing implements \JsonSerializable
     {
         return $this->sponsor;
     }
-    public function setStartDate(\DateTime|\PSX\DateTime\Date|null $startDate) : void
+    public function setStartDate(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $startDate) : void
     {
         $this->startDate = $startDate;
     }
-    public function getStartDate() : \DateTime|\PSX\DateTime\Date|null
+    public function getStartDate() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null
     {
         return $this->startDate;
     }
@@ -144,11 +145,11 @@ class Event extends Thing implements \JsonSerializable
     {
         return $this->review;
     }
-    public function setDoorTime(\DateTime|\PSX\DateTime\Time|null $doorTime) : void
+    public function setDoorTime(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|null $doorTime) : void
     {
         $this->doorTime = $doorTime;
     }
-    public function getDoorTime() : \DateTime|\PSX\DateTime\Time|null
+    public function getDoorTime() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|null
     {
         return $this->doorTime;
     }
@@ -232,11 +233,11 @@ class Event extends Thing implements \JsonSerializable
     {
         return $this->composer;
     }
-    public function setPreviousStartDate(?\PSX\DateTime\Date $previousStartDate) : void
+    public function setPreviousStartDate(?\PSX\DateTime\LocalDate $previousStartDate) : void
     {
         $this->previousStartDate = $previousStartDate;
     }
-    public function getPreviousStartDate() : ?\PSX\DateTime\Date
+    public function getPreviousStartDate() : ?\PSX\DateTime\LocalDate
     {
         return $this->previousStartDate;
     }
@@ -255,6 +256,14 @@ class Event extends Thing implements \JsonSerializable
     public function getContributor() : Organization|Person|null
     {
         return $this->contributor;
+    }
+    public function setAbout(?Thing $about) : void
+    {
+        $this->about = $about;
+    }
+    public function getAbout() : ?Thing
+    {
+        return $this->about;
     }
     public function setSuperEvent(?Event $superEvent) : void
     {

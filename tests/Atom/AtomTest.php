@@ -21,7 +21,7 @@
 namespace PSX\Model\Tests\Atom;
 
 use PHPUnit\Framework\TestCase;
-use PSX\DateTime\DateTime;
+use PSX\DateTime\LocalDateTime;
 use PSX\Model\Atom\Atom;
 use PSX\Model\Atom\Category;
 use PSX\Model\Atom\Entry;
@@ -70,8 +70,8 @@ class AtomTest extends TestCase
         $entry->setId('http://localhost.com#1');
         $entry->setRights('foo');
         $entry->setTitle('Star City');
-        $entry->setPublished(DateTime::fromDateTime(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT')));
-        $entry->setUpdated(DateTime::fromDateTime(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT')));
+        $entry->setPublished(LocalDateTime::from(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT')));
+        $entry->setUpdated(LocalDateTime::from(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT')));
         $entry->setLink([$link]);
         $entry->setSummary($text);
 
@@ -90,7 +90,7 @@ class AtomTest extends TestCase
         $atom->setId('http://localhost.com#1');
         $atom->setRights('foo');
         $atom->setTitle('Foo has bar');
-        $atom->setUpdated(DateTime::fromDateTime(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT')));
+        $atom->setUpdated(LocalDateTime::from(new \DateTime('Tue, 10 Jun 2003 04:00:00 GMT')));
         $atom->setLink([$link]);
         $atom->setSubTitle($text);
         $atom->setEntry([$entry]);

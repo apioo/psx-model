@@ -11,7 +11,7 @@ class Invoice extends Intangible implements \JsonSerializable
 {
     protected string|PaymentStatusType|null $paymentStatus = null;
     protected ?Duration $billingPeriod = null;
-    protected ?\PSX\DateTime\Date $scheduledPaymentDate = null;
+    protected ?\PSX\DateTime\LocalDate $scheduledPaymentDate = null;
     protected \PSX\Uri\Uri|Thing|string|null $category = null;
     protected Organization|Person|null $provider = null;
     protected ?string $paymentMethodId = null;
@@ -19,7 +19,7 @@ class Invoice extends Intangible implements \JsonSerializable
     protected MonetaryAmount|PriceSpecification|null $minimumPaymentDue = null;
     protected PriceSpecification|MonetaryAmount|null $totalPaymentDue = null;
     protected Organization|Person|null $broker = null;
-    protected \DateTime|\PSX\DateTime\Date|null $paymentDueDate = null;
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $paymentDueDate = null;
     protected ?string $confirmationNumber = null;
     protected ?string $accountId = null;
     protected Organization|Person|null $customer = null;
@@ -40,11 +40,11 @@ class Invoice extends Intangible implements \JsonSerializable
     {
         return $this->billingPeriod;
     }
-    public function setScheduledPaymentDate(?\PSX\DateTime\Date $scheduledPaymentDate) : void
+    public function setScheduledPaymentDate(?\PSX\DateTime\LocalDate $scheduledPaymentDate) : void
     {
         $this->scheduledPaymentDate = $scheduledPaymentDate;
     }
-    public function getScheduledPaymentDate() : ?\PSX\DateTime\Date
+    public function getScheduledPaymentDate() : ?\PSX\DateTime\LocalDate
     {
         return $this->scheduledPaymentDate;
     }
@@ -104,11 +104,11 @@ class Invoice extends Intangible implements \JsonSerializable
     {
         return $this->broker;
     }
-    public function setPaymentDueDate(\DateTime|\PSX\DateTime\Date|null $paymentDueDate) : void
+    public function setPaymentDueDate(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $paymentDueDate) : void
     {
         $this->paymentDueDate = $paymentDueDate;
     }
-    public function getPaymentDueDate() : \DateTime|\PSX\DateTime\Date|null
+    public function getPaymentDueDate() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null
     {
         return $this->paymentDueDate;
     }

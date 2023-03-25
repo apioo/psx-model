@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace PSX\Model\SchemaOrg;
 
 use PSX\Schema\Attribute\Description;
+use PSX\Schema\Attribute\Key;
 
 #[Description('A person (alive, dead, undead, or fictional).')]
 class Person extends Thing implements \JsonSerializable
@@ -24,14 +25,15 @@ class Person extends Thing implements \JsonSerializable
     protected ?string $duns = null;
     protected ?Person $children = null;
     protected ?Person $knows = null;
-    protected ?\PSX\DateTime\Date $birthDate = null;
+    protected ?\PSX\DateTime\LocalDate $birthDate = null;
     protected ?string $taxID = null;
     protected Distance|QuantitativeValue|null $height = null;
     protected ?Place $deathPlace = null;
     protected ?string $award = null;
     protected ?string $email = null;
     protected ?string $faxNumber = null;
-    protected ?string $isicV4 = null;
+    #[Key('isicV4')]
+    protected ?string $isicV = null;
     protected PriceSpecification|MonetaryAmount|null $netWorth = null;
     protected \PSX\Uri\Uri|Person|null $colleague = null;
     protected ?string $globalLocationNumber = null;
@@ -47,7 +49,7 @@ class Person extends Thing implements \JsonSerializable
     protected ?OfferCatalog $hasOfferCatalog = null;
     protected string|PostalAddress|null $address = null;
     protected ?string $familyName = null;
-    protected ?\PSX\DateTime\Date $deathDate = null;
+    protected ?\PSX\DateTime\LocalDate $deathDate = null;
     protected ?InteractionCounter $interactionStatistic = null;
     protected ?QuantitativeValue $weight = null;
     protected ContactPoint|Place|null $homeLocation = null;
@@ -178,11 +180,11 @@ class Person extends Thing implements \JsonSerializable
     {
         return $this->knows;
     }
-    public function setBirthDate(?\PSX\DateTime\Date $birthDate) : void
+    public function setBirthDate(?\PSX\DateTime\LocalDate $birthDate) : void
     {
         $this->birthDate = $birthDate;
     }
-    public function getBirthDate() : ?\PSX\DateTime\Date
+    public function getBirthDate() : ?\PSX\DateTime\LocalDate
     {
         return $this->birthDate;
     }
@@ -234,13 +236,13 @@ class Person extends Thing implements \JsonSerializable
     {
         return $this->faxNumber;
     }
-    public function setIsicV4(?string $isicV4) : void
+    public function setIsicV(?string $isicV) : void
     {
-        $this->isicV4 = $isicV4;
+        $this->isicV = $isicV;
     }
-    public function getIsicV4() : ?string
+    public function getIsicV() : ?string
     {
-        return $this->isicV4;
+        return $this->isicV;
     }
     public function setNetWorth(PriceSpecification|MonetaryAmount|null $netWorth) : void
     {
@@ -362,11 +364,11 @@ class Person extends Thing implements \JsonSerializable
     {
         return $this->familyName;
     }
-    public function setDeathDate(?\PSX\DateTime\Date $deathDate) : void
+    public function setDeathDate(?\PSX\DateTime\LocalDate $deathDate) : void
     {
         $this->deathDate = $deathDate;
     }
-    public function getDeathDate() : ?\PSX\DateTime\Date
+    public function getDeathDate() : ?\PSX\DateTime\LocalDate
     {
         return $this->deathDate;
     }
@@ -452,7 +454,7 @@ class Person extends Thing implements \JsonSerializable
     }
     public function jsonSerialize() : object
     {
-        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('owns' => $this->owns, 'parent' => $this->parent, 'telephone' => $this->telephone, 'givenName' => $this->givenName, 'naics' => $this->naics, 'publishingPrinciples' => $this->publishingPrinciples, 'hasPOS' => $this->hasPOS, 'sponsor' => $this->sponsor, 'follows' => $this->follows, 'honorificPrefix' => $this->honorificPrefix, 'workLocation' => $this->workLocation, 'seeks' => $this->seeks, 'duns' => $this->duns, 'children' => $this->children, 'knows' => $this->knows, 'birthDate' => $this->birthDate, 'taxID' => $this->taxID, 'height' => $this->height, 'deathPlace' => $this->deathPlace, 'award' => $this->award, 'email' => $this->email, 'faxNumber' => $this->faxNumber, 'isicV4' => $this->isicV4, 'netWorth' => $this->netWorth, 'colleague' => $this->colleague, 'globalLocationNumber' => $this->globalLocationNumber, 'relatedTo' => $this->relatedTo, 'worksFor' => $this->worksFor, 'vatID' => $this->vatID, 'hasOccupation' => $this->hasOccupation, 'contactPoint' => $this->contactPoint, 'memberOf' => $this->memberOf, 'additionalName' => $this->additionalName, 'sibling' => $this->sibling, 'brand' => $this->brand, 'hasOfferCatalog' => $this->hasOfferCatalog, 'address' => $this->address, 'familyName' => $this->familyName, 'deathDate' => $this->deathDate, 'interactionStatistic' => $this->interactionStatistic, 'weight' => $this->weight, 'homeLocation' => $this->homeLocation, 'nationality' => $this->nationality, 'birthPlace' => $this->birthPlace, 'honorificSuffix' => $this->honorificSuffix, 'spouse' => $this->spouse, 'performerIn' => $this->performerIn, 'makesOffer' => $this->makesOffer, 'alumniOf' => $this->alumniOf), static function ($value) : bool {
+        return (object) array_merge((array) parent::jsonSerialize(), array_filter(array('owns' => $this->owns, 'parent' => $this->parent, 'telephone' => $this->telephone, 'givenName' => $this->givenName, 'naics' => $this->naics, 'publishingPrinciples' => $this->publishingPrinciples, 'hasPOS' => $this->hasPOS, 'sponsor' => $this->sponsor, 'follows' => $this->follows, 'honorificPrefix' => $this->honorificPrefix, 'workLocation' => $this->workLocation, 'seeks' => $this->seeks, 'duns' => $this->duns, 'children' => $this->children, 'knows' => $this->knows, 'birthDate' => $this->birthDate, 'taxID' => $this->taxID, 'height' => $this->height, 'deathPlace' => $this->deathPlace, 'award' => $this->award, 'email' => $this->email, 'faxNumber' => $this->faxNumber, 'isicV4' => $this->isicV, 'netWorth' => $this->netWorth, 'colleague' => $this->colleague, 'globalLocationNumber' => $this->globalLocationNumber, 'relatedTo' => $this->relatedTo, 'worksFor' => $this->worksFor, 'vatID' => $this->vatID, 'hasOccupation' => $this->hasOccupation, 'contactPoint' => $this->contactPoint, 'memberOf' => $this->memberOf, 'additionalName' => $this->additionalName, 'sibling' => $this->sibling, 'brand' => $this->brand, 'hasOfferCatalog' => $this->hasOfferCatalog, 'address' => $this->address, 'familyName' => $this->familyName, 'deathDate' => $this->deathDate, 'interactionStatistic' => $this->interactionStatistic, 'weight' => $this->weight, 'homeLocation' => $this->homeLocation, 'nationality' => $this->nationality, 'birthPlace' => $this->birthPlace, 'honorificSuffix' => $this->honorificSuffix, 'spouse' => $this->spouse, 'performerIn' => $this->performerIn, 'makesOffer' => $this->makesOffer, 'alumniOf' => $this->alumniOf), static function ($value) : bool {
             return $value !== null;
         }));
     }

@@ -30,7 +30,7 @@ class Atom implements \JsonSerializable
     protected ?string $rights = null;
     protected ?Text $subTitle = null;
     protected ?string $title = null;
-    protected ?\DateTime $updated = null;
+    protected ?\PSX\DateTime\LocalDateTime $updated = null;
     /**
      * @var array<Entry>|null
      */
@@ -135,11 +135,11 @@ class Atom implements \JsonSerializable
     {
         return $this->title;
     }
-    public function setUpdated(?\DateTime $updated) : void
+    public function setUpdated(?\PSX\DateTime\LocalDateTime $updated) : void
     {
         $this->updated = $updated;
     }
-    public function getUpdated() : ?\DateTime
+    public function getUpdated() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->updated;
     }

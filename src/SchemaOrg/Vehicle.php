@@ -17,8 +17,8 @@ class Vehicle extends Product implements \JsonSerializable
     protected float|QuantitativeValue|null $numberOfAxles = null;
     protected ?string $knownVehicleDamages = null;
     protected float|QuantitativeValue|null $numberOfDoors = null;
-    protected ?\PSX\DateTime\Date $vehicleModelDate = null;
-    protected ?\PSX\DateTime\Date $dateVehicleFirstRegistered = null;
+    protected ?\PSX\DateTime\LocalDate $vehicleModelDate = null;
+    protected ?\PSX\DateTime\LocalDate $dateVehicleFirstRegistered = null;
     protected float|QuantitativeValue|null $numberOfPreviousOwners = null;
     protected ?string $vehicleIdentificationNumber = null;
     protected ?EngineSpecification $vehicleEngine = null;
@@ -26,9 +26,9 @@ class Vehicle extends Product implements \JsonSerializable
     protected string|\PSX\Uri\Uri|QualitativeValue|null $fuelType = null;
     protected ?string $vehicleInteriorColor = null;
     protected float|QuantitativeValue|null $vehicleSeatingCapacity = null;
-    protected ?\PSX\DateTime\Date $purchaseDate = null;
+    protected ?\PSX\DateTime\LocalDate $purchaseDate = null;
     protected ?string $vehicleInteriorType = null;
-    protected ?\PSX\DateTime\Date $productionDate = null;
+    protected ?\PSX\DateTime\LocalDate $productionDate = null;
     protected ?QuantitativeValue $fuelEfficiency = null;
     protected ?QuantitativeValue $fuelConsumption = null;
     protected float|QuantitativeValue|null $numberOfForwardGears = null;
@@ -97,19 +97,19 @@ class Vehicle extends Product implements \JsonSerializable
     {
         return $this->numberOfDoors;
     }
-    public function setVehicleModelDate(?\PSX\DateTime\Date $vehicleModelDate) : void
+    public function setVehicleModelDate(?\PSX\DateTime\LocalDate $vehicleModelDate) : void
     {
         $this->vehicleModelDate = $vehicleModelDate;
     }
-    public function getVehicleModelDate() : ?\PSX\DateTime\Date
+    public function getVehicleModelDate() : ?\PSX\DateTime\LocalDate
     {
         return $this->vehicleModelDate;
     }
-    public function setDateVehicleFirstRegistered(?\PSX\DateTime\Date $dateVehicleFirstRegistered) : void
+    public function setDateVehicleFirstRegistered(?\PSX\DateTime\LocalDate $dateVehicleFirstRegistered) : void
     {
         $this->dateVehicleFirstRegistered = $dateVehicleFirstRegistered;
     }
-    public function getDateVehicleFirstRegistered() : ?\PSX\DateTime\Date
+    public function getDateVehicleFirstRegistered() : ?\PSX\DateTime\LocalDate
     {
         return $this->dateVehicleFirstRegistered;
     }
@@ -169,11 +169,11 @@ class Vehicle extends Product implements \JsonSerializable
     {
         return $this->vehicleSeatingCapacity;
     }
-    public function setPurchaseDate(?\PSX\DateTime\Date $purchaseDate) : void
+    public function setPurchaseDate(?\PSX\DateTime\LocalDate $purchaseDate) : void
     {
         $this->purchaseDate = $purchaseDate;
     }
-    public function getPurchaseDate() : ?\PSX\DateTime\Date
+    public function getPurchaseDate() : ?\PSX\DateTime\LocalDate
     {
         return $this->purchaseDate;
     }
@@ -185,11 +185,11 @@ class Vehicle extends Product implements \JsonSerializable
     {
         return $this->vehicleInteriorType;
     }
-    public function setProductionDate(?\PSX\DateTime\Date $productionDate) : void
+    public function setProductionDate(?\PSX\DateTime\LocalDate $productionDate) : void
     {
         $this->productionDate = $productionDate;
     }
-    public function getProductionDate() : ?\PSX\DateTime\Date
+    public function getProductionDate() : ?\PSX\DateTime\LocalDate
     {
         return $this->productionDate;
     }

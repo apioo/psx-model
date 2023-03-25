@@ -14,7 +14,7 @@ class Ticket extends Intangible implements \JsonSerializable
     protected float|string|PriceSpecification|null $totalPrice = null;
     protected ?Organization $issuedBy = null;
     protected ?Seat $ticketedSeat = null;
-    protected \PSX\DateTime\Date|\DateTime|null $dateIssued = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $dateIssued = null;
     protected \PSX\Uri\Uri|string|null $ticketToken = null;
     protected ?string $ticketNumber = null;
     public function setPriceCurrency(?string $priceCurrency) : void
@@ -57,11 +57,11 @@ class Ticket extends Intangible implements \JsonSerializable
     {
         return $this->ticketedSeat;
     }
-    public function setDateIssued(\PSX\DateTime\Date|\DateTime|null $dateIssued) : void
+    public function setDateIssued(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $dateIssued) : void
     {
         $this->dateIssued = $dateIssued;
     }
-    public function getDateIssued() : \PSX\DateTime\Date|\DateTime|null
+    public function getDateIssued() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->dateIssued;
     }

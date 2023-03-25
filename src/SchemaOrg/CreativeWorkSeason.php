@@ -9,9 +9,9 @@ use PSX\Schema\Attribute\Description;
 #[Description('A media season e.g. tv, radio, video game etc.')]
 class CreativeWorkSeason extends CreativeWork implements \JsonSerializable
 {
-    protected \PSX\DateTime\Date|\DateTime|null $endDate = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $endDate = null;
     protected ?VideoObject $trailer = null;
-    protected \DateTime|\PSX\DateTime\Date|null $startDate = null;
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $startDate = null;
     protected ?CreativeWorkSeries $partOfSeries = null;
     protected ?Person $actor = null;
     protected int|string|null $seasonNumber = null;
@@ -19,11 +19,11 @@ class CreativeWorkSeason extends CreativeWork implements \JsonSerializable
     protected ?Episode $episode = null;
     protected ?Person $director = null;
     protected ?int $numberOfEpisodes = null;
-    public function setEndDate(\PSX\DateTime\Date|\DateTime|null $endDate) : void
+    public function setEndDate(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $endDate) : void
     {
         $this->endDate = $endDate;
     }
-    public function getEndDate() : \PSX\DateTime\Date|\DateTime|null
+    public function getEndDate() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->endDate;
     }
@@ -35,11 +35,11 @@ class CreativeWorkSeason extends CreativeWork implements \JsonSerializable
     {
         return $this->trailer;
     }
-    public function setStartDate(\DateTime|\PSX\DateTime\Date|null $startDate) : void
+    public function setStartDate(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $startDate) : void
     {
         $this->startDate = $startDate;
     }
-    public function getStartDate() : \DateTime|\PSX\DateTime\Date|null
+    public function getStartDate() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null
     {
         return $this->startDate;
     }

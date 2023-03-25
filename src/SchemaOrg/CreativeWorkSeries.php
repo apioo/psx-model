@@ -13,14 +13,14 @@ Specific subtypes are available for describing <a class="localLink" href="http:/
 It is common for properties applicable to an item from the series to be usefully applied to the containing group. Schema.org attempts to anticipate some of these cases, but publishers should be free to apply properties of the series parts to the series as a whole wherever they seem appropriate.')]
 class CreativeWorkSeries extends Series implements \JsonSerializable
 {
-    protected \PSX\DateTime\Date|\DateTime|null $endDate = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $endDate = null;
     protected ?string $issn = null;
-    protected \DateTime|\PSX\DateTime\Date|null $startDate = null;
-    public function setEndDate(\PSX\DateTime\Date|\DateTime|null $endDate) : void
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $startDate = null;
+    public function setEndDate(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $endDate) : void
     {
         $this->endDate = $endDate;
     }
-    public function getEndDate() : \PSX\DateTime\Date|\DateTime|null
+    public function getEndDate() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->endDate;
     }
@@ -32,11 +32,11 @@ class CreativeWorkSeries extends Series implements \JsonSerializable
     {
         return $this->issn;
     }
-    public function setStartDate(\DateTime|\PSX\DateTime\Date|null $startDate) : void
+    public function setStartDate(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $startDate) : void
     {
         $this->startDate = $startDate;
     }
-    public function getStartDate() : \DateTime|\PSX\DateTime\Date|null
+    public function getStartDate() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null
     {
         return $this->startDate;
     }

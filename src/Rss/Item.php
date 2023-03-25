@@ -18,7 +18,7 @@ class Item implements \JsonSerializable
     protected ?string $comments = null;
     protected ?Enclosure $enclosure = null;
     protected ?string $guid = null;
-    protected ?\DateTime $pubDate = null;
+    protected ?\PSX\DateTime\LocalDateTime $pubDate = null;
     protected ?Source $source = null;
     public function setTitle(?string $title) : void
     {
@@ -87,11 +87,11 @@ class Item implements \JsonSerializable
     {
         return $this->guid;
     }
-    public function setPubDate(?\DateTime $pubDate) : void
+    public function setPubDate(?\PSX\DateTime\LocalDateTime $pubDate) : void
     {
         $this->pubDate = $pubDate;
     }
-    public function getPubDate() : ?\DateTime
+    public function getPubDate() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->pubDate;
     }

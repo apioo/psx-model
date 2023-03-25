@@ -15,8 +15,8 @@ class LodgingBusiness extends LocalBusiness implements \JsonSerializable
     protected ?LocationFeatureSpecification $amenityFeature = null;
     protected ?Rating $starRating = null;
     protected bool|string|null $petsAllowed = null;
-    protected \DateTime|\PSX\DateTime\Time|null $checkoutTime = null;
-    protected \DateTime|\PSX\DateTime\Time|null $checkinTime = null;
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|null $checkoutTime = null;
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|null $checkinTime = null;
     public function setAudience(?Audience $audience) : void
     {
         $this->audience = $audience;
@@ -65,19 +65,19 @@ class LodgingBusiness extends LocalBusiness implements \JsonSerializable
     {
         return $this->petsAllowed;
     }
-    public function setCheckoutTime(\DateTime|\PSX\DateTime\Time|null $checkoutTime) : void
+    public function setCheckoutTime(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|null $checkoutTime) : void
     {
         $this->checkoutTime = $checkoutTime;
     }
-    public function getCheckoutTime() : \DateTime|\PSX\DateTime\Time|null
+    public function getCheckoutTime() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|null
     {
         return $this->checkoutTime;
     }
-    public function setCheckinTime(\DateTime|\PSX\DateTime\Time|null $checkinTime) : void
+    public function setCheckinTime(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|null $checkinTime) : void
     {
         $this->checkinTime = $checkinTime;
     }
-    public function getCheckinTime() : \DateTime|\PSX\DateTime\Time|null
+    public function getCheckinTime() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|null
     {
         return $this->checkinTime;
     }

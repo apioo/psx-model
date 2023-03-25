@@ -10,7 +10,7 @@ use PSX\Schema\Attribute\Description;
 class UserComments extends UserInteraction implements \JsonSerializable
 {
     protected ?CreativeWork $discusses = null;
-    protected \PSX\DateTime\Date|\DateTime|null $commentTime = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $commentTime = null;
     protected Organization|Person|null $creator = null;
     protected ?string $commentText = null;
     protected ?\PSX\Uri\Uri $replyToUrl = null;
@@ -22,11 +22,11 @@ class UserComments extends UserInteraction implements \JsonSerializable
     {
         return $this->discusses;
     }
-    public function setCommentTime(\PSX\DateTime\Date|\DateTime|null $commentTime) : void
+    public function setCommentTime(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $commentTime) : void
     {
         $this->commentTime = $commentTime;
     }
-    public function getCommentTime() : \PSX\DateTime\Date|\DateTime|null
+    public function getCommentTime() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->commentTime;
     }

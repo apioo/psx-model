@@ -9,15 +9,15 @@ use PSX\Schema\Attribute\Description;
 #[Description('An event involving the delivery of an item.')]
 class DeliveryEvent extends Event implements \JsonSerializable
 {
-    protected ?\DateTime $availableThrough = null;
+    protected ?\PSX\DateTime\LocalDateTime $availableThrough = null;
     protected ?string $accessCode = null;
     protected ?DeliveryMethod $hasDeliveryMethod = null;
-    protected ?\DateTime $availableFrom = null;
-    public function setAvailableThrough(?\DateTime $availableThrough) : void
+    protected ?\PSX\DateTime\LocalDateTime $availableFrom = null;
+    public function setAvailableThrough(?\PSX\DateTime\LocalDateTime $availableThrough) : void
     {
         $this->availableThrough = $availableThrough;
     }
-    public function getAvailableThrough() : ?\DateTime
+    public function getAvailableThrough() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->availableThrough;
     }
@@ -37,11 +37,11 @@ class DeliveryEvent extends Event implements \JsonSerializable
     {
         return $this->hasDeliveryMethod;
     }
-    public function setAvailableFrom(?\DateTime $availableFrom) : void
+    public function setAvailableFrom(?\PSX\DateTime\LocalDateTime $availableFrom) : void
     {
         $this->availableFrom = $availableFrom;
     }
-    public function getAvailableFrom() : ?\DateTime
+    public function getAvailableFrom() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->availableFrom;
     }

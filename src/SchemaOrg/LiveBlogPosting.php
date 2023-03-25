@@ -9,14 +9,14 @@ use PSX\Schema\Attribute\Description;
 #[Description('A blog post intended to provide a rolling textual coverage of an ongoing event through continuous updates.')]
 class LiveBlogPosting extends BlogPosting implements \JsonSerializable
 {
-    protected ?\DateTime $coverageStartTime = null;
+    protected ?\PSX\DateTime\LocalDateTime $coverageStartTime = null;
     protected ?BlogPosting $liveBlogUpdate = null;
-    protected ?\DateTime $coverageEndTime = null;
-    public function setCoverageStartTime(?\DateTime $coverageStartTime) : void
+    protected ?\PSX\DateTime\LocalDateTime $coverageEndTime = null;
+    public function setCoverageStartTime(?\PSX\DateTime\LocalDateTime $coverageStartTime) : void
     {
         $this->coverageStartTime = $coverageStartTime;
     }
-    public function getCoverageStartTime() : ?\DateTime
+    public function getCoverageStartTime() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->coverageStartTime;
     }
@@ -28,11 +28,11 @@ class LiveBlogPosting extends BlogPosting implements \JsonSerializable
     {
         return $this->liveBlogUpdate;
     }
-    public function setCoverageEndTime(?\DateTime $coverageEndTime) : void
+    public function setCoverageEndTime(?\PSX\DateTime\LocalDateTime $coverageEndTime) : void
     {
         $this->coverageEndTime = $coverageEndTime;
     }
-    public function getCoverageEndTime() : ?\DateTime
+    public function getCoverageEndTime() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->coverageEndTime;
     }

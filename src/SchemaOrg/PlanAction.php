@@ -9,12 +9,12 @@ use PSX\Schema\Attribute\Description;
 #[Description('The act of planning the execution of an event/task/action/reservation/plan to a future date.')]
 class PlanAction extends OrganizeAction implements \JsonSerializable
 {
-    protected ?\DateTime $scheduledTime = null;
-    public function setScheduledTime(?\DateTime $scheduledTime) : void
+    protected ?\PSX\DateTime\LocalDateTime $scheduledTime = null;
+    public function setScheduledTime(?\PSX\DateTime\LocalDateTime $scheduledTime) : void
     {
         $this->scheduledTime = $scheduledTime;
     }
-    public function getScheduledTime() : ?\DateTime
+    public function getScheduledTime() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->scheduledTime;
     }

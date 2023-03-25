@@ -14,11 +14,11 @@ class Activity extends ObjectType implements \JsonSerializable
     protected ?MediaLink $icon = null;
     protected ?string $id = null;
     protected ?ObjectType $object = null;
-    protected ?\DateTime $published = null;
+    protected ?\PSX\DateTime\LocalDateTime $published = null;
     protected ?ObjectType $provider = null;
     protected ?ObjectType $target = null;
     protected ?string $title = null;
-    protected ?\DateTime $updated = null;
+    protected ?\PSX\DateTime\LocalDateTime $updated = null;
     protected ?string $url = null;
     protected ?string $verb = null;
     public function setObjectType(?string $objectType) : void
@@ -77,11 +77,11 @@ class Activity extends ObjectType implements \JsonSerializable
     {
         return $this->object;
     }
-    public function setPublished(?\DateTime $published) : void
+    public function setPublished(?\PSX\DateTime\LocalDateTime $published) : void
     {
         $this->published = $published;
     }
-    public function getPublished() : ?\DateTime
+    public function getPublished() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->published;
     }
@@ -109,11 +109,11 @@ class Activity extends ObjectType implements \JsonSerializable
     {
         return $this->title;
     }
-    public function setUpdated(?\DateTime $updated) : void
+    public function setUpdated(?\PSX\DateTime\LocalDateTime $updated) : void
     {
         $this->updated = $updated;
     }
-    public function getUpdated() : ?\DateTime
+    public function getUpdated() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->updated;
     }

@@ -21,7 +21,7 @@
 namespace PSX\Model\Tests\ActivityStream;
 
 use PHPUnit\Framework\TestCase;
-use PSX\DateTime\DateTime;
+use PSX\DateTime\LocalDateTime;
 use PSX\Model\ActivityStream\ObjectType;
 
 /**
@@ -47,9 +47,9 @@ class ObjectTest extends TestCase
         $object->setAuthor($laura);
         $object->setContent('foobar');
         $object->setImage('http://localhost.com/image.png');
-        $object->setPublished(new DateTime('2012-12-12T12:00:00Z'));
+        $object->setPublished(LocalDateTime::parse('2012-12-12T12:00:00Z'));
         $object->setSummary('foobar');
-        $object->setUpdated(new DateTime('2012-12-12T12:00:00Z'));
+        $object->setUpdated(LocalDateTime::parse('2012-12-12T12:00:00Z'));
 
         $actual = json_encode($object, JSON_PRETTY_PRINT);
         $expect = file_get_contents(__DIR__ . '/resource/object.json');

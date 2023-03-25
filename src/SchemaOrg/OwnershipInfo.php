@@ -11,8 +11,8 @@ class OwnershipInfo extends StructuredValue implements \JsonSerializable
 {
     protected Service|Product|null $typeOfGood = null;
     protected Organization|Person|null $acquiredFrom = null;
-    protected ?\DateTime $ownedFrom = null;
-    protected ?\DateTime $ownedThrough = null;
+    protected ?\PSX\DateTime\LocalDateTime $ownedFrom = null;
+    protected ?\PSX\DateTime\LocalDateTime $ownedThrough = null;
     public function setTypeOfGood(Service|Product|null $typeOfGood) : void
     {
         $this->typeOfGood = $typeOfGood;
@@ -29,19 +29,19 @@ class OwnershipInfo extends StructuredValue implements \JsonSerializable
     {
         return $this->acquiredFrom;
     }
-    public function setOwnedFrom(?\DateTime $ownedFrom) : void
+    public function setOwnedFrom(?\PSX\DateTime\LocalDateTime $ownedFrom) : void
     {
         $this->ownedFrom = $ownedFrom;
     }
-    public function getOwnedFrom() : ?\DateTime
+    public function getOwnedFrom() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->ownedFrom;
     }
-    public function setOwnedThrough(?\DateTime $ownedThrough) : void
+    public function setOwnedThrough(?\PSX\DateTime\LocalDateTime $ownedThrough) : void
     {
         $this->ownedThrough = $ownedThrough;
     }
-    public function getOwnedThrough() : ?\DateTime
+    public function getOwnedThrough() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->ownedThrough;
     }

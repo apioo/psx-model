@@ -9,14 +9,14 @@ use PSX\Schema\Attribute\Description;
 #[Description('Specifies a location feature by providing a structured value representing a feature of an accommodation as a property-value pair of varying degrees of formality.')]
 class LocationFeatureSpecification extends PropertyValue implements \JsonSerializable
 {
-    protected \PSX\DateTime\Date|\DateTime|null $validThrough = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validThrough = null;
     protected ?OpeningHoursSpecification $hoursAvailable = null;
-    protected \PSX\DateTime\Date|\DateTime|null $validFrom = null;
-    public function setValidThrough(\PSX\DateTime\Date|\DateTime|null $validThrough) : void
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validFrom = null;
+    public function setValidThrough(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validThrough) : void
     {
         $this->validThrough = $validThrough;
     }
-    public function getValidThrough() : \PSX\DateTime\Date|\DateTime|null
+    public function getValidThrough() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->validThrough;
     }
@@ -28,11 +28,11 @@ class LocationFeatureSpecification extends PropertyValue implements \JsonSeriali
     {
         return $this->hoursAvailable;
     }
-    public function setValidFrom(\PSX\DateTime\Date|\DateTime|null $validFrom) : void
+    public function setValidFrom(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validFrom) : void
     {
         $this->validFrom = $validFrom;
     }
-    public function getValidFrom() : \PSX\DateTime\Date|\DateTime|null
+    public function getValidFrom() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->validFrom;
     }

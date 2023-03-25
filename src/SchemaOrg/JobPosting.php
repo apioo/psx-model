@@ -15,9 +15,9 @@ class JobPosting extends Intangible implements \JsonSerializable
     protected ?Organization $hiringOrganization = null;
     protected ?string $incentiveCompensation = null;
     protected ?string $skills = null;
-    protected \DateTime|\PSX\DateTime\Date|null $datePosted = null;
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $datePosted = null;
     protected ?string $jobBenefits = null;
-    protected \PSX\DateTime\Date|\DateTime|null $validThrough = null;
+    protected \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validThrough = null;
     protected float|PriceSpecification|MonetaryAmount|null $baseSalary = null;
     protected ?string $employmentType = null;
     protected ?Place $jobLocation = null;
@@ -75,11 +75,11 @@ class JobPosting extends Intangible implements \JsonSerializable
     {
         return $this->skills;
     }
-    public function setDatePosted(\DateTime|\PSX\DateTime\Date|null $datePosted) : void
+    public function setDatePosted(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null $datePosted) : void
     {
         $this->datePosted = $datePosted;
     }
-    public function getDatePosted() : \DateTime|\PSX\DateTime\Date|null
+    public function getDatePosted() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalDate|null
     {
         return $this->datePosted;
     }
@@ -91,11 +91,11 @@ class JobPosting extends Intangible implements \JsonSerializable
     {
         return $this->jobBenefits;
     }
-    public function setValidThrough(\PSX\DateTime\Date|\DateTime|null $validThrough) : void
+    public function setValidThrough(\PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null $validThrough) : void
     {
         $this->validThrough = $validThrough;
     }
-    public function getValidThrough() : \PSX\DateTime\Date|\DateTime|null
+    public function getValidThrough() : \PSX\DateTime\LocalDate|\PSX\DateTime\LocalDateTime|null
     {
         return $this->validThrough;
     }

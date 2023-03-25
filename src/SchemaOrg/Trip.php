@@ -10,8 +10,8 @@ use PSX\Schema\Attribute\Description;
 class Trip extends Intangible implements \JsonSerializable
 {
     protected Organization|Person|null $provider = null;
-    protected \DateTime|\PSX\DateTime\Time|null $departureTime = null;
-    protected \PSX\DateTime\Time|\DateTime|null $arrivalTime = null;
+    protected \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|null $departureTime = null;
+    protected \PSX\DateTime\LocalTime|\PSX\DateTime\LocalDateTime|null $arrivalTime = null;
     protected Trip|Event|Product|Offer|Demand|Service|CreativeWork|MenuItem|null $itemOffered = null;
     protected Offer|Demand|null $offers = null;
     public function setProvider(Organization|Person|null $provider) : void
@@ -22,19 +22,19 @@ class Trip extends Intangible implements \JsonSerializable
     {
         return $this->provider;
     }
-    public function setDepartureTime(\DateTime|\PSX\DateTime\Time|null $departureTime) : void
+    public function setDepartureTime(\PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|null $departureTime) : void
     {
         $this->departureTime = $departureTime;
     }
-    public function getDepartureTime() : \DateTime|\PSX\DateTime\Time|null
+    public function getDepartureTime() : \PSX\DateTime\LocalDateTime|\PSX\DateTime\LocalTime|null
     {
         return $this->departureTime;
     }
-    public function setArrivalTime(\PSX\DateTime\Time|\DateTime|null $arrivalTime) : void
+    public function setArrivalTime(\PSX\DateTime\LocalTime|\PSX\DateTime\LocalDateTime|null $arrivalTime) : void
     {
         $this->arrivalTime = $arrivalTime;
     }
-    public function getArrivalTime() : \PSX\DateTime\Time|\DateTime|null
+    public function getArrivalTime() : \PSX\DateTime\LocalTime|\PSX\DateTime\LocalDateTime|null
     {
         return $this->arrivalTime;
     }

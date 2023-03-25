@@ -25,12 +25,12 @@ class Entry implements \JsonSerializable
      * @var array<Link>|null
      */
     protected ?array $link = null;
-    protected ?\DateTime $published = null;
+    protected ?\PSX\DateTime\LocalDateTime $published = null;
     protected ?string $rights = null;
     protected ?Atom $source = null;
     protected ?Text $summary = null;
     protected ?string $title = null;
-    protected ?\DateTime $updated = null;
+    protected ?\PSX\DateTime\LocalDateTime $updated = null;
     /**
      * @param array<Person>|null $author
      */
@@ -91,11 +91,11 @@ class Entry implements \JsonSerializable
     {
         return $this->link;
     }
-    public function setPublished(?\DateTime $published) : void
+    public function setPublished(?\PSX\DateTime\LocalDateTime $published) : void
     {
         $this->published = $published;
     }
-    public function getPublished() : ?\DateTime
+    public function getPublished() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->published;
     }
@@ -131,11 +131,11 @@ class Entry implements \JsonSerializable
     {
         return $this->title;
     }
-    public function setUpdated(?\DateTime $updated) : void
+    public function setUpdated(?\PSX\DateTime\LocalDateTime $updated) : void
     {
         $this->updated = $updated;
     }
-    public function getUpdated() : ?\DateTime
+    public function getUpdated() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->updated;
     }

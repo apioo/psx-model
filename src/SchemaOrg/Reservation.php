@@ -18,9 +18,9 @@ class Reservation extends Intangible implements \JsonSerializable
     protected Organization|Person|null $broker = null;
     protected Organization|Person|null $underName = null;
     protected float|string|PriceSpecification|null $totalPrice = null;
-    protected ?\DateTime $modifiedTime = null;
+    protected ?\PSX\DateTime\LocalDateTime $modifiedTime = null;
     protected ?ReservationStatusType $reservationStatus = null;
-    protected ?\DateTime $bookingTime = null;
+    protected ?\PSX\DateTime\LocalDateTime $bookingTime = null;
     protected ?Ticket $reservedTicket = null;
     protected ?ProgramMembership $programMembershipUsed = null;
     public function setReservationFor(?Thing $reservationFor) : void
@@ -79,11 +79,11 @@ class Reservation extends Intangible implements \JsonSerializable
     {
         return $this->totalPrice;
     }
-    public function setModifiedTime(?\DateTime $modifiedTime) : void
+    public function setModifiedTime(?\PSX\DateTime\LocalDateTime $modifiedTime) : void
     {
         $this->modifiedTime = $modifiedTime;
     }
-    public function getModifiedTime() : ?\DateTime
+    public function getModifiedTime() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->modifiedTime;
     }
@@ -95,11 +95,11 @@ class Reservation extends Intangible implements \JsonSerializable
     {
         return $this->reservationStatus;
     }
-    public function setBookingTime(?\DateTime $bookingTime) : void
+    public function setBookingTime(?\PSX\DateTime\LocalDateTime $bookingTime) : void
     {
         $this->bookingTime = $bookingTime;
     }
-    public function getBookingTime() : ?\DateTime
+    public function getBookingTime() : ?\PSX\DateTime\LocalDateTime
     {
         return $this->bookingTime;
     }
