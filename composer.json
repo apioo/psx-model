@@ -1,7 +1,7 @@
 {
   "name": "psx/model",
-  "description": "Model classes based on open data specifications",
-  "keywords": ["openapi", "atom", "rss", "activitystream", "schema-org", "dto", "model", "popo"],
+  "description": "PSX model classes",
+  "keywords": ["dto", "model", "popo"],
   "homepage": "https://phpsx.org",
   "license": "Apache-2.0",
   "authors": [
@@ -12,7 +12,7 @@
     }
   ],
   "require": {
-    "php": ">=8.0",
+    "php": ">=8.1",
     "psx/record": "^3.0"
   },
   "require-dev": {

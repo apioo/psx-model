@@ -3,18 +3,16 @@
 
 ## About
 
-Library which contains generated models based on a [TypeSchema](https://typeschema.org/)
-definition. All specifications are available at the `spec/` folder. You can also
-generate all models by using the command `php gen.php`. We support the following
-data formats:
+Library which contains common models for the PSX framework.
+We have moved all specification related models to separate repositories s.
 
-* ActivityStream
-* AsyncAPI
-* Atom
-* OpenAPI
-* OpenRPC
-* Rss
+* [AsynAPI](https://github.com/apioo/psx-asyncapi)
+* [Atom](https://github.com/apioo/psx-atom)
+* [OpenAPI](https://github.com/apioo/psx-openapi)
+* [OpenRPC](https://github.com/apioo/psx-openrpc)
 
-All generated code is automatically Psalm level 1 compatible. These classes can
-be used standalone or in combination with the `psx/data` and `psx/schema`
-package to consume or produce the data format.
+## Contribution
+
+If you want to suggest changes please only change the `typeschema.json` specification and then run
+the `php gen.php` script to regenerate all model classes.
+

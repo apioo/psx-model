@@ -1,22 +1,9 @@
 <?php
 
-$specs = [
-    'ActivityStream' => 'activity_stream.json',
-    'AsyncAPI' => 'asyncapi.json',
-    'Atom' => 'atom.json',
-    'Common' => 'common.json',
-    'OpenAPI' => 'openapi.json',
-    'OpenRPC' => 'openrpc.json',
-    'Rss' => 'rss.json',
-    //'SchemaOrg' => 'schema_org.json',
-];
+$cmd = sprintf('php vendor/psx/schema/bin/schema schema:parse typeschema.json src --format=php --config=%s', escapeshellarg('namespace=PSX\\Model'));
 
-foreach ($specs as $name => $spec) {
-    $cmd = sprintf('php vendor/psx/schema/bin/schema schema:parse spec/%s src/%s --format=php --config=%s', $spec, $name, escapeshellarg('namespace=PSX\\Model\\' . $name . '&mapping[openapi]=PSX\\Model\\OpenAPI'));
+echo 'Generated' . "\n";
+echo '> ' . $cmd . "\n";
 
-    echo 'Generate ' . $spec . "\n";
-    echo '> ' . $cmd . "\n";
-
-    shell_exec($cmd);
-}
+shell_exec($cmd);
 

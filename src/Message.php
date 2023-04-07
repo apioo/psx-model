@@ -2,10 +2,10 @@
 
 declare(strict_types = 1);
 
-namespace PSX\Model\Common;
+namespace PSX\Model;
 
 
-class Message implements \JsonSerializable
+class Message implements \JsonSerializable, \PSX\Record\RecordableInterface
 {
     protected ?bool $success = null;
     protected ?string $message = null;
@@ -25,11 +25,17 @@ class Message implements \JsonSerializable
     {
         return $this->message;
     }
+    public function toRecord() : \PSX\Record\RecordInterface
+    {
+        /** @var \PSX\Record\Record<mixed> $record */
+        $record = new \PSX\Record\Record();
+        $record->put('success', $this->success);
+        $record->put('message', $this->message);
+        return $record;
+    }
     public function jsonSerialize() : object
     {
-        return (object) array_filter(array('success' => $this->success, 'message' => $this->message), static function ($value) : bool {
-            return $value !== null;
-        });
+        return (object) $this->toRecord()->getAll();
     }
 }
 
